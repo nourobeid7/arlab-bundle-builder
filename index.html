@@ -88,6 +88,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 @media(max-width:900px){.main{grid-template-columns:1fr}.results-panel{position:static;height:auto;border-top:1px solid var(--border)}.blocks-panel{border-right:none}.header,.blocks-panel,.results-panel{padding-left:20px;padding-right:20px}}
 
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(8px);background:#5adab0;color:#04342C;font-size:12px;font-weight:500;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:9999;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+
+#prompt-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;align-items:center;justify-content:center;padding:20px;}
+#prompt-box{background:#111;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px;width:100%;max-width:560px;font-family:'DM Sans',sans-serif;}
+#prompt-box h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#f0f0f0;margin-bottom:8px;}
+#prompt-box p{font-size:11px;color:#666;margin-bottom:10px;}
+#prompt-ta{width:100%;height:140px;background:#0a0a0a;border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f0f0;font-size:11px;font-family:'DM Sans',sans-serif;padding:10px;resize:none;line-height:1.6;}
+#prompt-ta:focus{outline:none;border-color:rgba(255,255,255,.25);}
+.modal-actions{display:flex;gap:8px;margin-top:12px;}
+#copy-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:none;background:#5adab0;color:#04342C;cursor:pointer;font-family:'DM Sans',sans-serif;}
+#open-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#f0f0f0;cursor:pointer;font-family:'DM Sans',sans-serif;}
+#close-btn{padding:9px 14px;font-size:12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#555;cursor:pointer;font-family:'DM Sans',sans-serif;}
 </style>
 </head>
 <body>
@@ -289,28 +300,51 @@ function lookupFusion(key){if(!key)return null;if(TECH_FUSIONS[key])return TECH_
 function bestBundle(){var best=null,bs=0;for(var i=0;i<BUNDLES.length;i++){var b=BUNDLES[i];var all=b.ids.concat(b.extra||[]);var ch=b.ids.filter(function(id){return sel.has(id)}).length;var th=all.filter(function(id){return sel.has(id)}).length;var s=ch*2+th;if(ch>=1&&s>bs){best=b;bs=s;}}return bs>=2?best:null}
 function fusionResult(){for(var i=0;i<INCOMPAT.length;i++){var inc=INCOMPAT[i];if(inc.ids.filter(function(id){return sel.has(id)}).length>=2)return{type:'none',data:inc}}var best=null,bs=0;for(var j=0;j<FUSIONS.length;j++){var f=FUSIONS[j];var fh=f.ids.filter(function(id){return sel.has(id)}).length;if(fh>bs){best=f;bs=fh;}}if(bs>=2)return{type:'strong',data:best};var arr=Array.from(sel);var types=arr.map(gt);var t1=types[0]||'',t2=types[1]||'';var hint=POSSIBLE[t1+'+'+t2]||POSSIBLE[t2+'+'+t1]||null;if(bs===1||hint)return{type:'possible',data:best,hint:hint};return{type:'unknown'};}
 function openClaude(prompt){
-  navigator.clipboard.writeText(prompt).then(function(){
-    var t=document.getElementById('toast');
-    t.textContent='Prompt copied — paste it into Claude ↗';
-    t.style.opacity='1';t.style.transform='translateY(0)';
-    setTimeout(function(){t.style.opacity='0';t.style.transform='translateY(8px)'},2800);
-  }).catch(function(){
-    prompt_fallback(prompt);
-  });
-  window.open('https://claude.ai/new','_blank');
+  // Show the prompt modal
+  var modal=document.getElementById('prompt-modal');
+  var ta=document.getElementById('prompt-ta');
+  ta.value=prompt;
+  modal.style.display='flex';
+  // Try clipboard (works on Chrome/Firefox, may fail on Safari)
+  try{
+    navigator.clipboard.writeText(prompt).then(function(){
+      document.getElementById('copy-btn').textContent='Copied ✓';
+    }).catch(function(){copyFallback(ta);});
+  }catch(e){copyFallback(ta);}
 }
-function prompt_fallback(prompt){
-  var t=document.getElementById('toast');
-  t.textContent='Prompt ready — paste into Claude when it opens ↗';
-  t.style.opacity='1';t.style.transform='translateY(0)';
-  setTimeout(function(){t.style.opacity='0';t.style.transform='translateY(8px)'},2800);
-  window.open('https://claude.ai/new','_blank');
+function copyFallback(ta){
+  ta.focus();ta.select();
+  try{document.execCommand('copy');document.getElementById('copy-btn').textContent='Copied ✓';}
+  catch(e){document.getElementById('copy-btn').textContent='Select all & copy';}
+}
+function closeModal(){document.getElementById('prompt-modal').style.display='none';document.getElementById('copy-btn').textContent='Copy prompt';}
+function copyAndOpen(){
+  var ta=document.getElementById('prompt-ta');
+  try{
+    navigator.clipboard.writeText(ta.value).then(function(){
+      document.getElementById('copy-btn').textContent='Copied ✓';
+      setTimeout(function(){window.open('https://claude.ai/new','_blank');closeModal();},400);
+    }).catch(function(){copyFallback(ta);window.open('https://claude.ai/new','_blank');setTimeout(closeModal,400);});
+  }catch(e){copyFallback(ta);window.open('https://claude.ai/new','_blank');setTimeout(closeModal,400);}
 }
 function npHTML(np){return'<div class="new-product"><div class="new-label">New product opportunity</div><div class="new-name">'+np.name+'</div><div class="new-tagline">'+np.tagline+'</div><div class="new-desc">'+np.desc+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'I am building a new ARlab product called '+np.name+' — '+np.tagline+'. Write a full product brief including: what it is, target client, how ARlab builds it, MVP scope, pricing model, and a launch plan for MENA.\')">Develop product ↗</button><button class="btn" onclick="openClaude(\'Write a sharp CMO-level pitch for an ARlab product called '+np.name+'. Tagline: '+np.tagline+'. Make it compelling, specific to MENA luxury and FMCG brands, and end with a clear call to action.\')">Pitch it ↗</button></div></div>';}
 function getTechLabel(){var parts=[];if(activeTech.has("xr")&&["ar","mr","vr"].every(function(x){return activeTech.has(x)})){parts.push("XR");}else{["ar","mr","vr"].forEach(function(x){if(activeTech.has(x))parts.push(x.toUpperCase());});}var labels={"ai":"AI","pre3d":"Pre-Rendered 3D","rt3d":"Real-Time 3D","webgl":"WebGL","live":"Live","iog":"Interactive On Ground"};Object.keys(labels).forEach(function(x){if(activeTech.has(x))parts.push(labels[x]);});return parts.join(' + ');}
 function render(){var count=sel.size,techCount=activeTech.size,techKey=getTechKey(),techFusion=lookupFusion(techKey);var bp=document.getElementById('bp'),bb=document.getElementById('bb'),fp=document.getElementById('fp'),fb=document.getElementById('fb'),techLabel=getTechLabel();if(count===0&&techCount===0){document.getElementById('sel-count').textContent='Select filters or blocks to begin';document.getElementById('bc').innerHTML='<span style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</span>';document.getElementById('fc').innerHTML='<span style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</span>';bp.className='result-card';fp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';fb.className='badge badge-strong';fb.textContent='Tech Fusion';return;}document.getElementById('sel-count').textContent=(count>0?count+' block'+(count>1?'s':'')+' selected':'')+(count>0&&techCount>0?' — ':)+(techCount>0?'Tech: '+techLabel:'');if(techCount>0&&count===0){if(techFusion){bp.className='result-card tech-mode';bb.className='badge badge-tech';bb.textContent='Tech Bundle';document.getElementById('bc').innerHTML='<div class="rname">'+techFusion.name+'</div><div class="rdesc">'+techFusion.desc+'</div><div class="flabel">Existing services</div><div class="tags">'+techFusion.existing.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'Build a campaign proposal for an ARlab client using '+techFusion.name+' technology. Include campaign concept, recommended service blocks, timeline, and indicative pricing for a MENA brand.\')">Build proposal ↗</button></div>';fp.className='result-card tech-mode';fb.className='badge badge-newprod';fb.textContent='New Product';document.getElementById('fc').innerHTML=npHTML(techFusion.newProduct);}else{bp.className='result-card tech-mode';bb.className='badge badge-tech';bb.textContent='Tech Bundle';document.getElementById('bc').innerHTML='<div class="rdesc">Valid tech combination — select individual blocks to build a specific bundle.</div>';fp.className='result-card tech-mode';fb.className='badge badge-possible';fb.textContent='Potential Fusion';document.getElementById('fc').innerHTML='<div class="rname">Uncharted territory</div><div class="rdesc">No named product defined for this exact combination yet.</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'What new creative advertising product could ARlab build by combining '+techLabel+' technologies? Think about what no studio in MENA offers yet, what brands would pay for, and what ARlab could realistically build and sell.\')">Explore this ↗</button></div>';}return;}var bundle=bestBundle(),fusion=fusionResult(),selNames=Array.from(sel).map(gn),sn=selNames.join(', ');if(bundle){var miss=bundle.ids.filter(function(id){return!sel.has(id)}).map(gn);bp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';document.getElementById('bc').innerHTML='<div class="rname">'+bundle.name+'</div><div class="rdesc">'+bundle.desc+'</div><div class="rprice">'+bundle.price+'</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div>'+(miss.length?'<div style="font-size:10px;color:var(--text3);margin-bottom:6px">Add to complete: '+miss.join(', ')+'</div>':'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'Write a client-ready proposal for the ARlab '+bundle.name+'. Services included: '+sn+'. Indicative price: '+bundle.price+'. Include campaign concept, deliverables, timeline, and why this bundle creates more impact than single-format campaigns.\')">Build proposal ↗</button><button class="btn" onclick="openClaude(\'Give me a detailed price breakdown for the ARlab '+bundle.name+' with these services: '+sn+'. Include per-service cost estimates, bundle discount rationale, and suggested payment milestones.\')">Price it ↗</button></div>';}else{bp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';document.getElementById('bc').innerHTML='<div class="rname">Custom bundle</div><div class="rdesc">No named bundle matches — valid combination worth naming.</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'ARlab custom bundle: services selected are '+sn+'. Suggest a compelling bundle name, write a one-line description, recommend a price range, and explain why this combination creates unique value for a MENA brand.\')">Name + price it ↗</button></div>';}if(fusion.type==='strong'){fp.className='result-card fusion-strong';fb.className='badge badge-strong';fb.textContent='Tech Fusion';var f=fusion.data;document.getElementById('fc').innerHTML='<div class="rname">'+f.name+'</div><div class="flabel">Output</div><div class="fdetail">'+f.output+'</div><div class="flabel">What it unlocks</div><div class="fdetail">'+f.unlock+'</div>'+(techFusion?npHTML(techFusion.newProduct):'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'Write a sharp CMO-level pitch for the ARlab '+f.name+' campaign format. Services: '+sn+'. Make it compelling, specific to MENA luxury and FMCG brands, and end with a clear call to action.\')">Pitch this ↗</button><button class="btn" onclick="openClaude(\'Write a technical production brief for the ARlab '+f.name+'. Services: '+sn+'. Include what each technology does, how they integrate, production timeline, team requirements, and client deliverables.\')">Technical brief ↗</button></div>';}else if(fusion.type==='none'){fp.className='result-card fusion-none';fb.className='badge badge-nofuse';fb.textContent='Not Fuseable';var inc=fusion.data;document.getElementById('fc').innerHTML='<div class="rname" style="color:var(--text2)">These do not fuse</div><div class="why-not">'+inc.why+'</div><div class="suggestion">Try instead: '+inc.suggest+'</div><div class="actions"><button class="btn" onclick="openClaude(\'How should ARlab sequence these services across a client campaign rather than fusing them? Services: '+sn+'. Suggest a phased campaign approach with each service playing a distinct role.\')">How to sequence them ↗</button></div>';}else if(fusion.type==='possible'){fp.className='result-card fusion-possible';fb.className='badge badge-possible';fb.textContent='Potential Fusion';document.getElementById('fc').innerHTML='<div class="rname">Uncharted fusion</div><div class="fdetail">'+(fusion.hint||'Integration potential worth exploring.')+'</div>'+(techFusion?npHTML(techFusion.newProduct):'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'What new ARlab product or campaign format could be created by combining: '+sn+'? Think about what is technically possible, what brands would pay for, and what no MENA studio offers yet.\')">Explore this fusion ↗</button></div>';}else{fp.className='result-card';fb.className='badge badge-none';fb.textContent='No Fusion';document.getElementById('fc').innerHTML='<div class="rname" style="color:var(--text2)">No fusion defined</div><div class="rdesc">These blocks do not have a clear technical integration point.</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn" onclick="openClaude(\'Could ARlab combine these services in any creative or commercial way: '+sn+'? Explore unconventional pairings, sequential structures, or new product concepts.\')">Ask anyway ↗</button></div>';}}
 render();
 </script>
+
+<div id="prompt-modal">
+  <div id="prompt-box">
+    <h3>Your Claude prompt is ready</h3>
+    <p>Copy the prompt below, then paste it into Claude after it opens.</p>
+    <textarea id="prompt-ta" readonly></textarea>
+    <div class="modal-actions">
+      <button id="copy-btn" onclick="copyAndOpen()">Copy &amp; open Claude ↗</button>
+      <button id="open-btn" onclick="window.open('https://claude.ai/new','_blank')">Open Claude only ↗</button>
+      <button id="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
 <div id="toast"></div>
 </body>
 </html>
