@@ -300,32 +300,44 @@ function lookupFusion(key){if(!key)return null;if(TECH_FUSIONS[key])return TECH_
 function bestBundle(){var best=null,bs=0;for(var i=0;i<BUNDLES.length;i++){var b=BUNDLES[i];var all=b.ids.concat(b.extra||[]);var ch=b.ids.filter(function(id){return sel.has(id)}).length;var th=all.filter(function(id){return sel.has(id)}).length;var s=ch*2+th;if(ch>=1&&s>bs){best=b;bs=s;}}return bs>=2?best:null}
 function fusionResult(){for(var i=0;i<INCOMPAT.length;i++){var inc=INCOMPAT[i];if(inc.ids.filter(function(id){return sel.has(id)}).length>=2)return{type:'none',data:inc}}var best=null,bs=0;for(var j=0;j<FUSIONS.length;j++){var f=FUSIONS[j];var fh=f.ids.filter(function(id){return sel.has(id)}).length;if(fh>bs){best=f;bs=fh;}}if(bs>=2)return{type:'strong',data:best};var arr=Array.from(sel);var types=arr.map(gt);var t1=types[0]||'',t2=types[1]||'';var hint=POSSIBLE[t1+'+'+t2]||POSSIBLE[t2+'+'+t1]||null;if(bs===1||hint)return{type:'possible',data:best,hint:hint};return{type:'unknown'};}
 function openClaude(prompt){
-  // Show the prompt modal
   var modal=document.getElementById('prompt-modal');
   var ta=document.getElementById('prompt-ta');
+  var btn=document.getElementById('copy-btn');
   ta.value=prompt;
   modal.style.display='flex';
-  // Try clipboard (works on Chrome/Firefox, may fail on Safari)
-  try{
-    navigator.clipboard.writeText(prompt).then(function(){
-      document.getElementById('copy-btn').textContent='Copied ✓';
-    }).catch(function(){copyFallback(ta);});
-  }catch(e){copyFallback(ta);}
+  btn.textContent='Copy prompt';
+  setTimeout(function(){ta.focus();ta.select();},100);
 }
 function copyFallback(ta){
   ta.focus();ta.select();
-  try{document.execCommand('copy');document.getElementById('copy-btn').textContent='Copied ✓';}
-  catch(e){document.getElementById('copy-btn').textContent='Select all & copy';}
+  try{
+    var ok=document.execCommand('copy');
+    document.getElementById('copy-btn').textContent=ok?'Copied ✓':'Select all above & copy';
+  }catch(e){
+    document.getElementById('copy-btn').textContent='Select all above & copy';
+  }
 }
-function closeModal(){document.getElementById('prompt-modal').style.display='none';document.getElementById('copy-btn').textContent='Copy prompt';}
+function closeModal(){
+  document.getElementById('prompt-modal').style.display='none';
+}
 function copyAndOpen(){
   var ta=document.getElementById('prompt-ta');
+  var btn=document.getElementById('copy-btn');
+  // Open Claude first (must be direct user gesture for Safari to allow popup)
+  window.open('https://claude.ai/new','_blank');
+  // Then copy
+  ta.focus();ta.select();
   try{
-    navigator.clipboard.writeText(ta.value).then(function(){
-      document.getElementById('copy-btn').textContent='Copied ✓';
-      setTimeout(function(){window.open('https://claude.ai/new','_blank');closeModal();},400);
-    }).catch(function(){copyFallback(ta);window.open('https://claude.ai/new','_blank');setTimeout(closeModal,400);});
-  }catch(e){copyFallback(ta);window.open('https://claude.ai/new','_blank');setTimeout(closeModal,400);}
+    var ok=document.execCommand('copy');
+    btn.textContent=ok?'Copied ✓ — paste in Claude':'Select all above & copy';
+  }catch(e){
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(ta.value).then(function(){btn.textContent='Copied ✓ — paste in Claude';});
+    }else{
+      btn.textContent='Select all above & copy';
+    }
+  }
+  setTimeout(closeModal,1800);
 }
 function npHTML(np){return'<div class="new-product"><div class="new-label">New product opportunity</div><div class="new-name">'+np.name+'</div><div class="new-tagline">'+np.tagline+'</div><div class="new-desc">'+np.desc+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'I am building a new ARlab product called '+np.name+' — '+np.tagline+'. Write a full product brief including: what it is, target client, how ARlab builds it, MVP scope, pricing model, and a launch plan for MENA.\')">Develop product ↗</button><button class="btn" onclick="openClaude(\'Write a sharp CMO-level pitch for an ARlab product called '+np.name+'. Tagline: '+np.tagline+'. Make it compelling, specific to MENA luxury and FMCG brands, and end with a clear call to action.\')">Pitch it ↗</button></div></div>';}
 function getTechLabel(){var parts=[];if(activeTech.has("xr")&&["ar","mr","vr"].every(function(x){return activeTech.has(x)})){parts.push("XR");}else{["ar","mr","vr"].forEach(function(x){if(activeTech.has(x))parts.push(x.toUpperCase());});}var labels={"ai":"AI","pre3d":"Pre-Rendered 3D","rt3d":"Real-Time 3D","webgl":"WebGL","live":"Live","iog":"Interactive On Ground"};Object.keys(labels).forEach(function(x){if(activeTech.has(x))parts.push(labels[x]);});return parts.join(' + ');}
@@ -336,7 +348,7 @@ render();
 <div id="prompt-modal">
   <div id="prompt-box">
     <h3>Your Claude prompt is ready</h3>
-    <p>Copy the prompt below, then paste it into Claude after it opens.</p>
+    <p>1. Click <strong>Copy &amp; open Claude</strong> — Claude opens in a new tab.<br>2. Paste the prompt and hit send.</p>
     <textarea id="prompt-ta" readonly></textarea>
     <div class="modal-actions">
       <button id="copy-btn" onclick="copyAndOpen()">Copy &amp; open Claude ↗</button>
