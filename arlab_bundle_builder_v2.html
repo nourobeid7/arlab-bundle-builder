@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARlab Bundle Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0f0f0;--text2:#999;--text3:#555}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+.header{padding:28px 40px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.header h1{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px}
+.header p{font-size:12px;color:var(--text3);margin-top:3px}
+.arlab-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border);padding:5px 11px;border-radius:20px}
+.main{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 77px)}
+.blocks-panel{padding:24px 40px;border-right:1px solid var(--border);overflow-y:auto}
+.results-panel{padding:24px 28px;position:sticky;top:0;height:calc(100vh - 77px);overflow-y:auto;background:var(--bg)}
+.tech-section{padding:0 0 14px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.tech-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.trow-label{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;width:52px;flex-shrink:0}
+.tech-pill{padding:4px 12px;border-radius:20px;border:1px solid;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;user-select:none;font-family:'DM Sans',sans-serif}
+.tech-pill:hover{opacity:.82}
+.sep{width:1px;height:16px;background:rgba(255,255,255,0.15);flex-shrink:0;margin:0 2px}
+.tp-xr{background:#1e1a3a;border-color:#4a3f8a;color:#b8aef5}.tp-xr.on{background:#4a3f8a;border-color:#7F77DD;color:#fff}
+.tp-ar{background:#1a1728;border-color:#3d3880;color:#a8a0f0}.tp-ar.on{background:#3d3880;border-color:#AFA9EC;color:#e8e4ff}
+.tp-mr{background:#2a1a28;border-color:#6a3060;color:#d090c0}.tp-mr.on{background:#6a3060;border-color:#ED93B1;color:#ffd0e8}
+.tp-vr{background:#2a1020;border-color:#7a2050;color:#d06090}.tp-vr.on{background:#7a2050;border-color:#D4537E;color:#ffa0c0}
+.tp-ai{background:#0d2010;border-color:#2a5a20;color:#60b050}.tp-ai.on{background:#2a5a20;border-color:#97C459;color:#c0f090}
+.tp-pre3d{background:#0d2218;border-color:#1a6040;color:#40b880}.tp-pre3d.on{background:#1a6040;border-color:#5DCAA5;color:#90f0d0}
+.tp-rt3d{background:#0d1a2a;border-color:#1a4a7a;color:#5090d0}.tp-rt3d.on{background:#1a4a7a;border-color:#85B7EB;color:#90d0ff}
+.tp-webgl{background:#0d2008;border-color:#306010;color:#70b030}.tp-webgl.on{background:#306010;border-color:#639922;color:#b0e060}
+.tp-live{background:#2a1c08;border-color:#7a5010;color:#c08030}.tp-live.on{background:#7a5010;border-color:#EF9F27;color:#f0c070}
+.tp-iog{background:#1a1a1a;border-color:#4a4a4a;color:#909090}.tp-iog.on{background:#4a4a4a;border-color:#888780;color:#e0e0e0}
+.cat-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--text3);text-transform:uppercase;margin:20px 0 8px;display:flex;align-items:center;gap:8px}
+.cat-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.sub-label{font-size:9px;font-weight:600;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin:10px 0 5px;padding-left:2px;opacity:.6}
+.blocks{display:flex;flex-wrap:wrap;gap:6px}
+.block{padding:5px 11px;border-radius:6px;border:1px solid;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;user-select:none;opacity:.28;font-family:'DM Sans',sans-serif}
+.block.lit{opacity:1}.block.selected{filter:brightness(.72);opacity:1}.block:hover{opacity:.85;transform:translateY(-1px)}
+.b-ar{background:#1e1a3a;border-color:#4a3f8a;color:#b8aef5}
+.b-mr{background:#2a1a28;border-color:#7a3a6a;color:#e090c0}
+.b-cgi{background:#0d2520;border-color:#2a7a60;color:#5adab0}
+.b-social{background:#2a1510;border-color:#8a3a20;color:#f0805a}
+.b-live{background:#2a2010;border-color:#8a6010;color:#f0c050}
+.b-ground{background:#1a1a1a;border-color:#444;color:#888}
+.b-immersive{background:#0d1a2a;border-color:#1a5a8a;color:#60aaee}
+.b-ai{background:#0d2010;border-color:#2a6a20;color:#60d050}
+.b-branding{background:#2a1010;border-color:#8a2020;color:#f06060}
+.b-webdev{background:#1a1a2a;border-color:#4a3a8a;color:#9080f0}
+.b-strategy{background:#1a1a1a;border-color:#3a3a3a;color:#707070}
+.divider{height:1px;background:var(--border);margin:20px 0}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sel-count{font-size:11px;color:var(--text3)}
+.clear-btn{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.clear-btn:hover{color:var(--text2)}
+.result-card{border-radius:10px;padding:14px;margin-bottom:10px;border:1px solid var(--border);background:var(--bg2);transition:border-color .2s}
+.result-card.fusion-strong{border-color:rgba(90,218,176,.2)}
+.result-card.fusion-possible{border-color:rgba(240,192,80,.2);border-style:dashed}
+.result-card.fusion-none{border-color:rgba(240,96,96,.15);border-style:dashed}
+.result-card.tech-mode{border-color:rgba(127,119,221,.3)}
+.badge{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;display:inline-block;margin-bottom:8px;font-family:'Space Grotesk',sans-serif}
+.badge-bundle{background:rgba(180,160,245,.15);color:#b8aef5}
+.badge-strong{background:rgba(90,218,176,.12);color:#5adab0}
+.badge-possible{background:rgba(240,192,80,.12);color:#f0c050}
+.badge-nofuse{background:rgba(240,96,96,.12);color:#f06060}
+.badge-none{background:rgba(255,255,255,.06);color:var(--text3)}
+.badge-tech{background:rgba(180,160,245,.15);color:#b8aef5}
+.badge-newprod{background:rgba(240,192,80,.12);color:#f0c050}
+.rname{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.rdesc{font-size:11px;color:var(--text2);margin-bottom:8px;line-height:1.6}
+.rprice{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.03em}
+.flabel{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:2px;font-family:'Space Grotesk',sans-serif}
+.fdetail{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.why-not{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.suggestion{font-size:10px;color:var(--text3);padding:7px 9px;background:var(--bg3);border-radius:6px;border:1px solid var(--border);margin-bottom:8px;line-height:1.5}
+.new-product{border-radius:8px;padding:10px 12px;margin-top:8px;border:1px dashed rgba(240,192,80,.3);background:rgba(240,192,80,.04)}
+.new-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#BA7517;margin-bottom:4px;font-family:'Space Grotesk',sans-serif}
+.new-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;font-family:'Space Grotesk',sans-serif}
+.new-tagline{font-size:10px;color:var(--text3);margin-bottom:5px;font-style:italic}
+.new-desc{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tag{font-size:10px;padding:2px 7px;border-radius:20px;background:var(--bg3);border:1px solid var(--border2);color:var(--text3)}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btn{padding:5px 11px;font-size:10px;font-weight:500;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.btn:hover{background:var(--bg2);color:var(--text);border-color:var(--border2)}
+.btn-p{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn-p:hover{opacity:.85}
+@media(max-width:900px){.main{grid-template-columns:1fr}.results-panel{position:static;height:auto;border-top:1px solid var(--border)}.blocks-panel{border-right:none}.header,.blocks-panel,.results-panel{padding-left:20px;padding-right:20px}}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(8px);background:#5adab0;color:#04342C;font-size:12px;font-weight:500;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:9999;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+#prompt-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;align-items:center;justify-content:center;padding:20px;}
+#prompt-box{background:#111;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px;width:100%;max-width:560px;font-family:'DM Sans',sans-serif;}
+#prompt-box h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#f0f0f0;margin-bottom:8px;}
+#prompt-box p{font-size:11px;color:#666;margin-bottom:10px;}
+#prompt-ta{width:100%;height:140px;background:#0a0a0a;border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f0f0;font-size:11px;font-family:'DM Sans',sans-serif;padding:10px;resize:none;line-height:1.6;}
+#prompt-ta:focus{outline:none;border-color:rgba(255,255,255,.25);}
+.modal-actions{display:flex;gap:8px;margin-top:12px;}
+#copy-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:none;background:#5adab0;color:#04342C;cursor:pointer;font-family:'DM Sans',sans-serif;}
+#open-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#f0f0f0;cursor:pointer;font-family:'DM Sans',sans-serif;}
+#close-btn{padding:9px 14px;font-size:12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#555;cursor:pointer;font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>ARlab Bundle Builder</h1>
+    <p>Select service blocks — see your bundle and tech fusion simultaneously</p>
+  </div>
+  <div class="arlab-badge">ARlab</div>
+</div>
+<div class="main">
+<div class="blocks-panel">
+<div class="tech-section">
+  <div class="tech-row">
+    <span class="trow-label">Filter</span>
+    <div class="tech-pill tp-xr" data-tech="xr" onclick="toggleTech(this)">XR</div>
+    <div class="tech-pill tp-ar" data-tech="ar" onclick="toggleTech(this)">AR</div>
+    <div class="tech-pill tp-mr" data-tech="mr" onclick="toggleTech(this)">MR</div>
+    <div class="tech-pill tp-vr" data-tech="vr" onclick="toggleTech(this)">VR</div>
+    <div class="sep"></div>
+    <div class="tech-pill tp-ai" data-tech="ai" onclick="toggleTech(this)">AI</div>
+    <div class="tech-pill tp-pre3d" data-tech="pre3d" onclick="toggleTech(this)">Pre-Rendered 3D</div>
+    <div class="tech-pill tp-rt3d" data-tech="rt3d" onclick="toggleTech(this)">Real-Time 3D</div>
+    <div class="tech-pill tp-webgl" data-tech="webgl" onclick="toggleTech(this)">WebGL</div>
+    <div class="tech-pill tp-live" data-tech="live" onclick="toggleTech(this)">Live</div>
+    <div class="tech-pill tp-iog" data-tech="iog" onclick="toggleTech(this)">Interactive On Ground</div>
+  </div>
+</div>
+
+<div class="cat-label">Social AR</div>
+<div class="blocks">
+<div class="block b-ar lit" data-id="snapchat-lens" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">Snapchat Lens</div>
+<div class="block b-ar lit" data-id="tiktok-effect" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">TikTok Effect</div>
+<div class="block b-ar lit" data-id="youtube-effect" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">YouTube Effect</div>
+<div class="block b-ar lit" data-id="web-ar" data-type="ar" data-tech="ar,xr,webgl" onclick="toggle(this)">WebAR</div>
+</div>
+
+<div class="cat-label">MR & VR</div>
+<div class="blocks">
+<div class="block b-mr lit" data-id="ar-spectacles" data-type="hardware" data-tech="ar,mr,xr" onclick="toggle(this)">AR Spectacles</div>
+<div class="block b-mr lit" data-id="virtual-reality" data-type="hardware" data-tech="vr,xr,rt3d" onclick="toggle(this)">Virtual Reality</div>
+<div class="block b-mr lit" data-id="mixed-reality" data-type="hardware" data-tech="mr,xr,pre3d" onclick="toggle(this)">Mixed Reality</div>
+<div class="block b-mr lit" data-id="spatial-computing" data-type="hardware" data-tech="mr,xr,rt3d" onclick="toggle(this)">Spatial Computing (Apple Vision Pro)</div>
+</div>
+
+<div class="cat-label">CGI, 3D & OOH</div>
+<div class="blocks">
+<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI</div>
+<div class="block b-cgi lit" data-id="3d-social" data-type="production" data-tech="pre3d" onclick="toggle(this)">Immersive 3D Social</div>
+<div class="block b-cgi lit" data-id="naked-eye" data-type="ooh" data-tech="pre3d" onclick="toggle(this)">3D Naked Eye Billboard</div>
+</div>
+
+<div class="cat-label">Social Content</div>
+<div class="blocks">
+<div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
+<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Campaigns</div>
+<div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
+<div class="block b-social lit" data-id="2d-animation" data-type="content" data-tech="pre3d" onclick="toggle(this)">2D Animation</div>
+<div class="block b-social lit" data-id="social-adaptations" data-type="content" data-tech="" onclick="toggle(this)">Social Adaptations</div>
+<div class="block b-social lit" data-id="rich-media" data-type="content" data-tech="" onclick="toggle(this)">Rich Media</div>
+</div>
+
+<div class="cat-label">Live & Commerce</div>
+<div class="blocks">
+<div class="block b-live lit" data-id="live-streaming" data-type="live" data-tech="live" onclick="toggle(this)">Live Streaming</div>
+<div class="block b-live lit" data-id="live-shopping" data-type="live" data-tech="live" onclick="toggle(this)">Live Shopping Activation</div>
+</div>
+
+<div class="cat-label">On Ground</div>
+<div class="blocks">
+<div class="block b-ground lit" data-id="digital-installations" data-type="ground" data-tech="ar,xr,rt3d,iog" onclick="toggle(this)">Digital Installations</div>
+<div class="block b-ground lit" data-id="ar-mirror" data-type="ground" data-tech="ar,xr,iog" onclick="toggle(this)">AR Mirror</div>
+<div class="block b-ground lit" data-id="ai-mirror" data-type="ground" data-tech="ai,iog" onclick="toggle(this)">AI Mirror</div>
+</div>
+
+<div class="cat-label">Immersive Interactive</div>
+<div class="blocks">
+<div class="block b-immersive lit" data-id="virtual-stores" data-type="interactive" data-tech="rt3d,webgl" onclick="toggle(this)">3D Virtual Stores</div>
+<div class="block b-immersive lit" data-id="games" data-type="interactive" data-tech="rt3d" onclick="toggle(this)">Games</div>
+<div class="block b-immersive lit" data-id="playable-ads" data-type="interactive" data-tech="webgl" onclick="toggle(this)">Playable Ads</div>
+</div>
+
+<!-- ✅ UPDATED: AI section restructured with all P3 deliverables under AI Social Content -->
+<div class="cat-label">AI</div>
+<div class="sub-label">AI Social Content</div>
+<div class="blocks">
+<div class="block b-ai lit" data-id="ai-photo" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Photography</div>
+<div class="block b-ai lit" data-id="ai-films" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Brand Films + TVCs</div>
+<div class="block b-ai lit" data-id="ai-miniclips" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Mini Clips</div>
+<div class="block b-ai lit" data-id="ai-ugc" data-type="ai" data-tech="ai" onclick="toggle(this)">AI UGC</div>
+<div class="block b-ai lit" data-id="ai-cgi" data-type="ai" data-tech="ai,pre3d" onclick="toggle(this)">AI Mixed Reality CGI</div>
+<div class="block b-ai lit" data-id="ai-avatar" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Avatars</div>
+<div class="block b-ai lit" data-id="ai-campaign" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Campaign</div>
+<div class="block b-ai lit" data-id="ai-social" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Social Content (full suite)</div>
+</div>
+
+<!-- ✅ UPDATED: Branding — Creative Direction → Creative Strategy -->
+<div class="cat-label">Branding</div>
+<div class="blocks">
+<div class="block b-branding lit" data-id="visual-identity" data-type="strategy" data-tech="" onclick="toggle(this)">Visual Identity</div>
+<div class="block b-branding lit" data-id="brand-system" data-type="strategy" data-tech="" onclick="toggle(this)">Brand System</div>
+<div class="block b-branding lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
+</div>
+
+<!-- ✅ UPDATED: Web & App Development — AI/3D Website added -->
+<div class="cat-label">Web & App Development</div>
+<div class="blocks">
+<div class="block b-webdev lit" data-id="web-dev" data-type="dev" data-tech="webgl" onclick="toggle(this)">Website Development</div>
+<div class="block b-webdev lit" data-id="ai-website" data-type="dev" data-tech="ai,webgl" onclick="toggle(this)">AI/3D Website</div>
+<div class="block b-webdev lit" data-id="app-dev" data-type="dev" data-tech="webgl" onclick="toggle(this)">App Development</div>
+</div>
+
+<div class="cat-label">Strategy</div>
+<div class="blocks">
+<div class="block b-strategy lit" data-id="social-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Social Media Strategy</div>
+</div>
+
+<div class="cat-label">Add-ons &amp; Tools</div>
+<div class="blocks">
+<div class="block b-strategy lit" data-id="analytics-dashboard" data-type="addon" data-tech="" onclick="toggle(this)">Analytics Dashboard</div>
+<div class="block b-strategy lit" data-id="smart-design-system" data-type="addon" data-tech="" onclick="toggle(this)">Smart Design System</div>
+</div>
+</div>
+
+<div class="results-panel">
+  <div class="results-header">
+    <div class="sel-count" id="sel-count">Select filters or blocks to begin</div>
+    <button class="clear-btn" onclick="clearAll()">Clear all</button>
+  </div>
+  <div class="result-card" id="bp"><span class="badge badge-bundle" id="bb">Bundle</span><div id="bc" style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</div></div>
+  <div class="result-card" id="fp"><span class="badge badge-strong" id="fb">Tech Fusion</span><div id="fc" style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</div></div>
+</div>
+</div>
+
+<script>
+// ✅ UPDATED BUNDLES — creative-direction → creative-strategy, ai-tvc → ai-films, added ai-website bundles
+var BUNDLES=[
+{name:"Social amplifier pack",ids:["snapchat-lens","creator-campaigns"],extra:["tiktok-effect","ai-ugc","social-adaptations"],desc:"AR lens as the hook, creators as the reach engine.",price:"From $8,000"},
+{name:"TikTok takeover pack",ids:["tiktok-effect","creator-campaigns"],extra:["ai-social","ai-ugc"],desc:"Branded TikTok effect amplified by creators.",price:"From $12,000"},
+{name:"Omnichannel impact pack",ids:["cgi","naked-eye","ai-social"],extra:["3d-social","snapchat-lens"],desc:"Hero CGI extended across OOH, social, and AR.",price:"From $18,000"},
+{name:"Commerce activation pack",ids:["ugc","creator-campaigns","live-shopping"],extra:["live-streaming","virtual-stores"],desc:"UGC, creator seeding, and live shopping combined.",price:"From $10,000"},
+{name:"Live commerce pack",ids:["live-streaming","live-shopping"],extra:["ai-ugc","creator-campaigns"],desc:"Real-time brand selling built to convert.",price:"From $8,000"},
+{name:"Intelligent campaign pack",ids:["ai-social","ai-cgi"],extra:["ai-films","snapchat-lens","3d-social"],desc:"AI-first content engine across every format.",price:"From $6,000"},
+{name:"AI content production pack",ids:["ai-photo","ai-films"],extra:["ai-miniclips","ai-ugc","ai-cgi"],desc:"Full AI production suite — photography, film, and social formats.",price:"From $8,000"},
+{name:"AI campaign pack",ids:["ai-campaign","ai-photo"],extra:["ai-films","ai-ugc","ai-miniclips"],desc:"End-to-end AI campaign: every format from a single brief.",price:"From $12,000"},
+{name:"Immersive event pack",ids:["digital-installations","ar-spectacles"],extra:["virtual-reality","ar-mirror","ai-mirror"],desc:"On-ground AR immersive experience.",price:"From $25,000"},
+{name:"Mirror experience pack",ids:["ar-mirror","ai-mirror"],extra:["digital-installations","ugc"],desc:"AR and AI mirrors that stop people in their tracks.",price:"From $18,000"},
+{name:"Retail activation pack",ids:["ar-mirror","virtual-stores"],extra:["ai-mirror","live-shopping"],desc:"Mirrors, virtual stores, and live shopping combined.",price:"From $20,000"},
+{name:"Spatial computing experience",ids:["spatial-computing","mixed-reality"],extra:["cgi","virtual-reality"],desc:"Next-gen Apple Vision Pro spatial experiences.",price:"From $40,000"},
+{name:"Mixed reality campaign pack",ids:["mixed-reality","cgi"],extra:["3d-social","spatial-computing"],desc:"Hyper-real CGI blended into the real world.",price:"From $22,000"},
+{name:"3D world pack",ids:["cgi","3d-social"],extra:["naked-eye","ai-cgi"],desc:"Full CGI universe — social and OOH from one pipeline.",price:"From $15,000"},
+{name:"Gamification pack",ids:["playable-ads","games"],extra:["virtual-stores","ai-social"],desc:"Branded play across ads, apps, and web.",price:"From $9,000"},
+{name:"Ramadan seasonal pack",ids:["snapchat-lens","3d-social","ai-social"],extra:["ai-ugc","creator-campaigns"],desc:"Full-funnel seasonal — AR, 3D hero, AI at scale.",price:"From $20,000"},
+{name:"Luxury brand pack",ids:["snapchat-lens","cgi","naked-eye"],extra:["ar-spectacles","visual-identity"],desc:"Premium AR, CGI, and OOH for luxury clients.",price:"From $30,000"},
+{name:"Brand launch pack",ids:["visual-identity","brand-system"],extra:["creative-strategy","ai-social","ai-website"],desc:"Full brand foundation with digital presence ready to activate.",price:"From $15,000"},
+{name:"Full brand and digital pack",ids:["visual-identity","ai-website"],extra:["brand-system","app-dev","social-strategy"],desc:"Brand identity plus AI-powered digital presence.",price:"From $25,000"},
+{name:"AI web + content pack",ids:["ai-website","ai-social"],extra:["ai-photo","ai-films","ai-ugc"],desc:"AI website and AI content engine — brand DNA trained once, deployed everywhere.",price:"From $18,000"},
+{name:"Strategy and content pack",ids:["social-strategy","ugc"],extra:["ai-social","creator-campaigns"],desc:"Strategy paired with content production.",price:"From $8,000"},
+{name:"WebAR campaign pack",ids:["web-ar","ugc"],extra:["creator-campaigns","ai-social"],desc:"Browser AR with no app — plus creator distribution.",price:"From $10,000"},
+{name:"Content production pack",ids:["motion-graphics","2d-animation"],extra:["social-adaptations","rich-media"],desc:"Full animated content suite for every platform.",price:"From $5,000"},
+{name:"XR flagship pack",ids:["ar-spectacles","mixed-reality","virtual-reality"],extra:["spatial-computing","cgi","digital-installations"],desc:"Full XR spectrum — AR, MR, and VR from one studio.",price:"From $45,000"},
+{name:"Real-time 3D event pack",ids:["virtual-reality","games","digital-installations"],extra:["virtual-stores","spatial-computing"],desc:"Real-time 3D experiences on game engine technology.",price:"From $30,000"},
+{name:"Performance intelligence pack",ids:["analytics-dashboard","ai-social"],extra:["social-strategy","creator-campaigns"],desc:"AI content production with full performance tracking built in.",price:"Add-on pricing"},
+{name:"Campaign intelligence pack",ids:["analytics-dashboard","ai-campaign"],extra:["ai-photo","ai-films","ai-ugc"],desc:"Full AI campaign with analytics layer — see what performs and why.",price:"Add-on pricing"},
+];
+
+var FUSIONS=[
+{ids:["snapchat-lens","live-streaming"],name:"AR Live Show",output:"Real-time AR lens effects triggered during a brand livestream",detail:"The lens becomes part of the live show — a live storytelling layer.",unlock:"Turns a passive broadcast into an interactive branded spectacle."},
+{ids:["snapchat-lens","naked-eye"],name:"Phygital Billboard",output:"Lens activates when phone points at the 3D naked eye billboard",detail:"The OOH billboard becomes a trigger marker. Snap Lens overlays content.",unlock:"One creative asset lives in two worlds simultaneously."},
+{ids:["ar-mirror","live-shopping"],name:"Live AR Try-On Commerce",output:"AR mirror try-on broadcast live — viewers buy instantly",detail:"The AR mirror session is streamed. Audiences watch real-time try-on and purchase.",unlock:"The most powerful conversion format in retail."},
+{ids:["ai-cgi","naked-eye"],name:"AI-Generated OOH",output:"AI pipeline renders CGI for naked eye billboard",detail:"AI generates 3D content optimised for anamorphic display. Automated refresh.",unlock:"Multiple OOH variants at a fraction of the cost."},
+{ids:["web-ar","live-shopping"],name:"Scan-to-Try Live Commerce",output:"Scan product in live stream — WebAR try-on in browser",detail:"No app needed. QR code scan launches instant WebAR try-on.",unlock:"Zero-friction AR commerce on any smartphone."},
+{ids:["spatial-computing","virtual-stores"],name:"Spatial Commerce Store",output:"Full Apple Vision Pro branded storefront",detail:"Immersive 3D store in spatial computing. Walk through, examine, purchase.",unlock:"The next generation of retail in MENA."},
+{ids:["mixed-reality","live-streaming"],name:"MR Live Broadcast",output:"Live broadcast with real-time mixed reality overlays",detail:"Real-world video with CGI composited live. Presenters interact with virtual objects.",unlock:"The future of branded live content."},
+{ids:["ai-social","creator-campaigns"],name:"AI Creator Personalisation",output:"AI generates content in each creator's style at scale",detail:"AI analyses each creator's style and generates personalised variants.",unlock:"50-creator campaign with the effort of 5."},
+{ids:["ai-ugc","creator-campaigns"],name:"Hybrid UGC Engine",output:"AI UGC and real creator content in one campaign",detail:"AI generates the base UGC variants; creators amplify and personalise.",unlock:"Scale and authenticity — both, simultaneously."},
+{ids:["ar-mirror","ugc"],name:"Mirror-to-Feed UGC",output:"AR mirror captures shareable branded content automatically",detail:"The mirror session generates a ready-to-post branded content piece.",unlock:"Every mirror user becomes a brand content creator."},
+{ids:["snapchat-lens","virtual-stores"],name:"AR Portal Shopping",output:"Snap Lens opens a portal into the 3D virtual store",detail:"Through the Snap camera, a portal lens leads into a branded 3D store.",unlock:"The entire retail experience inside a social AR lens."},
+{ids:["ai-mirror","live-streaming"],name:"AI Mirror Live",output:"AI mirror transformations broadcast live",detail:"The AI mirror's real-time outputs are streamed. Audiences interact.",unlock:"AI mirror as a live entertainment format."},
+{ids:["digital-installations","live-shopping"],name:"On-Ground Live Commerce",output:"Physical installation triggers live shopping for visitors",detail:"Visitors interact — the installation triggers a live shopping session.",unlock:"Retail footfall converts directly to online sales."},
+{ids:["tiktok-effect","3d-social"],name:"3D Effect Feed",output:"3D CGI social video with embedded TikTok effect layer",detail:"The 3D video has an embedded effect — viewers become part of the 3D world.",unlock:"3D content that spreads itself."},
+{ids:["web-ar","virtual-stores"],name:"WebAR Store",output:"Browser AR renders the virtual store in real space",detail:"Open a link — the 3D store appears in real space. No app.",unlock:"Virtual store accessible to everyone instantly."},
+{ids:["ai-cgi","3d-social"],name:"Infinite 3D Content",output:"AI generates endless 3D social content variants from one base asset",detail:"One CGI asset. AI generates unlimited variants across formats, languages, seasons.",unlock:"One production budget. Infinite content output."},
+{ids:["snapchat-lens","ar-spectacles"],name:"Lens to Spectacles Bridge",output:"Same AR experience on phone lens and Spectacles hardware",detail:"Developed once, deployed across Snap phone AR and Spectacles simultaneously.",unlock:"Maximum AR reach from a single production."},
+{ids:["games","live-streaming"],name:"Live Branded Gaming",output:"Branded game played live — audience participates",detail:"A branded game streamed live. Viewers interact, vote, or compete in real time.",unlock:"Gaming and live content fused into one event."},
+{ids:["playable-ads","virtual-stores"],name:"Play-to-Shop",output:"Playable ad unlocks access to the 3D virtual store",detail:"Completing the playable ad rewards the user with access to a branded 3D store.",unlock:"Engagement that converts — play leads to purchase."},
+{ids:["virtual-reality","digital-installations"],name:"VR On-Ground Portal",output:"On-ground VR booth with a custom branded virtual world",detail:"A physical installation contains a real-time 3D VR experience.",unlock:"Premium event experience competitors cannot replicate."},
+{ids:["games","virtual-stores"],name:"Gamified Shopping World",output:"A branded game where winning unlocks products in a 3D virtual store",detail:"Players progress through a branded game. Milestones unlock exclusive products.",unlock:"Commerce disguised as entertainment."},
+{ids:["spatial-computing","mixed-reality"],name:"Full Spatial XR Experience",output:"AR Spectacles + Apple Vision Pro XR campaign",detail:"The same brand experience deployed across Spectacles and Apple Vision Pro simultaneously.",unlock:"The widest spatial reach in any single campaign."},
+{ids:["ai-website","ai-social"],name:"Brand Intelligence Stack",output:"AI website and AI content engine sharing the same brand DNA",detail:"Brand DNA trained once — powering both web presence and social content output simultaneously.",unlock:"Every page and every post is unmistakably the same brand."},
+{ids:["ai-website","ai-photo"],name:"AI Web + Photography Launch",output:"AI-generated website and campaign photography from one brief",detail:"The brand visual system powers both the site and the photo campaign.",unlock:"Website launch with full photographic campaign in days, not months."},
+];
+
+var TECH_FUSIONS={
+"ar+ai":{name:"Intelligent AR",desc:"AR experiences powered by AI — lenses that adapt in real time to who is experiencing them.",existing:["Snapchat Lens","TikTok Effect","Mixed Reality","AI Social Content","AI Mirror"],newProduct:{name:"Adaptive Lens",tagline:"A lens that knows who you are.",desc:"AI reads real-time signals — facial features, mood, time of day — and the AR lens personalises itself dynamically. No two people see the same experience. No studio globally offers this as a named product."}},
+"ar+pre3d":{name:"Phygital Storytelling",desc:"Pre-rendered 3D CGI fused with AR delivery — photorealistic worlds overlaid on reality.",existing:["CGI","Mixed Reality","Immersive 3D Social","Snapchat Lens"],newProduct:{name:"AR World Drop",tagline:"A photorealistic 3D world that appears in real space.",desc:"Pre-rendered CGI environments delivered via AR — point your phone and a full photorealistic branded world materialises. No app required."}},
+"ar+rt3d":{name:"Live AR Environment",desc:"Real-time 3D engine technology fused with AR — interactive environments that respond instantly.",existing:["AR Spectacles","Digital Installations","Virtual Reality"],newProduct:{name:"Responsive AR World",tagline:"An AR environment that reacts to you.",desc:"Built on real-time 3D engine technology, this AR experience responds to movement, gestures, and choices. Used for flagship retail, events, and government showcases."}},
+"ar+webgl":{name:"Browser AR",desc:"AR delivered entirely through the browser — no app, no friction, maximum reach.",existing:["WebAR","3D Virtual Stores","Playable Ads","AI/3D Website"],newProduct:{name:"Instant AR Layer",tagline:"AR that works on any phone, any browser, right now.",desc:"A WebGL-powered AR experience that launches from a URL or QR code. No download. Works on every smartphone. Nobody in MENA has packaged this as a named service."}},
+"ar+live":{name:"AR Live Broadcast",desc:"Real-time AR overlays running inside a live production.",existing:["Live Streaming","Snapchat Lens","AR Mirror","Live Shopping Activation"],newProduct:{name:"AR Live Commerce Network",tagline:"A permanent branded AR channel inside a live platform.",desc:"Not a campaign — a channel. A brand maintains a permanent AR-enabled live stream where effects and shopping activations are always running."}},
+"mr+ai":{name:"Intelligent Mixed Reality",desc:"AI-powered MR experiences that personalise what the user sees in the real world.",existing:["Mixed Reality","AR Spectacles","AI Mirror","Spatial Computing"],newProduct:{name:"AI MR Concierge",tagline:"The real world, intelligently augmented.",desc:"An MR experience where AI reads the user's context and adjusts the mixed reality overlay in real time. In a luxury store, the AI MR concierge shows you what you want before you ask."}},
+"vr+rt3d":{name:"Real-Time VR World",desc:"VR experiences built on live game engine rendering — environments that change and react.",existing:["Virtual Reality","Games","Digital Installations"],newProduct:{name:"Brand Metaverse Room",tagline:"A branded world that is always open.",desc:"A permanent, real-time rendered VR space that a brand owns — concerts, product launches, private events. Always live, always responsive."}},
+"rt3d+webgl":{name:"Universal Interactive 3D",desc:"Real-time 3D that runs on hardware and in browsers — maximum reach.",existing:["Games","Virtual Stores","App Development","Playable Ads"],newProduct:{name:"Cross-Platform 3D Engine",tagline:"One 3D experience. Every surface.",desc:"Build once in a real-time 3D engine — deploy as VR, a browser game, a mobile app, and a desktop installation simultaneously."}},
+"ai+pre3d":{name:"Generative 3D",desc:"AI generates 3D content — infinite variants from a single base asset.",existing:["AI Mixed Reality CGI","CGI","Immersive 3D Social","3D Naked Eye Billboard"],newProduct:{name:"AI 3D Studio",tagline:"Brief in. Full 3D campaign out in 24 hours.",desc:"A fully AI-powered 3D production pipeline. One brief produces a full campaign suite — OOH, social, and AR assets simultaneously."}},
+"ai+rt3d":{name:"AI-Powered Game Engine",desc:"AI drives the logic, narrative, and personalisation inside a real-time 3D environment.",existing:["AI Mirror","Games","Digital Installations","Virtual Reality"],newProduct:{name:"Adaptive Game World",tagline:"A game that writes itself around you.",desc:"AI generates the narrative, difficulty, and content of a real-time 3D game based on who is playing. Used for high-engagement events and luxury brand activations."}},
+"ai+live":{name:"AI Live Production",desc:"AI-generated content running in real time inside a live broadcast.",existing:["AI Social Content","Live Streaming","AI Mirror","Live Shopping Activation"],newProduct:{name:"AI Director",tagline:"AI runs the broadcast. Humans set the vision.",desc:"AI produces a live broadcast in real time — switching angles, generating graphics, adapting content based on audience reaction. No studio anywhere offers this as a packaged product."}},
+"ai+iog":{name:"Intelligent On-Ground",desc:"On-ground installations powered by AI — environments that read and respond to their audience.",existing:["AI Mirror","Digital Installations"],newProduct:{name:"Sentient Installation",tagline:"An installation that watches back.",desc:"An on-ground installation that uses AI computer vision to read audience demographics, emotions, and dwell time — and adapts what it displays in real time."}},
+"ai+webgl":{name:"Generative Web Experience",desc:"AI-generated visual content powering a fully interactive web environment.",existing:["AI/3D Website","WebAR","Playable Ads"],newProduct:{name:"Living Website",tagline:"A website that generates itself from your brand.",desc:"An AI-powered website where every page section, image, and layout is generated from the brand's visual DNA. Seasonal campaigns, product drops, and campaign pages are produced in hours, not weeks."}},
+"pre3d+live":{name:"Pre-Rendered Live Content",desc:"High-quality pre-rendered 3D assets deployed inside live productions.",existing:["CGI","Immersive 3D Social","Live Streaming","3D Naked Eye Billboard"],newProduct:{name:"CGI Live Layer",tagline:"Cinematic quality. Live speed.",desc:"Pre-rendered CGI assets optimised for real-time deployment in live broadcasts — product reveals and brand moments that look like a film but deploy live."}},
+"rt3d+iog":{name:"Real-Time Interactive Ground",desc:"On-ground installations running real-time 3D game engine technology.",existing:["Digital Installations","Games","Virtual Reality"],newProduct:{name:"Living Installation",tagline:"A physical installation that plays like a game.",desc:"An on-ground installation built on real-time 3D engine technology — responds to touch, gesture, proximity, and movement with full photorealistic 3D visuals."}},
+"webgl+live":{name:"Browser Live Commerce",desc:"WebGL-powered live shopping experiences that run in any browser.",existing:["WebAR","Live Shopping Activation","Playable Ads","AI/3D Website"],newProduct:{name:"Live Commerce Layer",tagline:"Shop from any screen, inside any live show.",desc:"A WebGL layer that embeds into any live stream — interactive product cards, AR try-on, and one-tap purchase without leaving the stream."}},
+"xr":{name:"Full XR Spectrum",desc:"The complete extended reality family — AR, MR, and VR — from one studio.",existing:["Snapchat Lens","TikTok Effect","WebAR","AR Spectacles","Mixed Reality","Spatial Computing","Virtual Reality","AR Mirror","Digital Installations"],newProduct:{name:"Reality Distribution System",tagline:"One brand world. Every reality layer.",desc:"One photorealistic 3D environment produced and deployed simultaneously across phone AR, Spectacles MR, Apple Vision Pro spatial computing, and VR. Nothing like this exists as a packaged product in MENA."}},
+"xr+ai":{name:"XR Intelligence Platform",desc:"The full XR spectrum — AR, MR, and VR — all powered by AI that personalises every experience.",existing:["All AR blocks","Mixed Reality","Spatial Computing","Virtual Reality","AI Mirror","AI Mixed Reality CGI"],newProduct:{name:"Adaptive Reality Platform",tagline:"Every reality, personalised.",desc:"A platform delivering AR, MR, and VR experiences — all powered by an AI layer that reads the user and adapts what they experience. One brief. One AI brain. Three reality layers."}},
+"xr+pre3d":{name:"Full Spectrum Immersive",desc:"Pre-rendered 3D content deployed across the full XR spectrum.",existing:["CGI","Mixed Reality","AR Spectacles","Spatial Computing","Immersive 3D Social"],newProduct:{name:"XR Content Suite",tagline:"One 3D world across every reality surface.",desc:"One photorealistic 3D environment produced and deployed simultaneously across phone AR, Spectacles MR, Apple Vision Pro, and VR."}},
+"xr+ai+pre3d":{name:"AI-Generated Spatial XR",desc:"AI creates photorealistic 3D content delivered across the full XR spectrum.",existing:["AI Mixed Reality CGI","Mixed Reality","Snapchat Lens","Immersive 3D Social","AR Spectacles","Spatial Computing"],newProduct:{name:"Spatial Intelligence Layer",tagline:"A brand experience that knows you.",desc:"AI-generated photorealistic 3D, delivered through AR, MR, and VR, personalised in real time. Walk into a luxury store and the entire spatial environment adapts to your profile."}},
+"xr+ai+pre3d+live":{name:"The Full Stack",desc:"Every technology — XR, AI, Pre-Rendered 3D, and Live — one unified brand experience.",existing:["All blocks across every category"],newProduct:{name:"The Living Brand",tagline:"A brand that is always on, always adapting, always live.",desc:"A permanent brand experience simultaneously XR, AI-powered, photorealistic 3D, and live. This does not exist anywhere as a named product. ARlab could build it first."}}
+};
+
+// ✅ UPDATED INCOMPAT — creative-direction → creative-strategy
+var INCOMPAT=[
+{ids:["social-strategy","virtual-reality"],why:"Strategy is a planning service. VR is a production format. They work in sequence, not in fusion.",suggest:"Add Mixed Reality or Digital Installations to activate the strategy as a VR experience."},
+{ids:["social-strategy","ar-spectacles"],why:"Strategy informs how spectacles are deployed but does not technically integrate with hardware.",suggest:"Add Mixed Reality or a ground block to build a strategy-led spectacles activation."},
+{ids:["brand-system","live-streaming"],why:"A brand system is a design deliverable. A live stream is a broadcast format. One informs the other.",suggest:"Add Creator Campaigns or AI Social Content to execute a brand-consistent live strategy."},
+{ids:["visual-identity","naked-eye"],why:"Visual identity feeds into OOH execution — it cannot be fused with it directly.",suggest:"Add CGI to produce a naked eye billboard built from the visual identity system."},
+{ids:["web-dev","snapchat-lens"],why:"A standard website and a Snapchat Lens run on separate platforms with no native integration.",suggest:"Add WebAR — it bridges AR inside a web environment natively. Or use AI/3D Website which supports WebGL layers."},
+{ids:["2d-animation","virtual-reality"],why:"2D animation does not translate into VR without full 3D reconstruction.",suggest:"Add CGI or Immersive 3D Social — 3D assets feed both VR and social."},
+{ids:["brand-system","games"],why:"A brand system defines rules — games are built executions. They do not technically merge.",suggest:"Add Playable Ads to create a branded game built on the brand system."},
+{ids:["web-dev","live-streaming"],why:"A standard website and a live stream are separate deliverables on separate platforms.",suggest:"Add Live Shopping or AI/3D Website to embed a shoppable live experience in the web environment."},
+];
+
+var POSSIBLE={"ar+content":"AR + content — the lens is the experience, content amplifies it.","ar+strategy":"Strategy defines how AR is deployed but does not fuse technically.","hardware+content":"Hardware experiences can generate shareable content.","hardware+ai":"AI generates the content that populates hardware experiences.","production+live":"CGI and 3D content can be integrated into live broadcasts.","production+ai":"AI generates infinite variants of CGI productions.","ai+live":"AI-generated content running inside live formats.","interactive+ar":"Interactive experiences can embed AR layers naturally.","interactive+live":"Branded interactive experiences broadcast live.","ground+ar":"On-ground activations with AR overlay — physical and digital merged.","ground+live":"Physical installations that trigger or broadcast live.","ground+content":"On-ground activations that generate social content automatically.","live+content":"Live formats that produce content — every stream becomes an asset.","ar+ar":"Multiple AR platforms — cross-platform lens strategy for maximum reach.","hardware+hardware":"Multiple immersive hardware formats — layered reality.","content+content":"Multiple content formats — a full creative suite.","ai+ai":"Full AI production stack across every format.","dev+ai":"AI-powered web products — generative, immersive, and brand-trained.","dev+content":"Digital presence combined with content production — launch and feed.","strategy+ai":"Creative strategy informing AI production direction.","addon+ai":"Analytics layer tracks AI content performance in real time.","addon+content":"Performance data turns content strategy from guesswork into compounding intelligence.","addon+live":"Real-time analytics transforms a live commerce event into a conversion engine.","addon+strategy":"Design system + strategy — the brand foundation every downstream deliverable draws from.","addon+dev":"Smart Design System powers the AI website — one source of truth for every page and component."};
+
+var activeTech=new Set(),sel=new Set();
+function toggleTech(el){var t=el.dataset.tech;if(t==="xr"){if(activeTech.has("xr")){["xr","ar","mr","vr"].forEach(function(x){activeTech.delete(x)});document.querySelectorAll('[data-tech="xr"],[data-tech="ar"],[data-tech="mr"],[data-tech="vr"]').forEach(function(p){p.classList.remove('on')});}else{["xr","ar","mr","vr"].forEach(function(x){activeTech.add(x)});document.querySelectorAll('[data-tech="xr"],[data-tech="ar"],[data-tech="mr"],[data-tech="vr"]').forEach(function(p){p.classList.add('on')});}}else{if(activeTech.has(t)){activeTech.delete(t);el.classList.remove('on')}else{activeTech.add(t);el.classList.add('on')}if(["ar","mr","vr"].every(function(x){return activeTech.has(x)})){activeTech.add("xr");var xp=document.querySelector('[data-tech="xr"]');if(xp)xp.classList.add('on');}else{activeTech.delete("xr");var xp=document.querySelector('[data-tech="xr"]');if(xp)xp.classList.remove('on');}}applyTechFilter();render();}
+function applyTechFilter(){var blocks=document.querySelectorAll('.block');if(activeTech.size===0){blocks.forEach(function(b){b.classList.add('lit')});return;}blocks.forEach(function(b){var btech=(b.dataset.tech||'').split(',').filter(Boolean);var match=btech.some(function(t){return activeTech.has(t)});if(match){b.classList.add('lit')}else{b.classList.remove('lit')}});}
+function toggle(el){var id=el.dataset.id;if(sel.has(id)){sel.delete(id);el.classList.remove('selected')}else{sel.add(id);el.classList.add('selected')}render()}
+function clearAll(){sel.clear();activeTech.clear();document.querySelectorAll('.block.selected').forEach(function(b){b.classList.remove('selected')});document.querySelectorAll('.tech-pill.on').forEach(function(p){p.classList.remove('on')});applyTechFilter();render()}
+function gn(id){var e=document.querySelector('[data-id="'+id+'"]');return e?e.textContent.trim():id}
+function gt(id){var e=document.querySelector('[data-id="'+id+'"]');return e?e.dataset.type:'unknown'}
+function getTechKey(){var nonXR=Array.from(activeTech).filter(function(x){return x!=="xr"&&x!=="ar"&&x!=="mr"&&x!=="vr"}).sort();var xrParts=[];if(activeTech.has("xr"))xrParts=["xr"];else["ar","mr","vr"].forEach(function(x){if(activeTech.has(x))xrParts.push(x);});var all=xrParts.concat(nonXR).sort();if(all.length===0)return null;if(all.length===1&&all[0]==="xr")return"xr";return all.join('+');}
+function lookupFusion(key){if(!key)return null;if(TECH_FUSIONS[key])return TECH_FUSIONS[key];var parts=key.split('+').sort();for(var k in TECH_FUSIONS){var kp=k.split('+').sort();if(kp.join('+')==parts.join('+'))return TECH_FUSIONS[k];}return null;}
+function bestBundle(){var best=null,bs=0;for(var i=0;i<BUNDLES.length;i++){var b=BUNDLES[i];var all=b.ids.concat(b.extra||[]);var ch=b.ids.filter(function(id){return sel.has(id)}).length;var th=all.filter(function(id){return sel.has(id)}).length;var s=ch*2+th;if(ch>=1&&s>bs){best=b;bs=s;}}return bs>=2?best:null}
+function fusionResult(){for(var i=0;i<INCOMPAT.length;i++){var inc=INCOMPAT[i];if(inc.ids.filter(function(id){return sel.has(id)}).length>=2)return{type:'none',data:inc}}var best=null,bs=0;for(var j=0;j<FUSIONS.length;j++){var f=FUSIONS[j];var fh=f.ids.filter(function(id){return sel.has(id)}).length;if(fh>bs){best=f;bs=fh;}}if(bs>=2)return{type:'strong',data:best};var arr=Array.from(sel);var types=arr.map(gt);var t1=types[0]||'',t2=types[1]||'';var hint=POSSIBLE[t1+'+'+t2]||POSSIBLE[t2+'+'+t1]||null;if(bs===1||hint)return{type:'possible',data:best,hint:hint};return{type:'unknown'};}
+function openClaude(prompt){var modal=document.getElementById('prompt-modal');var ta=document.getElementById('prompt-ta');var btn=document.getElementById('copy-btn');ta.value=prompt;modal.style.display='flex';btn.textContent='Copy prompt';setTimeout(function(){ta.focus();ta.select();},100);}
+function copyFallback(ta){ta.focus();ta.select();try{var ok=document.execCommand('copy');document.getElementById('copy-btn').textContent=ok?'Copied ✓':'Select all above & copy';}catch(e){document.getElementById('copy-btn').textContent='Select all above & copy';}}
+function closeModal(){document.getElementById('prompt-modal').style.display='none';}
+function copyAndOpen(){var ta=document.getElementById('prompt-ta');var btn=document.getElementById('copy-btn');window.open('https://claude.ai/new','_blank');ta.focus();ta.select();try{var ok=document.execCommand('copy');btn.textContent=ok?'Copied ✓ — paste in Claude':'Select all above & copy';}catch(e){if(navigator.clipboard){navigator.clipboard.writeText(ta.value).then(function(){btn.textContent='Copied ✓ — paste in Claude';});}else{btn.textContent='Select all above & copy';}}setTimeout(closeModal,1800);}
+function npHTML(np){return'<div class="new-product"><div class="new-label">New product opportunity</div><div class="new-name">'+np.name+'</div><div class="new-tagline">'+np.tagline+'</div><div class="new-desc">'+np.desc+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'I am building a new ARlab product called '+np.name+' — '+np.tagline+'. Write a full product brief including: what it is, target client, how ARlab builds it, MVP scope, pricing model, and a launch plan for MENA.\')">Develop product ↗</button><button class="btn" onclick="openClaude(\'Write a sharp CMO-level pitch for an ARlab product called '+np.name+'. Tagline: '+np.tagline+'. Make it compelling, specific to MENA luxury and FMCG brands, and end with a clear call to action.\')">Pitch it ↗</button></div></div>';}
+function getTechLabel(){var parts=[];if(activeTech.has("xr")&&["ar","mr","vr"].every(function(x){return activeTech.has(x)})){parts.push("XR");}else{["ar","mr","vr"].forEach(function(x){if(activeTech.has(x))parts.push(x.toUpperCase());});}var labels={"ai":"AI","pre3d":"Pre-Rendered 3D","rt3d":"Real-Time 3D","webgl":"WebGL","live":"Live","iog":"Interactive On Ground"};Object.keys(labels).forEach(function(x){if(activeTech.has(x))parts.push(labels[x]);});return parts.join(' + ');}
+function render(){var count=sel.size,techCount=activeTech.size,techKey=getTechKey(),techFusion=lookupFusion(techKey);var bp=document.getElementById('bp'),bb=document.getElementById('bb'),fp=document.getElementById('fp'),fb=document.getElementById('fb'),techLabel=getTechLabel();if(count===0&&techCount===0){document.getElementById('sel-count').textContent='Select filters or blocks to begin';document.getElementById('bc').innerHTML='<span style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</span>';document.getElementById('fc').innerHTML='<span style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</span>';bp.className='result-card';fp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';fb.className='badge badge-strong';fb.textContent='Tech Fusion';return;}document.getElementById('sel-count').textContent=(count>0?count+' block'+(count>1?'s':'')+' selected':'')+(count>0&&techCount>0?' — ':'')+(techCount>0?'Tech: '+techLabel:'');if(techCount>0&&count===0){if(techFusion){bp.className='result-card tech-mode';bb.className='badge badge-tech';bb.textContent='Tech Bundle';document.getElementById('bc').innerHTML='<div class="rname">'+techFusion.name+'</div><div class="rdesc">'+techFusion.desc+'</div><div class="flabel">Existing services</div><div class="tags">'+techFusion.existing.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'Build a campaign proposal for an ARlab client using '+techFusion.name+' technology. Include campaign concept, recommended service blocks, timeline, and indicative pricing for a MENA brand.\')">Build proposal ↗</button></div>';fp.className='result-card tech-mode';fb.className='badge badge-newprod';fb.textContent='New Product';document.getElementById('fc').innerHTML=npHTML(techFusion.newProduct);}else{bp.className='result-card tech-mode';bb.className='badge badge-tech';bb.textContent='Tech Bundle';document.getElementById('bc').innerHTML='<div class="rdesc">Valid tech combination — select individual blocks to build a specific bundle.</div>';fp.className='result-card tech-mode';fb.className='badge badge-possible';fb.textContent='Potential Fusion';document.getElementById('fc').innerHTML='<div class="rname">Uncharted territory</div><div class="rdesc">No named product defined for this exact combination yet.</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'What new creative advertising product could ARlab build by combining '+techLabel+' technologies? Think about what no studio in MENA offers yet, what brands would pay for, and what ARlab could realistically build and sell.\')">Explore this ↗</button></div>';}return;}var bundle=bestBundle(),fusion=fusionResult(),selNames=Array.from(sel).map(gn),sn=selNames.join(', ');if(bundle){var miss=bundle.ids.filter(function(id){return!sel.has(id)}).map(gn);bp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';document.getElementById('bc').innerHTML='<div class="rname">'+bundle.name+'</div><div class="rdesc">'+bundle.desc+'</div><div class="rprice">'+bundle.price+'</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div>'+(miss.length?'<div style="font-size:10px;color:var(--text3);margin-bottom:6px">Add to complete: '+miss.join(', ')+'</div>':'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'Write a client-ready proposal for the ARlab '+bundle.name+'. Services included: '+sn+'. Indicative price: '+bundle.price+'. Include campaign concept, deliverables, timeline, and why this bundle creates more impact than single-format campaigns.\')">Build proposal ↗</button><button class="btn" onclick="openClaude(\'Give me a detailed price breakdown for the ARlab '+bundle.name+' with these services: '+sn+'. Include per-service cost estimates, bundle discount rationale, and suggested payment milestones.\')">Price it ↗</button></div>';}else{bp.className='result-card';bb.className='badge badge-bundle';bb.textContent='Bundle';document.getElementById('bc').innerHTML='<div class="rname">Custom bundle</div><div class="rdesc">No named bundle matches — valid combination worth naming.</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn btn-p" onclick="openClaude(\'ARlab custom bundle: services selected are '+sn+'. Suggest a compelling bundle name, write a one-line description, recommend a price range, and explain why this combination creates unique value for a MENA brand.\')">Name + price it ↗</button></div>';}if(fusion.type==='strong'){fp.className='result-card fusion-strong';fb.className='badge badge-strong';fb.textContent='Tech Fusion';var f=fusion.data;document.getElementById('fc').innerHTML='<div class="rname">'+f.name+'</div><div class="flabel">Output</div><div class="fdetail">'+f.output+'</div><div class="flabel">What it unlocks</div><div class="fdetail">'+f.unlock+'</div>'+(techFusion?npHTML(techFusion.newProduct):'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'Write a sharp CMO-level pitch for the ARlab '+f.name+' campaign format. Services: '+sn+'. Make it compelling, specific to MENA luxury and FMCG brands, and end with a clear call to action.\')">Pitch this ↗</button><button class="btn" onclick="openClaude(\'Write a technical production brief for the ARlab '+f.name+'. Services: '+sn+'. Include what each technology does, how they integrate, production timeline, team requirements, and client deliverables.\')">Technical brief ↗</button></div>';}else if(fusion.type==='none'){fp.className='result-card fusion-none';fb.className='badge badge-nofuse';fb.textContent='Not Fuseable';var inc=fusion.data;document.getElementById('fc').innerHTML='<div class="rname" style="color:var(--text2)">These do not fuse</div><div class="why-not">'+inc.why+'</div><div class="suggestion">Try instead: '+inc.suggest+'</div><div class="actions"><button class="btn" onclick="openClaude(\'How should ARlab sequence these services across a client campaign rather than fusing them? Services: '+sn+'. Suggest a phased campaign approach with each service playing a distinct role.\')">How to sequence them ↗</button></div>';}else if(fusion.type==='possible'){fp.className='result-card fusion-possible';fb.className='badge badge-possible';fb.textContent='Potential Fusion';document.getElementById('fc').innerHTML='<div class="rname">Uncharted fusion</div><div class="fdetail">'+(fusion.hint||'Integration potential worth exploring.')+'</div>'+(techFusion?npHTML(techFusion.newProduct):'')+'<div class="actions"><button class="btn btn-p" onclick="openClaude(\'What new ARlab product or campaign format could be created by combining: '+sn+'? Think about what is technically possible, what brands would pay for, and what no MENA studio offers yet.\')">Explore this fusion ↗</button></div>';}else{fp.className='result-card';fb.className='badge badge-none';fb.textContent='No Fusion';document.getElementById('fc').innerHTML='<div class="rname" style="color:var(--text2)">No fusion defined</div><div class="rdesc">These blocks do not have a clear technical integration point.</div><div class="tags">'+selNames.map(function(n){return'<span class="tag">'+n+'</span>'}).join('')+'</div><div class="actions"><button class="btn" onclick="openClaude(\'Could ARlab combine these services in any creative or commercial way: '+sn+'? Explore unconventional pairings, sequential structures, or new product concepts.\')">Ask anyway ↗</button></div>';}
+// Suggested add-ons panel
+var addonPanel=document.getElementById('addon-panel');
+if(!addonPanel){addonPanel=document.createElement('div');addonPanel.id='addon-panel';document.querySelector('.results-panel').appendChild(addonPanel);}
+var addons=[];
+var aiSelected=['ai-social','ai-photo','ai-films','ai-miniclips','ai-ugc','ai-cgi','ai-avatar','ai-campaign'].some(function(id){return sel.has(id)});
+var liveSelected=['live-streaming','live-shopping'].some(function(id){return sel.has(id)});
+var arSelected=['snapchat-lens','tiktok-effect','web-ar','ar-spectacles','mixed-reality'].some(function(id){return sel.has(id)});
+var webSelected=['ai-website','web-dev','virtual-stores'].some(function(id){return sel.has(id)});
+var brandSelected=['visual-identity','brand-system','creative-strategy'].some(function(id){return sel.has(id)});
+if(!sel.has('analytics-dashboard')&&(aiSelected||liveSelected||arSelected))addons.push({id:'analytics-dashboard',name:'Analytics Dashboard',why:aiSelected?'Track AI content performance and ROI across every format.':liveSelected?'Measure live commerce conversion and engagement in real time.':'Capture AR interaction data — lens opens, dwell time, shares.'});
+if(!sel.has('smart-design-system')&&brandSelected)addons.push({id:'smart-design-system',name:'Smart Design System',why:'A shared visual language — type, color, Arabic type treatment, components — that makes every future ARlab deliverable faster and consistent.'});
+if(!sel.has('smart-design-system')&&(aiSelected||webSelected)&&!brandSelected)addons.push({id:'smart-design-system',name:'Smart Design System',why:'Brand DNA trained once — powering the AI website, AI content, and every future deliverable from the same source.'});
+if(!sel.has('social-strategy')&&(aiSelected||arSelected)&&count>2)addons.push({id:'social-strategy',name:'Social Media Strategy',why:'Define the platform logic and brief structure before production begins.'});
+if(count===0||addons.length===0){addonPanel.innerHTML='';return;}
+addonPanel.innerHTML='<div style="margin-top:10px"><div style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:8px">Suggested add-ons<span style="flex:1;height:1px;background:var(--border);display:block"></span></div>'+addons.map(function(a){return'<div style="border:1px dashed rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px;background:var(--bg2)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><span style="font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:600;color:var(--text)">'+a.name+'</span><button class="btn" onclick="document.querySelector(\'[data-id=\\\''+a.id+'\\\']\')).click()" style="font-size:9px;padding:3px 8px">Add</button></div><div style="font-size:10.5px;color:var(--text3);line-height:1.5">'+a.why+'</div></div>';}).join('')+'</div>';}
+render();
+</script>
+
+<div id="prompt-modal">
+  <div id="prompt-box">
+    <h3>Your Claude prompt is ready</h3>
+    <p>1. Click <strong>Copy &amp; open Claude</strong> — Claude opens in a new tab.<br>2. Paste the prompt and hit send.</p>
+    <textarea id="prompt-ta" readonly></textarea>
+    <div class="modal-actions">
+      <button id="copy-btn" onclick="copyAndOpen()">Copy &amp; open Claude ↗</button>
+      <button id="open-btn" onclick="window.open('https://claude.ai/new','_blank')">Open Claude only ↗</button>
+      <button id="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+</body>
+</html>
