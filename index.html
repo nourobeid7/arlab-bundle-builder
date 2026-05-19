@@ -3,91 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARlab Intelligence Dashboard</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>ARlab Bundle Builder</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--bg4:#141414;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
-  --text:#f0f0f0;--text2:#999;--text3:#555;
-  --surging:#97C459;--surging-bg:rgba(151,196,89,0.1);
-  --growing:#5adab0;--growing-bg:rgba(90,218,176,0.1);
-  --stable:#f0c050;--stable-bg:rgba(240,192,80,0.1);
-  --declining:#f06060;--declining-bg:rgba(240,96,96,0.1);
-  --ai-powered:#b8aef5;--ai-powered-bg:rgba(184,174,245,0.1);
-  --ai-resistant:#5adab0;--ai-resistant-bg:rgba(90,218,176,0.1);
-  --ai-threatened:#f06060;--ai-threatened-bg:rgba(240,96,96,0.1);
-}
-.header{padding:22px 40px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px}
-.header h1{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px}
-.header-right{display:flex;align-items:center;gap:12px}
-.date-label{font-size:11px;color:var(--text3);font-family:'Space Grotesk',sans-serif}
-.arlab-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border);padding:5px 11px;border-radius:20px}
-.tabs{display:flex;gap:0;padding:0 40px;border-bottom:1px solid var(--border)}
-.tab{padding:12px 20px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;font-family:'DM Sans',sans-serif}
-.tab.active{color:var(--text);border-bottom-color:var(--text)}
-.tab:hover:not(.active){color:var(--text2)}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-.services-main{padding:28px 40px;max-width:1400px}
-.stats-row{display:grid;grid-template-columns:180px 1fr;gap:10px;margin-bottom:28px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
-.stat-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-family:'Space Grotesk',sans-serif}
-.stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text);line-height:1}
-.stat-sub-row{display:flex;align-items:center;gap:0;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
-.stat-sub{display:flex;flex-direction:column;gap:2px;padding:0 16px}
-.stat-sub:first-child{padding-left:0}
-.stat-sub-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-family:'Space Grotesk',sans-serif}
-.stat-sub-val{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700}
-.stat-sub-val.surging{color:var(--surging)}
-.stat-sub-val.declining{color:var(--declining)}
-.stat-sub-val.stable{color:var(--stable)}
-.stat-sub-divider{width:1px;height:26px;background:var(--border);flex-shrink:0}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;letter-spacing:-.2px}
-.controls{display:flex;gap:10px;margin-bottom:20px}
-.search-wrap{position:relative;flex:1}
-.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.35;pointer-events:none}
-.search-input{width:100%;padding:9px 12px 9px 36px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s}
-.search-input::placeholder{color:var(--text3)}
-.search-input:focus{border-color:var(--border2)}
-.filter-select{padding:9px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;min-width:140px;appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-color:var(--bg2)}
-.filter-select:focus{border-color:var(--border2)}
-.cat-section{margin-bottom:8px}
-.svc-cat-header{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
-.svc-cat-header::after{content:'';flex:1;height:1px;background:var(--border)}
-.cat-social-ar{color:#b8aef5}
-.cat-mr-vr{color:#ed93b1}
-.cat-cgi{color:#5adab0}
-.cat-social{color:#f0805a}
-.cat-live{color:#f0c050}
-.cat-on-ground{color:#888}
-.cat-immersive{color:#60aaee}
-.cat-ai{color:#97C459}
-.cat-branding{color:#f06060}
-.cat-web{color:#9080f0}
-.cat-strategy{color:#707070}
-.cat-addons{color:#f0c050}
-.cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.service-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;transition:border-color .15s}
-.service-card:hover{border-color:var(--border2)}
-.card-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:8px}
-.s-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;align-items:center}
-.s-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.02em;font-family:'Space Grotesk',sans-serif;border:1px solid transparent}
-.s-badge-surging{background:var(--surging-bg);color:var(--surging);border-color:rgba(151,196,89,0.2)}
-.s-badge-growing{background:var(--growing-bg);color:var(--growing);border-color:rgba(90,218,176,0.2)}
-.s-badge-stable{background:var(--stable-bg);color:var(--stable);border-color:rgba(240,192,80,0.2)}
-.s-badge-declining{background:var(--declining-bg);color:var(--declining);border-color:rgba(240,96,96,0.2)}
-.s-badge-ai-powered{background:var(--ai-powered-bg);color:var(--ai-powered);border-color:rgba(184,174,245,0.2)}
-.s-badge-ai-resistant{background:var(--ai-resistant-bg);color:var(--ai-resistant);border-color:rgba(90,218,176,0.2)}
-.s-badge-ai-threatened{background:var(--ai-threatened-bg);color:var(--ai-threatened);border-color:rgba(240,96,96,0.2)}
-.viability-up{color:var(--growing);font-size:10px;font-weight:600}
-.viability-down{color:var(--declining);font-size:10px;font-weight:600}
-.viability-flat{color:var(--text3);font-size:10px;font-weight:600}
-.card-desc{font-size:11px;color:var(--text2);line-height:1.55}
-.no-results{padding:40px;text-align:center;color:var(--text3);font-size:12px;grid-column:1/-1}
-
-
 :root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0f0f0;--text2:#999;--text3:#555}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
@@ -95,9 +16,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 .header h1{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px}
 .header p{font-size:12px;color:var(--text3);margin-top:3px}
 .arlab-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border);padding:5px 11px;border-radius:20px}
-.pkg-main{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 109px)}
+.main{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 77px)}
 .blocks-panel{padding:24px 40px;border-right:1px solid var(--border);overflow-y:auto}
-.results-panel{padding:24px 28px;position:sticky;top:0;height:calc(100vh - 109px);overflow-y:auto;background:var(--bg)}
+.results-panel{padding:24px 28px;position:sticky;top:0;height:calc(100vh - 77px);overflow-y:auto;background:var(--bg)}
 .tech-section{padding:0 0 14px;border-bottom:1px solid var(--border);margin-bottom:4px}
 .tech-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .trow-label{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;width:52px;flex-shrink:0}
@@ -180,81 +101,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 #copy-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:none;background:#5adab0;color:#04342C;cursor:pointer;font-family:'DM Sans',sans-serif;}
 #open-btn{flex:1;padding:9px;font-size:12px;font-weight:500;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#f0f0f0;cursor:pointer;font-family:'DM Sans',sans-serif;}
 #close-btn{padding:9px 14px;font-size:12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#555;cursor:pointer;font-family:'DM Sans',sans-serif;}
-
 </style>
 </head>
 <body>
-
 <div class="header">
-  <div><h1>Intelligence Dashboard</h1></div>
-  <div class="header-right">
-    <span class="date-label">May 2026</span>
-    <div class="arlab-badge">ARlab</div>
+  <div>
+    <h1>ARlab Bundle Builder</h1>
+    <p>Select service blocks — see your bundle and tech fusion simultaneously</p>
   </div>
+  <div class="arlab-badge">ARlab</div>
 </div>
-
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('services',this)">Services</div>
-  <div class="tab" onclick="switchTab('packaging',this)">Packaging</div>
-  <div class="tab" onclick="switchTab('markets',this)">Markets</div>
-</div>
-
-<!-- SERVICES TAB -->
-<div id="tab-services" class="tab-panel active">
-<div class="services-main">
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-label">Total Services</div>
-      <div class="stat-value" id="stat-total">41</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Avg Viability</div>
-      <div class="stat-value" id="stat-avg">77%</div>
-      <div class="stat-sub-row">
-        <div class="stat-sub"><span class="stat-sub-label">Surging</span><span class="stat-sub-val surging" id="stat-surging">16</span></div>
-        <div class="stat-sub-divider"></div>
-        <div class="stat-sub"><span class="stat-sub-label">Declining</span><span class="stat-sub-val declining" id="stat-declining">4</span></div>
-        <div class="stat-sub-divider"></div>
-        <div class="stat-sub"><span class="stat-sub-label">Stable</span><span class="stat-sub-val stable" id="stat-stable">8</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="section-title">Service Architecture</div>
-  <div class="controls">
-    <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="#f0f0f0" stroke-width="1.2"/><path d="M10 10l2.5 2.5" stroke="#f0f0f0" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <input class="search-input" id="search" placeholder="Search services..." oninput="filterCards()">
-    </div>
-    <select class="filter-select" id="cat-filter" onchange="filterCards()">
-      <option value="all">All</option>
-      <option value="Social AR">Social AR</option>
-      <option value="MR &amp; VR">MR &amp; VR</option>
-      <option value="CGI 3D &amp; OOH">CGI 3D &amp; OOH</option>
-      <option value="Social Content">Social Content</option>
-      <option value="Live &amp; Commerce">Live &amp; Commerce</option>
-      <option value="On Ground">On Ground</option>
-      <option value="Immersive Interactive">Immersive Interactive</option>
-      <option value="AI Content">AI Content</option>
-      <option value="Branding">Branding</option>
-      <option value="Web &amp; App Development">Web &amp; App Development</option>
-      <option value="Strategy">Strategy</option>
-      <option value="Add-ons &amp; Tools">Add-ons &amp; Tools</option>
-    </select>
-    <select class="filter-select" id="sort-filter" onchange="filterCards()">
-      <option value="default">By Category</option>
-      <option value="viability-desc">By Viability ↓</option>
-      <option value="viability-asc">By Viability ↑</option>
-      <option value="surging">Surging First</option>
-      <option value="declining">Declining First</option>
-    </select>
-  </div>
-  <div id="services-container"></div>
-</div>
-</div>
-
-<!-- PACKAGING TAB -->
-<div id="tab-packaging" class="tab-panel">
-<div class="pkg-main">
+<div class="main">
 <div class="blocks-panel">
 <div class="tech-section">
   <div class="tech-row">
@@ -291,7 +148,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 
 <div class="cat-label">CGI, 3D & OOH</div>
 <div class="blocks">
-<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI (Mixed Reality or Full 3D CGI)</div>
+<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI</div>
 <div class="block b-cgi lit" data-id="3d-social" data-type="production" data-tech="pre3d" onclick="toggle(this)">Immersive 3D Social</div>
 <div class="block b-cgi lit" data-id="naked-eye" data-type="ooh" data-tech="pre3d" onclick="toggle(this)">3D Naked Eye Billboard</div>
 </div>
@@ -299,7 +156,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Social Content</div>
 <div class="blocks">
 <div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
-<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Content</div>
+<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Campaigns</div>
 <div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
 <div class="block b-social lit" data-id="2d-animation" data-type="content" data-tech="pre3d" onclick="toggle(this)">2D Animation</div>
 <div class="block b-social lit" data-id="social-adaptations" data-type="content" data-tech="" onclick="toggle(this)">Social Adaptations</div>
@@ -340,10 +197,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="block b-ai lit" data-id="ai-social" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Social Content (full suite)</div>
 </div>
 
-<!-- ✅ UPDATED: Branding — removed Visual Identity, Creative Strategy moved to Strategy -->
+<!-- ✅ UPDATED: Branding — Creative Direction → Creative Strategy -->
 <div class="cat-label">Branding</div>
 <div class="blocks">
+<div class="block b-branding lit" data-id="visual-identity" data-type="strategy" data-tech="" onclick="toggle(this)">Visual Identity</div>
 <div class="block b-branding lit" data-id="brand-system" data-type="strategy" data-tech="" onclick="toggle(this)">Brand System</div>
+<div class="block b-branding lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <!-- ✅ UPDATED: Web & App Development — AI/3D Website added -->
@@ -357,7 +216,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Strategy</div>
 <div class="blocks">
 <div class="block b-strategy lit" data-id="social-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Social Media Strategy</div>
-<div class="block b-strategy lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <div class="cat-label">Add-ons &amp; Tools</div>
@@ -376,110 +234,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="result-card" id="fp"><span class="badge badge-strong" id="fb">Tech Fusion</span><div id="fc" style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</div></div>
 </div>
 </div>
-</div>
-
-<!-- MARKETS TAB -->
-<div id="tab-markets" class="tab-panel">
-  <div class="services-main">
-    <div style="padding:60px 0;text-align:center;color:var(--text3);font-size:12px">Markets view coming soon.</div>
-  </div>
-</div>
-
-<div id="prompt-modal">
-  <div id="prompt-box">
-    <h3>Your Claude prompt is ready</h3>
-    <p>1. Click <strong>Copy &amp; open Claude</strong> — Claude opens in a new tab.<br>2. Paste the prompt and hit send.</p>
-    <textarea id="prompt-ta" readonly></textarea>
-    <div class="modal-actions">
-      <button id="copy-btn" onclick="copyAndOpen()">Copy &amp; open Claude ↗</button>
-      <button id="open-btn" onclick="window.open('https://claude.ai/new','_blank')">Open Claude only ↗</button>
-      <button id="close-btn" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-</div>
-<div id="toast"></div>
 
 <script>
-
-var SERVICES=[
-  {cat:"Social AR",name:"Snapchat Lens",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"Snap AR lenses hit 250M+ daily interactions as of April 2026. Gucci ran the first luxury AI Sponsored Lens in UAE and KSA in Feb 2026. Generative AI lenses are now a mainstream paid format — not a novelty."},
-  {cat:"Social AR",name:"TikTok Effect",status:"growing",ai:"ai-powered",viability:74,trend:"up",desc:"TikTok Shop GMV tracking toward $112B globally in 2026. AR try-ons and effects are a growing discovery layer inside live commerce. KSA and UAE are top-5 markets by creator activity."},
-  {cat:"Social AR",name:"YouTube Effect",status:"stable",ai:"ai-resistant",viability:60,trend:"down",desc:"Still low traction vs Snap and TikTok. AR effects on YouTube remain secondary to Shorts and ad formats. Platform commitment to creator AR tools is unclear in 2026."},
-  {cat:"Social AR",name:"WebAR",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"No-app AR is the default ask from FMCG and retail clients in 2026. QR-to-AR campaigns are standard. Shopify data shows 3D/AR on product pages lifting conversion by up to 250%. ARlab's WebGL stack is a direct fit."},
-  {cat:"MR & VR",name:"AR Spectacles",status:"surging",ai:"ai-powered",viability:82,trend:"up",desc:"Snap Specs (SnapOS 2.0 + OpenAI/Gemini integration) announced for 2026 launch. Meta Ray-Ban glasses scaling fast. The wearable AR window is open — brands with production capability now have first-mover advantage."},
-  {cat:"MR & VR",name:"Mixed Reality",status:"surging",ai:"ai-powered",viability:83,trend:"up",desc:"Apple Vision Pro 2 (M5 chip, $2,499) launched Feb 2026 with visionOS 26 spatial scenes. MR is no longer prototype territory — it's a viable event and retail activation format for premium brands in MENA."},
-  {cat:"MR & VR",name:"Spatial Computing",status:"surging",ai:"ai-powered",viability:79,trend:"up",desc:"visionOS 26 introduced persistent spatial scenes and 3D web embedding — brands can now build always-on spatial environments. No MENA studio has packaged this as a named service. Early-mover gap is real."},
-  {cat:"MR & VR",name:"Virtual Reality",status:"stable",ai:"ai-resistant",viability:68,trend:"flat",desc:"Headset adoption remains event and enterprise-led. Meta Quest 3S is the accessible entry. Premium VR activations command budget at Saudi Vision 2030 events and luxury brand experiences."},
-  {cat:"CGI 3D & OOH",name:"CGI (Mixed Reality or Full 3D CGI)",status:"stable",ai:"ai-powered",viability:78,trend:"up",desc:"CGI market in advertising growing at 19.9% CAGR, forecast to reach $13.4B by 2028. AI pipelines (Kling, Sora, Runway) cut production time significantly, but photorealistic CGI composited into live-action — ARlab's signature — still commands premium. Same 3D asset now deploys across OOH, social, AR, and MR."},
-  {cat:"CGI 3D & OOH",name:"Immersive 3D Social",status:"surging",ai:"ai-powered",viability:87,trend:"up",desc:"AI-generated 3D social content is the fastest-growing format in branded content. One CGI pipeline now outputs OOH, social cuts, and AR in parallel. Volume and quality both up — ARlab's AI 3D stack is exactly what the market needs."},
-  {cat:"CGI 3D & OOH",name:"3D Naked Eye Billboard",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"Anamorphic OOH is a proven format in GCC — Riyadh, Dubai, and Jeddah all have premium screens. AI generates content faster and cheaper, making multi-market rollouts viable. Highest social amplification per campaign dollar in OOH."},
-  {cat:"Social Content",name:"UGC",status:"stable",ai:"ai-resistant",viability:88,trend:"up",desc:"Authentic human UGC remains the most trusted content format in 2026, but the floor is rising — AI UGC is now indistinguishable at scale. Real UGC value is in the creator relationship and community signal, not raw production."},
-  {cat:"Social Content",name:"Creator Content",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"TikTok influencers drove $5.4B in U.S. GMV in 2024 — 60% of total platform transactions. In MENA, 115,000+ creators go live daily in UAE alone. Creator content is now a performance channel, not just a reach play. Commerce integration is the unlock."},
-  {cat:"Social Content",name:"Motion Graphics",status:"stable",ai:"ai-resistant",viability:60,trend:"down",desc:"AI motion tools (Runway, Kling, Pika) are rapidly closing the quality gap. Commodity motion work is gone. Differentiation requires creative direction and brand-trained pipelines — not just technical execution."},
-  {cat:"Social Content",name:"2D Animation",status:"declining",ai:"ai-threatened",viability:52,trend:"down",desc:"AI is commoditizing 2D animation fast. Clients are increasingly unwilling to pay premium rates for frame-by-frame work. Hard to defend as a standalone service — best positioned as a component inside a larger AI content package."},
-  {cat:"Social Content",name:"Social Adaptations",status:"declining",ai:"ai-threatened",viability:48,trend:"down",desc:"Fully automatable with current AI tools. Clients increasingly handle in-house or via AI platforms. Zero strategic differentiation. Should be bundled and priced as an add-on, not a standalone line item."},
-  {cat:"Social Content",name:"Rich Media",status:"declining",ai:"ai-threatened",viability:52,trend:"down",desc:"Programmatic AI and no-code ad tools are eliminating manual rich media production. Low margin, high execution overhead. Only viable when bundled with performance strategy or WebGL interactive formats."},
-  {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"MENA livestreaming market at $8.1B in 2024, projected to reach $17.8B by 2030 (TikTok x Kearney). UAE live streaming sector alone growing from $1.9B to $3.4B by 2030. TikTok live commerce active across KSA and UAE. First-mover production advantage is now."},
-  {cat:"Live & Commerce",name:"Live Shopping Activation",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"TikTok Shop global GMV on track for $112B in 2026. MENA brands are adopting live shopping fast — flash sales, exclusive livestream drops, and creator-led commerce are established patterns. No dedicated MENA live commerce production partner yet. ARlab's gap to own."},
-  {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Physical + AI-powered digital is the most defensible format in 2026 — impossible to replicate with AI alone. Premium event market in KSA (Vision 2030 activations, Riyadh Season, MDL Beast) is driving high-budget installation briefs consistently."},
-  {cat:"On Ground",name:"AR Mirror",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"AR and AI-powered mirrors are now a retail standard expectation in GCC luxury and beauty. Try-on AI is driving measurable conversion lift. Brands are asking for always-on mirror installations, not one-off events."},
-  {cat:"On Ground",name:"AI Mirror",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"AI mirrors (real-time transformation, style AI, mood detection) are ARlab's most differentiated on-ground format. No comparable offering from regional agencies. Demand is growing from fashion, beauty, and hospitality clients across UAE and KSA."},
-  {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"Virtual retail is accelerating as a complement to physical in the GCC. AI is cutting build time dramatically. Spatial scenes in visionOS 26 open a new deployment surface. Brands entering KSA market are using virtual stores as a low-risk flagship alternative."},
-  {cat:"Immersive Interactive",name:"Games",status:"growing",ai:"ai-powered",viability:84,trend:"up",desc:"AI is cutting branded game development time by 50%+. Gamification is a proven engagement mechanic in KSA where mobile gaming penetration is among the highest globally. Ramadan and National Day campaigns increasingly include a game layer."},
-  {cat:"Immersive Interactive",name:"Playable Ads",status:"growing",ai:"ai-powered",viability:79,trend:"up",desc:"AI is generating playable ad variants at scale — same mechanic, infinite creative iterations. High engagement format for FMCG and MENA telecom clients. Performance data consistently beats static and video formats on dwell time and CTR."},
-  {cat:"AI Content",name:"AI Photography",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"AI photography is now indistinguishable from studio work for most brand applications. 86% of ad buyers are using or planning to use generative AI for creative by 2026 (IAB, July 2025). Studio photography RFPs are actively being replaced by AI briefs. ARlab runs this pipeline at production speed."},
-  {cat:"AI Content",name:"AI Brand Films + TVCs",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"AI is projected to account for 40% of all advertising content by 2026 (IAB). Full AI TVCs are now being approved by major brands — not just as pilots but as primary campaign assets. ARlab's Runway/Kling/Pika stack delivers broadcast-grade output."},
-  {cat:"AI Content",name:"AI Mini Clips",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Native vertical video format built for TikTok, Reels, and Snap. AI generates at volume — 50 variants from one brief. Brands with monthly content calendars are replacing production retainers with AI mini clip pipelines. ARlab is running this for active clients."},
-  {cat:"AI Content",name:"AI UGC",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"AI-generated UGC is eating the bottom of the creator market. Indistinguishable from real UGC at scale. Brands are using it to supplement real creator content — keeping the authentic signal while filling volume gaps. Strong demand across FMCG and beauty in GCC."},
-  {cat:"AI Content",name:"AI Mixed Reality CGI",status:"surging",ai:"ai-powered",viability:92,trend:"up",desc:"ARlab's signature format. AI-generated CGI composited into real-world footage — 50M+ views delivered. No equivalent offering from any regional agency. CGI market growing at 19.9% CAGR. The AI layer makes it faster, cheaper, and infinitely scalable."},
-  {cat:"AI Content",name:"AI Avatars",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"Brand and founder AI avatars are becoming standard for always-on content at scale. ElevenLabs voice cloning + visual avatar tools make multilingual rollouts (AR, EN, FR) trivial. Talent cost eliminated. ARlab builds and trains brand-specific avatar systems."},
-  {cat:"AI Content",name:"AI Campaign",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"End-to-end AI campaign production — brief to full asset suite — is now ARlab's fastest-growing service type. One creative brief generates photography, film, UGC, mini clips, and social adaptations in parallel. The new production model for GCC brands moving at speed."},
-  {cat:"Branding",name:"Brand System",status:"surging",ai:"ai-powered",viability:85,trend:"up",desc:"The brand system is the foundation that makes all AI production consistent and scalable. As AI content volume increases, brand governance becomes more critical. Clients without a trained brand system are producing AI content that looks generic. The system is the differentiator."},
-  {cat:"Strategy",name:"Creative Strategy",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"As AI handles more execution, creative strategy becomes the highest-value human layer in advertising. Brands are paying more for strategy as production costs drop. ARlab's creative strategy output directly feeds AI production pipelines — concept to content in days."},
-  {cat:"Web & App Development",name:"Website Development",status:"declining",ai:"ai-threatened",viability:65,trend:"down",desc:"Lovable, v0, Framer AI, and Webflow AI have commoditised standard website production in 2026. Clients are questioning agency fees for what AI now delivers in hours. Only defensible as part of a brand system or WebGL/immersive upgrade."},
-  {cat:"Web & App Development",name:"AI/3D Website Development",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"WebGL-powered immersive websites and AI-personalised brand worlds are the premium tier in 2026. visionOS 26 now supports 3D web embedding — a direct unlock for ARlab's stack. No equivalent offering from any KSA or UAE digital agency."},
-  {cat:"Web & App Development",name:"App Development",status:"stable",ai:"ai-resistant",viability:70,trend:"flat",desc:"AI coding tools (Cursor, Copilot) have cut custom app build time dramatically. Standard apps are commoditised. Defensible only for complex, bespoke interactive builds — gamification, AR-integrated, or immersive utility apps."},
-  {cat:"Strategy",name:"Social Media Strategy",status:"growing",ai:"ai-powered",viability:78,trend:"up",desc:"AI executes faster — human strategy becomes the premium layer clients can't skip. Platform logic is shifting monthly (TikTok Shop, Snap Specs, Reels commerce). Strategy that keeps pace with platform change is the product brands need."},
-  {cat:"Add-ons & Tools",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:87,trend:"up",desc:"As AI content scales, performance tracking is non-negotiable. Brands running 50+ AI content variants need real-time data to know what works. ARlab's analytics layer closes the loop between production and performance."},
-  {cat:"Add-ons & Tools",name:"Smart Design System",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"The brand system is the training data for every AI output. Without it, AI content is generic. With it, every asset — photography, film, social, web — is unmistakably the same brand. The infrastructure every AI-first client needs first."},
-];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI 3D & OOH":"cat-cgi","Social Content":"cat-social","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","Branding":"cat-branding","Web & App Development":"cat-web","Strategy":"cat-strategy","Add-ons & Tools":"cat-addons"};
-function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
-function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
-function buildCard(s){return'<div class="service-card"><div class="card-name">'+s.name+'</div><div class="s-badges"><span class="s-badge s-badge-'+s.status+'">'+statusLabel(s.status)+'</span><span class="s-badge s-badge-'+s.ai+'">'+aiLabel(s.ai)+'</span>'+trendArrow(s.trend,s.viability)+'</div><div class="card-desc">'+s.desc+'</div></div>';}
-function filterCards(){
-  var q=document.getElementById('search').value.toLowerCase();
-  var cat=document.getElementById('cat-filter').value;
-  var sort=document.getElementById('sort-filter').value;
-  var filtered=SERVICES.filter(function(s){return(cat==='all'||s.cat===cat)&&(!q||s.name.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||s.cat.toLowerCase().includes(q));});
-  if(sort==='viability-desc')filtered.sort(function(a,b){return b.viability-a.viability;});
-  else if(sort==='viability-asc')filtered.sort(function(a,b){return a.viability-b.viability;});
-  else if(sort==='surging')filtered.sort(function(a,b){return(a.status==='surging'?0:1)-(b.status==='surging'?0:1);});
-  else if(sort==='declining')filtered.sort(function(a,b){return(a.status==='declining'?0:1)-(b.status==='declining'?0:1);});
-  var container=document.getElementById('services-container');
-  if(filtered.length===0){container.innerHTML='<div class="cards-grid"><div class="no-results">No services match.</div></div>';updateStats(filtered);return;}
-  if(sort==='default'){var groups={};filtered.forEach(function(s){if(!groups[s.cat])groups[s.cat]=[];groups[s.cat].push(s);});var html='';Object.keys(groups).forEach(function(c){html+='<div class="cat-section"><div class="svc-cat-header '+CAT_COLORS[c]+'">'+c+'</div><div class="cards-grid">'+groups[c].map(buildCard).join('')+'</div></div>';});container.innerHTML=html;}
-  else{container.innerHTML='<div class="cards-grid">'+filtered.map(buildCard).join('')+'</div>';}
-  updateStats(filtered);
-}
-function updateStats(filtered){
-  var total=filtered.length;
-  var avgV=total?Math.round(filtered.reduce(function(a,s){return a+s.viability;},0)/total):0;
-  document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-avg').textContent=avgV+'%';
-  document.getElementById('stat-surging').textContent=filtered.filter(function(s){return s.status==='surging';}).length;
-  document.getElementById('stat-declining').textContent=filtered.filter(function(s){return s.status==='declining';}).length;
-  document.getElementById('stat-stable').textContent=filtered.filter(function(s){return s.status==='stable';}).length;
-}
-function switchTab(name,el){
-  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  document.getElementById('tab-'+name).classList.add('active');
-  el.classList.add('active');
-}
-
-
 // ✅ UPDATED BUNDLES — creative-direction → creative-strategy, ai-tvc → ai-films, added ai-website bundles
 var BUNDLES=[
 {name:"Social amplifier pack",ids:["snapchat-lens","creator-campaigns"],extra:["tiktok-effect","ai-ugc","social-adaptations"],desc:"AR lens as the hook, creators as the reach engine.",price:"From $8,000"},
@@ -610,9 +366,20 @@ if(!sel.has('social-strategy')&&(aiSelected||arSelected)&&count>2)addons.push({i
 if(count===0||addons.length===0){addonPanel.innerHTML='';return;}
 addonPanel.innerHTML='<div style="margin-top:10px"><div style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;gap:8px">Suggested add-ons<span style="flex:1;height:1px;background:var(--border);display:block"></span></div>'+addons.map(function(a){return'<div style="border:1px dashed rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px;background:var(--bg2)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><span style="font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:600;color:var(--text)">'+a.name+'</span><button class="btn" onclick="document.querySelector(\'[data-id=\\\''+a.id+'\\\']\')).click()" style="font-size:9px;padding:3px 8px">Add</button></div><div style="font-size:10.5px;color:var(--text3);line-height:1.5">'+a.why+'</div></div>';}).join('')+'</div>';}
 render();
-
-filterCards();
-render();
 </script>
+
+<div id="prompt-modal">
+  <div id="prompt-box">
+    <h3>Your Claude prompt is ready</h3>
+    <p>1. Click <strong>Copy &amp; open Claude</strong> — Claude opens in a new tab.<br>2. Paste the prompt and hit send.</p>
+    <textarea id="prompt-ta" readonly></textarea>
+    <div class="modal-actions">
+      <button id="copy-btn" onclick="copyAndOpen()">Copy &amp; open Claude ↗</button>
+      <button id="open-btn" onclick="window.open('https://claude.ai/new','_blank')">Open Claude only ↗</button>
+      <button id="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
 </body>
 </html>
