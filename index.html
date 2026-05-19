@@ -291,7 +291,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 
 <div class="cat-label">CGI, 3D & OOH</div>
 <div class="blocks">
-<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI</div>
+<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI (Mixed Reality or Full 3D CGI)</div>
 <div class="block b-cgi lit" data-id="3d-social" data-type="production" data-tech="pre3d" onclick="toggle(this)">Immersive 3D Social</div>
 <div class="block b-cgi lit" data-id="naked-eye" data-type="ooh" data-tech="pre3d" onclick="toggle(this)">3D Naked Eye Billboard</div>
 </div>
@@ -299,7 +299,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Social Content</div>
 <div class="blocks">
 <div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
-<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Campaigns</div>
+<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Content</div>
 <div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
 <div class="block b-social lit" data-id="2d-animation" data-type="content" data-tech="pre3d" onclick="toggle(this)">2D Animation</div>
 <div class="block b-social lit" data-id="social-adaptations" data-type="content" data-tech="" onclick="toggle(this)">Social Adaptations</div>
@@ -340,12 +340,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="block b-ai lit" data-id="ai-social" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Social Content (full suite)</div>
 </div>
 
-<!-- ✅ UPDATED: Branding — Creative Direction → Creative Strategy -->
+<!-- ✅ UPDATED: Branding — removed Visual Identity, Creative Strategy moved to Strategy -->
 <div class="cat-label">Branding</div>
 <div class="blocks">
-<div class="block b-branding lit" data-id="visual-identity" data-type="strategy" data-tech="" onclick="toggle(this)">Visual Identity</div>
 <div class="block b-branding lit" data-id="brand-system" data-type="strategy" data-tech="" onclick="toggle(this)">Brand System</div>
-<div class="block b-branding lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <!-- ✅ UPDATED: Web & App Development — AI/3D Website added -->
@@ -359,6 +357,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Strategy</div>
 <div class="blocks">
 <div class="block b-strategy lit" data-id="social-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Social Media Strategy</div>
+<div class="block b-strategy lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <div class="cat-label">Add-ons &amp; Tools</div>
@@ -403,47 +402,46 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <script>
 
 var SERVICES=[
-  {cat:"Social AR",name:"Snapchat Lens",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"AI lenses (generative, try-on) are the next wave. Platform investing heavily."},
-  {cat:"Social AR",name:"TikTok Effect",status:"growing",ai:"ai-powered",viability:70,trend:"flat",desc:"Same. TikTok relaunching KSA live commerce — high momentum."},
-  {cat:"Social AR",name:"YouTube Effect",status:"stable",ai:"ai-resistant",viability:62,trend:"down",desc:"Lower traction than Snap/TikTok. Platform commitment unclear."},
-  {cat:"Social AR",name:"WebAR",status:"growing",ai:"ai-powered",viability:88,trend:"up",desc:"No-app friction is the unlock. AI content feeds it."},
-  {cat:"MR & VR",name:"AR Spectacles",status:"surging",ai:"ai-powered",viability:78,trend:"up",desc:"Snap relaunching Gen 2, Meta Ray-Ban growing. Hardware moment is now."},
-  {cat:"MR & VR",name:"Mixed Reality",status:"surging",ai:"ai-powered",viability:80,trend:"flat",desc:"Apple Vision Pro + Quest 3S. AI powering MR content at scale."},
-  {cat:"MR & VR",name:"Spatial Computing",status:"surging",ai:"ai-powered",viability:74,trend:"flat",desc:"Apple Vision Pro just launched. Brands have no partners yet."},
-  {cat:"MR & VR",name:"Virtual Reality",status:"stable",ai:"ai-resistant",viability:70,trend:"flat",desc:"Headset adoption still slow outside enterprise. Niche for events."},
-  {cat:"CGI 3D & OOH",name:"CGI",status:"stable",ai:"ai-resistant",viability:75,trend:"flat",desc:"AI (Kling, Sora) replacing parts of pipeline. Premium human CGI still commands price."},
-  {cat:"CGI 3D & OOH",name:"Immersive 3D Social",status:"growing",ai:"ai-powered",viability:83,trend:"up",desc:"AI generating 3D faster — output at scale now viable."},
-  {cat:"CGI 3D & OOH",name:"3D Naked Eye Billboard",status:"growing",ai:"ai-powered",viability:79,trend:"up",desc:"Physical format. AI generates content faster, not replacing the format."},
-  {cat:"Social Content",name:"UGC",status:"stable",ai:"ai-resistant",viability:90,trend:"up",desc:"Authentic human UGC still valued but AI UGC eating the bottom of the market."},
-  {cat:"Social Content",name:"Creator Campaigns",status:"growing",ai:"ai-powered",viability:88,trend:"up",desc:"Creators + AI tools = more output, more formats, same talent cost."},
-  {cat:"Social Content",name:"Motion Graphics",status:"stable",ai:"ai-resistant",viability:62,trend:"down",desc:"AI generating motion rapidly — need differentiation on quality."},
-  {cat:"Social Content",name:"2D Animation",status:"declining",ai:"ai-threatened",viability:58,trend:"down",desc:"AI is commoditizing 2D. Hard to defend margin."},
-  {cat:"Social Content",name:"Social Adaptations",status:"declining",ai:"ai-threatened",viability:52,trend:"down",desc:"Highly automatable. Low strategic value. Becoming a tool, not a service."},
-  {cat:"Social Content",name:"Rich Media",status:"declining",ai:"ai-threatened",viability:58,trend:"down",desc:"Programmatic AI replacing manual rich media production."},
-  {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:85,trend:"up",desc:"TikTok live commerce relaunched KSA. First-mover moment."},
-  {cat:"Live & Commerce",name:"Live Shopping Activation",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"$900B global market, no MENA production partner yet."},
-  {cat:"On Ground",name:"Digital Installations",status:"growing",ai:"ai-powered",viability:92,trend:"up",desc:"Physical + digital. Not replaceable by AI. Premium experiential."},
-  {cat:"On Ground",name:"AR Mirror",status:"growing",ai:"ai-powered",viability:87,trend:"up",desc:"AI making mirrors smarter. Try-on AI is a retail staple."},
-  {cat:"On Ground",name:"AI Mirror",status:"surging",ai:"ai-powered",viability:85,trend:"up",desc:"New format, growing fast, ARlab differentiator."},
-  {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:80,trend:"flat",desc:"AI accelerating build time, demand for virtual retail growing."},
-  {cat:"Immersive Interactive",name:"Games",status:"growing",ai:"ai-powered",viability:82,trend:"flat",desc:"AI cutting game development time significantly."},
-  {cat:"Immersive Interactive",name:"Playable Ads",status:"stable",ai:"ai-resistant",viability:76,trend:"flat",desc:"AI generating playable ads — could commoditize but still high engagement."},
-  {cat:"AI Content",name:"AI Photography",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"No studio needed. AI at brand quality."},
-  {cat:"AI Content",name:"AI Brand Films + TVCs",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Replacing traditional production economics entirely."},
-  {cat:"AI Content",name:"AI Mini Clips",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"Native social format. Scales without crews."},
-  {cat:"AI Content",name:"AI UGC",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"Authentic-looking at scale. Brands need volume, AI delivers."},
-  {cat:"AI Content",name:"AI Mixed Reality CGI",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"ARlab's proven format. 50M+ views. Unique to ARlab in MENA."},
-  {cat:"AI Content",name:"AI Avatars",status:"surging",ai:"ai-powered",viability:86,trend:"up",desc:"Brand spokespeople at scale, no talent fees."},
-  {cat:"AI Content",name:"AI Campaign",status:"surging",ai:"ai-powered",viability:87,trend:"up",desc:"End-to-end AI production — the new model."},
-  {cat:"Branding",name:"Visual Identity",status:"stable",ai:"ai-resistant",viability:85,trend:"up",desc:"AI democratising identity creation — value shifts to brand system."},
-  {cat:"Branding",name:"Brand System",status:"surging",ai:"ai-powered",viability:82,trend:"flat",desc:"Foundation for all AI production. More critical than ever."},
-  {cat:"Branding",name:"Creative Strategy",status:"growing",ai:"ai-powered",viability:89,trend:"up",desc:"Humans still own strategy. AI makes execution faster, raising strategy's value."},
-  {cat:"Web & App Development",name:"Website Development",status:"declining",ai:"ai-threatened",viability:70,trend:"down",desc:"Lovable, v0, Framer AI commoditising standard web dev."},
-  {cat:"Web & App Development",name:"AI/3D Website Development",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"ARlab's differentiated offering. No equivalent in KSA."},
-  {cat:"Web & App Development",name:"App Development",status:"stable",ai:"ai-resistant",viability:72,trend:"flat",desc:"AI coding tools commoditising basic apps. Custom complex apps still defensible."},
-  {cat:"Strategy",name:"Social Media Strategy",status:"growing",ai:"ai-powered",viability:76,trend:"flat",desc:"AI executes faster — strategy becomes the premium layer."},
-  {cat:"Add-ons & Tools",name:"Analytics Dashboard",status:"growing",ai:"ai-powered",viability:84,trend:"up",desc:"AI content at scale needs performance tracking to prove ROI."},
-  {cat:"Add-ons & Tools",name:"Smart Design System",status:"surging",ai:"ai-powered",viability:86,trend:"up",desc:"The DNA source for all AI production. Non-negotiable infrastructure."},
+  {cat:"Social AR",name:"Snapchat Lens",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"Snap AR lenses hit 250M+ daily interactions as of April 2026. Gucci ran the first luxury AI Sponsored Lens in UAE and KSA in Feb 2026. Generative AI lenses are now a mainstream paid format — not a novelty."},
+  {cat:"Social AR",name:"TikTok Effect",status:"growing",ai:"ai-powered",viability:74,trend:"up",desc:"TikTok Shop GMV tracking toward $112B globally in 2026. AR try-ons and effects are a growing discovery layer inside live commerce. KSA and UAE are top-5 markets by creator activity."},
+  {cat:"Social AR",name:"YouTube Effect",status:"stable",ai:"ai-resistant",viability:60,trend:"down",desc:"Still low traction vs Snap and TikTok. AR effects on YouTube remain secondary to Shorts and ad formats. Platform commitment to creator AR tools is unclear in 2026."},
+  {cat:"Social AR",name:"WebAR",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"No-app AR is the default ask from FMCG and retail clients in 2026. QR-to-AR campaigns are standard. Shopify data shows 3D/AR on product pages lifting conversion by up to 250%. ARlab's WebGL stack is a direct fit."},
+  {cat:"MR & VR",name:"AR Spectacles",status:"surging",ai:"ai-powered",viability:82,trend:"up",desc:"Snap Specs (SnapOS 2.0 + OpenAI/Gemini integration) announced for 2026 launch. Meta Ray-Ban glasses scaling fast. The wearable AR window is open — brands with production capability now have first-mover advantage."},
+  {cat:"MR & VR",name:"Mixed Reality",status:"surging",ai:"ai-powered",viability:83,trend:"up",desc:"Apple Vision Pro 2 (M5 chip, $2,499) launched Feb 2026 with visionOS 26 spatial scenes. MR is no longer prototype territory — it's a viable event and retail activation format for premium brands in MENA."},
+  {cat:"MR & VR",name:"Spatial Computing",status:"surging",ai:"ai-powered",viability:79,trend:"up",desc:"visionOS 26 introduced persistent spatial scenes and 3D web embedding — brands can now build always-on spatial environments. No MENA studio has packaged this as a named service. Early-mover gap is real."},
+  {cat:"MR & VR",name:"Virtual Reality",status:"stable",ai:"ai-resistant",viability:68,trend:"flat",desc:"Headset adoption remains event and enterprise-led. Meta Quest 3S is the accessible entry. Premium VR activations command budget at Saudi Vision 2030 events and luxury brand experiences."},
+  {cat:"CGI 3D & OOH",name:"CGI (Mixed Reality or Full 3D CGI)",status:"stable",ai:"ai-powered",viability:78,trend:"up",desc:"CGI market in advertising growing at 19.9% CAGR, forecast to reach $13.4B by 2028. AI pipelines (Kling, Sora, Runway) cut production time significantly, but photorealistic CGI composited into live-action — ARlab's signature — still commands premium. Same 3D asset now deploys across OOH, social, AR, and MR."},
+  {cat:"CGI 3D & OOH",name:"Immersive 3D Social",status:"surging",ai:"ai-powered",viability:87,trend:"up",desc:"AI-generated 3D social content is the fastest-growing format in branded content. One CGI pipeline now outputs OOH, social cuts, and AR in parallel. Volume and quality both up — ARlab's AI 3D stack is exactly what the market needs."},
+  {cat:"CGI 3D & OOH",name:"3D Naked Eye Billboard",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"Anamorphic OOH is a proven format in GCC — Riyadh, Dubai, and Jeddah all have premium screens. AI generates content faster and cheaper, making multi-market rollouts viable. Highest social amplification per campaign dollar in OOH."},
+  {cat:"Social Content",name:"UGC",status:"stable",ai:"ai-resistant",viability:88,trend:"up",desc:"Authentic human UGC remains the most trusted content format in 2026, but the floor is rising — AI UGC is now indistinguishable at scale. Real UGC value is in the creator relationship and community signal, not raw production."},
+  {cat:"Social Content",name:"Creator Content",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"TikTok influencers drove $5.4B in U.S. GMV in 2024 — 60% of total platform transactions. In MENA, 115,000+ creators go live daily in UAE alone. Creator content is now a performance channel, not just a reach play. Commerce integration is the unlock."},
+  {cat:"Social Content",name:"Motion Graphics",status:"stable",ai:"ai-resistant",viability:60,trend:"down",desc:"AI motion tools (Runway, Kling, Pika) are rapidly closing the quality gap. Commodity motion work is gone. Differentiation requires creative direction and brand-trained pipelines — not just technical execution."},
+  {cat:"Social Content",name:"2D Animation",status:"declining",ai:"ai-threatened",viability:52,trend:"down",desc:"AI is commoditizing 2D animation fast. Clients are increasingly unwilling to pay premium rates for frame-by-frame work. Hard to defend as a standalone service — best positioned as a component inside a larger AI content package."},
+  {cat:"Social Content",name:"Social Adaptations",status:"declining",ai:"ai-threatened",viability:48,trend:"down",desc:"Fully automatable with current AI tools. Clients increasingly handle in-house or via AI platforms. Zero strategic differentiation. Should be bundled and priced as an add-on, not a standalone line item."},
+  {cat:"Social Content",name:"Rich Media",status:"declining",ai:"ai-threatened",viability:52,trend:"down",desc:"Programmatic AI and no-code ad tools are eliminating manual rich media production. Low margin, high execution overhead. Only viable when bundled with performance strategy or WebGL interactive formats."},
+  {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"MENA livestreaming market at $8.1B in 2024, projected to reach $17.8B by 2030 (TikTok x Kearney). UAE live streaming sector alone growing from $1.9B to $3.4B by 2030. TikTok live commerce active across KSA and UAE. First-mover production advantage is now."},
+  {cat:"Live & Commerce",name:"Live Shopping Activation",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"TikTok Shop global GMV on track for $112B in 2026. MENA brands are adopting live shopping fast — flash sales, exclusive livestream drops, and creator-led commerce are established patterns. No dedicated MENA live commerce production partner yet. ARlab's gap to own."},
+  {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Physical + AI-powered digital is the most defensible format in 2026 — impossible to replicate with AI alone. Premium event market in KSA (Vision 2030 activations, Riyadh Season, MDL Beast) is driving high-budget installation briefs consistently."},
+  {cat:"On Ground",name:"AR Mirror",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"AR and AI-powered mirrors are now a retail standard expectation in GCC luxury and beauty. Try-on AI is driving measurable conversion lift. Brands are asking for always-on mirror installations, not one-off events."},
+  {cat:"On Ground",name:"AI Mirror",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"AI mirrors (real-time transformation, style AI, mood detection) are ARlab's most differentiated on-ground format. No comparable offering from regional agencies. Demand is growing from fashion, beauty, and hospitality clients across UAE and KSA."},
+  {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"Virtual retail is accelerating as a complement to physical in the GCC. AI is cutting build time dramatically. Spatial scenes in visionOS 26 open a new deployment surface. Brands entering KSA market are using virtual stores as a low-risk flagship alternative."},
+  {cat:"Immersive Interactive",name:"Games",status:"growing",ai:"ai-powered",viability:84,trend:"up",desc:"AI is cutting branded game development time by 50%+. Gamification is a proven engagement mechanic in KSA where mobile gaming penetration is among the highest globally. Ramadan and National Day campaigns increasingly include a game layer."},
+  {cat:"Immersive Interactive",name:"Playable Ads",status:"growing",ai:"ai-powered",viability:79,trend:"up",desc:"AI is generating playable ad variants at scale — same mechanic, infinite creative iterations. High engagement format for FMCG and MENA telecom clients. Performance data consistently beats static and video formats on dwell time and CTR."},
+  {cat:"AI Content",name:"AI Photography",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"AI photography is now indistinguishable from studio work for most brand applications. 86% of ad buyers are using or planning to use generative AI for creative by 2026 (IAB, July 2025). Studio photography RFPs are actively being replaced by AI briefs. ARlab runs this pipeline at production speed."},
+  {cat:"AI Content",name:"AI Brand Films + TVCs",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"AI is projected to account for 40% of all advertising content by 2026 (IAB). Full AI TVCs are now being approved by major brands — not just as pilots but as primary campaign assets. ARlab's Runway/Kling/Pika stack delivers broadcast-grade output."},
+  {cat:"AI Content",name:"AI Mini Clips",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Native vertical video format built for TikTok, Reels, and Snap. AI generates at volume — 50 variants from one brief. Brands with monthly content calendars are replacing production retainers with AI mini clip pipelines. ARlab is running this for active clients."},
+  {cat:"AI Content",name:"AI UGC",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"AI-generated UGC is eating the bottom of the creator market. Indistinguishable from real UGC at scale. Brands are using it to supplement real creator content — keeping the authentic signal while filling volume gaps. Strong demand across FMCG and beauty in GCC."},
+  {cat:"AI Content",name:"AI Mixed Reality CGI",status:"surging",ai:"ai-powered",viability:92,trend:"up",desc:"ARlab's signature format. AI-generated CGI composited into real-world footage — 50M+ views delivered. No equivalent offering from any regional agency. CGI market growing at 19.9% CAGR. The AI layer makes it faster, cheaper, and infinitely scalable."},
+  {cat:"AI Content",name:"AI Avatars",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"Brand and founder AI avatars are becoming standard for always-on content at scale. ElevenLabs voice cloning + visual avatar tools make multilingual rollouts (AR, EN, FR) trivial. Talent cost eliminated. ARlab builds and trains brand-specific avatar systems."},
+  {cat:"AI Content",name:"AI Campaign",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"End-to-end AI campaign production — brief to full asset suite — is now ARlab's fastest-growing service type. One creative brief generates photography, film, UGC, mini clips, and social adaptations in parallel. The new production model for GCC brands moving at speed."},
+  {cat:"Branding",name:"Brand System",status:"surging",ai:"ai-powered",viability:85,trend:"up",desc:"The brand system is the foundation that makes all AI production consistent and scalable. As AI content volume increases, brand governance becomes more critical. Clients without a trained brand system are producing AI content that looks generic. The system is the differentiator."},
+  {cat:"Strategy",name:"Creative Strategy",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"As AI handles more execution, creative strategy becomes the highest-value human layer in advertising. Brands are paying more for strategy as production costs drop. ARlab's creative strategy output directly feeds AI production pipelines — concept to content in days."},
+  {cat:"Web & App Development",name:"Website Development",status:"declining",ai:"ai-threatened",viability:65,trend:"down",desc:"Lovable, v0, Framer AI, and Webflow AI have commoditised standard website production in 2026. Clients are questioning agency fees for what AI now delivers in hours. Only defensible as part of a brand system or WebGL/immersive upgrade."},
+  {cat:"Web & App Development",name:"AI/3D Website Development",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"WebGL-powered immersive websites and AI-personalised brand worlds are the premium tier in 2026. visionOS 26 now supports 3D web embedding — a direct unlock for ARlab's stack. No equivalent offering from any KSA or UAE digital agency."},
+  {cat:"Web & App Development",name:"App Development",status:"stable",ai:"ai-resistant",viability:70,trend:"flat",desc:"AI coding tools (Cursor, Copilot) have cut custom app build time dramatically. Standard apps are commoditised. Defensible only for complex, bespoke interactive builds — gamification, AR-integrated, or immersive utility apps."},
+  {cat:"Strategy",name:"Social Media Strategy",status:"growing",ai:"ai-powered",viability:78,trend:"up",desc:"AI executes faster — human strategy becomes the premium layer clients can't skip. Platform logic is shifting monthly (TikTok Shop, Snap Specs, Reels commerce). Strategy that keeps pace with platform change is the product brands need."},
+  {cat:"Add-ons & Tools",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:87,trend:"up",desc:"As AI content scales, performance tracking is non-negotiable. Brands running 50+ AI content variants need real-time data to know what works. ARlab's analytics layer closes the loop between production and performance."},
+  {cat:"Add-ons & Tools",name:"Smart Design System",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"The brand system is the training data for every AI output. Without it, AI content is generic. With it, every asset — photography, film, social, web — is unmistakably the same brand. The infrastructure every AI-first client needs first."},
 ];
 var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI 3D & OOH":"cat-cgi","Social Content":"cat-social","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","Branding":"cat-branding","Web & App Development":"cat-web","Strategy":"cat-strategy","Add-ons & Tools":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
