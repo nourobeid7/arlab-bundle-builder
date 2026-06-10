@@ -106,7 +106,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <h1>ARlab Bundle Builder</h1>
     <p>Select service blocks — see your bundle and tech fusion simultaneously</p>
   </div>
-  <div class="arlab-badge">ARlab</div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text3)">June 2026</span>
+    <div class="arlab-badge">ARlab</div>
+  </div>
 </div>
 <div class="main">
 <div class="blocks-panel">
@@ -145,7 +148,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 
 <div class="cat-label">CGI, 3D & OOH</div>
 <div class="blocks">
-<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI</div>
+<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI (Mixed Reality or Full 3D CGI)</div>
 <div class="block b-cgi lit" data-id="3d-social" data-type="production" data-tech="pre3d" onclick="toggle(this)">Immersive 3D Social</div>
 <div class="block b-cgi lit" data-id="naked-eye" data-type="ooh" data-tech="pre3d" onclick="toggle(this)">3D Naked Eye Billboard</div>
 </div>
@@ -153,7 +156,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Social Content</div>
 <div class="blocks">
 <div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
-<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Campaigns</div>
+<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Content</div>
 <div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
 <div class="block b-social lit" data-id="2d-animation" data-type="content" data-tech="pre3d" onclick="toggle(this)">2D Animation</div>
 <div class="block b-social lit" data-id="social-adaptations" data-type="content" data-tech="" onclick="toggle(this)">Social Adaptations</div>
@@ -194,12 +197,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="block b-ai lit" data-id="ai-social" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Social Content (full suite)</div>
 </div>
 
-<!-- ✅ UPDATED: Branding — Creative Direction → Creative Strategy -->
 <div class="cat-label">Branding</div>
 <div class="blocks">
-<div class="block b-branding lit" data-id="visual-identity" data-type="strategy" data-tech="" onclick="toggle(this)">Visual Identity</div>
 <div class="block b-branding lit" data-id="brand-system" data-type="strategy" data-tech="" onclick="toggle(this)">Brand System</div>
-<div class="block b-branding lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <!-- ✅ UPDATED: Web & App Development — AI/3D Website added -->
@@ -213,6 +213,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="cat-label">Strategy</div>
 <div class="blocks">
 <div class="block b-strategy lit" data-id="social-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Social Media Strategy</div>
+<div class="block b-strategy lit" data-id="creative-strategy" data-type="strategy" data-tech="" onclick="toggle(this)">Creative Strategy</div>
 </div>
 
 <div class="cat-label">Add-ons &amp; Tools</div>
@@ -233,7 +234,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 </div>
 
 <script>
-// ✅ UPDATED BUNDLES — creative-direction → creative-strategy, ai-tvc → ai-films, added ai-website bundles
+// ✅ JUNE 2026 — synced with fable model: Eid Al Adha + Summer packs, brand system restructure, creator content, 2 new fusions
 var BUNDLES=[
 {name:"Social amplifier pack",ids:["snapchat-lens","creator-campaigns"],extra:["tiktok-effect","ai-ugc","social-adaptations"],desc:"AR lens as the hook, creators as the reach engine.",price:"From $8,000"},
 {name:"TikTok takeover pack",ids:["tiktok-effect","creator-campaigns"],extra:["ai-social","ai-ugc"],desc:"Branded TikTok effect amplified by creators.",price:"From $12,000"},
@@ -250,10 +251,11 @@ var BUNDLES=[
 {name:"Mixed reality campaign pack",ids:["mixed-reality","cgi"],extra:["3d-social","spatial-computing"],desc:"Hyper-real CGI blended into the real world.",price:"From $22,000"},
 {name:"3D world pack",ids:["cgi","3d-social"],extra:["naked-eye","ai-cgi"],desc:"Full CGI universe — social and OOH from one pipeline.",price:"From $15,000"},
 {name:"Gamification pack",ids:["playable-ads","games"],extra:["virtual-stores","ai-social"],desc:"Branded play across ads, apps, and web.",price:"From $9,000"},
-{name:"Ramadan seasonal pack",ids:["snapchat-lens","3d-social","ai-social"],extra:["ai-ugc","creator-campaigns"],desc:"Full-funnel seasonal — AR, 3D hero, AI at scale.",price:"From $20,000"},
-{name:"Luxury brand pack",ids:["snapchat-lens","cgi","naked-eye"],extra:["ar-spectacles","visual-identity"],desc:"Premium AR, CGI, and OOH for luxury clients.",price:"From $30,000"},
-{name:"Brand launch pack",ids:["visual-identity","brand-system"],extra:["creative-strategy","ai-social","ai-website"],desc:"Full brand foundation with digital presence ready to activate.",price:"From $15,000"},
-{name:"Full brand and digital pack",ids:["visual-identity","ai-website"],extra:["brand-system","app-dev","social-strategy"],desc:"Brand identity plus AI-powered digital presence.",price:"From $25,000"},
+{name:"Eid Al Adha activation pack",ids:["snapchat-lens","3d-social","ai-social"],extra:["ai-ugc","creator-campaigns","live-shopping"],desc:"Full-funnel Eid Al Adha — AR lens, 3D hero, AI content, and live commerce combined.",price:"From $22,000"},
+{name:"Summer creator pack",ids:["creator-campaigns","ai-ugc","live-streaming"],extra:["ai-social","snapchat-lens","tiktok-effect"],desc:"Creator-led summer engine — AI UGC at volume, live commerce, and AR distribution.",price:"From $12,000"},
+{name:"Luxury brand pack",ids:["snapchat-lens","cgi","naked-eye"],extra:["ar-spectacles","brand-system"],desc:"Premium AR, CGI, and OOH for luxury clients.",price:"From $30,000"},
+{name:"Brand launch pack",ids:["brand-system","creative-strategy"],extra:["ai-social","ai-website","social-strategy"],desc:"Full brand foundation with digital presence ready to activate.",price:"From $15,000"},
+{name:"Full brand and digital pack",ids:["brand-system","ai-website"],extra:["app-dev","social-strategy","creative-strategy"],desc:"Brand identity plus AI-powered digital presence.",price:"From $25,000"},
 {name:"AI web + content pack",ids:["ai-website","ai-social"],extra:["ai-photo","ai-films","ai-ugc"],desc:"AI website and AI content engine — brand DNA trained once, deployed everywhere.",price:"From $18,000"},
 {name:"Strategy and content pack",ids:["social-strategy","ugc"],extra:["ai-social","creator-campaigns"],desc:"Strategy paired with content production.",price:"From $8,000"},
 {name:"WebAR campaign pack",ids:["web-ar","ugc"],extra:["creator-campaigns","ai-social"],desc:"Browser AR with no app — plus creator distribution.",price:"From $10,000"},
@@ -289,6 +291,8 @@ var FUSIONS=[
 {ids:["spatial-computing","mixed-reality"],name:"Full Spatial XR Experience",output:"AR Spectacles + Apple Vision Pro XR campaign",detail:"The same brand experience deployed across Spectacles and Apple Vision Pro simultaneously.",unlock:"The widest spatial reach in any single campaign."},
 {ids:["ai-website","ai-social"],name:"Brand Intelligence Stack",output:"AI website and AI content engine sharing the same brand DNA",detail:"Brand DNA trained once — powering both web presence and social content output simultaneously.",unlock:"Every page and every post is unmistakably the same brand."},
 {ids:["ai-website","ai-photo"],name:"AI Web + Photography Launch",output:"AI-generated website and campaign photography from one brief",detail:"The brand visual system powers both the site and the photo campaign.",unlock:"Website launch with full photographic campaign in days, not months."},
+{ids:["creator-campaigns","live-shopping"],name:"Creator Commerce Takeover",output:"Creator-hosted live shopping sessions converting audience to buyers in real time",detail:"Creators host dedicated live sessions — product demos, exclusive drops, and instant purchase inside the stream.",unlock:"The highest-converting social commerce format in MENA."},
+{ids:["ai-avatar","ai-social"],name:"Brand Avatar Engine",output:"AI brand avatar generates and delivers personalised content across every social platform automatically",detail:"One trained brand avatar produces daily content — posts, clips, UGC — in Arabic, English, and French simultaneously.",unlock:"Always-on brand presence with zero ongoing production overhead."},
 ];
 
 var TECH_FUSIONS={
@@ -315,7 +319,7 @@ var TECH_FUSIONS={
 "xr+ai+pre3d+live":{name:"The Full Stack",desc:"Every technology — XR, AI, Pre-Rendered 3D, and Live — one unified brand experience.",existing:["All blocks across every category"],newProduct:{name:"The Living Brand",tagline:"A brand that is always on, always adapting, always live.",desc:"A permanent brand experience simultaneously XR, AI-powered, photorealistic 3D, and live. This does not exist anywhere as a named product. ARlab could build it first."}}
 };
 
-// ✅ UPDATED INCOMPAT — creative-direction → creative-strategy
+// ✅ JUNE 2026 INCOMPAT
 var INCOMPAT=[
 {ids:["social-strategy","virtual-reality"],why:"Strategy is a planning service. VR is a production format. They work in sequence, not in fusion.",suggest:"Add Mixed Reality or Digital Installations to activate the strategy as a VR experience."},
 {ids:["social-strategy","ar-spectacles"],why:"Strategy informs how spectacles are deployed but does not technically integrate with hardware.",suggest:"Add Mixed Reality or a ground block to build a strategy-led spectacles activation."},
@@ -355,7 +359,7 @@ var aiSelected=['ai-social','ai-photo','ai-films','ai-miniclips','ai-ugc','ai-cg
 var liveSelected=['live-streaming','live-shopping'].some(function(id){return sel.has(id)});
 var arSelected=['snapchat-lens','tiktok-effect','web-ar','ar-spectacles','mixed-reality'].some(function(id){return sel.has(id)});
 var webSelected=['ai-website','web-dev','virtual-stores'].some(function(id){return sel.has(id)});
-var brandSelected=['visual-identity','brand-system','creative-strategy'].some(function(id){return sel.has(id)});
+var brandSelected=['brand-system','creative-strategy'].some(function(id){return sel.has(id)});
 if(!sel.has('analytics-dashboard')&&(aiSelected||liveSelected||arSelected))addons.push({id:'analytics-dashboard',name:'Analytics Dashboard',why:aiSelected?'Track AI content performance and ROI across every format.':liveSelected?'Measure live commerce conversion and engagement in real time.':'Capture AR interaction data — lens opens, dwell time, shares.'});
 if(!sel.has('smart-design-system')&&brandSelected)addons.push({id:'smart-design-system',name:'Smart Design System',why:'A shared visual language — type, color, Arabic type treatment, components — that makes every future ARlab deliverable faster and consistent.'});
 if(!sel.has('smart-design-system')&&(aiSelected||webSelected)&&!brandSelected)addons.push({id:'smart-design-system',name:'Smart Design System',why:'Brand DNA trained once — powering the AI website, AI content, and every future deliverable from the same source.'});
