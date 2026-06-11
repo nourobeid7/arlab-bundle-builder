@@ -44,6 +44,7 @@
 .stat-sub-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-family:'Space Grotesk',sans-serif}
 .stat-sub-val{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700}
 .stat-sub-val.surging{color:var(--surging)}
+.stat-sub-val.growing{color:var(--growing)}
 .stat-sub-val.declining{color:var(--declining)}
 .stat-sub-val.stable{color:var(--stable)}
 .stat-sub-divider{width:1px;height:26px;background:var(--border);flex-shrink:0}
@@ -216,9 +217,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
       <div class="stat-sub-row">
         <div class="stat-sub"><span class="stat-sub-label">Surging</span><span class="stat-sub-val surging" id="stat-surging">22</span></div>
         <div class="stat-sub-divider"></div>
-        <div class="stat-sub"><span class="stat-sub-label">Declining</span><span class="stat-sub-val declining" id="stat-declining">6</span></div>
+        <div class="stat-sub"><span class="stat-sub-label">Growing</span><span class="stat-sub-val growing" id="stat-growing">8</span></div>
         <div class="stat-sub-divider"></div>
         <div class="stat-sub"><span class="stat-sub-label">Stable</span><span class="stat-sub-val stable" id="stat-stable">4</span></div>
+        <div class="stat-sub-divider"></div>
+        <div class="stat-sub"><span class="stat-sub-label">Declining</span><span class="stat-sub-val declining" id="stat-declining">6</span></div>
       </div>
     </div>
   </div>
@@ -472,8 +475,9 @@ function updateStats(filtered){
   document.getElementById('stat-total').textContent=total;
   document.getElementById('stat-avg').textContent=avgV+'%';
   document.getElementById('stat-surging').textContent=filtered.filter(function(s){return s.status==='surging';}).length;
-  document.getElementById('stat-declining').textContent=filtered.filter(function(s){return s.status==='declining';}).length;
+  document.getElementById('stat-growing').textContent=filtered.filter(function(s){return s.status==='growing';}).length;
   document.getElementById('stat-stable').textContent=filtered.filter(function(s){return s.status==='stable';}).length;
+  document.getElementById('stat-declining').textContent=filtered.filter(function(s){return s.status==='declining';}).length;
 }
 function switchTab(name,el){
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
