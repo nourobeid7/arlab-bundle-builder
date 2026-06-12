@@ -11,9 +11,10 @@
 <style>
 
 :root{
-  --bg:#0a0a0a;--bg2:rgba(255,255,255,0.04);--bg3:rgba(255,255,255,0.06);--bg4:rgba(255,255,255,0.05);
-  --glass-blur:saturate(140%) blur(18px);
-  --border:rgba(255,255,255,0.10);--border2:rgba(255,255,255,0.20);
+  --bg:#0a0a0a;--bg2:rgba(255,255,255,0.06);--bg3:rgba(255,255,255,0.08);--bg4:rgba(255,255,255,0.07);
+  --glass-blur:saturate(210%) blur(40px);
+  --glass-highlight:inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03);
+  --border:rgba(255,255,255,0.14);--border2:rgba(255,255,255,0.22);
   --text:#f0f0f0;--text2:#999;--text3:#666;
   --surging:#97C459;--surging-bg:rgba(151,196,89,0.12);
   --growing:#5adab0;--growing-bg:rgba(90,218,176,0.12);
@@ -44,7 +45,7 @@ body{
 .tab-panel.active{display:block}
 .services-main{padding:28px 40px;max-width:1400px}
 .stats-row{display:grid;grid-template-columns:180px 1fr;gap:10px;margin-bottom:28px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 24px rgba(0,0,0,0.25)}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.25)}
 .stat-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-family:'Space Grotesk',sans-serif}
 .stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text);line-height:1}
 .stat-sub-row{display:flex;align-items:center;gap:0;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
@@ -82,7 +83,7 @@ body{
 .cat-strategy{color:#707070}
 .cat-addons{color:#f0c050}
 .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.service-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color .2s, transform .2s, box-shadow .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 6px 20px rgba(0,0,0,0.22)}
+.service-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color .2s, transform .2s, box-shadow .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 6px 20px rgba(0,0,0,0.22)}
 .service-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 10px 28px rgba(0,0,0,0.32)}
 .card-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:8px}
 .s-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;align-items:center}
@@ -148,7 +149,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 .sel-count{font-size:11px;color:var(--text3)}
 .clear-btn{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
 .clear-btn:hover{color:var(--text2)}
-.result-card{border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid var(--border);background:var(--bg2);transition:border-color .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 6px 20px rgba(0,0,0,0.22)}
+.result-card{border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid var(--border);background:var(--bg2);transition:border-color .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 6px 20px rgba(0,0,0,0.22)}
 .result-card.fusion-strong{border-color:rgba(90,218,176,.2)}
 .result-card.fusion-possible{border-color:rgba(240,192,80,.2);border-style:dashed}
 .result-card.fusion-none{border-color:rgba(240,96,96,.15);border-style:dashed}
@@ -183,7 +184,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 @media(max-width:900px){.main{grid-template-columns:1fr}.results-panel{position:static;height:auto;border-top:1px solid var(--border)}.blocks-panel{border-right:none}.header,.blocks-panel,.results-panel{padding-left:20px;padding-right:20px}}
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(8px);background:#5adab0;color:#04342C;font-size:12px;font-weight:500;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:9999;white-space:nowrap;font-family:'DM Sans',sans-serif;}
 #prompt-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;align-items:center;justify-content:center;padding:20px;}
-#prompt-box{background:rgba(20,20,22,0.72);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px;width:100%;max-width:560px;font-family:'DM Sans',sans-serif;backdrop-filter:saturate(160%) blur(28px);-webkit-backdrop-filter:saturate(160%) blur(28px);box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 24px 64px rgba(0,0,0,0.55)}
+#prompt-box{background:linear-gradient(135deg,rgba(28,28,32,0.62) 0%,rgba(18,18,22,0.78) 100%);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:20px;width:100%;max-width:560px;font-family:'DM Sans',sans-serif;backdrop-filter:saturate(230%) blur(56px);-webkit-backdrop-filter:saturate(230%) blur(56px);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.18),inset 0 -1px 0 rgba(255,255,255,0.04),inset 1px 0 0 rgba(255,255,255,0.08),inset -1px 0 0 rgba(255,255,255,0.08),0 40px 100px rgba(0,0,0,0.7),0 16px 40px rgba(0,0,0,0.4)}
 #prompt-box h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#f0f0f0;margin-bottom:8px;}
 #prompt-box p{font-size:11px;color:#666;margin-bottom:10px;}
 #prompt-ta{width:100%;height:140px;background:#0a0a0a;border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f0f0;font-size:11px;font-family:'DM Sans',sans-serif;padding:10px;resize:none;line-height:1.6;}
