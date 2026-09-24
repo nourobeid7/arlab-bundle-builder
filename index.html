@@ -250,7 +250,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <option value="CGI, 3D &amp; DOOH">CGI, 3D &amp; DOOH</option>
       <option value="Social Content">Social Content</option>
       <option value="Live &amp; Commerce">Live &amp; Commerce</option>
-      <option value="Out of Home">Out of Home</option>
+      <option value="On Ground">On Ground</option>
       <option value="Immersive Interactive">Immersive Interactive</option>
       <option value="AI Content">AI Content</option>
       <option value="AI Systems">AI Systems</option>
@@ -325,10 +325,11 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="block b-live lit" data-id="live-shopping" data-type="live" data-tech="live" onclick="toggle(this)">Live Shopping Activation</div>
 </div>
 
-<div class="cat-label">Out of Home</div>
+<div class="cat-label">On Ground</div>
 <div class="blocks">
 <div class="block b-ground lit" data-id="digital-installations" data-type="ground" data-tech="ar,xr,rt3d,iog" onclick="toggle(this)">Digital Installations</div>
 <div class="block b-ground lit" data-id="interactive-screens" data-type="ground" data-tech="ai,ar,xr,iog" onclick="toggle(this)">Interactive Screens</div>
+<div class="block b-ground lit" data-id="projection-mapping" data-type="ground" data-tech="rt3d,iog" onclick="toggle(this)">Projection Mapping</div>
 <div class="block b-ground lit" data-id="pr-packages" data-type="ground" data-tech="" onclick="toggle(this)">PR Packages</div>
 </div>
 
@@ -410,9 +411,10 @@ var SERVICES=[
   {cat:"Immersive Interactive",name:"Interactive Ads",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Playable ad units for paid social and programmatic — one mechanic, infinite AI variants. Snap Ads MCP per-agent OAuth wires agents into buying. Google Ads AI Max migration active Sept 1-30. Beats static and video on dwell and CTR — FMCG and telecom standard into GITEX (Dec 7-11)."},
   {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:92,trend:"up",desc:"Middle East live commerce ~$825M; UAE CAGR 40.5% to 2033. 73% of UAE+KSA consumers bought via social past year. TikTok Shop still NOT native in GCC. National Day 96 (2 days out): 96% shop intent, 88% purchased on Snap. Only regional studio with dedicated live commerce production."},
   {cat:"Live & Commerce",name:"Live Shopping Activation",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"Global live commerce past $1T in 2026; converts 8-12% vs 2-4% static. TikTok Shop still NOT native in KSA/UAE. DSS 2026 wrap: 60 days, 1,000+ brands, +110% avg spend. National Day 96 (2 days out): 96% shop intent, 88% purchased on Snap. Sold as monthly agentic retainer via Snap Ads MCP."},
-  {cat:"Out of Home",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"AI-powered physical installations — most defensible H2 2026 format. DSS 2026 wrap: +110% avg spend, 60 days, 1,000+ brands. National Day 96 closed for on-day at DFC, MoE, Riyadh Boulevard. humain-m3 + AMD MI355X make sovereign-compute installations shippable. Pipeline: GITEX Dec 7-11."},
-  {cat:"Out of Home",name:"Interactive Screens",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"AI- or AR-powered screen and mirror installations. AR try-on: 20-40% conversion lift, 25-40% return reduction; Wayfair 92% conversion lift. Qwen-Image-2.1 (Arabic-strong) is the new open-weight endpoint. humain-m3 + Microsoft-HUMAIN AI PC (Sept 20) make Arabic-native screens shippable. Retail standard in GCC luxury and beauty."},
-  {cat:"Out of Home",name:"PR Packages",status:"growing",ai:"ai-resistant",viability:82,trend:"up",desc:"Earned media across tier-1 GCC — human counterweight to AI saturation. Post-LEAP hot: humain-m3 beats GPT-5.6 Sol + Claude Opus 5 on Arabic, Microsoft-HUMAIN AI PC Sept 20, AMD MI355X (1GW by 2030). National Day 96 is Q3 peak; GITEX Dec 7-11 next; ENC Riyadh postponed to Nov 2027."},
+  {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"AI-powered physical installations — most defensible H2 2026 format. DSS 2026 wrap: +110% avg spend, 60 days, 1,000+ brands. National Day 96 closed for on-day at DFC, MoE, Riyadh Boulevard. humain-m3 + AMD MI355X make sovereign-compute installations shippable. Pipeline: GITEX Dec 7-11."},
+  {cat:"On Ground",name:"Interactive Screens",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"AI- or AR-powered screen and mirror installations. AR try-on: 20-40% conversion lift, 25-40% return reduction; Wayfair 92% conversion lift. Qwen-Image-2.1 (Arabic-strong) is the new open-weight endpoint. humain-m3 + Microsoft-HUMAIN AI PC (Sept 20) make Arabic-native screens shippable. Retail standard in GCC luxury and beauty."},
+  {cat:"On Ground",name:"Projection Mapping",status:"growing",ai:"ai-powered",viability:88,trend:"up",desc:"Large-format architectural and 3D-surface projection for launches, heritage sites, and event takeovers — turns buildings into anamorphic canvases. GCC pipeline strong into National Day 96 and GITEX Dec 7-11: cultural venues, brand activations, retail flagships. AI content stack (Kling 3.0, Runway Gen-4.5, Seedance 2.5) makes multi-night runs and per-facade variants shippable. Complements 3D DOOH for full-city ownership."},
+  {cat:"On Ground",name:"PR Packages",status:"growing",ai:"ai-resistant",viability:82,trend:"up",desc:"Earned media across tier-1 GCC — human counterweight to AI saturation. Post-LEAP hot: humain-m3 beats GPT-5.6 Sol + Claude Opus 5 on Arabic, Microsoft-HUMAIN AI PC Sept 20, AMD MI355X (1GW by 2030). National Day 96 is Q3 peak; GITEX Dec 7-11 next; ENC Riyadh postponed to Nov 2027."},
   {cat:"Immersive Interactive",name:"AI/3D Webapp Development",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"WebGPU Baseline. three.js r180 (Sept 3) adds ASTC/BC/PVRTC compression. visionOS 27 (Sept 15) brings immersive Safari + Quick Look for 3D. Snap Specs + Galaxy XR + Vision Pro extend web to every major XR headset. Qwen-Image-2.1 + Meshy 7.1 complete the stack. No equivalent from any KSA/UAE agency."},
   {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:88,trend:"up",desc:"Virtual retail accelerating in GCC as low-risk flagship alternative. MENA e-commerce $57B → $72B by year-end. Products with 3D/AR convert 94% higher. visionOS 27 + Galaxy XR + Snap Specs extend headset surface; three.js r180 makes premium 3D shopping cheap at scale. Pipeline: GITEX Dec 7-11."},
   {cat:"Immersive Interactive",name:"Digital Games",status:"growing",ai:"ai-powered",viability:89,trend:"up",desc:"Saudi gaming $1.36B in 2026 (~80% mobile), CAGR 10.49% to $3.4B by 2034. PIF-led $55B EA take-private closed Aug 5. Esports Nations Cup Riyadh POSTPONED to Nov 2027 — publishers EA/Krafton/Tencent/Ubisoft locked, Adidas custom jerseys, sponsor slots opening now. Q4 pipeline: GITEX Dec 7-11."},
@@ -434,7 +436,7 @@ var SERVICES=[
   {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Strategic advisory for GCC enterprises — readiness, model selection, governance, roadmaps. 91% use AI in 2026 but only 41% prove ROI; 95% of GenAI pilots fail P&L. Every KSA roadmap routes through sovereign compute (humain-m3, AMD MI355X, NEOM Oxagon 2028). Highest-margin AI Systems tier."},
   {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:92,trend:"up",addon:true,desc:"95% of enterprise GenAI pilots fail P&L; only 41% prove AI ROI — tracking is the difference between renewal and cancellation. ARlab's analytics layer closes the loop between AI production and campaign ROI. KSA briefs shifting to measurable-outcome contracts into GITEX (Dec 7-11)."},
 ];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Live & Commerce":"cat-live","Out of Home":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
+var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
