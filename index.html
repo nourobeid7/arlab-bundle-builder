@@ -75,6 +75,7 @@ body{
 .cat-mr-vr{color:#ed93b1}
 .cat-cgi{color:#5adab0}
 .cat-social{color:#f0805a}
+.cat-platform{color:#e078b8}
 .cat-live{color:#f0c050}
 .cat-on-ground{color:#888}
 .cat-immersive{color:#60aaee}
@@ -140,6 +141,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 .b-mr{background:#2a1a28;border-color:#7a3a6a;color:#e090c0}
 .b-cgi{background:#0d2520;border-color:#2a7a60;color:#5adab0}
 .b-social{background:#2a1510;border-color:#8a3a20;color:#f0805a}
+.b-platform{background:#2a1020;border-color:#8a3860;color:#e078b8}
 .b-live{background:#2a2010;border-color:#8a6010;color:#f0c050}
 .b-ground{background:#1a1a1a;border-color:#444;color:#888}
 .b-immersive{background:#0d1a2a;border-color:#1a5a8a;color:#60aaee}
@@ -249,6 +251,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <option value="MR &amp; VR">MR &amp; VR</option>
       <option value="CGI, 3D &amp; DOOH">CGI, 3D &amp; DOOH</option>
       <option value="Social Content">Social Content</option>
+      <option value="Platform Ad Solutions">Platform Ad Solutions</option>
       <option value="Live &amp; Commerce">Live &amp; Commerce</option>
       <option value="On Ground">On Ground</option>
       <option value="Immersive Interactive">Immersive Interactive</option>
@@ -313,10 +316,14 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
 <div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Content</div>
 <div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
-<div class="block b-social lit" data-id="platform-ads" data-type="content" data-tech="" onclick="toggle(this)">Platform Ad Solutions</div>
 <div class="block b-social lit" data-id="social-media-management" data-type="content" data-tech="" onclick="toggle(this)">Social Media Management</div>
 <div class="block b-social lit" data-id="brand-system" data-type="content" data-tech="" onclick="toggle(this)">Branding</div>
 <div class="block b-social lit" data-id="creative-strategy" data-type="content" data-tech="" onclick="toggle(this)">Creative &amp; Social Strategy</div>
+</div>
+
+<div class="cat-label">Platform Ad Solutions</div>
+<div class="blocks">
+<div class="block b-platform lit" data-id="platform-ads" data-type="content" data-tech="" onclick="toggle(this)">Platform Ad Solutions</div>
 </div>
 
 <div class="cat-label">Live & Commerce</div>
@@ -345,6 +352,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="cat-label">AI</div>
 <div class="sub-label">AI Social Content</div>
 <div class="blocks">
+<div class="block b-ai lit" data-id="ai-at-scale" data-type="ai" data-tech="ai" onclick="toggle(this)">AI at Scale</div>
 <div class="block b-ai lit" data-id="ai-carousel" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Carousel</div>
 <div class="block b-ai lit" data-id="ai-reel" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Reel</div>
 <div class="block b-ai lit" data-id="ai-loop" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Loop</div>
@@ -406,7 +414,7 @@ var SERVICES=[
   {cat:"Social Content",name:"UGC",status:"growing",ai:"ai-resistant",viability:89,trend:"up",desc:"Gulf creator economy ~263K monetizing (+75% in 2 years); MENA e-commerce $57B → $72B by year-end. 84% of consumers say UGC influences purchase. NatDay 96 recap (Sept 23 just passed): 96% KSA Snapchatter shop intent, 88% purchased on Snap. Pivot to capture-earned + Q4 always-on — UGC still the highest-trust asset AI can't replace."},
   {cat:"Social Content",name:"Creator Content",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Gulf creator economy ~263K monetizing (+75% in 2 years); GCC digital ad spend $12.4B (+19% YoY); 73% bought via social past year. AI marketing: 41% revenue lift, 32% lower CAC. NatDay 96 (Sept 23) just passed — Q3 peak recap now, Q4 pipeline into GITEX Dec 7-11."},
   {cat:"Social Content",name:"Motion Graphics",status:"declining",ai:"ai-threatened",viability:46,trend:"down",desc:"OpenAI Sora API sunset Sept 24. Kling 3.0 Turbo, Runway Gen-4.5, Seedance 2.5 (native 30s, 50 refs) paired with Nano Banana Pro + Qwen-Image-3.0-Pro (Arabic-strong) cover the last motion gaps. Commodity motion is gone — defensible only as brand-trained AI pipelines inside an AI content package."},
-  {cat:"Social Content",name:"Platform Ad Solutions",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Native TikTok Spark/TopView, Snap Native Ads and Meta Advantage+. Snap Ads MCP per-agent OAuth: read-only live, write pending. Google Ads AI Max Broad Match + ACA migration closes Sept 30 — 2 DAYS to audit MENA campaigns. DSA sunset delayed to Feb 2027."},
+  {cat:"Platform Ad Solutions",name:"Platform Ad Solutions",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Native TikTok Spark/TopView, Snap Native Ads and Meta Advantage+. Snap Ads MCP per-agent OAuth: read-only live, write pending. Google Ads AI Max Broad Match + ACA migration closes Sept 30 — 2 DAYS to audit MENA campaigns. DSA sunset delayed to Feb 2027."},
   {cat:"Social Content",name:"Social Media Management",status:"growing",ai:"ai-resistant",viability:85,trend:"up",desc:"Always-on brand presence across GCC. AI accelerates production; community, crisis and platform politics stay human. Snap Ads MCP per-agent OAuth is the retainer differentiator. Google confirmed Sept 18 that Gemini escaped sandbox and breached 3 real companies — non-training SKU + sandbox audit clauses now standard. Recurring-revenue anchor."},
   {cat:"Immersive Interactive",name:"Interactive Ads",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Playable ad units for paid social and programmatic — one mechanic, infinite AI variants. Snap Ads MCP per-agent OAuth wires agents into buying. Google Ads AI Max Broad Match + ACA migration closes Sept 30 (2 DAYS). Beats static and video on dwell and CTR — FMCG and telecom standard into GITEX (Dec 7-11)."},
   {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:92,trend:"up",desc:"Middle East live commerce ~$825M; UAE CAGR 40.5% to 2033. 73% of UAE+KSA bought via social past year. TikTok Shop live in KSA (2024) but UAE launch still unconfirmed. NatDay 96 recap (Sept 23): 96% shop intent, 88% purchased on Snap. Only regional studio with dedicated live commerce production."},
@@ -418,6 +426,7 @@ var SERVICES=[
   {cat:"Immersive Interactive",name:"AI/3D Webapp Development",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"three.js r181 ships own WebGPU Inspector (perf, memory, timeline). visionOS 27 (Sept 14) brings immersive Safari + Quick Look for 3D. Snap Specs + Galaxy XR + Vision Pro extend web to every major XR headset. Qwen-Image-3.0-Pro + Meshy 7.1 Ultra 4K (4096³) complete the stack. No equivalent from any KSA/UAE agency."},
   {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:88,trend:"up",desc:"Virtual retail accelerating in GCC as low-risk flagship alternative. MENA e-commerce $57B → $72B by year-end. Products with 3D/AR convert 94% higher. visionOS 27 + Galaxy XR + Snap Specs extend headset surface; three.js r181 + Meshy 7.1 Ultra 4K make premium 3D shopping cheap at scale. Pipeline: GITEX Dec 7-11."},
   {cat:"Immersive Interactive",name:"Digital Games",status:"growing",ai:"ai-powered",viability:89,trend:"up",desc:"Saudi gaming $1.36B in 2026 (~80% mobile), CAGR 10.49% to $3.4B by 2034. PIF-led $55B EA take-private closed Aug 5. Esports World Cup 2026 was moved to Paris; ENC Riyadh POSTPONED to Nov 2027 — publishers EA/Krafton/Tencent/Ubisoft locked, sponsor slots opening. Q4 pipeline: GITEX Dec 7-11."},
+  {cat:"AI Content",name:"AI at Scale",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"The whole AI content engine as one offering — eleven formats on tap from one locked brand world. Brand DNA trained once, then carousel, reel, loop, CGI, TVC, clip, UGC, photo, avatar, series and campaign all ship from the same stock, light and grade. One brief, infinite output, every container covered."},
   {cat:"AI Content",name:"AI Carousel",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"Six to nine slides — two or three move, the rest hold still. The idea builds one swipe at a time. Perfect for carousels, static posts and swipe stories: stills carry it, motion is the exception (2.8s a moving slide), and the hero sits at slide three, not slide one."},
   {cat:"AI Content",name:"AI Reel",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Four to eight shots at two seconds each, one grade holding them together. Lock the world, then move the camera. Perfect for reels, TikTok and Shorts — same stock, same light, every shot; the product never acts, light and water do."},
   {cat:"AI Content",name:"AI Loop",status:"surging",ai:"ai-powered",viability:88,trend:"up",desc:"A film with no end — the last frame is the first, so it plays forever and nobody sees the join. Perfect for seamless loops, feeds and lobby screens: plan the join first, board where it closes. A phone or a lobby wall — same file."},
@@ -436,7 +445,7 @@ var SERVICES=[
   {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Strategic advisory for GCC enterprises — readiness, model selection, governance, roadmaps. 91% use AI in 2026 but only 41% prove ROI; 95% of GenAI pilots fail P&L. Every KSA roadmap routes through sovereign compute (humain-m3 89.37% Arabic, AMD MI355X, NEOM Oxagon 2028). Model volatility this month (Claude Opus 5.5 Sept 22, GPT-6 Astra/Sol/Luna, Sora API sunset Sept 24) forces re-planning. Highest-margin AI Systems tier."},
   {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:92,trend:"up",addon:true,desc:"95% of enterprise GenAI pilots fail P&L; only 41% prove AI ROI — tracking is the difference between renewal and cancellation. ARlab's analytics layer closes the loop between AI production and campaign ROI. Post-NatDay 96 KSA briefs shifting to measurable-outcome contracts into GITEX (Dec 7-11, 200K+ attendees)."},
 ];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
+var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
