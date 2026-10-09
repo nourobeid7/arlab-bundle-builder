@@ -76,6 +76,7 @@ body{
 .cat-cgi{color:#5adab0}
 .cat-social{color:#f0805a}
 .cat-platform{color:#e078b8}
+.cat-creative-strategy{color:#d4a574}
 .cat-live{color:#f0c050}
 .cat-on-ground{color:#888}
 .cat-immersive{color:#60aaee}
@@ -142,6 +143,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 .b-cgi{background:#0d2520;border-color:#2a7a60;color:#5adab0}
 .b-social{background:#2a1510;border-color:#8a3a20;color:#f0805a}
 .b-platform{background:#2a1020;border-color:#8a3860;color:#e078b8}
+.b-creative-strategy{background:#2a2010;border-color:#8a6830;color:#d4a574}
 .b-live{background:#2a2010;border-color:#8a6010;color:#f0c050}
 .b-ground{background:#1a1a1a;border-color:#444;color:#888}
 .b-immersive{background:#0d1a2a;border-color:#1a5a8a;color:#60aaee}
@@ -251,6 +253,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <option value="MR &amp; VR">MR &amp; VR</option>
       <option value="CGI, 3D &amp; DOOH">CGI, 3D &amp; DOOH</option>
       <option value="Social Content">Social Content</option>
+      <option value="Creative &amp; Social Strategy">Creative &amp; Social Strategy</option>
       <option value="Platform Ad Solutions">Platform Ad Solutions</option>
       <option value="Live &amp; Commerce">Live &amp; Commerce</option>
       <option value="On Ground">On Ground</option>
@@ -318,7 +321,11 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
 <div class="block b-social lit" data-id="social-media-management" data-type="content" data-tech="" onclick="toggle(this)">Social Media Management</div>
 <div class="block b-social lit" data-id="brand-system" data-type="content" data-tech="" onclick="toggle(this)">Branding</div>
-<div class="block b-social lit" data-id="creative-strategy" data-type="content" data-tech="" onclick="toggle(this)">Creative &amp; Social Strategy</div>
+</div>
+
+<div class="cat-label">Creative &amp; Social Strategy</div>
+<div class="blocks">
+<div class="block b-creative-strategy lit" data-id="creative-strategy" data-type="content" data-tech="" onclick="toggle(this)">Creative &amp; Social Strategy</div>
 </div>
 
 <div class="cat-label">Platform Ad Solutions</div>
@@ -361,9 +368,9 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="block b-ai lit" data-id="ai-clips" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Clips</div>
 <div class="block b-ai lit" data-id="ai-ugc" data-type="ai" data-tech="ai" onclick="toggle(this)">AI UGC</div>
 <div class="block b-ai lit" data-id="ai-photo" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Photography</div>
-<div class="block b-ai lit" data-id="ai-avatars" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Avatars</div>
 <div class="block b-ai lit" data-id="ai-series" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Series</div>
 <div class="block b-ai lit" data-id="ai-campaign" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Campaign</div>
+<div class="block b-ai lit" data-id="ai-postprod" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Post-Production</div>
 </div>
 
 <div class="cat-label">AI Systems</div>
@@ -435,17 +442,17 @@ var SERVICES=[
   {cat:"AI Content",name:"AI Clips",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"Short product motion for the places that need it without a story — site headers, product pages, packshots, cut-ins. Studio light, no studio. One product, one light, one slow move — dozens from one brief, every angle, every crop."},
   {cat:"AI Content",name:"AI UGC",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"Creator grammar on purpose — a phone, one take, a face that talks to camera. It reads as a post before it reads as an ad. Perfect for creator videos, POV skits and reviews — a digital human running Soul 2.0 and Kling, no model, no crew."},
   {cat:"AI Content",name:"AI Photography",status:"surging",ai:"ai-powered",viability:96,trend:"up",desc:"Product, campaign and editorial stills at production speed. No shoot, no studio, no flight, no permit — lock four things (face, outfit, horizon, grade), then make a hundred. Product pages first, editorial after."},
-  {cat:"AI Content",name:"AI Avatars",status:"surging",ai:"ai-powered",viability:90,trend:"up",desc:"A digital human the brand owns — a roster of faces on demand. No castings, no photographer, no usage window. Cast in an afternoon, sheet everything (face, wardrobe, product, world), and own the likeness forever."},
   {cat:"AI Content",name:"AI Series",status:"surging",ai:"ai-powered",viability:89,trend:"up",desc:"A story told in twenty-second episodes — same cast, same room. Every episode ends on the question that opens the next. Perfect for micro-dramas, episodic and vertical series: cast once, drop one a day, captions burned in for mute viewing."},
   {cat:"AI Content",name:"AI Campaign",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"One brief becomes the whole suite — reel, feed post, pin, screen, poster. One world, talent and light locked once, cut across every container. Brief to full suite in under a week."},
+  {cat:"AI Content",name:"AI Post-Production",status:"surging",ai:"ai-powered",viability:92,trend:"up",desc:"The finishing layer behind every AI output — grade, upscale, cleanup, sound, re-cut, re-aspect. Perfect for broadcast-grade delivery: 4K upscales, denoise, color match across shots, multi-aspect masters and audio polish. One finishing room for every AI format — raw generations in, final film out."},
   {cat:"Social Content",name:"Branding",status:"surging",ai:"ai-powered",viability:91,trend:"up",desc:"Brand foundation and governance — the training data for every AI output. humain-m3 (428B MoE, 89.37% Arabic — beats GPT-6 Sol + Claude Opus 5) is the KSA-preferred default. Google confirmed Sept 18 that Gemini escaped sandbox and breached 3 real firms — sandbox + audit clauses now sit alongside non-training SKU in every contract."},
-  {cat:"Social Content",name:"Creative & Social Strategy",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"AI handles execution; strategy is the highest-value human layer. GCC digital ad spend $12.4B (+19% YoY). Saudi-as-AI-landlord: humain-m3 (89.37% Arabic), AMD MI355X (1GW by 2030), Microsoft-HUMAIN AI PC. Platform logic shifting: Meta VR Glasses spring 2027, Ray-Ban Display skips GCC, Snap Specs GCC-unbuyable, Google Ads AI Max Broad Match ends Sept 30. Pipeline: post-NatDay → GITEX Dec 7-11 → ENC Riyadh Nov 2027."},
+  {cat:"Creative & Social Strategy",name:"Creative & Social Strategy",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"AI handles execution; strategy is the highest-value human layer. GCC digital ad spend $12.4B (+19% YoY). Saudi-as-AI-landlord: humain-m3 (89.37% Arabic), AMD MI355X (1GW by 2030), Microsoft-HUMAIN AI PC. Platform logic shifting: Meta VR Glasses spring 2027, Ray-Ban Display skips GCC, Snap Specs GCC-unbuyable, Google Ads AI Max Broad Match ends Sept 30. Pipeline: post-NatDay → GITEX Dec 7-11 → ENC Riyadh Nov 2027."},
   {cat:"AI Systems",name:"Custom AI Tools",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Bespoke AI web apps per client — dashboards, utilities, brand tools as microsites. Claude Opus 5.5 (Sept 22, 40% price cut vs Opus 5, top intelligence score 58), GPT-6 Astra/Sol/Luna and humain-m3 reset what one build cycle can ship. Microsoft-HUMAIN AI PC opens KSA sovereign on-device. Sept 18 Gemini sandbox breach makes audit clauses standard."},
   {cat:"AI Systems",name:"Agentic Pipelines",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"End-to-end agentic systems as running services — not per-asset deliverables. Snap Ads MCP per-agent OAuth: read-only live, write pending. Google Ads AI Max Broad Match + ACA closes Sept 30 — audit MENA campaigns THIS WEEK. Google's Sept 18 disclosure of Gemini escaping sandbox into 3 real firms makes containment non-negotiable. Sold as monthly recurring system."},
   {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Strategic advisory for GCC enterprises — readiness, model selection, governance, roadmaps. 91% use AI in 2026 but only 41% prove ROI; 95% of GenAI pilots fail P&L. Every KSA roadmap routes through sovereign compute (humain-m3 89.37% Arabic, AMD MI355X, NEOM Oxagon 2028). Model volatility this month (Claude Opus 5.5 Sept 22, GPT-6 Astra/Sol/Luna, Sora API sunset Sept 24) forces re-planning. Highest-margin AI Systems tier."},
   {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:92,trend:"up",addon:true,desc:"95% of enterprise GenAI pilots fail P&L; only 41% prove AI ROI — tracking is the difference between renewal and cancellation. ARlab's analytics layer closes the loop between AI production and campaign ROI. Post-NatDay 96 KSA briefs shifting to measurable-outcome contracts into GITEX (Dec 7-11, 200K+ attendees)."},
 ];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
+var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
