@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-10-23T08:36:11+00:00",
+  "based_on": {
+    "newsletters": 21,
+    "range_start": "2026-06-02",
+    "range_end": "2026-10-20",
+    "services": 41,
+    "model": "claude-opus-4-7"
+  },
+  "headline": {
+    "h": "The frontier moved to the desk, the glasses store, and a Qatari decree.",
+    "b": "Meta's 816B Muse Spark Open runs on two Mac Studios, Alibaba's Qwen N1 undercuts Ray-Ban at $450, and Qatar's new National Center for AI makes the GCC a three-capital market."
+  },
+  "whats_next": [
+    {
+      "domain": "Creator Economy",
+      "shape": "s_rise",
+      "heat": 82,
+      "verdict": "Gulf creator economy hit 263K monetizing (+75%); UGC is the one asset Muse-for-SMB can't replicate at brand tier.",
+      "arlab_play": "Reposition AI UGC and Creator Content as always-on monthly retainers tied to NatDay-to-GITEX pipeline.",
+      "services": [
+        "AI UGC",
+        "Creator Content",
+        "UGC"
+      ],
+      "price_anchor": "$8–15K / mo"
+    },
+    {
+      "domain": "AI Creative",
+      "shape": "exp_down",
+      "heat": 94,
+      "verdict": "Krea 3 at $0.06/edit and Kling 4.0's 30-second shots turn live imagery into a utility — not a line item.",
+      "arlab_play": "Rebuild the AI at Scale stack on Krea 3 + Kling 4.0 + Nano Banana Pro; retire Sora pipelines before Q4 bids.",
+      "services": [
+        "AI at Scale",
+        "AI CGI",
+        "AI Post-Production"
+      ],
+      "price_anchor": "$0.03–0.20 / asset"
+    },
+    {
+      "domain": "Smart Glasses & On-Face AR",
+      "shape": "tri_rise",
+      "heat": 96,
+      "verdict": "Qwen N1 at $450, Ray-Ban Gen 3 shipping, Rokid self-service stores open — four stacks, no winner, GCC still unbuyable on Snap and Meta Display.",
+      "arlab_play": "Spec dual-rail Snapchat Lens + WebAR demos that run on Qwen N1 and Meta glass for GITEX Dec 7–11.",
+      "services": [
+        "Snapchat Lens",
+        "WebAR",
+        "XR Wearables"
+      ],
+      "price_anchor": "$25–60K / prototype"
+    },
+    {
+      "domain": "Live Commerce & Immersive Retail",
+      "shape": "exp_up",
+      "heat": 93,
+      "verdict": "DSS 2026 closed +110% avg spend; KSA converts live at 8–15% while TikTok Shop UAE stays unconfirmed into Q4.",
+      "arlab_play": "Sell Live Shopping Activation as a monthly agentic retainer wired through Snap Ads MCP per-agent OAuth.",
+      "services": [
+        "Live Shopping Activation",
+        "Digital Installations",
+        "Interactive Screens"
+      ],
+      "price_anchor": "$20–45K / mo"
+    },
+    {
+      "domain": "GCC Sovereign AI",
+      "shape": "flat_rise",
+      "heat": 97,
+      "verdict": "Qatar decreed a National Center for AI Oct 20; HUMAIN runs dual-silicon; the Gulf is now three capitals, three stacks.",
+      "arlab_play": "Open a Doha channel before Milipol closes; pitch AI Consultative Solutions on humain-m3 and Core42 lanes.",
+      "services": [
+        "AI Consultative Solutions",
+        "Custom AI Tools",
+        "Branding"
+      ],
+      "price_anchor": "$60–250K / engagement"
+    },
+    {
+      "domain": "Agentic Workflows",
+      "shape": "consolidate",
+      "heat": 91,
+      "verdict": "DeepSeek silently swapped V4.1-Flash into prod; Sakana MASS collapses crews to one model; pin versions or ship broken.",
+      "arlab_play": "Sell Agentic Pipelines as metered running systems with model-pin + drift-test clauses in every SOW.",
+      "services": [
+        "Agentic Pipelines",
+        "Analytics Dashboard",
+        "Platform Ad Solutions"
+      ],
+      "price_anchor": "$12–30K / mo retainer"
+    }
+  ],
+  "dates_to_watch": [
+    {
+      "when": "Oct 21–23",
+      "what": "Milipol Qatar + Doha AI & Security Summit",
+      "why_it_matters": "First live showcase since the Qatar National Center for AI was decreed — the window to plant ARlab's flag in the third GCC capital before Riyadh and Abu Dhabi agencies arrive."
+    },
+    {
+      "when": "Oct 26–29",
+      "what": "FII10 Riyadh + Dubai AI Festival (overlapping Oct 26–27)",
+      "why_it_matters": "Every sovereign cheque and ministry buyer stacks in a single 72-hour window across two capitals — presence in both sets the Q1 2027 procurement narrative."
+    },
+    {
+      "when": "Oct 31",
+      "what": "Mistral Large 4 (1T open weights) drops",
+      "why_it_matters": "Largest European open-weight ever — gives GCC pitches a sovereign-safe non-Chinese, non-US frontier option alongside Muse Spark Open and humain-m3."
+    },
+    {
+      "when": "Nov 10",
+      "what": "Blender 5.3 stable with native Gaussian splats + SPZ v4",
+      "why_it_matters": "Splat plugin era ends overnight — ARlab's WebAR, 3D Virtual Stores and Interactive Screens pipelines need to be ported before competitors catch up."
+    },
+    {
+      "when": "Dec 7–11",
+      "what": "GITEX Global at Expo City Dubai",
+      "why_it_matters": "200K+ attendees, last enterprise pitching window before Q1 budgets close — anchor event for post-NatDay retainers across Digital Installations, Live Shopping, and Agentic Pipelines."
+    }
+  ]
+}

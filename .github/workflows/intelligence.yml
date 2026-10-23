@@ -1,0 +1,43 @@
+name: Compile market intelligence
+
+on:
+  schedule:
+    # Mondays 06:00 UTC = Mon 09:00 Beirut (fresh dashboard at start of week; newsletter is Tue 09:00 Beirut)
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r agent/requirements.txt
+
+      - name: Run intelligence compiler
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python agent/compile_intelligence.py
+
+      - name: Commit intelligence.json
+        run: |
+          git config user.name "arlab-intelligence-bot"
+          git config user.email "bot@thearlab.com"
+          git add intelligence.json
+          if git diff --cached --quiet; then
+            echo "No changes to intelligence.json"
+          else
+            git commit -m "chore(intel): refresh market intelligence $(date -u +%Y-%m-%d)"
+            git push
+          fi
