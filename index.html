@@ -85,7 +85,6 @@ body{
 .cat-web{color:#9080f0}
 .cat-strategy{color:#707070}
 .cat-addons{color:#f0c050}
-.cat-market{color:#e8d070}
 .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .service-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color .2s, transform .2s, box-shadow .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 6px 20px rgba(0,0,0,0.22)}
 .service-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 10px 28px rgba(0,0,0,0.32)}
@@ -107,6 +106,11 @@ body{
 .card-intel-label{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
 .card-desc{font-size:11px;color:var(--text2);line-height:1.55}
 .no-results{padding:40px;text-align:center;color:var(--text3);font-size:12px;grid-column:1/-1}
+.market-placeholder{min-height:calc(100vh - 180px);display:flex;align-items:center;justify-content:center;padding:40px}
+.market-placeholder-inner{max-width:520px;text-align:center}
+.market-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.market-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:10px}
+.market-sub{font-size:13px;line-height:1.6;color:var(--text2)}
 
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -218,7 +222,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
 <div class="tabs">
   <div class="tab active" onclick="switchTab('services',this)">Services</div>
-  <div class="tab" onclick="switchTab('packaging',this)">Packaging</div>
+  <div class="tab" onclick="switchTab('market',this)">Market</div>
 </div>
 
 <!-- SERVICES TAB -->
@@ -275,123 +279,14 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 </div>
 </div>
 
-<!-- PACKAGING TAB -->
-<div id="tab-packaging" class="tab-panel">
-<div class="pkg-main">
-<div class="blocks-panel">
-<div class="tech-section">
-  <div class="tech-row">
-    <span class="trow-label">Filter</span>
-    <div class="tech-pill tp-xr" data-tech="xr" onclick="toggleTech(this)">XR</div>
-    <div class="tech-pill tp-ar" data-tech="ar" onclick="toggleTech(this)">AR</div>
-    <div class="tech-pill tp-mr" data-tech="mr" onclick="toggleTech(this)">MR</div>
-    <div class="tech-pill tp-vr" data-tech="vr" onclick="toggleTech(this)">VR</div>
-    <div class="sep"></div>
-    <div class="tech-pill tp-ai" data-tech="ai" onclick="toggleTech(this)">AI</div>
-    <div class="tech-pill tp-pre3d" data-tech="pre3d" onclick="toggleTech(this)">Pre-Rendered 3D</div>
-    <div class="tech-pill tp-rt3d" data-tech="rt3d" onclick="toggleTech(this)">Real-Time 3D</div>
-    <div class="tech-pill tp-webgl" data-tech="webgl" onclick="toggleTech(this)">WebGL</div>
-    <div class="tech-pill tp-live" data-tech="live" onclick="toggleTech(this)">Live</div>
-    <div class="tech-pill tp-iog" data-tech="iog" onclick="toggleTech(this)">Interactive On Ground</div>
+<!-- MARKET TAB -->
+<div id="tab-market" class="tab-panel">
+<div class="market-placeholder">
+  <div class="market-placeholder-inner">
+    <div class="market-eyebrow">Market Intelligence</div>
+    <div class="market-title">GCC market layer — coming soon.</div>
+    <div class="market-sub">Spend, platforms, events, regulation and sovereign AI, in one view. Fill in with the week's market reads.</div>
   </div>
-</div>
-
-<div class="cat-label">Social AR</div>
-<div class="blocks">
-<div class="block b-ar lit" data-id="snapchat-lens" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">Snapchat Lens</div>
-<div class="block b-ar lit" data-id="tiktok-effect" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">TikTok Effect</div>
-<div class="block b-ar lit" data-id="youtube-effect" data-type="ar" data-tech="ar,xr" onclick="toggle(this)">YouTube Effect</div>
-<div class="block b-ar lit" data-id="web-ar" data-type="ar" data-tech="ar,xr,webgl" onclick="toggle(this)">WebAR</div>
-</div>
-
-<div class="cat-label">MR & VR</div>
-<div class="blocks">
-<div class="block b-mr lit" data-id="ar-spectacles" data-type="hardware" data-tech="ar,mr,xr" onclick="toggle(this)">XR Wearables</div>
-<div class="block b-mr lit" data-id="virtual-reality" data-type="hardware" data-tech="vr,xr,rt3d" onclick="toggle(this)">Virtual Reality</div>
-</div>
-
-<div class="cat-label">CGI, 3D & DOOH</div>
-<div class="blocks">
-<div class="block b-cgi lit" data-id="cgi" data-type="production" data-tech="pre3d" onclick="toggle(this)">CGI (Mixed Reality or Full 3D)</div>
-<div class="block b-cgi lit" data-id="naked-eye" data-type="ooh" data-tech="pre3d" onclick="toggle(this)">3D Naked Eye Billboard</div>
-</div>
-
-<div class="cat-label">Social Content</div>
-<div class="blocks">
-<div class="block b-social lit" data-id="ugc" data-type="content" data-tech="" onclick="toggle(this)">UGC</div>
-<div class="block b-social lit" data-id="creator-campaigns" data-type="content" data-tech="" onclick="toggle(this)">Creator Content</div>
-<div class="block b-social lit" data-id="motion-graphics" data-type="content" data-tech="pre3d" onclick="toggle(this)">Motion Graphics</div>
-<div class="block b-social lit" data-id="social-media-management" data-type="content" data-tech="" onclick="toggle(this)">Social Media Management</div>
-<div class="block b-social lit" data-id="brand-system" data-type="content" data-tech="" onclick="toggle(this)">Branding</div>
-</div>
-
-<div class="cat-label">Creative &amp; Social Strategy</div>
-<div class="blocks">
-<div class="block b-creative-strategy lit" data-id="creative-strategy" data-type="content" data-tech="" onclick="toggle(this)">Creative &amp; Social Strategy</div>
-</div>
-
-<div class="cat-label">Platform Ad Solutions</div>
-<div class="blocks">
-<div class="block b-platform lit" data-id="platform-ads" data-type="content" data-tech="" onclick="toggle(this)">Platform Ad Solutions</div>
-</div>
-
-<div class="cat-label">Live & Commerce</div>
-<div class="blocks">
-<div class="block b-live lit" data-id="live-streaming" data-type="live" data-tech="live" onclick="toggle(this)">Live Streaming</div>
-<div class="block b-live lit" data-id="live-shopping" data-type="live" data-tech="live" onclick="toggle(this)">Live Shopping Activation</div>
-</div>
-
-<div class="cat-label">On Ground</div>
-<div class="blocks">
-<div class="block b-ground lit" data-id="digital-installations" data-type="ground" data-tech="ar,xr,rt3d,iog" onclick="toggle(this)">Digital Installations</div>
-<div class="block b-ground lit" data-id="interactive-screens" data-type="ground" data-tech="ai,ar,xr,iog" onclick="toggle(this)">Interactive Screens</div>
-<div class="block b-ground lit" data-id="projection-mapping" data-type="ground" data-tech="rt3d,iog" onclick="toggle(this)">Projection Mapping</div>
-<div class="block b-ground lit" data-id="pr-packages" data-type="ground" data-tech="" onclick="toggle(this)">PR Packages</div>
-</div>
-
-<div class="cat-label">Immersive Interactive</div>
-<div class="blocks">
-<div class="block b-immersive lit" data-id="ai-website" data-type="interactive" data-tech="ai,webgl" onclick="toggle(this)">AI/3D Webapp</div>
-<div class="block b-immersive lit" data-id="virtual-stores" data-type="interactive" data-tech="rt3d,webgl" onclick="toggle(this)">3D Virtual Stores</div>
-<div class="block b-immersive lit" data-id="games" data-type="interactive" data-tech="rt3d" onclick="toggle(this)">Digital Games</div>
-<div class="block b-immersive lit" data-id="interactive-ads" data-type="interactive" data-tech="webgl" onclick="toggle(this)">Interactive Ads</div>
-</div>
-
-<!-- ✅ UPDATED: AI Content restructured to match the 11 "AI Services: At Scale" deliverables -->
-<div class="cat-label">AI</div>
-<div class="sub-label">AI Social Content</div>
-<div class="blocks">
-<div class="block b-ai lit" data-id="ai-at-scale" data-type="ai" data-tech="ai" onclick="toggle(this)">AI at Scale</div>
-<div class="block b-ai lit" data-id="ai-carousel" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Carousel</div>
-<div class="block b-ai lit" data-id="ai-reel" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Reel</div>
-<div class="block b-ai lit" data-id="ai-loop" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Loop</div>
-<div class="block b-ai lit" data-id="ai-cgi" data-type="ai" data-tech="ai,pre3d" onclick="toggle(this)">AI CGI</div>
-<div class="block b-ai lit" data-id="ai-miniclips" data-type="ai" data-tech="ai" onclick="toggle(this)">AI TVC</div>
-<div class="block b-ai lit" data-id="ai-clips" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Clips</div>
-<div class="block b-ai lit" data-id="ai-ugc" data-type="ai" data-tech="ai" onclick="toggle(this)">AI UGC</div>
-<div class="block b-ai lit" data-id="ai-photo" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Photography</div>
-<div class="block b-ai lit" data-id="ai-series" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Series</div>
-<div class="block b-ai lit" data-id="ai-campaign" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Campaign</div>
-<div class="block b-ai lit" data-id="ai-postprod" data-type="ai" data-tech="ai" onclick="toggle(this)">AI Post-Production</div>
-</div>
-
-<div class="cat-label">AI Systems</div>
-<div class="blocks">
-<div class="block b-strategy lit" data-id="custom-ai-tools" data-type="addon" data-tech="ai" onclick="toggle(this)">Custom AI Tools</div>
-<div class="block b-strategy lit" data-id="agentic-pipelines" data-type="addon" data-tech="ai" onclick="toggle(this)">Agentic Pipelines</div>
-<div class="block b-strategy lit" data-id="ai-consultative" data-type="addon" data-tech="ai" onclick="toggle(this)">AI Consultative Solutions</div>
-<div class="block b-strategy lit" data-id="analytics-dashboard" data-type="addon" data-tech="" onclick="toggle(this)">Analytics Dashboard</div>
-</div>
-</div>
-
-<div class="results-panel">
-  <div class="results-header">
-    <div class="sel-count" id="sel-count">Select filters or blocks to begin</div>
-    <button class="clear-btn" onclick="clearAll()">Clear all</button>
-  </div>
-  <div class="result-card" id="bp"><span class="badge badge-bundle" id="bb">Bundle</span><div id="bc" style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</div></div>
-  <div class="result-card" id="fp"><span class="badge badge-strong" id="fb">Tech Fusion</span><div id="fc" style="font-size:11px;color:var(--text3)">Activate a filter or select blocks.</div></div>
-</div>
 </div>
 </div>
 
@@ -431,7 +326,7 @@ var SERVICES=[
   {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Activate at MoE (12 rooms, 50+ challenges) + Palm Jumeirah Beauty Unbound Oct 14-Nov 1 + Kiehl's smart mirrors DFC. HUMAIN Horizon Ultra Sept 20. GCC luxury $16.53B 2026."},
   {cat:"On Ground",name:"Interactive Screens",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"AR try-on +65% purchase likelihood; 3D/AR +94% CVR. Wayfair +92% CVR, 28% AOV. VTO $12.09B→$15.29B. humain-m3 89.37% Arabic ships Arabic-native."},
   {cat:"On Ground",name:"Projection Mapping",status:"growing",ai:"ai-powered",viability:87,trend:"up",desc:"Global projection mapping $5.29B at 20.3% CAGR. Boulevard World permanent 3D mapping (Taj Mahal). Riyadh Season Oct 21-Dec. Eid Al Etihad Dec 2. DSF Dec 4-Jan 17."},
-  {cat:"Market",name:"Market",status:"growing",ai:"ai-resistant",viability:80,trend:"up",desc:"— intelligence to be filled —"},
+  {cat:"On Ground",name:"PR Packages",status:"stable",ai:"ai-resistant",viability:72,trend:"flat",desc:"Gulf News 20M+ monthly / Arabian Business 1M+ — tier-1 earned stays human counterweight to AI noise. Qatar NCAI Oct 20. G42 15 Greece deals Oct 22-23."},
   {cat:"Immersive Interactive",name:"AI/3D Webapp Development",status:"surging",ai:"ai-powered",viability:96,trend:"up",desc:"three.js r186 Gaussian splat on WebGPU. visionOS 27 Safari Web Environments default on. Meshy 7.1 Ultra 4K + Rodin Gen-2.5 (2M polys). 8thWall engine open-source (MIT)."},
   {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:86,trend:"up",desc:"Products with 3D/AR convert +94%. Wayfair +92% CVR, 43% return reduction. VTO $12.09B→$15.29B. MENA e-commerce $57B 2026. Meshy 7.1 Ultra 4K ships premium at scale."},
   {cat:"Immersive Interactive",name:"Digital Games",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"PIF closed $55B EA take-private Aug 4 (~93.4% owned). EWC moved to Paris July 2-Aug 23 ($75M prize, $120M sponsorships). Saudi gaming SAR 10B in 2026."},
@@ -454,7 +349,7 @@ var SERVICES=[
   {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-resistant",viability:90,trend:"up",desc:"MIT: 95% of pilots have no measurable P&L; external AI succeeds 2x vs internal (67% vs 33%). Snowflake: $1.41 back per $1. GCC AI adoption 62→84%. UAE 97% govt, KSA 72%."},
   {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:90,trend:"up",addon:true,desc:"MIT: 95% of AI pilots have no measurable P&L. Snowflake: $1.41 back per $1. Closes loop between AI production and campaign ROI. UAE PDPL audit trails mandatory Jan 1 2027."},
 ];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons","Market":"cat-market"};
+var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
