@@ -1,12 +1,13 @@
 """
-ARlab Market Intelligence Agent.
+ARlab Services Refresh Agent.
 
 Pulls every weekly newsletter from nourobeid7/arlab-newsletter, parses the
-40-service index from ../index.html, hands both to Claude Opus 4.7 via tool-use,
-and writes the structured forecast to ../intelligence.json.
+service catalogue from ../index.html, asks Claude Opus 4.7 to rewrite each
+service's `desc` using the latest signals, then injects the new descs and the
+current week's date label back into ../index.html.
 
-Runs weekly via .github/workflows/intelligence.yml, one hour after the newsletter.
-Can also run locally with ANTHROPIC_API_KEY in env.
+Runs weekly via .github/workflows/intelligence.yml, one hour after the
+newsletter. Can also run locally with ANTHROPIC_API_KEY in env.
 """
 
 from __future__ import annotations
@@ -16,7 +17,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -25,13 +26,14 @@ from anthropic import Anthropic
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
 INDEX_HTML = REPO_ROOT / "index.html"
-OUT_JSON = REPO_ROOT / "intelligence.json"
 PROMPT_MD = HERE / "prompt.md"
 
 NEWSLETTER_REPO = "nourobeid7/arlab-newsletter"
 MODEL = "claude-opus-4-7"
 
 GITHUB_API = "https://api.github.com"
+
+SERVICE_KEY_ORDER = ("cat", "name", "status", "ai", "viability", "trend", "addon", "desc")
 
 
 def gh_headers() -> dict[str, str]:
@@ -62,8 +64,8 @@ def fetch_newsletters() -> list[dict]:
     return out
 
 
-def parse_services(index_html: str) -> list[dict]:
-    """Extract the inline `var SERVICES = [ ... ]` block from index.html."""
+def find_services_block(index_html: str) -> tuple[int, int]:
+    """Return (bracket_start, bracket_end_inclusive) for the SERVICES array `[...]`."""
     m = re.search(r"var SERVICES\s*=\s*\[", index_html)
     if not m:
         raise RuntimeError("SERVICES array not found in index.html")
@@ -91,22 +93,63 @@ def parse_services(index_html: str) -> list[dict]:
             elif c == "]":
                 depth -= 1
                 if depth == 0:
-                    break
+                    return start, i
         i += 1
-    arr_src = index_html[start : i + 1]
-    # Convert JS object literals (unquoted keys, single quotes) to JSON.
-    # Keys in SERVICES are the fixed set: cat, name, status, ai, viability, trend, desc.
+    raise RuntimeError("SERVICES array not terminated")
+
+
+def parse_services(index_html: str) -> list[dict]:
+    """Extract SERVICES as a list of dicts."""
+    start, end = find_services_block(index_html)
+    arr_src = index_html[start : end + 1]
     normalized = arr_src
-    # Quote keys
-    for key in ("cat", "name", "status", "ai", "viability", "trend", "desc", "addon"):
+    for key in SERVICE_KEY_ORDER:
         normalized = re.sub(rf"([{{,]\s*){key}\s*:", rf'\1"{key}":', normalized)
-    # Strip JS-legal trailing commas before } or ] — JSON forbids them.
     normalized = re.sub(r",(\s*[}\]])", r"\1", normalized)
     try:
         return json.loads(normalized)
     except json.JSONDecodeError as err:
         snippet = normalized[max(0, err.pos - 60) : err.pos + 60]
         raise RuntimeError(f"SERVICES JSON parse failed at {err.pos}: …{snippet}…") from err
+
+
+def serialize_service(s: dict) -> str:
+    """Render a service dict in the same JS-literal format as the source."""
+    parts = []
+    for k in SERVICE_KEY_ORDER:
+        if k not in s:
+            continue
+        v = s[k]
+        if isinstance(v, bool):
+            parts.append(f"{k}:{'true' if v else 'false'}")
+        elif isinstance(v, (int, float)):
+            parts.append(f"{k}:{v}")
+        else:
+            parts.append(f"{k}:{json.dumps(v, ensure_ascii=False)}")
+    return "{" + ",".join(parts) + "}"
+
+
+def serialize_services_array(services: list[dict]) -> str:
+    return "[\n" + ",\n".join("  " + serialize_service(s) for s in services) + ",\n]"
+
+
+def inject_services(index_html: str, services: list[dict]) -> str:
+    start, end = find_services_block(index_html)
+    return index_html[:start] + serialize_services_array(services) + index_html[end + 1 :]
+
+
+def inject_week_label(index_html: str, label: str) -> str:
+    pattern = r'(<span class="date-label">)[^<]*(</span>)'
+    new_html, n = re.subn(pattern, rf"\1{label}\2", index_html, count=1)
+    if n == 0:
+        raise RuntimeError("date-label span not found in index.html")
+    return new_html
+
+
+def current_week_label(today: datetime | None = None) -> str:
+    today = (today or datetime.now(timezone.utc)).date()
+    monday = today - timedelta(days=today.weekday())
+    return f"Week of {monday.strftime('%B')} {monday.day}, {monday.year}"
 
 
 def compact_newsletter(nl: dict) -> dict:
@@ -134,105 +177,42 @@ def compact_newsletter(nl: dict) -> dict:
     }
 
 
-DOMAINS = [
-    "Creator Economy",
-    "AI Creative",
-    "Smart Glasses & On-Face AR",
-    "Live Commerce & Immersive Retail",
-    "GCC Sovereign AI",
-    "Agentic Workflows",
-]
-
-
-def build_tool_schema() -> dict:
+def build_tool_schema(service_names: list[str]) -> dict:
     return {
-        "name": "submit_intelligence",
+        "name": "submit_service_updates",
         "description": (
-            "Submit ARlab's compiled market intelligence for this week. "
-            "One headline + six domain cards + five dates. That's the whole dashboard."
+            "Submit refreshed descriptions for every ARlab service, grounded in the latest "
+            "newsletter archive. One `updates` array; one entry per service."
         ),
         "input_schema": {
             "type": "object",
-            "required": ["headline", "whats_next", "dates_to_watch"],
+            "required": ["updates"],
             "properties": {
-                "headline": {
-                    "type": "object",
-                    "required": ["h", "b"],
-                    "description": "The editorial lede for the week.",
-                    "properties": {
-                        "h": {
-                            "type": "string",
-                            "description": "8–14 words. The one thing the CEO needs to know this week.",
-                        },
-                        "b": {
-                            "type": "string",
-                            "description": "1–2 sentences expanding the headline. Must name 2–3 specific proof points.",
-                        },
-                    },
-                },
-                "whats_next": {
+                "updates": {
                     "type": "array",
-                    "minItems": 6,
-                    "maxItems": 6,
-                    "description": "Exactly six domain cards, in the fixed domain order. Visual-first: curve shape + heat + one-line verdict.",
+                    "minItems": len(service_names),
+                    "maxItems": len(service_names),
+                    "description": (
+                        f"Exactly {len(service_names)} entries — one per service in the index, "
+                        "in any order. Each entry rewrites the `desc` for one service."
+                    ),
                     "items": {
                         "type": "object",
-                        "required": [
-                            "domain",
-                            "shape",
-                            "heat",
-                            "verdict",
-                            "arlab_play",
-                            "services",
-                            "price_anchor",
-                        ],
+                        "required": ["name", "desc"],
                         "properties": {
-                            "domain": {"type": "string", "enum": DOMAINS},
-                            "shape": {
+                            "name": {
                                 "type": "string",
-                                "enum": ["exp_up", "s_rise", "flat_rise", "tri_rise", "consolidate", "exp_down", "plateau"],
-                                "description": "The trajectory shape — the diagram carries the meaning.",
+                                "enum": service_names,
+                                "description": "Exact service name from the ARlab index.",
                             },
-                            "heat": {
-                                "type": "integer",
-                                "minimum": 0,
-                                "maximum": 100,
-                                "description": "0–100 raw intensity this quarter. 90+ = on fire this week; 50 = baseline; <30 = cooling.",
-                            },
-                            "verdict": {
+                            "desc": {
                                 "type": "string",
-                                "description": "10–18 word punch line. One takeaway. Must name a brand / product / date OR an ARlab service.",
+                                "description": (
+                                    "~300–400 character refreshed description. Plain text, "
+                                    "no markdown, no newlines. Dense with current proof points "
+                                    "(brands, products, prices, dates, metrics)."
+                                ),
                             },
-                            "arlab_play": {
-                                "type": "string",
-                                "description": "10–18 word directive — pitch / ship / reprice / kill. Must name an exact ARlab service.",
-                            },
-                            "services": {
-                                "type": "array",
-                                "minItems": 1,
-                                "maxItems": 3,
-                                "items": {"type": "string"},
-                                "description": "Exact service names from the ARlab index.",
-                            },
-                            "price_anchor": {
-                                "type": "string",
-                                "description": "Short pricing label e.g. '$8–15K / mo', 'internal R&D'.",
-                            },
-                        },
-                    },
-                },
-                "dates_to_watch": {
-                    "type": "array",
-                    "minItems": 5,
-                    "maxItems": 5,
-                    "description": "Exactly 5 upcoming dates/events that will close or kill deals.",
-                    "items": {
-                        "type": "object",
-                        "required": ["when", "what", "why_it_matters"],
-                        "properties": {
-                            "when": {"type": "string"},
-                            "what": {"type": "string"},
-                            "why_it_matters": {"type": "string"},
                         },
                     },
                 },
@@ -241,9 +221,10 @@ def build_tool_schema() -> dict:
     }
 
 
-def call_agent(system_prompt: str, newsletters: list[dict], services: list[dict]) -> dict:
+def call_agent(system_prompt: str, newsletters: list[dict], services: list[dict]) -> list[dict]:
     client = Anthropic()
-    tool = build_tool_schema()
+    service_names = [s["name"] for s in services]
+    tool = build_tool_schema(service_names)
     archive = [compact_newsletter(nl) for nl in newsletters]
     user_block = {
         "role": "user",
@@ -255,12 +236,13 @@ def call_agent(system_prompt: str, newsletters: list[dict], services: list[dict]
                     f"{len(archive)} weekly newsletters, {archive[0]['date']} → {archive[-1]['date']}.\n\n"
                     "```json\n" + json.dumps(archive, ensure_ascii=False) + "\n```\n\n"
                     "## The ARlab services index\n\n"
-                    f"{len(services)} services currently offered. Each has viability, trend, and recent context.\n\n"
+                    f"{len(services)} services currently offered. Each has viability, trend, and the "
+                    "existing desc you are refreshing.\n\n"
                     "```json\n" + json.dumps(services, ensure_ascii=False) + "\n```\n\n"
                     "## Your task\n\n"
-                    "Compile this week's ARlab market intelligence. Call the `submit_intelligence` "
-                    "tool once with the full structured payload. Everything you emit lives inside "
-                    "that tool call — no free text."
+                    "Rewrite the `desc` of every service to reflect the freshest newsletter "
+                    "signals. Match the existing voice and length. Call the "
+                    "`submit_service_updates` tool once with one entry per service — nothing else."
                 ),
                 "cache_control": {"type": "ephemeral"},
             }
@@ -268,17 +250,35 @@ def call_agent(system_prompt: str, newsletters: list[dict], services: list[dict]
     }
     resp = client.messages.create(
         model=MODEL,
-        max_tokens=16000,
+        max_tokens=24000,
         system=[{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}],
         tools=[tool],
-        tool_choice={"type": "tool", "name": "submit_intelligence"},
+        tool_choice={"type": "tool", "name": "submit_service_updates"},
         messages=[user_block],
     )
     print(f"[agent] usage: in={resp.usage.input_tokens} out={resp.usage.output_tokens}", file=sys.stderr)
     for block in resp.content:
-        if block.type == "tool_use" and block.name == "submit_intelligence":
-            return block.input
-    raise RuntimeError("agent did not call submit_intelligence")
+        if block.type == "tool_use" and block.name == "submit_service_updates":
+            return block.input["updates"]
+    raise RuntimeError("agent did not call submit_service_updates")
+
+
+def apply_updates(services: list[dict], updates: list[dict]) -> list[dict]:
+    """Merge new descs into the services list by name. Fail hard on mismatches."""
+    by_name = {u["name"]: u["desc"] for u in updates}
+    service_names = {s["name"] for s in services}
+    missing = service_names - by_name.keys()
+    extra = by_name.keys() - service_names
+    if missing:
+        raise RuntimeError(f"agent did not update {len(missing)} services: {sorted(missing)}")
+    if extra:
+        raise RuntimeError(f"agent returned updates for unknown services: {sorted(extra)}")
+    out = []
+    for s in services:
+        new_s = dict(s)
+        new_s["desc"] = by_name[s["name"]]
+        out.append(new_s)
+    return out
 
 
 def main() -> int:
@@ -286,26 +286,20 @@ def main() -> int:
         print("ANTHROPIC_API_KEY not set", file=sys.stderr)
         return 2
     newsletters = fetch_newsletters()
-    services = parse_services(INDEX_HTML.read_text())
+    html = INDEX_HTML.read_text()
+    services = parse_services(html)
     system_prompt = PROMPT_MD.read_text()
     print(f"[input] {len(newsletters)} newsletters · {len(services)} services", file=sys.stderr)
     t0 = time.time()
-    intelligence = call_agent(system_prompt, newsletters, services)
+    updates = call_agent(system_prompt, newsletters, services)
     elapsed = time.time() - t0
-    print(f"[agent] completed in {elapsed:.1f}s", file=sys.stderr)
-    envelope = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "based_on": {
-            "newsletters": len(newsletters),
-            "range_start": newsletters[0]["_date"],
-            "range_end": newsletters[-1]["_date"],
-            "services": len(services),
-            "model": MODEL,
-        },
-        **intelligence,
-    }
-    OUT_JSON.write_text(json.dumps(envelope, ensure_ascii=False, indent=2))
-    print(f"[write] {OUT_JSON} ({OUT_JSON.stat().st_size} bytes)", file=sys.stderr)
+    print(f"[agent] {len(updates)} desc updates in {elapsed:.1f}s", file=sys.stderr)
+    refreshed = apply_updates(services, updates)
+    new_html = inject_services(html, refreshed)
+    label = current_week_label()
+    new_html = inject_week_label(new_html, label)
+    INDEX_HTML.write_text(new_html)
+    print(f"[write] {INDEX_HTML} refreshed · label: {label}", file=sys.stderr)
     return 0
 
 

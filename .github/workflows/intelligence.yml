@@ -1,4 +1,4 @@
-name: Compile market intelligence
+name: Refresh service descriptions
 
 on:
   schedule:
@@ -24,20 +24,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r agent/requirements.txt
 
-      - name: Run intelligence compiler
+      - name: Refresh service descriptions
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python agent/compile_intelligence.py
 
-      - name: Commit intelligence.json
+      - name: Commit refreshed index.html
         run: |
           git config user.name "arlab-intelligence-bot"
           git config user.email "bot@thearlab.com"
-          git add intelligence.json
+          git add index.html
           if git diff --cached --quiet; then
-            echo "No changes to intelligence.json"
+            echo "No changes to index.html"
           else
-            git commit -m "chore(intel): refresh market intelligence $(date -u +%Y-%m-%d)"
+            git commit -m "chore(intel): weekly service refresh $(date -u +%Y-%m-%d)"
             git push
           fi
