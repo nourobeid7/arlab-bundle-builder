@@ -85,6 +85,7 @@ body{
 .cat-web{color:#9080f0}
 .cat-strategy{color:#707070}
 .cat-addons{color:#f0c050}
+.cat-market{color:#e8d070}
 .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .service-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color .2s, transform .2s, box-shadow .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 6px 20px rgba(0,0,0,0.22)}
 .service-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 10px 28px rgba(0,0,0,0.32)}
@@ -103,6 +104,7 @@ body{
 .viability-up{color:var(--growing);font-size:10px;font-weight:600}
 .viability-down{color:var(--declining);font-size:10px;font-weight:600}
 .viability-flat{color:var(--text3);font-size:10px;font-weight:600}
+.card-intel-label{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
 .card-desc{font-size:11px;color:var(--text2);line-height:1.55}
 .no-results{padding:40px;text-align:center;color:var(--text3);font-size:12px;grid-column:1/-1}
 
@@ -412,7 +414,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 var SERVICES=[
   {cat:"Social AR",name:"Snapchat Lens",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"Snap Specs ship fall 2026 US/UK/FR at $2,195 (Connected Case $2,395). Lens Studio 5.24.1 (Oct 7) adds multiplayer. 971M MAU, 85% MENA DAU. GCC unbuyable — prototype into GITEX Dec 7-11."},
   {cat:"Social AR",name:"TikTok Effect",status:"growing",ai:"ai-powered",viability:80,trend:"up",desc:"TikTok Shop UAE live for sellers; KSA Q1 2027. Effect House ships Ask AI builder + Image Creator (2 refs). Branded Effects +9.65% recall. KSA 28M MAU."},
-  {cat:"Social AR",name:"YouTube Effect",status:"declining",ai:"ai-threatened",viability:42,trend:"down",desc:"Shorts RPM stuck $0.04-0.08. YPP bar jumps to 10M qualified views in 90d from Feb 2027. Meta Spark AR killed for 3rd parties. AR dollars route to Snap/Meta/TikTok/WebAR."},
+  {cat:"Social AR",name:"YouTube Effect",status:"declining",ai:"ai-threatened",viability:44,trend:"down",desc:"Shorts Effect Maker expanded with gen-AI effects (doodle→image, selfie→themed clip) + Ask YouTube AI shopping on playback. But Shorts RPM stuck $0.04-0.08, YPP bar jumps to 10M qualified views in 90d from Feb 2027. AR dollars route to Snap/Meta/TikTok."},
   {cat:"Social AR",name:"WebAR",status:"surging",ai:"ai-powered",viability:95,trend:"up",desc:"three.js r186 (Sept 8) ships native Gaussian splat on WebGPU. visionOS 27 Safari turns Web Environments ON by default. 8thWall core open-source (MIT). AR retail $12B 2026."},
   {cat:"MR & VR",name:"XR Wearables",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Meta Ray-Ban Display intl Oct 13 (FR/IT/DE €899, UK £749). Meta VR Glasses spring 2027 $1,299. Rokid #1 AI glasses H1. Saudi smart glasses $31M→$158.8M by 2033 (26.3% CAGR)."},
   {cat:"MR & VR",name:"Virtual Reality",status:"declining",ai:"ai-resistant",viability:55,trend:"down",desc:"Dedicated VR shipments fell 42.8% in 2025 — growth moved to smart glasses. visionOS 27.2 RC Oct 19. Vision Pro Remnants Oct 16. VR premium only at Vision 2030 anchor events."},
@@ -429,7 +431,7 @@ var SERVICES=[
   {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:94,trend:"up",desc:"Activate at MoE (12 rooms, 50+ challenges) + Palm Jumeirah Beauty Unbound Oct 14-Nov 1 + Kiehl's smart mirrors DFC. HUMAIN Horizon Ultra Sept 20. GCC luxury $16.53B 2026."},
   {cat:"On Ground",name:"Interactive Screens",status:"surging",ai:"ai-powered",viability:93,trend:"up",desc:"AR try-on +65% purchase likelihood; 3D/AR +94% CVR. Wayfair +92% CVR, 28% AOV. VTO $12.09B→$15.29B. humain-m3 89.37% Arabic ships Arabic-native."},
   {cat:"On Ground",name:"Projection Mapping",status:"growing",ai:"ai-powered",viability:87,trend:"up",desc:"Global projection mapping $5.29B at 20.3% CAGR. Boulevard World permanent 3D mapping (Taj Mahal). Riyadh Season Oct 21-Dec. Eid Al Etihad Dec 2. DSF Dec 4-Jan 17."},
-  {cat:"On Ground",name:"PR Packages",status:"stable",ai:"ai-resistant",viability:72,trend:"flat",desc:"Gulf News 20M+ monthly / Arabian Business 1M+ — tier-1 earned stays human counterweight to AI noise. Qatar NCAI Oct 20. G42 15 Greece deals Oct 22-23."},
+  {cat:"Market",name:"Market",status:"growing",ai:"ai-resistant",viability:80,trend:"up",desc:"— intelligence to be filled —"},
   {cat:"Immersive Interactive",name:"AI/3D Webapp Development",status:"surging",ai:"ai-powered",viability:96,trend:"up",desc:"three.js r186 Gaussian splat on WebGPU. visionOS 27 Safari Web Environments default on. Meshy 7.1 Ultra 4K + Rodin Gen-2.5 (2M polys). 8thWall engine open-source (MIT)."},
   {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:86,trend:"up",desc:"Products with 3D/AR convert +94%. Wayfair +92% CVR, 43% return reduction. VTO $12.09B→$15.29B. MENA e-commerce $57B 2026. Meshy 7.1 Ultra 4K ships premium at scale."},
   {cat:"Immersive Interactive",name:"Digital Games",status:"growing",ai:"ai-powered",viability:82,trend:"up",desc:"PIF closed $55B EA take-private Aug 4 (~93.4% owned). EWC moved to Paris July 2-Aug 23 ($75M prize, $120M sponsorships). Saudi gaming SAR 10B in 2026."},
@@ -452,11 +454,11 @@ var SERVICES=[
   {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-resistant",viability:90,trend:"up",desc:"MIT: 95% of pilots have no measurable P&L; external AI succeeds 2x vs internal (67% vs 33%). Snowflake: $1.41 back per $1. GCC AI adoption 62→84%. UAE 97% govt, KSA 72%."},
   {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:90,trend:"up",addon:true,desc:"MIT: 95% of AI pilots have no measurable P&L. Snowflake: $1.41 back per $1. Closes loop between AI production and campaign ROI. UAE PDPL audit trails mandatory Jan 1 2027."},
 ];
-var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
+var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons","Market":"cat-market"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
-function buildCard(s){return'<div class="service-card">'+(s.addon?'<span class="s-badge s-badge-addon">Add-on</span>':'')+'<div class="card-name'+(s.addon?' has-addon':'')+'">'+s.name+'</div><div class="s-badges"><span class="s-badge s-badge-'+s.status+'">'+statusLabel(s.status)+'</span><span class="s-badge s-badge-'+s.ai+'">'+aiLabel(s.ai)+'</span>'+trendArrow(s.trend,s.viability)+'</div><div class="card-desc">'+s.desc+'</div></div>';}
+function buildCard(s){return'<div class="service-card">'+(s.addon?'<span class="s-badge s-badge-addon">Add-on</span>':'')+'<div class="card-name'+(s.addon?' has-addon':'')+'">'+s.name+'</div><div class="s-badges"><span class="s-badge s-badge-'+s.status+'">'+statusLabel(s.status)+'</span><span class="s-badge s-badge-'+s.ai+'">'+aiLabel(s.ai)+'</span>'+trendArrow(s.trend,s.viability)+'</div><div class="card-intel-label">This Week</div><div class="card-desc">'+s.desc+'</div></div>';}
 function filterCards(){
   var q=document.getElementById('search').value.toLowerCase();
   var cat=document.getElementById('cat-filter').value;
