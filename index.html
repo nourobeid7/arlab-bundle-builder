@@ -45,11 +45,12 @@ body{
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 .services-main{padding:28px 40px;max-width:1400px}
-.stats-row{display:grid;grid-template-columns:180px 1fr;gap:10px;margin-bottom:28px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.25)}
-.stat-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-family:'Space Grotesk',sans-serif}
+.stats-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.stat-card{position:relative;background:linear-gradient(135deg,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.04) 48%,rgba(255,255,255,0.02) 100%);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:14px 18px;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.22),inset 0 -1px 0 rgba(255,255,255,0.04),inset 1px 0 0 rgba(255,255,255,0.08),inset -1px 0 0 rgba(255,255,255,0.08),0 10px 30px rgba(0,0,0,0.28)}
+.stat-card::before{content:'';position:absolute;inset:0;border-radius:16px;background:radial-gradient(120% 60% at 50% -20%,rgba(255,255,255,0.14),transparent 60%);pointer-events:none}
+.stat-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-family:'Space Grotesk',sans-serif}
 .stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text);line-height:1}
-.stat-sub-row{display:flex;align-items:center;gap:0;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.stat-sub-row{display:flex;align-items:center;gap:0;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1)}
 .stat-sub{display:flex;flex-direction:column;gap:2px;padding:0 16px}
 .stat-sub:first-child{padding-left:0}
 .stat-sub-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-family:'Space Grotesk',sans-serif}
@@ -58,7 +59,13 @@ body{
 .stat-sub-val.growing{color:var(--growing)}
 .stat-sub-val.declining{color:var(--declining)}
 .stat-sub-val.stable{color:var(--stable)}
-.stat-sub-divider{width:1px;height:26px;background:var(--border);flex-shrink:0}
+.stat-sub-val.at-risk{color:#ff8a3d}
+.stat-sub-divider{width:1px;height:26px;background:rgba(255,255,255,0.1);flex-shrink:0}
+.stat-sub-single{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1)}
+.stat-outlook{font-size:17px;font-weight:700;color:var(--surging);letter-spacing:-.2px}
+.stat-outlook.consolidating{color:var(--stable)}
+.stat-outlook.pressured{color:var(--declining)}
+.stat-health-max{font-size:14px;font-weight:500;color:var(--text3);margin-left:2px}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;letter-spacing:-.2px}
 .controls{display:flex;gap:10px;margin-bottom:20px}
 .search-wrap{position:relative;flex:1}
@@ -69,8 +76,9 @@ body{
 .filter-select{padding:9px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text2);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;min-width:140px;appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
 .filter-select:focus{border-color:var(--border2)}
 .cat-section{margin-bottom:8px}
-.svc-cat-header{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
-.svc-cat-header::after{content:'';flex:1;height:1px;background:var(--border)}
+.svc-cat-header{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin:22px 0 10px;display:flex;align-items:center;gap:6px}
+.svc-cat-header>span:first-child{margin-right:4px}
+.svc-cat-rule{flex:1;height:1px;background:var(--border)}
 .cat-social-ar{color:#b8aef5}
 .cat-mr-vr{color:#ed93b1}
 .cat-cgi{color:#5adab0}
@@ -88,6 +96,10 @@ body{
 .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .service-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color .2s, transform .2s, box-shadow .2s;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.03), inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), 0 6px 20px rgba(0,0,0,0.22)}
 .service-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 10px 28px rgba(0,0,0,0.32)}
+.lab-pill{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid transparent}
+.lab-pill-arlab{background:rgba(184,174,245,0.14);color:#b8aef5;border-color:rgba(184,174,245,0.3)}
+.lab-pill-creatorlab{background:rgba(240,128,90,0.14);color:#f0805a;border-color:rgba(240,128,90,0.3)}
+.lab-pill-ailab{background:rgba(90,218,176,0.14);color:#5adab0;border-color:rgba(90,218,176,0.3)}
 .card-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:8px}
 .s-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;align-items:center}
 .s-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.02em;font-family:'Space Grotesk',sans-serif;border:1px solid transparent}
@@ -232,11 +244,11 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">Total Services</div>
-      <div class="stat-value" id="stat-total">40</div>
+      <div class="stat-value" id="stat-total">41</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">Avg Viability</div>
-      <div class="stat-value" id="stat-avg">82%</div>
+      <div class="stat-label">Portfolio Health</div>
+      <div class="stat-value"><span id="stat-health">86</span><span class="stat-health-max">/100</span></div>
       <div class="stat-sub-row">
         <div class="stat-sub"><span class="stat-sub-label">Surging</span><span class="stat-sub-val surging" id="stat-surging">22</span></div>
         <div class="stat-sub-divider"></div>
@@ -245,7 +257,19 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="stat-sub"><span class="stat-sub-label">Stable</span><span class="stat-sub-val stable" id="stat-stable">3</span></div>
         <div class="stat-sub-divider"></div>
         <div class="stat-sub"><span class="stat-sub-label">Declining</span><span class="stat-sub-val declining" id="stat-declining">6</span></div>
+        <div class="stat-sub-divider"></div>
+        <div class="stat-sub"><span class="stat-sub-label">At Risk</span><span class="stat-sub-val at-risk" id="stat-risk">2</span></div>
       </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TAM Exposure</div>
+      <div class="stat-value" id="stat-tam">$14.3B</div>
+      <div class="stat-sub-single"><span class="stat-sub-label">GCC Addressable</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">12-Month Outlook</div>
+      <div class="stat-value stat-outlook" id="stat-outlook">Expanding ↗</div>
+      <div class="stat-sub-single"><span class="stat-sub-label" id="stat-outlook-sub">32 up · 3 flat · 6 down</span></div>
     </div>
   </div>
   <div class="section-title">Service Architecture</div>
@@ -306,52 +330,53 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <script>
 
 var SERVICES=[
-  {cat:"Social AR",name:"Snapchat Lens",status:"surging",ai:"ai-powered",viability:93,trend:"up",blurb:"Branded AR lenses built for Snapchat's camera and Lens Studio ecosystem.",desc:"Snap Specs just launched and Lens Studio now ships multiplayer, but Specs still aren't buyable in the GCC. Prototype now and pitch at GITEX."},
-  {cat:"Social AR",name:"TikTok Effect",status:"growing",ai:"ai-powered",viability:80,trend:"up",blurb:"Custom AR effects designed for TikTok's camera and trend-driven feed.",desc:"TikTok Shop is live in the UAE and KSA opens Q1 2027. With 28M Saudi users and Effect House shipping Ask AI, we should be first in-house."},
-  {cat:"Social AR",name:"YouTube Effect",status:"declining",ai:"ai-threatened",viability:44,trend:"down",blurb:"AR effects for YouTube Shorts and the YouTube creator camera.",desc:"YouTube added AI effects to Shorts but ad budgets keep flowing to TikTok and Meta, and creator payouts remain the lowest of the three. We shouldn't invest here."},
-  {cat:"Social AR",name:"WebAR",status:"surging",ai:"ai-powered",viability:95,trend:"up",blurb:"Browser-based AR that opens from a QR or link — no app download required.",desc:"three.js now ships Gaussian splats natively and Safari turns Web AR on by default. Browser AR is officially production-ready."},
-  {cat:"MR & VR",name:"XR Wearables",status:"surging",ai:"ai-powered",viability:94,trend:"up",blurb:"Experiences built for AR/MR smart glasses and next-gen wearable headsets.",desc:"Meta Ray-Ban Display is live across the EU and smart glasses are clearly becoming the format. VR is already losing share to this."},
-  {cat:"MR & VR",name:"Virtual Reality",status:"declining",ai:"ai-resistant",viability:55,trend:"down",blurb:"Fully immersive VR environments for headsets like Meta Quest and Apple Vision Pro.",desc:"VR shipments fell 43% in 2025 and the category now only pays for Vision 2030 anchor events. Deprioritize all new VR builds."},
-  {cat:"CGI, 3D & DOOH",name:"CGI (Mixed Reality or Full 3D)",status:"growing",ai:"ai-powered",viability:84,trend:"up",blurb:"High-end CGI films that mix real footage with 3D or run as fully rendered worlds.",desc:"Kling 4.0 and Veo 3.1 have commoditized mid-tier CGI. Margin now only holds at hero scale or inside integrated brand pipelines."},
-  {cat:"CGI, 3D & DOOH",name:"3D Naked Eye Billboard",status:"surging",ai:"ai-powered",viability:90,trend:"up",blurb:"Anamorphic 3D content built for LED billboards and out-of-home screens.",desc:"Al Arabia and SCAI have locked Riyadh's billboard inventory and KSA outdoor advertising tops $1B this year. This should be a core offering now."},
-  {cat:"Social Content",name:"UGC",status:"surging",ai:"ai-resistant",viability:92,trend:"up",blurb:"User-generated-style content produced with real creators and everyday formats.",desc:"User-generated content drives 6.7× higher conversion than branded content, and the GCC creator pool just crossed 263K. It's the one asset AI still can't fully replace."},
-  {cat:"Social Content",name:"Creator Content",status:"surging",ai:"ai-powered",viability:94,trend:"up",blurb:"Branded content produced with handpicked creators and influencers.",desc:"The GCC creator pool grew 75% in two years and Riyadh Season is live right now. Move every creator relationship onto an always-on retainer."},
-  {cat:"Social Content",name:"Motion Graphics",status:"declining",ai:"ai-threatened",viability:38,trend:"down",blurb:"Animated 2D and 3D graphics for social, ads, and brand storytelling.",desc:"Bulk motion is now $0.10 per second, which kills the standalone service. Fold it into AI Reel and AI Loop retainers instead."},
-  {cat:"Platform Ad Solutions",name:"Platform Ad Solutions",status:"surging",ai:"ai-powered",viability:92,trend:"up",blurb:"Full-funnel paid media execution across Meta, Google, TikTok, Snap, and more.",desc:"Google has forced the migration to AI Max, and Snap, TikTok and Google all shipped agentic ad tools. Agent-driven buying is now the default."},
-  {cat:"Social Content",name:"Social Media Management",status:"growing",ai:"ai-resistant",viability:78,trend:"up",blurb:"End-to-end content planning, publishing, and community management.",desc:"Meta's new AI agent runs targeting and budget end-to-end. Our value compresses to strategy and governance, so price accordingly."},
-  {cat:"Immersive Interactive",name:"Interactive Ads",status:"surging",ai:"ai-powered",viability:90,trend:"up",blurb:"High-impact interactive ad units that let users play, shop, or explore inside the placement.",desc:"Meta GEM lifts conversion 19% and Spark Ads lifts 43%, and TikTok's agentic ads tool is now everywhere. This format wins every budget review right now."},
-  {cat:"Live & Commerce",name:"Live Streaming",status:"surging",ai:"ai-powered",viability:93,trend:"up",blurb:"Multi-platform live broadcasts with branded overlays, production, and hosting.",desc:"GCC live commerce is already past $6B this year and TikTok Shop KSA opens Q1 2027. We should be building inventory for it now."},
-  {cat:"Live & Commerce",name:"Live Shopping Activation",status:"surging",ai:"ai-powered",viability:95,trend:"up",blurb:"Shoppable live streams that turn audiences into buyers in real time.",desc:"TikTok Shop hit $50B in the first half of 2026 and KSA converts 5× higher than static content. This should be a must-have on every retail account."},
-  {cat:"On Ground",name:"Digital Installations",status:"surging",ai:"ai-powered",viability:94,trend:"up",blurb:"Interactive on-site installations powered by AR, real-time 3D, and sensors.",desc:"AI installations are the Q4 default — Mall of the Emirates Activate, Palm Beauty Unbound, Kiehl's Dubai Festival City — and GCC luxury is a $16.5B market."},
-  {cat:"On Ground",name:"Interactive Screens",status:"surging",ai:"ai-powered",viability:93,trend:"up",blurb:"Touch and gesture-driven screen experiences for retail, lobbies, and activations.",desc:"AR try-on lifts purchase intent 65% and Arabic-native models have finally landed. Luxury retail is ready to buy at scale."},
-  {cat:"On Ground",name:"Projection Mapping",status:"growing",ai:"ai-powered",viability:87,trend:"up",blurb:"Large-scale projected visuals mapped onto buildings, stages, and architectural surfaces.",desc:"The market is growing 20%+ a year, and Riyadh Season, Eid Al Etihad and Dubai Shopping Festival all stack this quarter. The December window is open."},
-  {cat:"On Ground",name:"PR Packages",status:"stable",ai:"ai-resistant",viability:72,trend:"flat",blurb:"Sendable branded kits designed to generate content, coverage, and unboxings.",desc:"Tier-1 earned media still cuts through AI noise. Keep the service active but don't lead a pitch with it."},
-  {cat:"Immersive Interactive",name:"AI/3D Webapp Development",status:"surging",ai:"ai-powered",viability:96,trend:"up",blurb:"Next-gen sites and apps blending AI, WebGL, and 3D for signature brand experiences.",desc:"WebGPU is stable everywhere and Vision Pro now ships Web Environments by default. The immersive web is officially default-on."},
-  {cat:"Immersive Interactive",name:"3D Virtual Stores",status:"growing",ai:"ai-powered",viability:86,trend:"up",blurb:"Explorable, shoppable 3D storefronts that run in the browser.",desc:"3D product content lifts conversion 94% and cuts returns 43%. Flagship retail clients will fund the first builds for us."},
-  {cat:"Immersive Interactive",name:"Digital Games",status:"growing",ai:"ai-powered",viability:82,trend:"up",blurb:"Branded games and playable worlds built in real-time 3D.",desc:"PIF now owns around 93% of EA and Saudi gaming is fully state-anchored. Only pursue PIF-adjacent briefs here."},
-  {cat:"AI Content",name:"AI at Scale",status:"surging",ai:"ai-powered",viability:97,trend:"up",blurb:"One brief turned into every social format using an integrated AI production stack.",desc:"One brief turns into every format at cheap, fast model costs. This is our flagship pitch for 2026."},
-  {cat:"AI Content",name:"AI Carousel",status:"surging",ai:"ai-powered",viability:92,trend:"up",blurb:"AI-generated image sets built for social carousels and feed-ready storytelling.",desc:"Nano Banana 2.1 ships at roughly 3¢ per image with 14 references. We can produce carousels at scale without a shoot."},
-  {cat:"AI Content",name:"AI Reel",status:"surging",ai:"ai-powered",viability:94,trend:"up",blurb:"AI-generated vertical video reels built for Instagram, TikTok, and Shorts.",desc:"Kling 4.0 hits 4K at 30 seconds with 15 references. It replaces most of the edit briefs we used to quote by hand."},
-  {cat:"AI Content",name:"AI Loop",status:"surging",ai:"ai-powered",viability:88,trend:"up",blurb:"Seamless looping AI video for feeds, lobby screens, and digital out-of-home.",desc:"Seamless loops now run 30 seconds at 4K. One asset covers social feeds, lobby screens and outdoor billboards simultaneously."},
-  {cat:"AI Content",name:"AI CGI",status:"surging",ai:"ai-powered",viability:96,trend:"up",blurb:"AI-driven CGI blended with real footage for mixed-reality campaigns.",desc:"Kling, Veo and Higgsfield now hold visual continuity for 10 minutes. Fake outdoor ads and 3D billboards are our highest-margin AI output."},
-  {cat:"AI Content",name:"AI TVC",status:"surging",ai:"ai-powered",viability:94,trend:"up",blurb:"Full AI-generated TV commercials, from concept to final cut.",desc:"A 30-second spot is shippable in days using Kling, Veo, Suno and ElevenLabs. TV budgets are coming for this next."},
-  {cat:"AI Content",name:"AI Clips",status:"surging",ai:"ai-powered",viability:90,trend:"up",blurb:"Fast AI-edited clips for site headers, product packshots, and quick-turn content.",desc:"Krea 3 edits a clip in under 8 seconds. Site headers and product packshots cost us next to nothing now."},
-  {cat:"AI Content",name:"AI UGC",status:"surging",ai:"ai-powered",viability:92,trend:"up",blurb:"AI-generated creator-style content that mimics everyday social video.",desc:"Higgsfield shipped an AI influencer and Pika is now a ChatGPT plugin. Creator-style content is fully programmatic."},
-  {cat:"AI Content",name:"AI Photography",status:"surging",ai:"ai-powered",viability:96,trend:"up",blurb:"AI-generated product and campaign photography, styled to brand.",desc:"Nano Banana 2.1, Krea 3 and Ideogram 4.5 together produce an editorial campaign without a studio. Pitch this to every brand."},
-  {cat:"AI Content",name:"AI Series",status:"growing",ai:"ai-powered",viability:85,trend:"up",blurb:"Episodic AI content built as a daily or weekly drop for always-on channels.",desc:"YouTube just launched Shorts Series with AI shopping. Daily-drop content is becoming the new always-on retainer."},
-  {cat:"AI Content",name:"AI Campaign",status:"surging",ai:"ai-powered",viability:95,trend:"up",blurb:"End-to-end campaigns produced with AI as the primary creative engine.",desc:"A full suite from one brief, into a $12.4B GCC digital ad market growing 19% year over year. Lead every pitch with this."},
-  {cat:"AI Content",name:"AI Post-Production",status:"surging",ai:"ai-powered",viability:93,trend:"up",blurb:"AI-powered editing, VFX, color, and sound to finish any format.",desc:"Kling renders 4K direct and ElevenLabs just dropped voice costs 72%. Finishing is now a volume layer under every format."},
-  {cat:"Social Content",name:"Branding",status:"growing",ai:"ai-resistant",viability:85,trend:"up",blurb:"Brand identity, visual system, and positioning built from the ground up.",desc:"KSA now defaults to the humain-m3 Arabic model and the UAE privacy law forces audit trails from Jan 2027. Brand is becoming AI governance."},
-  {cat:"Creative & Social Strategy",name:"Creative & Social Strategy",status:"surging",ai:"ai-resistant",viability:95,trend:"up",blurb:"Brand strategy, creative direction, and always-on social planning in one layer.",desc:"GCC ad spend is $12.4B and growing 19% year over year. Strategy is the one layer AI can't commoditize, which makes it our highest-margin hour."},
-  {cat:"AI Systems",name:"Custom AI Tools",status:"surging",ai:"ai-powered",viability:93,trend:"up",blurb:"Bespoke AI tools built for internal workflows or customer-facing products.",desc:"Opus 5.5 and Haiku 5.5 cost roughly $0.10 per million tokens, which has reset the build cycle. Custom tools now ship in days, not quarters."},
-  {cat:"AI Systems",name:"Agentic Pipelines",status:"surging",ai:"ai-powered",viability:95,trend:"up",blurb:"Autonomous AI agent systems that run multi-step workflows end to end.",desc:"The agent-tooling ecosystem just hit 97M downloads and Snap, TikTok and Google Ads have all shipped their own. Agentic is production-grade."},
-  {cat:"AI Systems",name:"AI Consultative Solutions",status:"surging",ai:"ai-resistant",viability:90,trend:"up",blurb:"AI advisory covering tooling, workflows, and governance for creative teams.",desc:"95% of enterprise AI pilots fail and external partners succeed at 2× the internal rate. Advisory is where our margin lives."},
-  {cat:"AI Systems",name:"Analytics Dashboard",status:"surging",ai:"ai-powered",viability:90,trend:"up",addon:true,blurb:"Custom dashboards that unify campaign, content, and performance data.",desc:"95% of AI pilots show no measurable P&L and the UAE privacy law mandates audit trails from Jan 2027. The add-on becomes mandatory."},
+  {cat:"Social AR",name:"Snapchat Lens",lab:"ARLab",status:"surging",ai:"ai-powered",viability:93,trend:"up",tam:60,blurb:"Branded AR lenses built for Snapchat's camera and Lens Studio ecosystem.",desc:"Snap Specs just launched and Lens Studio now ships multiplayer, but Specs still aren't buyable in the GCC. Prototype now and pitch at GITEX."},
+  {cat:"Social AR",name:"TikTok Effect",lab:"ARLab",status:"growing",ai:"ai-powered",viability:80,trend:"up",tam:180,blurb:"Custom AR effects designed for TikTok's camera and trend-driven feed.",desc:"TikTok Shop is live in the UAE and KSA opens Q1 2027. With 28M Saudi users and Effect House shipping Ask AI, we should be first in-house."},
+  {cat:"Social AR",name:"YouTube Effect",lab:"ARLab",status:"declining",ai:"ai-threatened",viability:44,trend:"down",tam:25,blurb:"AR effects for YouTube Shorts and the YouTube creator camera.",desc:"YouTube added AI effects to Shorts but ad budgets keep flowing to TikTok and Meta, and creator payouts remain the lowest of the three. We shouldn't invest here."},
+  {cat:"Social AR",name:"WebAR",lab:"ARLab",status:"surging",ai:"ai-powered",viability:95,trend:"up",tam:180,blurb:"Browser-based AR that opens from a QR or link — no app download required.",desc:"three.js now ships Gaussian splats natively and Safari turns Web AR on by default. Browser AR is officially production-ready."},
+  {cat:"MR & VR",name:"XR Wearables",lab:"ARLab",status:"surging",ai:"ai-powered",viability:94,trend:"up",tam:240,blurb:"Experiences built for AR/MR smart glasses and next-gen wearable headsets.",desc:"Meta Ray-Ban Display is live across the EU and smart glasses are clearly becoming the format. VR is already losing share to this."},
+  {cat:"MR & VR",name:"Virtual Reality",lab:"ARLab",status:"declining",ai:"ai-resistant",viability:55,trend:"down",tam:50,blurb:"Fully immersive VR environments for headsets like Meta Quest and Apple Vision Pro.",desc:"VR shipments fell 43% in 2025 and the category now only pays for Vision 2030 anchor events. Deprioritize all new VR builds."},
+  {cat:"CGI, 3D & DOOH",name:"CGI (Mixed Reality or Full 3D)",lab:"ARLab",status:"growing",ai:"ai-powered",viability:84,trend:"up",tam:420,blurb:"High-end CGI films that mix real footage with 3D or run as fully rendered worlds.",desc:"Kling 4.0 and Veo 3.1 have commoditized mid-tier CGI. Margin now only holds at hero scale or inside integrated brand pipelines."},
+  {cat:"CGI, 3D & DOOH",name:"3D Naked Eye Billboard",lab:"ARLab",status:"surging",ai:"ai-powered",viability:90,trend:"up",tam:350,blurb:"Anamorphic 3D content built for LED billboards and out-of-home screens.",desc:"Al Arabia and SCAI have locked Riyadh's billboard inventory and KSA outdoor advertising tops $1B this year. This should be a core offering now."},
+  {cat:"Social Content",name:"UGC",lab:"CreatorLab",status:"surging",ai:"ai-resistant",viability:92,trend:"up",tam:450,blurb:"User-generated-style content produced with real creators and everyday formats.",desc:"User-generated content drives 6.7× higher conversion than branded content, and the GCC creator pool just crossed 263K. It's the one asset AI still can't fully replace."},
+  {cat:"Social Content",name:"Creator Content",lab:"CreatorLab",status:"surging",ai:"ai-powered",viability:94,trend:"up",tam:520,blurb:"Branded content produced with handpicked creators and influencers.",desc:"The GCC creator pool grew 75% in two years and Riyadh Season is live right now. Move every creator relationship onto an always-on retainer."},
+  {cat:"Social Content",name:"Motion Graphics",lab:"CreatorLab",status:"declining",ai:"ai-threatened",viability:38,trend:"down",tam:90,blurb:"Animated 2D and 3D graphics for social, ads, and brand storytelling.",desc:"Bulk motion is now $0.10 per second, which kills the standalone service. Fold it into AI Reel and AI Loop retainers instead."},
+  {cat:"Platform Ad Solutions",name:"Platform Ad Solutions",lab:"CreatorLab",status:"surging",ai:"ai-powered",viability:92,trend:"up",tam:1800,blurb:"Full-funnel paid media execution across Meta, Google, TikTok, Snap, and more.",desc:"Google has forced the migration to AI Max, and Snap, TikTok and Google all shipped agentic ad tools. Agent-driven buying is now the default."},
+  {cat:"Social Content",name:"Social Media Management",lab:"CreatorLab",status:"growing",ai:"ai-resistant",viability:78,trend:"up",tam:180,blurb:"End-to-end content planning, publishing, and community management.",desc:"Meta's new AI agent runs targeting and budget end-to-end. Our value compresses to strategy and governance, so price accordingly."},
+  {cat:"Immersive Interactive",name:"Interactive Ads",lab:"ARLab",status:"surging",ai:"ai-powered",viability:90,trend:"up",tam:280,blurb:"High-impact interactive ad units that let users play, shop, or explore inside the placement.",desc:"Meta GEM lifts conversion 19% and Spark Ads lifts 43%, and TikTok's agentic ads tool is now everywhere. This format wins every budget review right now."},
+  {cat:"Live & Commerce",name:"Live Streaming",lab:"CreatorLab",status:"surging",ai:"ai-powered",viability:93,trend:"up",tam:850,blurb:"Multi-platform live broadcasts with branded overlays, production, and hosting.",desc:"GCC live commerce is already past $6B this year and TikTok Shop KSA opens Q1 2027. We should be building inventory for it now."},
+  {cat:"Live & Commerce",name:"Live Shopping Activation",lab:"CreatorLab",status:"surging",ai:"ai-powered",viability:95,trend:"up",tam:1100,blurb:"Shoppable live streams that turn audiences into buyers in real time.",desc:"TikTok Shop hit $50B in the first half of 2026 and KSA converts 5× higher than static content. This should be a must-have on every retail account."},
+  {cat:"On Ground",name:"Digital Installations",lab:"ARLab",status:"surging",ai:"ai-powered",viability:94,trend:"up",tam:320,blurb:"Interactive on-site installations powered by AR, real-time 3D, and sensors.",desc:"AI installations are the Q4 default — Mall of the Emirates Activate, Palm Beauty Unbound, Kiehl's Dubai Festival City — and GCC luxury is a $16.5B market."},
+  {cat:"On Ground",name:"Interactive Screens",lab:"ARLab",status:"surging",ai:"ai-powered",viability:93,trend:"up",tam:200,blurb:"Touch and gesture-driven screen experiences for retail, lobbies, and activations.",desc:"AR try-on lifts purchase intent 65% and Arabic-native models have finally landed. Luxury retail is ready to buy at scale."},
+  {cat:"On Ground",name:"Projection Mapping",lab:"ARLab",status:"growing",ai:"ai-powered",viability:87,trend:"up",tam:150,blurb:"Large-scale projected visuals mapped onto buildings, stages, and architectural surfaces.",desc:"The market is growing 20%+ a year, and Riyadh Season, Eid Al Etihad and Dubai Shopping Festival all stack this quarter. The December window is open."},
+  {cat:"On Ground",name:"PR Packages",lab:"ARLab",status:"stable",ai:"ai-resistant",viability:72,trend:"flat",tam:80,blurb:"Sendable branded kits designed to generate content, coverage, and unboxings.",desc:"Tier-1 earned media still cuts through AI noise. Keep the service active but don't lead a pitch with it."},
+  {cat:"Immersive Interactive",name:"AI/3D Webapp Development",lab:"ARLab",status:"surging",ai:"ai-powered",viability:96,trend:"up",tam:180,blurb:"Next-gen sites and apps blending AI, WebGL, and 3D for signature brand experiences.",desc:"WebGPU is stable everywhere and Vision Pro now ships Web Environments by default. The immersive web is officially default-on."},
+  {cat:"Immersive Interactive",name:"3D Virtual Stores",lab:"ARLab",status:"growing",ai:"ai-powered",viability:86,trend:"up",tam:160,blurb:"Explorable, shoppable 3D storefronts that run in the browser.",desc:"3D product content lifts conversion 94% and cuts returns 43%. Flagship retail clients will fund the first builds for us."},
+  {cat:"Immersive Interactive",name:"Digital Games",lab:"ARLab",status:"growing",ai:"ai-powered",viability:82,trend:"up",tam:600,blurb:"Branded games and playable worlds built in real-time 3D.",desc:"PIF now owns around 93% of EA and Saudi gaming is fully state-anchored. Only pursue PIF-adjacent briefs here."},
+  {cat:"AI Content",name:"AI at Scale",lab:"AILab",status:"surging",ai:"ai-powered",viability:97,trend:"up",tam:800,blurb:"One brief turned into every social format using an integrated AI production stack.",desc:"One brief turns into every format at cheap, fast model costs. This is our flagship pitch for 2026."},
+  {cat:"AI Content",name:"AI Carousel",lab:"AILab",status:"surging",ai:"ai-powered",viability:92,trend:"up",tam:120,blurb:"AI-generated image sets built for social carousels and feed-ready storytelling.",desc:"Nano Banana 2.1 ships at roughly 3¢ per image with 14 references. We can produce carousels at scale without a shoot."},
+  {cat:"AI Content",name:"AI Reel",lab:"AILab",status:"surging",ai:"ai-powered",viability:94,trend:"up",tam:220,blurb:"AI-generated vertical video reels built for Instagram, TikTok, and Shorts.",desc:"Kling 4.0 hits 4K at 30 seconds with 15 references. It replaces most of the edit briefs we used to quote by hand."},
+  {cat:"AI Content",name:"AI Loop",lab:"AILab",status:"surging",ai:"ai-powered",viability:88,trend:"up",tam:90,blurb:"Seamless looping AI video for feeds, lobby screens, and digital out-of-home.",desc:"Seamless loops now run 30 seconds at 4K. One asset covers social feeds, lobby screens and outdoor billboards simultaneously."},
+  {cat:"AI Content",name:"AI CGI",lab:"AILab",status:"surging",ai:"ai-powered",viability:96,trend:"up",tam:480,blurb:"AI-driven CGI blended with real footage for mixed-reality campaigns.",desc:"Kling, Veo and Higgsfield now hold visual continuity for 10 minutes. Fake outdoor ads and 3D billboards are our highest-margin AI output."},
+  {cat:"AI Content",name:"AI TVC",lab:"AILab",status:"surging",ai:"ai-powered",viability:94,trend:"up",tam:350,blurb:"Full AI-generated TV commercials, from concept to final cut.",desc:"A 30-second spot is shippable in days using Kling, Veo, Suno and ElevenLabs. TV budgets are coming for this next."},
+  {cat:"AI Content",name:"AI Clips",lab:"AILab",status:"surging",ai:"ai-powered",viability:90,trend:"up",tam:80,blurb:"Fast AI-edited clips for site headers, product packshots, and quick-turn content.",desc:"Krea 3 edits a clip in under 8 seconds. Site headers and product packshots cost us next to nothing now."},
+  {cat:"AI Content",name:"AI UGC",lab:"AILab",status:"surging",ai:"ai-powered",viability:92,trend:"up",tam:180,blurb:"AI-generated creator-style content that mimics everyday social video.",desc:"Higgsfield shipped an AI influencer and Pika is now a ChatGPT plugin. Creator-style content is fully programmatic."},
+  {cat:"AI Content",name:"AI Photography",lab:"AILab",status:"surging",ai:"ai-powered",viability:96,trend:"up",tam:240,blurb:"AI-generated product and campaign photography, styled to brand.",desc:"Nano Banana 2.1, Krea 3 and Ideogram 4.5 together produce an editorial campaign without a studio. Pitch this to every brand."},
+  {cat:"AI Content",name:"AI Series",lab:"AILab",status:"growing",ai:"ai-powered",viability:85,trend:"up",tam:180,blurb:"Episodic AI content built as a daily or weekly drop for always-on channels.",desc:"YouTube just launched Shorts Series with AI shopping. Daily-drop content is becoming the new always-on retainer."},
+  {cat:"AI Content",name:"AI Campaign",lab:"AILab",status:"surging",ai:"ai-powered",viability:95,trend:"up",tam:650,blurb:"End-to-end campaigns produced with AI as the primary creative engine.",desc:"A full suite from one brief, into a $12.4B GCC digital ad market growing 19% year over year. Lead every pitch with this."},
+  {cat:"AI Content",name:"AI Post-Production",lab:"AILab",status:"surging",ai:"ai-powered",viability:93,trend:"up",tam:220,blurb:"AI-powered editing, VFX, color, and sound to finish any format.",desc:"Kling renders 4K direct and ElevenLabs just dropped voice costs 72%. Finishing is now a volume layer under every format."},
+  {cat:"Social Content",name:"Branding",lab:"CreatorLab",status:"growing",ai:"ai-resistant",viability:85,trend:"up",tam:220,blurb:"Brand identity, visual system, and positioning built from the ground up.",desc:"KSA now defaults to the humain-m3 Arabic model and the UAE privacy law forces audit trails from Jan 2027. Brand is becoming AI governance."},
+  {cat:"Creative & Social Strategy",name:"Creative & Social Strategy",lab:"ARLab|CreatorLab",status:"surging",ai:"ai-resistant",viability:95,trend:"up",tam:350,blurb:"Brand strategy, creative direction, and always-on social planning in one layer.",desc:"GCC ad spend is $12.4B and growing 19% year over year. Strategy is the one layer AI can't commoditize, which makes it our highest-margin hour."},
+  {cat:"AI Systems",name:"Custom AI Tools",lab:"AILab",status:"surging",ai:"ai-powered",viability:93,trend:"up",tam:480,blurb:"Bespoke AI tools built for internal workflows or customer-facing products.",desc:"Opus 5.5 and Haiku 5.5 cost roughly $0.10 per million tokens, which has reset the build cycle. Custom tools now ship in days, not quarters."},
+  {cat:"AI Systems",name:"Agentic Pipelines",lab:"AILab",status:"surging",ai:"ai-powered",viability:95,trend:"up",tam:380,blurb:"Autonomous AI agent systems that run multi-step workflows end to end.",desc:"The agent-tooling ecosystem just hit 97M downloads and Snap, TikTok and Google Ads have all shipped their own. Agentic is production-grade."},
+  {cat:"AI Systems",name:"AI Consultative Solutions",lab:"AILab",status:"surging",ai:"ai-resistant",viability:90,trend:"up",tam:620,blurb:"AI advisory covering tooling, workflows, and governance for creative teams.",desc:"95% of enterprise AI pilots fail and external partners succeed at 2× the internal rate. Advisory is where our margin lives."},
+  {cat:"AI Systems",name:"Analytics Dashboard",lab:"AILab",status:"surging",ai:"ai-powered",viability:90,trend:"up",tam:180,addon:true,blurb:"Custom dashboards that unify campaign, content, and performance data.",desc:"95% of AI pilots show no measurable P&L and the UAE privacy law mandates audit trails from Jan 2027. The add-on becomes mandatory."},
 ];
 var CAT_COLORS={"Social AR":"cat-social-ar","MR & VR":"cat-mr-vr","CGI, 3D & DOOH":"cat-cgi","Social Content":"cat-social","Creative & Social Strategy":"cat-creative-strategy","Platform Ad Solutions":"cat-platform","Live & Commerce":"cat-live","On Ground":"cat-on-ground","Immersive Interactive":"cat-immersive","AI Content":"cat-ai","AI Systems":"cat-addons"};
 function statusLabel(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function aiLabel(a){return a==="ai-powered"?"✦ AI-Powered":a==="ai-resistant"?"◎ AI-Resistant":"△ AI-Threatened";}
 function trendArrow(t,v){if(t==="up")return'<span class="viability-up">↗ '+v+'%</span>';if(t==="down")return'<span class="viability-down">↘ '+v+'%</span>';return'<span class="viability-flat">— '+v+'%</span>';}
+function labClass(l){return l==="ARLab"?"lab-pill-arlab":l==="CreatorLab"?"lab-pill-creatorlab":"lab-pill-ailab";}
 function buildCard(s){return'<div class="service-card">'+(s.addon?'<span class="s-badge s-badge-addon">Add-on</span>':'')+'<div class="card-name'+(s.addon?' has-addon':'')+'">'+s.name+'</div><div class="s-badges"><span class="s-badge s-badge-'+s.status+'">'+statusLabel(s.status)+'</span><span class="s-badge s-badge-'+s.ai+'">'+aiLabel(s.ai)+'</span>'+trendArrow(s.trend,s.viability)+'</div>'+(s.blurb?'<div class="card-blurb">'+s.blurb+'</div>':'')+'<div class="card-intel-label">This Week</div><div class="card-desc">'+s.desc+'</div></div>';}
 function filterCards(){
   var q=document.getElementById('search').value.toLowerCase();
@@ -364,19 +389,52 @@ function filterCards(){
   else if(sort==='declining')filtered.sort(function(a,b){return(a.status==='declining'?0:1)-(b.status==='declining'?0:1);});
   var container=document.getElementById('services-container');
   if(filtered.length===0){container.innerHTML='<div class="cards-grid"><div class="no-results">No services match.</div></div>';updateStats(filtered);return;}
-  if(sort==='default'){var groups={};filtered.forEach(function(s){if(!groups[s.cat])groups[s.cat]=[];groups[s.cat].push(s);});var html='';Object.keys(groups).forEach(function(c){html+='<div class="cat-section"><div class="svc-cat-header '+CAT_COLORS[c]+'">'+c+'</div><div class="cards-grid">'+groups[c].map(buildCard).join('')+'</div></div>';});container.innerHTML=html;}
+  if(sort==='default'){var groups={};filtered.forEach(function(s){if(!groups[s.cat])groups[s.cat]=[];groups[s.cat].push(s);});var html='';Object.keys(groups).forEach(function(c){var labs=[];groups[c].forEach(function(s){if(s.lab){s.lab.split('|').forEach(function(l){if(labs.indexOf(l)===-1)labs.push(l);});}});var pills=labs.map(function(l){return'<span class="lab-pill '+labClass(l)+'">'+l+'</span>';}).join('');html+='<div class="cat-section"><div class="svc-cat-header '+CAT_COLORS[c]+'"><span>'+c+'</span><span class="svc-cat-rule"></span>'+pills+'</div><div class="cards-grid">'+groups[c].map(buildCard).join('')+'</div></div>';});container.innerHTML=html;}
   else{container.innerHTML='<div class="cards-grid">'+filtered.map(buildCard).join('')+'</div>';}
   updateStats(filtered);
 }
+function healthScore(s){
+  var trend={up:4,flat:0,down:-5}[s.trend]||0;
+  var ai={"ai-powered":3,"ai-resistant":1,"ai-threatened":-4}[s.ai]||0;
+  var status={surging:2,growing:0,stable:-1,declining:-4}[s.status]||0;
+  return Math.max(0,Math.min(100,s.viability+trend+ai+status));
+}
+function outlookFor(filtered){
+  var up=filtered.filter(function(s){return s.trend==='up';}).length;
+  var down=filtered.filter(function(s){return s.trend==='down';}).length;
+  var surging=filtered.filter(function(s){return s.status==='surging';}).length;
+  var declining=filtered.filter(function(s){return s.status==='declining';}).length;
+  var avgH=filtered.length?filtered.reduce(function(a,s){return a+healthScore(s);},0)/filtered.length:0;
+  if(avgH>=82&&surging>=declining*3)return{label:"Expanding ↗",cls:""};
+  if(avgH>=72&&up>=down*2)return{label:"Growing ↗",cls:""};
+  if(down>up)return{label:"Pressured ↘",cls:"pressured"};
+  return{label:"Consolidating →",cls:"consolidating"};
+}
 function updateStats(filtered){
   var total=filtered.length;
-  var avgV=total?Math.round(filtered.reduce(function(a,s){return a+s.viability;},0)/total):0;
+  var health=total?Math.round(filtered.reduce(function(a,s){return a+healthScore(s);},0)/total):0;
+  var tam=filtered.reduce(function(a,s){return a+(s.tam||0);},0);
+  var surging=filtered.filter(function(s){return s.status==='surging';}).length;
+  var growing=filtered.filter(function(s){return s.status==='growing';}).length;
+  var stable=filtered.filter(function(s){return s.status==='stable';}).length;
+  var declining=filtered.filter(function(s){return s.status==='declining';}).length;
+  var atRisk=filtered.filter(function(s){return s.status==='declining'&&s.ai==='ai-threatened'&&s.viability<50;}).length;
+  var up=filtered.filter(function(s){return s.trend==='up';}).length;
+  var flat=filtered.filter(function(s){return s.trend==='flat';}).length;
+  var down=filtered.filter(function(s){return s.trend==='down';}).length;
+  var outlook=outlookFor(filtered);
   document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-avg').textContent=avgV+'%';
-  document.getElementById('stat-surging').textContent=filtered.filter(function(s){return s.status==='surging';}).length;
-  document.getElementById('stat-growing').textContent=filtered.filter(function(s){return s.status==='growing';}).length;
-  document.getElementById('stat-stable').textContent=filtered.filter(function(s){return s.status==='stable';}).length;
-  document.getElementById('stat-declining').textContent=filtered.filter(function(s){return s.status==='declining';}).length;
+  document.getElementById('stat-health').textContent=health;
+  document.getElementById('stat-tam').textContent='$'+(tam/1000).toFixed(1)+'B';
+  var ol=document.getElementById('stat-outlook');
+  ol.textContent=outlook.label;
+  ol.className='stat-value stat-outlook'+(outlook.cls?' '+outlook.cls:'');
+  document.getElementById('stat-outlook-sub').textContent=up+' up · '+flat+' flat · '+down+' down';
+  document.getElementById('stat-surging').textContent=surging;
+  document.getElementById('stat-growing').textContent=growing;
+  document.getElementById('stat-stable').textContent=stable;
+  document.getElementById('stat-declining').textContent=declining;
+  document.getElementById('stat-risk').textContent=atRisk;
 }
 function switchTab(name,el){
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
