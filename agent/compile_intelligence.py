@@ -33,7 +33,7 @@ MODEL = "claude-opus-4-7"
 
 GITHUB_API = "https://api.github.com"
 
-SERVICE_KEY_ORDER = ("cat", "name", "status", "ai", "viability", "trend", "addon", "desc")
+SERVICE_KEY_ORDER = ("cat", "name", "status", "ai", "viability", "trend", "addon", "blurb", "desc")
 
 
 def gh_headers() -> dict[str, str]:
