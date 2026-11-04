@@ -155,14 +155,14 @@ a.sub-pill{text-decoration:none}
 .market-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
 .market-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:10px}
 .market-sub{font-size:13px;line-height:1.6;color:var(--text2)}
-.market-wrap{padding:28px 40px 60px;max-width:1400px;margin:0 auto}
-.market-hero{margin-bottom:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.market-wrap{padding:32px 40px 72px;max-width:1400px;margin:0 auto}
+.market-hero{margin-bottom:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .market-hero-left{flex:1;min-width:340px}
-.market-hero-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
-.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.4px;color:var(--text);line-height:1.2}
-.market-hero-meta{font-size:11px;color:var(--text3);line-height:1.5;text-align:right;min-width:180px}
-.market-section{margin-top:28px}
-.market-section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.market-hero-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(--text);line-height:1.2}
+.market-hero-meta{font-size:11px;color:var(--text3);line-height:1.6;text-align:right;min-width:180px;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em}
+.market-section{margin-top:40px}
+.market-section-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .market-section-title::after{content:"";flex:1;height:1px;background:var(--border)}
 .sell-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .sell-col{background:rgba(20,20,20,0.5);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
@@ -183,26 +183,40 @@ a.sub-pill{text-decoration:none}
 .sell-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden}
 .sell-fill{height:100%;background:currentColor;border-radius:3px}
 .sell-why{font-size:10.5px;color:var(--text3);line-height:1.45;margin-top:2px}
-.chart-wrap{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
-.chart-legend{display:flex;align-items:center;gap:16px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.chart-wrap{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+.chart-legend{display:flex;align-items:center;gap:18px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .chart-legend .leg{display:flex;align-items:center;gap:6px}
-.chart-legend .leg-dot{width:10px;height:3px;border-radius:2px}
+.chart-legend .leg-dot{width:12px;height:4px;border-radius:2px}
 .chart-legend .leg-dot.uae{background:#8cc0ff}
 .chart-legend .leg-dot.ksa{background:#5adab0}
-.chart-grid{display:grid;grid-template-columns:1fr;gap:6px}
-.chart-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;padding:3px 0}
-.chart-label{font-size:11px;color:var(--text2);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.chart-label .ldot{display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
-.chart-bars{display:flex;flex-direction:column;gap:3px}
-.chart-bar{display:grid;grid-template-columns:28px 1fr 26px;gap:6px;align-items:center}
-.chart-bar-flag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--text3)}
-.chart-bar.b-uae .chart-bar-flag{color:#8cc0ff}
-.chart-bar.b-ksa .chart-bar-flag{color:#5adab0}
-.chart-bar-track{height:7px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden}
-.chart-bar-fill{height:100%;border-radius:3px}
-.chart-bar.b-uae .chart-bar-fill{background:#8cc0ff}
-.chart-bar.b-ksa .chart-bar-fill{background:#5adab0}
-.chart-bar-val{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:var(--text2);text-align:right}
+.cat-chart-grid{display:flex;flex-direction:column}
+.cat-chart-row{display:grid;grid-template-columns:180px 1fr 1fr;gap:20px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.cat-chart-row:last-child{border-bottom:none}
+.cat-chart-label{font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);letter-spacing:-.1px;display:flex;align-items:center;gap:8px}
+.cat-chart-label .cdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor}
+.cat-chart-side{display:grid;grid-template-rows:auto auto;gap:5px}
+.cat-chart-side-top{display:grid;grid-template-columns:34px 1fr 32px;align-items:center;gap:8px}
+.cat-chart-flag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em}
+.cat-chart-side.uae .cat-chart-flag{color:#8cc0ff}
+.cat-chart-side.ksa .cat-chart-flag{color:#5adab0}
+.cat-chart-pick{font-size:11.5px;color:var(--text2);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat-chart-score{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-align:right}
+.cat-chart-track{height:10px;background:rgba(255,255,255,0.04);border-radius:5px;overflow:hidden}
+.cat-chart-fill{height:100%;border-radius:5px}
+.cat-chart-side.uae .cat-chart-fill{background:linear-gradient(90deg,#5a90d0,#8cc0ff)}
+.cat-chart-side.ksa .cat-chart-fill{background:linear-gradient(90deg,#3aa888,#5adab0)}
+.forecast-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.forecast-col{background:rgba(20,20,20,0.4);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.forecast-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.forecast-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:4px;background:rgba(140,192,255,0.1);color:#8cc0ff}
+.forecast-tag.k{background:rgba(90,218,176,0.1);color:#5adab0}
+.forecast-head-sub{font-size:11px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
+.forecast-item{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:11px 0;font-size:12px;line-height:1.55;color:var(--text2)}
+.forecast-item + .forecast-item{border-top:1px dashed rgba(255,255,255,0.05)}
+.forecast-arrow{font-size:18px;font-weight:700;line-height:1;padding-top:1px}
+.forecast-item.up .forecast-arrow{color:#5adab0}
+.forecast-item.down .forecast-arrow{color:#f0805a}
+.forecast-item b{color:var(--text);font-weight:600}
 .cal-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .cal-col{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
 .cal-month{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
@@ -213,10 +227,10 @@ a.sub-pill{text-decoration:none}
 .cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:3px;margin-left:5px;vertical-align:middle;background:rgba(140,192,255,0.1);color:#8cc0ff}
 .cal-event .tag.k{background:rgba(90,218,176,0.1);color:#5adab0}
 .chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.chip{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
-.chip-stat{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.4px;line-height:1}
-.chip-stat small{font-size:11px;color:var(--text3);font-weight:600;margin-left:4px}
-.chip-label{font-size:10.5px;color:var(--text2);line-height:1.4;margin-top:6px}
+.chip{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.chip-stat{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--text);letter-spacing:-.6px;line-height:1}
+.chip-stat small{font-size:11px;color:var(--text3);font-weight:600;margin-left:4px;letter-spacing:0}
+.chip-label{font-size:11px;color:var(--text2);line-height:1.5;margin-top:10px}
 .chip-label b{color:var(--text);font-weight:600}
 @media(max-width:860px){.sell-split,.cal-strip,.chip-row{grid-template-columns:1fr}.chart-row{grid-template-columns:110px 1fr}}
 
@@ -331,7 +345,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <div class="market-hero-eyebrow">What do we sell this quarter</div>
       <div class="market-hero-title">UAE buys brand identity + AI integration. KSA buys creator reach + sovereign AI.</div>
     </div>
-    <div class="market-hero-meta">Week of Nov 2, 2026<br>23 newsletters · 92 patterns · 25 services</div>
+    <div class="market-hero-meta">WEEK OF NOV 2, 2026<br>Compiled from 23 newsletter issues<br>Jun 2 &rarr; Nov 3 · 92 patterns tracked</div>
   </div>
 
   <div class="sell-split">
@@ -403,14 +417,61 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
   </div>
 
   <div class="market-section">
-    <div class="market-section-title">Q4 Demand Forecast · All 25 Services</div>
+    <div class="market-section-title">Q4 Demand by Category · Peak Service per Market</div>
     <div class="chart-wrap">
       <div class="chart-legend">
         <div class="leg"><div class="leg-dot uae"></div>UAE</div>
         <div class="leg"><div class="leg-dot ksa"></div>KSA</div>
-        <div class="leg" style="margin-left:auto;color:var(--text3)">Scored 0-100: demand strength this quarter based on calendar + signals + newsletter patterns</div>
+        <div class="leg" style="margin-left:auto;color:var(--text3)">Peak-service score 0-100 · calendar fit + signals + 23-week newsletter patterns</div>
       </div>
-      <div class="chart-grid" id="market-chart"></div>
+      <div class="cat-chart-grid" id="market-chart"></div>
+    </div>
+  </div>
+
+  <div class="market-section">
+    <div class="market-section-title">Where the Market Is Heading · Next 60-90 Days</div>
+    <div class="forecast-split">
+
+      <div class="forecast-col">
+        <div class="forecast-head"><span class="forecast-tag">Global</span><span class="forecast-head-sub">compiled from 23 newsletter issues</span></div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>Open-weight frontier models take over.</b> Mistral Large 4, Jais 3 and Llama family ship as sovereign deployment packages. Brand AI stacks rebuild on on-prem open weights, not closed APIs.</div>
+        </div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>Agents go paid-production.</b> Gemini Computer Use GA, GPT-6.1 Terra priced per action. The 2027 argument is pricing per screen and liability per agent, not whether agents work.</div>
+        </div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>YouTube Shopping becomes the live-commerce default.</b> Launched in KSA, UAE and Egypt Oct 26. TikTok Shop KSA still Q1 2027 — YouTube owns the window.</div>
+        </div>
+        <div class="forecast-item down">
+          <span class="forecast-arrow">&darr;</span>
+          <div><b>Hero CGI margins compress.</b> AI denoising cuts render costs 70-80% a shot. Volume holds but pricing power shrinks; CGI pivots to AI-augmented workflows.</div>
+        </div>
+      </div>
+
+      <div class="forecast-col">
+        <div class="forecast-head"><span class="forecast-tag k">GCC · Local</span><span class="forecast-head-sub">UAE + KSA calendar + deals</span></div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>Sovereign AI vendor wave opens.</b> HUMAIN ($2.6B PIF+Aramco) and G42 become the default procurement route for GCC enterprise AI. Partnerships pipeline opens Q4.</div>
+        </div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>UAE National Month peaks brand + web + installation demand.</b> Nov 3 to Dec 2 Eid Al Etihad (55th) drives Branding, Web Dev, Concepting and Digital Installations through GITEX.</div>
+        </div>
+        <div class="forecast-item up">
+          <span class="forecast-arrow">&uarr;</span>
+          <div><b>Riyadh Season creator economy peaks through March 2027.</b> Creator Marketing, Social Gamification, OOH and Live Analytics all stack. WWE Crown Jewel Nov 7 accelerates spend.</div>
+        </div>
+        <div class="forecast-item down">
+          <span class="forecast-arrow">&darr;</span>
+          <div><b>Headset category stays paused.</b> No new SKU in the GCC this quarter — Vision Pro steady at AED 13,999, Samsung Galaxy XR hasn't landed in MENA. Category waits.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -420,14 +481,14 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <div class="cal-col">
         <div class="cal-month">November 2026</div>
         <div class="cal-event"><div class="cal-date">Nov 2-5</div><div><b>ADIPEC</b> Abu Dhabi — ADNOC × OpenAI × G42 frontier deal<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 3</div><div><b>UAE National Month</b> opens → Dec 2 Eid Al Etihad<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 3</div><div><b>UAE National Month</b> opens → Dec 2 (55th Eid Al Etihad)<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Nov 7</div><div><b>WWE Crown Jewel</b> Riyadh — peak sports activation<span class="tag k">KSA</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov tbc</div><div><b>Noor Riyadh 6</b> opens — projection mapping citywide<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov</div><div><b>Noor Riyadh 6</b> — sixth edition opens citywide (projection + light art)<span class="tag k">KSA</span></div></div>
       </div>
       <div class="cal-col">
         <div class="cal-month">December 2026</div>
-        <div class="cal-event"><div class="cal-date">Dec 2</div><div><b>Eid Al Etihad</b> (UAE National Day) — campaign crescendo<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Dubai</b> — booth + installation peak<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 2-3</div><div><b>55th Eid Al Etihad</b> (UAE National Day, public holiday) — campaign crescendo<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Global Dubai</b> — Scale Summit Dec 7 + Expo City Dec 8-11<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec</div><div><b>Riyadh Season</b> continuing — creator + live commerce<span class="tag k">KSA</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec</div><div><b>Namshi Black November</b> runs through Dec 2 — shoppable live<span class="tag k">KSA</span></div></div>
       </div>
@@ -568,54 +629,40 @@ function switchTab(name,el){
   el.classList.add('active');
 }
 
-// Market tab: Q4 demand forecast per service, UAE + KSA (0-100)
-// Scored by: this-week signal strength + GCC event calendar fit + service's growth/viability + newsletter pattern reinforcement
-var Q4_DEMAND={
-  "Strategy":{uae:65,ksa:60},
-  "Branding":{uae:92,ksa:55},
-  "Concepting & Experience Design":{uae:80,ksa:75},
-  "Social AR Effects":{uae:62,ksa:78},
-  "Social Gamification":{uae:70,ksa:82},
-  "UGC":{uae:58,ksa:72},
-  "AI Creative Content":{uae:72,ksa:70},
-  "CGI":{uae:48,ksa:45},
-  "Platform Ad Solutions":{uae:68,ksa:68},
-  "Social Media Management":{uae:58,ksa:58},
-  "Glasses":{uae:55,ksa:35},
-  "Headsets":{uae:25,ksa:25},
-  "Web Development":{uae:88,ksa:50},
-  "Digital Installations":{uae:86,ksa:80},
-  "Interactive Screens":{uae:72,ksa:58},
-  "Projection Mapping":{uae:55,ksa:90},
-  "OOH Billboards":{uae:75,ksa:86},
-  "Live Audience Analytics":{uae:52,ksa:85},
-  "Creator Marketing":{uae:72,ksa:94},
-  "Live Commerce":{uae:70,ksa:72},
-  "PR Packages":{uae:70,ksa:62},
-  "Custom AI Tools":{uae:70,ksa:85},
-  "AI Agents":{uae:85,ksa:75},
-  "AI Chatbot":{uae:65,ksa:65},
-  "AI Consultative Solutions":{uae:80,ksa:78}
-};
-function renderMarketChart(){
+// Market tab: Q4 demand by category — peak service per market (0-100 score).
+// Score logic: calendar fit + this-week signals + 23-week newsletter pattern reinforcement.
+var CATEGORY_FORECAST=[
+  {cat:"Creators & Live",       uae:{pick:"Creator Marketing",      score:72}, ksa:{pick:"Creator Marketing",      score:94}},
+  {cat:"Strategy & Creative",   uae:{pick:"Branding",               score:92}, ksa:{pick:"Concepting",             score:75}},
+  {cat:"Experiential & OOH",    uae:{pick:"Digital Installations",  score:86}, ksa:{pick:"Projection Mapping",     score:90}},
+  {cat:"Web & Interactive",     uae:{pick:"Web Development",        score:88}, ksa:{pick:"Web Development",        score:50}},
+  {cat:"AI Systems",            uae:{pick:"AI Agents",              score:85}, ksa:{pick:"Custom AI Tools",        score:85}},
+  {cat:"Add-ons",               uae:{pick:"Live Audience Analytics",score:52}, ksa:{pick:"Live Audience Analytics",score:85}},
+  {cat:"Social Experiences",    uae:{pick:"Social Gamification",    score:70}, ksa:{pick:"Social Gamification",    score:82}},
+  {cat:"Content Production",    uae:{pick:"AI Creative Content",    score:72}, ksa:{pick:"UGC",                    score:72}},
+  {cat:"Wearables",             uae:{pick:"Glasses",                score:55}, ksa:{pick:"Glasses",                score:35}}
+];
+function renderCategoryChart(){
   var host=document.getElementById('market-chart');if(!host)return;
-  // sort by max(uae,ksa) descending
-  var rows=SERVICES.map(function(s){var d=Q4_DEMAND[s.name]||{uae:0,ksa:0};return{name:s.name,cat:s.cat,uae:d.uae,ksa:d.ksa,peak:Math.max(d.uae,d.ksa)};});
-  rows.sort(function(a,b){return b.peak-a.peak;});
+  var rows=CATEGORY_FORECAST.slice().sort(function(a,b){return Math.max(b.uae.score,b.ksa.score)-Math.max(a.uae.score,a.ksa.score);});
   host.innerHTML=rows.map(function(r){
     var cls=CAT_COLORS[r.cat]||'';
-    return '<div class="chart-row">'+
-      '<div class="chart-label '+cls+'"><span class="ldot"></span>'+r.name+'</div>'+
-      '<div class="chart-bars">'+
-        '<div class="chart-bar b-uae"><div class="chart-bar-flag">UAE</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:'+r.uae+'%"></div></div><div class="chart-bar-val">'+r.uae+'</div></div>'+
-        '<div class="chart-bar b-ksa"><div class="chart-bar-flag">KSA</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:'+r.ksa+'%"></div></div><div class="chart-bar-val">'+r.ksa+'</div></div>'+
+    return '<div class="cat-chart-row">'+
+      '<div class="cat-chart-label '+cls+'"><span class="cdot"></span>'+r.cat+'</div>'+
+      '<div class="cat-chart-side uae">'+
+        '<div class="cat-chart-side-top"><span class="cat-chart-flag">UAE</span><span class="cat-chart-pick">'+r.uae.pick+'</span><span class="cat-chart-score">'+r.uae.score+'</span></div>'+
+        '<div class="cat-chart-track"><div class="cat-chart-fill" style="width:'+r.uae.score+'%"></div></div>'+
+      '</div>'+
+      '<div class="cat-chart-side ksa">'+
+        '<div class="cat-chart-side-top"><span class="cat-chart-flag">KSA</span><span class="cat-chart-pick">'+r.ksa.pick+'</span><span class="cat-chart-score">'+r.ksa.score+'</span></div>'+
+        '<div class="cat-chart-track"><div class="cat-chart-fill" style="width:'+r.ksa.score+'%"></div></div>'+
       '</div>'+
     '</div>';
   }).join('');
 }
 
 filterCards();
-renderMarketChart();
+renderCategoryChart();
 </script>
 </body>
 </html>
