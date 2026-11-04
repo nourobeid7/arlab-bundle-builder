@@ -155,84 +155,119 @@ a.sub-pill{text-decoration:none}
 .market-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
 .market-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:10px}
 .market-sub{font-size:13px;line-height:1.6;color:var(--text2)}
-.market-wrap{padding:32px 40px 72px;max-width:1400px;margin:0 auto}
-.market-hero{margin-bottom:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border)}
-.market-hero-left{flex:1;min-width:340px}
-.market-hero-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
-.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(--text);line-height:1.2}
-.market-hero-meta{font-size:11px;color:var(--text3);line-height:1.6;text-align:right;min-width:180px;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em}
-.market-section{margin-top:40px}
-.market-section-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.market-section-title::after{content:"";flex:1;height:1px;background:var(--border)}
-.sell-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.sell-col{background:rgba(20,20,20,0.5);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
-.sell-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
-.sell-flag{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px}
-.sell-col.c-uae .sell-flag{color:#8cc0ff}
-.sell-col.c-ksa .sell-flag{color:#5adab0}
-.sell-sub{font-size:11.5px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
-.sell-driver{font-size:11.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.sell-list{display:flex;flex-direction:column;gap:10px}
-.sell-row{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:center}
-.sell-rank{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--text3);text-align:right}
-.sell-body{display:flex;flex-direction:column;gap:4px}
-.sell-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.sell-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.15px;display:flex;align-items:center;gap:6px}
-.sell-name .dot{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
-.sell-score{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
-.sell-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden}
-.sell-fill{height:100%;background:currentColor;border-radius:3px}
-.sell-why{font-size:10.5px;color:var(--text3);line-height:1.45;margin-top:2px}
-.chart-wrap{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
-.chart-legend{display:flex;align-items:center;gap:18px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.chart-legend .leg{display:flex;align-items:center;gap:6px}
-.chart-legend .leg-dot{width:12px;height:4px;border-radius:2px}
-.chart-legend .leg-dot.uae{background:#8cc0ff}
-.chart-legend .leg-dot.ksa{background:#5adab0}
-.cat-chart-grid{display:flex;flex-direction:column}
-.cat-chart-row{display:grid;grid-template-columns:180px 1fr 1fr;gap:20px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.cat-chart-row:last-child{border-bottom:none}
-.cat-chart-label{font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);letter-spacing:-.1px;display:flex;align-items:center;gap:8px}
-.cat-chart-label .cdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor}
-.cat-chart-side{display:grid;grid-template-rows:auto auto;gap:5px}
-.cat-chart-side-top{display:grid;grid-template-columns:34px 1fr 32px;align-items:center;gap:8px}
-.cat-chart-flag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em}
-.cat-chart-side.uae .cat-chart-flag{color:#8cc0ff}
-.cat-chart-side.ksa .cat-chart-flag{color:#5adab0}
-.cat-chart-pick{font-size:11.5px;color:var(--text2);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cat-chart-score{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-align:right}
-.cat-chart-track{height:10px;background:rgba(255,255,255,0.04);border-radius:5px;overflow:hidden}
-.cat-chart-fill{height:100%;border-radius:5px}
-.cat-chart-side.uae .cat-chart-fill{background:linear-gradient(90deg,#5a90d0,#8cc0ff)}
-.cat-chart-side.ksa .cat-chart-fill{background:linear-gradient(90deg,#3aa888,#5adab0)}
-.forecast-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.forecast-col{background:rgba(20,20,20,0.4);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
-.forecast-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.forecast-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:4px;background:rgba(140,192,255,0.1);color:#8cc0ff}
-.forecast-tag.k{background:rgba(90,218,176,0.1);color:#5adab0}
-.forecast-head-sub{font-size:11px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
-.forecast-item{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:11px 0;font-size:12px;line-height:1.55;color:var(--text2)}
-.forecast-item + .forecast-item{border-top:1px dashed rgba(255,255,255,0.05)}
-.forecast-arrow{font-size:18px;font-weight:700;line-height:1;padding-top:1px}
-.forecast-item.up .forecast-arrow{color:#5adab0}
-.forecast-item.down .forecast-arrow{color:#f0805a}
-.forecast-item b{color:var(--text);font-weight:600}
-.cal-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.cal-col{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
-.cal-month{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.cal-event{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:6px 0;font-size:11.5px;line-height:1.4;color:var(--text2)}
-.cal-event + .cal-event{border-top:1px dashed rgba(255,255,255,0.05)}
-.cal-date{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.04em;padding-top:1px}
-.cal-event b{color:var(--text);font-weight:600}
-.cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:3px;margin-left:5px;vertical-align:middle;background:rgba(140,192,255,0.1);color:#8cc0ff}
-.cal-event .tag.k{background:rgba(90,218,176,0.1);color:#5adab0}
-.chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.chip{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
-.chip-stat{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--text);letter-spacing:-.6px;line-height:1}
-.chip-stat small{font-size:11px;color:var(--text3);font-weight:600;margin-left:4px;letter-spacing:0}
-.chip-label{font-size:11px;color:var(--text2);line-height:1.5;margin-top:10px}
+
+/* ——— MARKET TAB · LIQUID GLASS ——— */
+.market-wrap{padding:36px 48px 80px;max-width:1300px;margin:0 auto;position:relative}
+.market-wrap::before{content:"";position:absolute;top:-80px;left:10%;width:520px;height:520px;background:radial-gradient(circle,rgba(90,144,208,0.14),transparent 70%);filter:blur(60px);pointer-events:none;z-index:0}
+.market-wrap::after{content:"";position:absolute;top:400px;right:5%;width:480px;height:480px;background:radial-gradient(circle,rgba(90,218,176,0.11),transparent 70%);filter:blur(60px);pointer-events:none;z-index:0}
+.market-wrap>*{position:relative;z-index:1}
+
+/* Liquid-glass base */
+.glass{background:linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025));backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),inset 0 -1px 0 rgba(0,0,0,0.2),0 8px 28px rgba(0,0,0,0.25)}
+
+/* Hero */
+.market-hero{margin-bottom:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.market-hero-left{flex:1;min-width:360px}
+.market-hero-eyebrow{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22);margin-bottom:14px}
+.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-.9px;color:var(--text);line-height:1.1;max-width:780px}
+.market-hero-meta{font-size:10px;color:var(--text3);line-height:1.7;text-align:right;min-width:200px;font-family:'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+
+/* Section titles */
+.market-section{margin-top:44px}
+.market-section-title{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.09),rgba(255,255,255,0.025));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);margin-bottom:18px}
+
+/* Sell-split — compact glass rows */
+.sell-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sell-col{padding:0}
+.sell-head{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+.sell-flag{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-1.1px;line-height:1;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sell-col.c-uae .sell-flag{background-image:linear-gradient(135deg,#5a90d0,#a8d2ff)}
+.sell-col.c-ksa .sell-flag{background-image:linear-gradient(135deg,#3aa888,#86e5bf)}
+.sell-sub{font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.sell-driver{font-size:11px;color:var(--text2);line-height:1.55;margin-bottom:12px;padding:11px 14px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.15)}
+.sell-driver b{color:var(--text);font-weight:600}
+.sell-list{display:flex;flex-direction:column;gap:6px}
+.sell-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.065),rgba(255,255,255,0.018));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 2px 8px rgba(0,0,0,0.08);transition:transform .2s,box-shadow .2s}
+.sell-row:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 5px 14px rgba(0,0,0,0.14)}
+.sell-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.sell-rank{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.12em;min-width:20px;opacity:.65}
+.sell-main{flex:1;min-width:0}
+.sell-name{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:600;color:var(--text);letter-spacing:-.2px;display:flex;align-items:center;gap:8px;line-height:1.2}
+.sell-name .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+.sell-why{font-size:10.5px;color:var(--text3);line-height:1.45;margin-top:3px;max-width:440px}
+.sell-score-pill{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.4px;padding:6px 12px;border-radius:999px;min-width:42px;text-align:center;flex-shrink:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.sell-col.c-uae .sell-score-pill{background:linear-gradient(145deg,rgba(140,192,255,0.28),rgba(90,144,208,0.1));color:#d8ebff;border:1px solid rgba(140,192,255,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
+.sell-col.c-ksa .sell-score-pill{background:linear-gradient(145deg,rgba(90,218,176,0.28),rgba(58,168,136,0.1));color:#c8f1dd;border:1px solid rgba(90,218,176,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
+
+/* Shifts to Watch — strategic windows for Wissam */
+.shifts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.shift-card{padding:16px 18px 18px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),0 4px 16px rgba(0,0,0,0.12);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.shift-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);opacity:.5}
+.shift-card:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.24),0 8px 24px rgba(0,0,0,0.2)}
+.shift-tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:4px 10px;border-radius:999px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.shift-tag.booming{background:rgba(240,128,90,0.2);color:#ffb094;border:1px solid rgba(240,128,90,0.3)}
+.shift-tag.new{background:rgba(90,218,176,0.2);color:#86e5bf;border:1px solid rgba(90,218,176,0.3)}
+.shift-tag.shift{background:rgba(140,192,255,0.2);color:#a8d2ff;border:1px solid rgba(140,192,255,0.3)}
+.shift-tag.open{background:rgba(240,192,80,0.2);color:#f5d87e;border:1px solid rgba(240,192,80,0.3)}
+.shift-cat{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin:12px 0 6px;line-height:1.2}
+.shift-head{font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.shift-head b{color:var(--text);font-weight:600}
+.shift-signal{font-size:10.5px;color:var(--text3);line-height:1.5;padding-top:10px;border-top:1px solid rgba(255,255,255,0.055)}
+.shift-signal b{color:var(--text2);font-weight:600}
+
+/* Scatter chart */
+.chart-wrap{padding:0;display:grid;grid-template-columns:1fr 240px;gap:28px;align-items:center}
+.market-scatter{width:100%;max-width:720px;height:auto;display:block}
+.scatter-axis-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;fill:var(--text3)}
+.scatter-grid{stroke:rgba(255,255,255,0.06);stroke-width:1}
+.scatter-diag{stroke:rgba(255,255,255,0.08);stroke-width:1;stroke-dasharray:4 5}
+.scatter-tick{font-family:'Space Grotesk',sans-serif;font-size:9px;fill:var(--text3);letter-spacing:.06em}
+.scatter-zone-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.scatter-zone-label.uae{fill:#8cc0ff;opacity:.55}
+.scatter-zone-label.ksa{fill:#5adab0;opacity:.55}
+.scatter-dot{transition:opacity .2s;cursor:default}
+.chart-legend{display:flex;flex-direction:column;gap:8px}
+.chart-legend-item{display:flex;align-items:center;gap:10px;padding:7px 11px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.045),rgba(255,255,255,0.012));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text2);line-height:1}
+.chart-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.chart-legend-name{flex:1;font-weight:500}
+.chart-legend-score{font-weight:700;color:var(--text);letter-spacing:-.2px;font-size:11px}
+.chart-legend-score .sep{opacity:.35;margin:0 4px;font-weight:400}
+
+/* Forecast */
+.forecast-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.forecast-col{padding:16px 20px 6px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16)}
+.forecast-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.forecast-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:rgba(140,192,255,0.16);color:#a8d2ff;border:1px solid rgba(140,192,255,0.22)}
+.forecast-tag.k{background:rgba(90,218,176,0.16);color:#86e5bf;border-color:rgba(90,218,176,0.22)}
+.forecast-item{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:12px 0;font-size:11.5px;line-height:1.5;color:var(--text2);border-top:1px solid rgba(255,255,255,0.055)}
+.forecast-item:first-of-type{border-top:0;padding-top:4px}
+.forecast-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;line-height:1;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.forecast-item.up .forecast-arrow{background:rgba(90,218,176,0.2);color:#86e5bf;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)}
+.forecast-item.down .forecast-arrow{background:rgba(240,128,90,0.2);color:#ffb094;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)}
+.forecast-item b{color:var(--text);font-weight:600;display:block;margin-bottom:2px;font-size:12.5px;letter-spacing:-.15px}
+
+/* Calendar — glass dates */
+.cal-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cal-col{padding:16px 18px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.012));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.09);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14)}
+.cal-month{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--text);padding:4px 11px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16);margin-bottom:10px}
+.cal-event{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:8px 0;font-size:11px;line-height:1.45;color:var(--text2);border-top:1px solid rgba(255,255,255,0.055);align-items:start}
+.cal-event:first-of-type{border-top:0;padding-top:4px}
+.cal-date{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;color:var(--text);letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.025));border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14);white-space:nowrap;align-self:start;margin-top:1px}
+.cal-event b{color:var(--text);font-weight:600;font-size:12px}
+.cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;background:rgba(140,192,255,0.16);color:#a8d2ff;border:1px solid rgba(140,192,255,0.22);text-transform:uppercase}
+.cal-event .tag.k{background:rgba(90,218,176,0.16);color:#86e5bf;border-color:rgba(90,218,176,0.22)}
+
+/* Chip-row — stat glass */
+.chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.chip{padding:16px 18px 18px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,0.065),rgba(255,255,255,0.015));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),0 4px 16px rgba(0,0,0,0.12);transition:transform .2s,box-shadow .2s}
+.chip:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.24),0 8px 22px rgba(0,0,0,0.18)}
+.chip-stat{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1.1px;line-height:1}
+.chip-stat small{font-size:11px;color:var(--text3);font-weight:600;margin-left:3px;letter-spacing:0}
+.chip-label{font-size:10.5px;color:var(--text3);line-height:1.5;margin-top:10px}
 .chip-label b{color:var(--text);font-weight:600}
-@media(max-width:860px){.sell-split,.cal-strip,.chip-row{grid-template-columns:1fr}.chart-row{grid-template-columns:110px 1fr}}
+
+@media(max-width:960px){.chart-wrap{grid-template-columns:1fr}.shifts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.sell-split,.cal-strip,.chip-row,.forecast-split,.shifts-grid{grid-template-columns:1fr;gap:14px}.market-hero-title{font-size:26px}.chip-stat{font-size:28px}}
 
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -351,80 +386,156 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
   <div class="sell-split">
 
     <div class="sell-col c-uae">
-      <div class="sell-head"><span class="sell-flag">UAE</span><span class="sell-sub">Top 5 to sell this quarter</span></div>
-      <div class="sell-driver"><b>Driver:</b> Brand Dubai National Month Nov 3 → Dec 2 (55th Eid Al Etihad) + ADNOC-OpenAI Frontier deal Nov 2 + GITEX Dubai Dec 7-11 at Expo City.</div>
+      <div class="sell-head"><span class="sell-flag">UAE</span><span class="sell-sub">Top 5 · this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> UAE National Month Nov 3 → Dec 2 + ADNOC-OpenAI-G42 Frontier deal signed at ADIPEC Nov 2 + GITEX Dubai Dec 7-11.</div>
       <div class="sell-list">
-        <div class="sell-row"><div class="sell-rank">1</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div><div class="sell-score">92</div></div>
-          <div class="sell-bar cat-creative-strategy"><div class="sell-fill" style="width:92%"></div></div>
-          <div class="sell-why">Brand Dubai's 30-day National Month pulls every government body and private brand into the official Eid Al Etihad identity system.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">2</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-addons"><span class="dot"></span>AI Agents</div><div class="sell-score">92</div></div>
-          <div class="sell-bar cat-addons"><div class="sell-fill" style="width:92%"></div></div>
-          <div class="sell-why">ADNOC just rolled OpenAI Frontier agents across every barrel — the integrator door is open at every UAE enterprise partner.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">3</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-on-ground"><span class="dot"></span>Digital Installations</div><div class="sell-score">88</div></div>
-          <div class="sell-bar cat-on-ground"><div class="sell-fill" style="width:88%"></div></div>
-          <div class="sell-why">ISEA2026 (Nov 6-15) overlaps Dubai Design Week (Nov 3-8) then GITEX at Expo City — three back-to-back booth-build windows.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">4</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-immersive"><span class="dot"></span>Web Development</div><div class="sell-score">82</div></div>
-          <div class="sell-bar cat-immersive"><div class="sell-fill" style="width:82%"></div></div>
-          <div class="sell-why">Every National Month campaign ships a microsite — short-cycle landing-page work peaks mid-November into Eid Al Etihad.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">5</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div><div class="sell-score">76</div></div>
-          <div class="sell-bar cat-social"><div class="sell-fill" style="width:76%"></div></div>
-          <div class="sell-why">78% of UAE brands now pick Reels or TikTok as the lead deliverable — creator briefs run alongside every National Month campaign.</div>
-        </div></div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">01</div>
+            <div class="sell-main">
+              <div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div>
+              <div class="sell-why">National Month Nov 3→Dec 2 = 30-day identity sprint across every UAE sector — brand systems + applications.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">92</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">02</div>
+            <div class="sell-main">
+              <div class="sell-name cat-addons"><span class="dot"></span>AI Agents</div>
+              <div class="sell-why">ADNOC-OpenAI-G42 at ADIPEC Nov 2 opens UAE enterprise AI budgets — brand-side agent builds are the ARlab lane.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">92</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">03</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>Digital Installations</div>
+              <div class="sell-why">DDW (Nov 3-8) + ISEA2026 (Nov 6-15) + GITEX (Dec 7-11) — three booth build windows for LED walls + immersive.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">88</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">04</div>
+            <div class="sell-main">
+              <div class="sell-name cat-immersive"><span class="dot"></span>Web Development</div>
+              <div class="sell-why">Every National Month campaign needs a microsite + landing page built into the Eid Al Etihad Dec 2-3 moment.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">82</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">05</div>
+            <div class="sell-main">
+              <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
+              <div class="sell-why">UAE National Month pulls brand briefs onto Reels + TikTok — ARlab sources talent, writes briefs, runs the campaign.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">76</div>
+        </div>
       </div>
     </div>
 
     <div class="sell-col c-ksa">
-      <div class="sell-head"><span class="sell-flag">KSA</span><span class="sell-sub">Top 5 to sell this quarter</span></div>
-      <div class="sell-driver"><b>Driver:</b> Riyadh Season running (Oct 21 → March) + Noor Riyadh 6 (Nov–Dec) + WWE Crown Jewel Nov 7 + Aramco closed $2.6B for 49% of HUMAIN on Nov 2.</div>
+      <div class="sell-head"><span class="sell-flag">KSA</span><span class="sell-sub">Top 5 · this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> Riyadh Season (Oct 21 → Mar) + Noor Riyadh 6 (Nov-Dec) + WWE Crown Jewel Nov 7 + Aramco closed $2.6B for 49% of HUMAIN on Nov 2.</div>
       <div class="sell-list">
-        <div class="sell-row"><div class="sell-rank">1</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div><div class="sell-score">94</div></div>
-          <div class="sell-bar cat-social"><div class="sell-fill" style="width:94%"></div></div>
-          <div class="sell-why">Saudi Arabia drives 40% of GCC creator spend and Riyadh Season is the biggest live window of the Saudi year — micro beats mega 3-4x on ROI.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">2</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div><div class="sell-score">92</div></div>
-          <div class="sell-bar cat-on-ground"><div class="sell-fill" style="width:92%"></div></div>
-          <div class="sell-why">Noor Riyadh's sixth edition is confirmed — the festival's Vision Grid holds the Guinness record for the largest AI projection-mapped display.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">3</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-addons"><span class="dot"></span>Custom AI Tools</div><div class="sell-score">88</div></div>
-          <div class="sell-bar cat-addons"><div class="sell-fill" style="width:88%"></div></div>
-          <div class="sell-why">Aramco bought 49% of HUMAIN for $2.6B on Nov 2 — PIF plus Aramco now sit behind the kingdom's AI vendor budget.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">4</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-social-ar"><span class="dot"></span>Social Gamification</div><div class="sell-score">82</div></div>
-          <div class="sell-bar cat-social-ar"><div class="sell-fill" style="width:82%"></div></div>
-          <div class="sell-why">28M Saudi TikTok users plus ten weeks of Riyadh Season stages make gamified filters the cheapest activation line on every brief.</div>
-        </div></div>
-        <div class="sell-row"><div class="sell-rank">5</div><div class="sell-body">
-          <div class="sell-top"><div class="sell-name cat-content"><span class="dot"></span>UGC</div><div class="sell-score">82</div></div>
-          <div class="sell-bar cat-content"><div class="sell-fill" style="width:82%"></div></div>
-          <div class="sell-why">Mawthooq licensing cut the Saudi creator pool 35% since 2022 — Khaleeji UGC is now supply-constrained at premium rates.</div>
-        </div></div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">01</div>
+            <div class="sell-main">
+              <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
+              <div class="sell-why">Crown Jewel Nov 7 + Six Kings Slam Dec 27-30 at Riyadh Season — peak Saudi talent-sourcing + brief-and-manage window.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">94</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">02</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div>
+              <div class="sell-why">Noor Riyadh 6 Nov-Dec = Saudi's biggest projection-mapping brief window of 2026 — building + stage canvases.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">92</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">03</div>
+            <div class="sell-main">
+              <div class="sell-name cat-addons"><span class="dot"></span>Custom AI Tools</div>
+              <div class="sell-why">HUMAIN closed $2.6B Nov 2 — Saudi brand AI budgets opened for custom tool builds on sovereign infra.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">88</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">04</div>
+            <div class="sell-main">
+              <div class="sell-name cat-social-ar"><span class="dot"></span>Social Gamification</div>
+              <div class="sell-why">Riyadh Season stages Oct 21 → Mar — gamified TikTok filters + Snapchat lenses are the cheapest activation line.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">82</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">05</div>
+            <div class="sell-main">
+              <div class="sell-name cat-content"><span class="dot"></span>UGC</div>
+              <div class="sell-why">Riyadh Season + Noor Riyadh 6 + Crown Jewel Nov 7 — Saudi's biggest shoppable + organic UGC shoot window of 2026.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">82</div>
+        </div>
       </div>
     </div>
 
   </div>
 
   <div class="market-section">
-    <div class="market-section-title">Q4 Demand by Category · Peak Service per Market</div>
-    <div class="chart-wrap">
-      <div class="chart-legend">
-        <div class="leg"><div class="leg-dot uae"></div>UAE</div>
-        <div class="leg"><div class="leg-dot ksa"></div>KSA</div>
-        <div class="leg" style="margin-left:auto;color:var(--text3)">Peak-service score 0-100 · calendar fit + signals + 23-week newsletter patterns</div>
+    <div class="market-section-title">Shifts to Watch · Windows Opening Now</div>
+    <div class="shifts-grid">
+      <div class="shift-card">
+        <div class="shift-tag booming">Booming</div>
+        <div class="shift-cat">Shoppable Affiliate</div>
+        <div class="shift-head"><b>YouTube Shopping</b> opened UAE + KSA + Egypt Oct 26 — creators 500+ subs tag Amazon products, earn commission.</div>
+        <div class="shift-signal"><b>ARlab window:</b> brand-side offer for shoppable UGC shoots + creator-tagged campaigns. Affiliate infra is Google's — the production + talent lane is ours.</div>
       </div>
-      <div class="cat-chart-grid" id="market-chart"></div>
+      <div class="shift-card">
+        <div class="shift-tag new">New</div>
+        <div class="shift-cat">Sovereign AI Vendors</div>
+        <div class="shift-head"><b>HUMAIN</b> closed $2.6B PIF + Aramco deal Nov 2 — becomes KSA's default enterprise AI procurement route.</div>
+        <div class="shift-signal"><b>ARlab window:</b> every Saudi brand AI build now routes through HUMAIN or G42. Position custom tools + agents as sovereign-infra compatible.</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-tag shift">Shift</div>
+        <div class="shift-cat">Agent Economics</div>
+        <div class="shift-head"><b>Gemini Computer Use</b> hit GA Oct 30, <b>GPT-6.1 Terra</b> landed Oct 26 at $1 input / $5 output per M tokens.</div>
+        <div class="shift-signal"><b>ARlab window:</b> agents are now production-priced. Brand workflow automation is commercially viable at scale — AI Agents is the Q4 build lane.</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-tag open">Open</div>
+        <div class="shift-cat">Open Arabic Models</div>
+        <div class="shift-head"><b>Jais 3</b> (375B) shipped under Apache 2.0 Oct 16 — MBZUAI released the first production-grade open Arabic model.</div>
+        <div class="shift-signal"><b>ARlab window:</b> GCC brands can now self-host Arabic AI without foreign cloud. Custom Tools stack pivots to on-prem builds.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="market-section">
+    <div class="market-section-title">UAE × KSA · Peak Service by Category</div>
+    <div class="chart-wrap">
+      <svg id="market-chart" class="market-scatter" viewBox="0 0 780 560" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="market-legend" class="chart-legend"></div>
     </div>
   </div>
 
@@ -433,43 +544,19 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
     <div class="forecast-split">
 
       <div class="forecast-col">
-        <div class="forecast-head"><span class="forecast-tag">Global</span><span class="forecast-head-sub">compiled from 23 newsletter issues</span></div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>Open-weight Arabic + frontier models land.</b> MBZUAI shipped Jais 3 (up to 375B) under Apache 2.0 on Oct 16, and Mistral Large 4 landed late Oct — GCC AI stacks can now rebuild on open weights.</div>
-        </div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>Agents go production-priced.</b> Gemini Computer Use hit GA on Oct 30 and GPT-6.1 Terra launched Oct 26 at $1 input / $5 output per million tokens — agent work is now priced for scale.</div>
-        </div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>YouTube Shopping opens MENA live commerce.</b> Launched in Saudi, UAE and Egypt on Oct 26 — creators with 500+ subs can tag Amazon products and earn affiliate commission. TikTok Shop KSA has not launched yet.</div>
-        </div>
-        <div class="forecast-item down">
-          <span class="forecast-arrow">&darr;</span>
-          <div><b>Hero CGI margins compress.</b> AI denoising cuts render costs 70-80% a shot. Volume holds but pricing power shrinks; CGI pivots to AI-augmented workflows.</div>
-        </div>
+        <div class="forecast-head"><span class="forecast-tag">Global</span></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Open Arabic + frontier models land.</b> Jais 3 (Apache 2.0) Oct 16, Mistral Large 4 late Oct.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Agents priced for scale.</b> Gemini Computer Use GA Oct 30, GPT-6.1 Terra $1/$5 per M tokens.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>YouTube Shopping opens MENA.</b> Live in KSA + UAE + Egypt Oct 26 — creators 500+ subs tag.</div></div>
+        <div class="forecast-item down"><span class="forecast-arrow">&darr;</span><div><b>Hero CGI margins compress.</b> AI denoising cuts render costs 70-80% per shot.</div></div>
       </div>
 
       <div class="forecast-col">
-        <div class="forecast-head"><span class="forecast-tag k">GCC · Local</span><span class="forecast-head-sub">UAE + KSA calendar + deals</span></div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>Sovereign AI vendor wave opens.</b> HUMAIN ($2.6B PIF+Aramco) and G42 become the default procurement route for GCC enterprise AI. Partnerships pipeline opens Q4.</div>
-        </div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>UAE National Month peaks brand + web + installation demand.</b> Nov 3 to Dec 2 (55th Eid Al Etihad) drives Branding, AI Agents, Digital Installations and campaign microsites straight into GITEX Dec 7-11.</div>
-        </div>
-        <div class="forecast-item up">
-          <span class="forecast-arrow">&uarr;</span>
-          <div><b>Riyadh Season peaks through March 2027.</b> KSA already runs 40% of GCC creator spend — Creator Marketing, Projection Mapping (Noor Riyadh 6), Social Gamification and UGC stack. WWE Crown Jewel Nov 7 accelerates.</div>
-        </div>
-        <div class="forecast-item down">
-          <span class="forecast-arrow">&darr;</span>
-          <div><b>Headset category stays paused.</b> No new SKU in the GCC this quarter — Vision Pro steady at AED 13,999, Samsung Galaxy XR hasn't landed in MENA. Category waits.</div>
-        </div>
+        <div class="forecast-head"><span class="forecast-tag k">GCC</span></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Sovereign AI vendor wave.</b> HUMAIN ($2.6B PIF+Aramco) and G42 anchor enterprise AI.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>UAE National Month peaks.</b> Nov 3 → Dec 2 drives brand, web and installation demand into GITEX.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Riyadh Season peaks to Mar 2027.</b> KSA = 40% of GCC creator spend. Crown Jewel Nov 7 accelerates.</div></div>
+        <div class="forecast-item down"><span class="forecast-arrow">&darr;</span><div><b>Headset category paused.</b> No new SKU in GCC Q4 — Galaxy XR unlanded, Vision Pro flat.</div></div>
       </div>
 
     </div>
@@ -479,25 +566,24 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
     <div class="market-section-title">Key Moments · Nov → Jan</div>
     <div class="cal-strip">
       <div class="cal-col">
-        <div class="cal-month">November 2026</div>
-        <div class="cal-event"><div class="cal-date">Nov 2-5</div><div><b>ADIPEC</b> Abu Dhabi — ADNOC × OpenAI × G42 Frontier deal signed Nov 2<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 3</div><div><b>UAE National Month</b> opens → Dec 2 (55th Eid Al Etihad)<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 3-8</div><div><b>Dubai Design Week</b> at d3 — 12th edition, installations + immersive<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 6-15</div><div><b>ISEA2026</b> Dubai — electronic / emerging art, city-wide installations<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 7</div><div><b>WWE Crown Jewel</b> at KAFD Riyadh Season Stadium<span class="tag k">KSA</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 24-29</div><div><b>Namshi Black November</b> — UAE shoppable window<span class="tag">UAE</span></div></div>
+        <div class="cal-month">Nov 2026</div>
+        <div class="cal-event"><div class="cal-date">Nov 2-5</div><div><b>ADIPEC</b> Abu Dhabi<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 3</div><div><b>UAE National Month</b> → Dec 2<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 3-8</div><div><b>Dubai Design Week</b><span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 7</div><div><b>WWE Crown Jewel</b> Riyadh<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 24-29</div><div><b>Namshi Black November</b><span class="tag">UAE</span></div></div>
       </div>
       <div class="cal-col">
-        <div class="cal-month">December 2026</div>
-        <div class="cal-event"><div class="cal-date">Dec 2-3</div><div><b>55th Eid Al Etihad</b> (UAE National Day, public holiday) — campaign crescendo<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Global Dubai</b> — Scale Summit Dec 7 + Expo City Dec 8-11<span class="tag">UAE</span></div></div>
-        <div class="cal-event"><div class="cal-date">Dec 27-30</div><div><b>Six Kings Slam</b> tennis — Riyadh Season<span class="tag k">KSA</span></div></div>
-        <div class="cal-event"><div class="cal-date">Dec</div><div><b>Noor Riyadh 6</b> — sixth edition citywide (exact dates pending)<span class="tag k">KSA</span></div></div>
+        <div class="cal-month">Dec 2026</div>
+        <div class="cal-event"><div class="cal-date">Dec 2-3</div><div><b>55th Eid Al Etihad</b><span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Global Dubai</b><span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec</div><div><b>Noor Riyadh 6</b><span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 27-30</div><div><b>Six Kings Slam</b><span class="tag k">KSA</span></div></div>
       </div>
       <div class="cal-col">
-        <div class="cal-month">January 2027</div>
-        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Riyadh Season continues</b> — launched Oct 21 for 10 weeks of core programming<span class="tag k">KSA</span></div></div>
-        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Vision 2030 10-year marker</b> — Saudi strategy enters year-10 of its 2016-2030 arc<span class="tag k">KSA</span></div></div>
+        <div class="cal-month">Jan 2027</div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Riyadh Season</b> continues<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Vision 2030</b> year-10 marker<span class="tag k">KSA</span></div></div>
       </div>
     </div>
   </div>
@@ -645,19 +731,56 @@ var CATEGORY_FORECAST=[
 ];
 function renderCategoryChart(){
   var host=document.getElementById('market-chart');if(!host)return;
-  var rows=CATEGORY_FORECAST.slice().sort(function(a,b){return Math.max(b.uae.score,b.ksa.score)-Math.max(a.uae.score,a.ksa.score);});
-  host.innerHTML=rows.map(function(r){
-    var cls=CAT_COLORS[r.cat]||'';
-    return '<div class="cat-chart-row">'+
-      '<div class="cat-chart-label '+cls+'"><span class="cdot"></span>'+r.cat+'</div>'+
-      '<div class="cat-chart-side uae">'+
-        '<div class="cat-chart-side-top"><span class="cat-chart-flag">UAE</span><span class="cat-chart-pick">'+r.uae.pick+'</span><span class="cat-chart-score">'+r.uae.score+'</span></div>'+
-        '<div class="cat-chart-track"><div class="cat-chart-fill" style="width:'+r.uae.score+'%"></div></div>'+
-      '</div>'+
-      '<div class="cat-chart-side ksa">'+
-        '<div class="cat-chart-side-top"><span class="cat-chart-flag">KSA</span><span class="cat-chart-pick">'+r.ksa.pick+'</span><span class="cat-chart-score">'+r.ksa.score+'</span></div>'+
-        '<div class="cat-chart-track"><div class="cat-chart-fill" style="width:'+r.ksa.score+'%"></div></div>'+
-      '</div>'+
+  var W=780,H=560,padL=80,padR=70,padT=40,padB=70;
+  var px=W-padL-padR,py=H-padT-padB;
+  var sx=function(v){return padL+(v/100)*px;};
+  var sy=function(v){return padT+py-(v/100)*py;};
+  var COLOR={
+    "Strategy & Creative":"#d4a574","Content Production":"#97C459","Social Experiences":"#b8aef5",
+    "Web & Interactive":"#60aaee","Wearables":"#ed93b1","Experiential & OOH":"#aaa",
+    "Creators & Live":"#f0805a","AI Systems":"#f0c050","Add-ons":"#5adab0"
+  };
+  var svg='';
+  // gridlines
+  [25,50,75].forEach(function(t){
+    svg+='<line class="scatter-grid" x1="'+sx(t)+'" y1="'+padT+'" x2="'+sx(t)+'" y2="'+(padT+py)+'"/>';
+    svg+='<line class="scatter-grid" x1="'+padL+'" y1="'+sy(t)+'" x2="'+(padL+px)+'" y2="'+sy(t)+'"/>';
+  });
+  // border
+  svg+='<rect x="'+padL+'" y="'+padT+'" width="'+px+'" height="'+py+'" fill="none" stroke="rgba(255,255,255,0.1)" rx="12"/>';
+  // diagonal
+  svg+='<line class="scatter-diag" x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(100)+'" y2="'+sy(100)+'"/>';
+  // ticks
+  [0,25,50,75,100].forEach(function(t){
+    svg+='<text class="scatter-tick" x="'+sx(t)+'" y="'+(padT+py+18)+'" text-anchor="middle">'+t+'</text>';
+    svg+='<text class="scatter-tick" x="'+(padL-12)+'" y="'+(sy(t)+3)+'" text-anchor="end">'+t+'</text>';
+  });
+  // axis labels
+  svg+='<text class="scatter-axis-label" x="'+(padL+px/2)+'" y="'+(H-20)+'" text-anchor="middle">UAE score →</text>';
+  svg+='<text class="scatter-axis-label" x="28" y="'+(padT+py/2)+'" text-anchor="middle" transform="rotate(-90 28 '+(padT+py/2)+')">KSA score →</text>';
+  // zone hints
+  svg+='<text class="scatter-zone-label ksa" x="'+sx(12)+'" y="'+sy(93)+'">KSA LEAN</text>';
+  svg+='<text class="scatter-zone-label uae" x="'+sx(78)+'" y="'+sy(14)+'">UAE LEAN</text>';
+  // bubbles — no in-plot labels, legend sidebar handles naming
+  CATEGORY_FORECAST.forEach(function(r){
+    var c=COLOR[r.cat]||'#fff';
+    var x=sx(r.uae.score),y=sy(r.ksa.score);
+    var maxS=Math.max(r.uae.score,r.ksa.score);
+    var rad=8+(maxS/100)*6;
+    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+(rad+6)+'" fill="'+c+'" opacity="0.14"/>';
+    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+rad+'" fill="'+c+'" opacity="0.4"/>';
+    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+(rad*0.5)+'" fill="'+c+'" opacity="1"/>';
+  });
+  host.innerHTML=svg;
+  // legend
+  var leg=document.getElementById('market-legend');if(!leg)return;
+  var sorted=CATEGORY_FORECAST.slice().sort(function(a,b){return Math.max(b.uae.score,b.ksa.score)-Math.max(a.uae.score,a.ksa.score);});
+  leg.innerHTML=sorted.map(function(r){
+    var c=COLOR[r.cat]||'#fff';
+    return '<div class="chart-legend-item">'+
+      '<span class="chart-legend-dot" style="background:'+c+'"></span>'+
+      '<span class="chart-legend-name">'+r.cat+'</span>'+
+      '<span class="chart-legend-score">'+r.uae.score+'<span class="sep">·</span>'+r.ksa.score+'</span>'+
     '</div>';
   }).join('');
 }
