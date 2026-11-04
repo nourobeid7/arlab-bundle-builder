@@ -156,41 +156,69 @@ a.sub-pill{text-decoration:none}
 .market-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:10px}
 .market-sub{font-size:13px;line-height:1.6;color:var(--text2)}
 .market-wrap{padding:28px 40px 60px;max-width:1400px;margin:0 auto}
-.market-hero{margin-bottom:28px}
+.market-hero{margin-bottom:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.market-hero-left{flex:1;min-width:340px}
 .market-hero-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
-.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.4px;color:var(--text);margin-bottom:6px;line-height:1.2}
-.market-hero-meta{font-size:12px;color:var(--text3);line-height:1.5}
-.market-section{margin-top:36px}
-.market-section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.4px;color:var(--text);line-height:1.2}
+.market-hero-meta{font-size:11px;color:var(--text3);line-height:1.5;text-align:right;min-width:180px}
+.market-section{margin-top:28px}
+.market-section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .market-section-title::after{content:"";flex:1;height:1px;background:var(--border)}
-.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.focus-card{background:rgba(20,20,20,0.55);border:1px solid var(--border);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.focus-card-rank{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--text3);text-transform:uppercase}
-.focus-card-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--text);line-height:1.25}
-.focus-card-why{font-size:12px;line-height:1.55;color:var(--text2)}
-.focus-card-stats{display:flex;gap:14px;padding-top:10px;border-top:1px solid var(--border);font-size:10.5px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;text-transform:uppercase}
-.focus-card-stats span b{color:var(--text);font-weight:700;letter-spacing:0;margin-left:4px;text-transform:none}
-.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.region-card{background:rgba(20,20,20,0.4);border:1px solid var(--border);border-radius:10px;padding:16px}
-.region-flag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--surging);margin-bottom:8px}
-.region-card.r-uae .region-flag{color:#8cc0ff}
-.region-card.r-ksa .region-flag{color:#5adab0}
-.region-card.r-global .region-flag{color:#d4a85a}
-.region-pick{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.15px}
-.region-why{font-size:11.5px;line-height:1.55;color:var(--text2)}
-.pattern-list{display:flex;flex-direction:column;gap:10px}
-.pattern-row{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:start;padding:12px 14px;background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:8px}
-.pattern-count{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--text);line-height:1}
-.pattern-count small{display:block;font-size:9px;font-weight:600;letter-spacing:.1em;color:var(--text3);margin-top:3px;text-transform:uppercase}
-.pattern-body{font-size:12px;line-height:1.5;color:var(--text2)}
-.pattern-body b{color:var(--text);font-weight:600}
-.pattern-tag{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);background:rgba(255,255,255,0.03);padding:4px 8px;border-radius:4px;border:1px solid var(--border);white-space:nowrap}
-.forecast-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.forecast-card{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
-.forecast-window{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
-.forecast-headline{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.35}
-.forecast-detail{font-size:11.5px;line-height:1.55;color:var(--text2)}
-@media(max-width:860px){.focus-grid,.region-grid,.forecast-list{grid-template-columns:1fr}}
+.sell-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sell-col{background:rgba(20,20,20,0.5);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.sell-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
+.sell-flag{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px}
+.sell-col.c-uae .sell-flag{color:#8cc0ff}
+.sell-col.c-ksa .sell-flag{color:#5adab0}
+.sell-sub{font-size:11.5px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
+.sell-driver{font-size:11.5px;color:var(--text2);line-height:1.5;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sell-list{display:flex;flex-direction:column;gap:10px}
+.sell-row{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:center}
+.sell-rank{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--text3);text-align:right}
+.sell-body{display:flex;flex-direction:column;gap:4px}
+.sell-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sell-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.15px;display:flex;align-items:center;gap:6px}
+.sell-name .dot{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.sell-score{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.sell-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden}
+.sell-fill{height:100%;background:currentColor;border-radius:3px}
+.sell-why{font-size:10.5px;color:var(--text3);line-height:1.45;margin-top:2px}
+.chart-wrap{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.chart-legend{display:flex;align-items:center;gap:16px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.chart-legend .leg{display:flex;align-items:center;gap:6px}
+.chart-legend .leg-dot{width:10px;height:3px;border-radius:2px}
+.chart-legend .leg-dot.uae{background:#8cc0ff}
+.chart-legend .leg-dot.ksa{background:#5adab0}
+.chart-grid{display:grid;grid-template-columns:1fr;gap:6px}
+.chart-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;padding:3px 0}
+.chart-label{font-size:11px;color:var(--text2);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chart-label .ldot{display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
+.chart-bars{display:flex;flex-direction:column;gap:3px}
+.chart-bar{display:grid;grid-template-columns:28px 1fr 26px;gap:6px;align-items:center}
+.chart-bar-flag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--text3)}
+.chart-bar.b-uae .chart-bar-flag{color:#8cc0ff}
+.chart-bar.b-ksa .chart-bar-flag{color:#5adab0}
+.chart-bar-track{height:7px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden}
+.chart-bar-fill{height:100%;border-radius:3px}
+.chart-bar.b-uae .chart-bar-fill{background:#8cc0ff}
+.chart-bar.b-ksa .chart-bar-fill{background:#5adab0}
+.chart-bar-val{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;color:var(--text2);text-align:right}
+.cal-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cal-col{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.cal-month{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.cal-event{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:6px 0;font-size:11.5px;line-height:1.4;color:var(--text2)}
+.cal-event + .cal-event{border-top:1px dashed rgba(255,255,255,0.05)}
+.cal-date{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.04em;padding-top:1px}
+.cal-event b{color:var(--text);font-weight:600}
+.cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:3px;margin-left:5px;vertical-align:middle;background:rgba(140,192,255,0.1);color:#8cc0ff}
+.cal-event .tag.k{background:rgba(90,218,176,0.1);color:#5adab0}
+.chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.chip{background:rgba(20,20,20,0.35);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.chip-stat{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.4px;line-height:1}
+.chip-stat small{font-size:11px;color:var(--text3);font-weight:600;margin-left:4px}
+.chip-label{font-size:10.5px;color:var(--text2);line-height:1.4;margin-top:6px}
+.chip-label b{color:var(--text);font-weight:600}
+@media(max-width:860px){.sell-split,.cal-strip,.chip-row{grid-template-columns:1fr}.chart-row{grid-template-columns:110px 1fr}}
 
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -299,123 +327,126 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 <div class="market-wrap">
 
   <div class="market-hero">
-    <div class="market-hero-eyebrow">Market Intelligence</div>
-    <div class="market-hero-title">Sovereign AI consolidates, agents hit production, and the GCC splits the playbook.</div>
-    <div class="market-hero-meta">Compiled Week of November 2, 2026 — 23 newsletter issues (Jun 2 → Nov 3) cross-referenced with 25 service signals. 92 patterns, 138 partners tracked.</div>
+    <div class="market-hero-left">
+      <div class="market-hero-eyebrow">What do we sell this quarter</div>
+      <div class="market-hero-title">UAE buys brand identity + AI integration. KSA buys creator reach + sovereign AI.</div>
+    </div>
+    <div class="market-hero-meta">Week of Nov 2, 2026<br>23 newsletters · 92 patterns · 25 services</div>
+  </div>
+
+  <div class="sell-split">
+
+    <div class="sell-col c-uae">
+      <div class="sell-head"><span class="sell-flag">UAE</span><span class="sell-sub">Top 5 to sell this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> UAE National Month (Nov 3 → Dec 2 Eid Al Etihad) + ADNOC-OpenAI integrator wave + GITEX Dubai Dec 7-11.</div>
+      <div class="sell-list">
+        <div class="sell-row"><div class="sell-rank">1</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div><div class="sell-score">92</div></div>
+          <div class="sell-bar cat-creative-strategy"><div class="sell-fill" style="width:92%"></div></div>
+          <div class="sell-why">UAE National Month identity refresh across every Dubai gov body, bank and private brand.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">2</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-immersive"><span class="dot"></span>Web Development</div><div class="sell-score">88</div></div>
+          <div class="sell-bar cat-immersive"><div class="sell-fill" style="width:88%"></div></div>
+          <div class="sell-why">Campaign microsite + landing-page rush tied to national day moment.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">3</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-on-ground"><span class="dot"></span>Digital Installations</div><div class="sell-score">86</div></div>
+          <div class="sell-bar cat-on-ground"><div class="sell-fill" style="width:86%"></div></div>
+          <div class="sell-why">GITEX Dubai Dec 7-11 booth demand + ADIPEC Abu Dhabi pavilion carryover.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">4</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-addons"><span class="dot"></span>AI Agents</div><div class="sell-score">85</div></div>
+          <div class="sell-bar cat-addons"><div class="sell-fill" style="width:85%"></div></div>
+          <div class="sell-why">ADNOC-OpenAI-G42 opens the integrator pipeline across UAE enterprise partners.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">5</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-creative-strategy"><span class="dot"></span>Concepting</div><div class="sell-score">80</div></div>
+          <div class="sell-bar cat-creative-strategy"><div class="sell-fill" style="width:80%"></div></div>
+          <div class="sell-why">Q4 campaign concepting peaks for January brand refreshes and Expo-style pitches.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="sell-col c-ksa">
+      <div class="sell-head"><span class="sell-flag">KSA</span><span class="sell-sub">Top 5 to sell this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> Riyadh Season running (Oct 21 → March) + Noor Riyadh 6 Nov + WWE Crown Jewel Nov 7 + HUMAIN $2.6B closed.</div>
+      <div class="sell-list">
+        <div class="sell-row"><div class="sell-rank">1</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div><div class="sell-score">94</div></div>
+          <div class="sell-bar cat-social"><div class="sell-fill" style="width:94%"></div></div>
+          <div class="sell-why">Riyadh Season creator economy at peak — biggest live spend window of the Saudi year.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">2</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div><div class="sell-score">90</div></div>
+          <div class="sell-bar cat-on-ground"><div class="sell-fill" style="width:90%"></div></div>
+          <div class="sell-why">Noor Riyadh 6 opens in November — city-scale light briefs land across Saudi brands.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">3</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-on-ground"><span class="dot"></span>OOH Billboards</div><div class="sell-score">86</div></div>
+          <div class="sell-bar cat-on-ground"><div class="sell-fill" style="width:86%"></div></div>
+          <div class="sell-why">Riyadh Season + WWE Crown Jewel Nov 7 drive peak Riyadh OOH spend into year-end.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">4</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-addons"><span class="dot"></span>Custom AI Tools</div><div class="sell-score">85</div></div>
+          <div class="sell-bar cat-addons"><div class="sell-fill" style="width:85%"></div></div>
+          <div class="sell-why">HUMAIN's $2.6B close just doubled the kingdom's AI vendor budget — open the channel.</div>
+        </div></div>
+        <div class="sell-row"><div class="sell-rank">5</div><div class="sell-body">
+          <div class="sell-top"><div class="sell-name cat-social-ar"><span class="dot"></span>Social Gamification</div><div class="sell-score">82</div></div>
+          <div class="sell-bar cat-social-ar"><div class="sell-fill" style="width:82%"></div></div>
+          <div class="sell-why">Riyadh Season TikTok gamified filters are the entry point for every event activation.</div>
+        </div></div>
+      </div>
+    </div>
+
   </div>
 
   <div class="market-section">
-    <div class="market-section-title">Top 3 Services to Focus On</div>
-    <div class="focus-grid">
-
-      <div class="focus-card">
-        <div class="focus-card-rank">#1 · Highest-leverage window</div>
-        <div class="focus-card-name">AI Agents</div>
-        <div class="focus-card-why">Nov 3 pattern: agents went "preview → production in one week" (Gemini Computer Use GA, GPT-6.1 Terra). ADNOC-OpenAI-G42 deal this week makes the UAE the first energy major running agents on sovereign infrastructure.</div>
-        <div class="focus-card-stats">
-          <span>Growth<b>+55%</b></span><span>Viability<b>98</b></span><span>TAM<b>$650M</b></span>
-        </div>
+    <div class="market-section-title">Q4 Demand Forecast · All 25 Services</div>
+    <div class="chart-wrap">
+      <div class="chart-legend">
+        <div class="leg"><div class="leg-dot uae"></div>UAE</div>
+        <div class="leg"><div class="leg-dot ksa"></div>KSA</div>
+        <div class="leg" style="margin-left:auto;color:var(--text3)">Scored 0-100: demand strength this quarter based on calendar + signals + newsletter patterns</div>
       </div>
-
-      <div class="focus-card">
-        <div class="focus-card-rank">#2 · Fastest-opening lane</div>
-        <div class="focus-card-name">AI Consultative Solutions</div>
-        <div class="focus-card-why">Every GCC board now needs a governance plan — Altman landed in UAE Nov 2, HUMAIN closed Nov 1. 21 of 92 newsletter patterns map to sovereign AI; policy work is the near-term bottleneck.</div>
-        <div class="focus-card-stats">
-          <span>Growth<b>+30%</b></span><span>Viability<b>92</b></span><span>TAM<b>$690M</b></span>
-        </div>
-      </div>
-
-      <div class="focus-card">
-        <div class="focus-card-rank">#3 · Biggest buyer just funded</div>
-        <div class="focus-card-name">Custom AI Tools</div>
-        <div class="focus-card-why">Aramco's $2.6B parked inside HUMAIN (Nov 1) just doubled the kingdom's AI vendor budget. 18 KSA-tagged patterns across 23 weeks — sovereign-build custom tools is the dominant procurement lane.</div>
-        <div class="focus-card-stats">
-          <span>Growth<b>+30%</b></span><span>Viability<b>95</b></span><span>TAM<b>$580M</b></span>
-        </div>
-      </div>
-
+      <div class="chart-grid" id="market-chart"></div>
     </div>
   </div>
 
   <div class="market-section">
-    <div class="market-section-title">Market Anchors by Region</div>
-    <div class="region-grid">
-
-      <div class="region-card r-ksa">
-        <div class="region-flag">KSA</div>
-        <div class="region-pick">Custom AI Tools → HUMAIN</div>
-        <div class="region-why">HUMAIN now holds $9B+ in assets plus Aramco cashflow — the single biggest sovereign AI buyer in the GCC. Open the partnerships channel this week before Riyadh integrators flood the inbox.</div>
+    <div class="market-section-title">Key Moments · Nov → Jan</div>
+    <div class="cal-strip">
+      <div class="cal-col">
+        <div class="cal-month">November 2026</div>
+        <div class="cal-event"><div class="cal-date">Nov 2-5</div><div><b>ADIPEC</b> Abu Dhabi — ADNOC × OpenAI × G42 frontier deal<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 3</div><div><b>UAE National Month</b> opens → Dec 2 Eid Al Etihad<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 7</div><div><b>WWE Crown Jewel</b> Riyadh — peak sports activation<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov tbc</div><div><b>Noor Riyadh 6</b> opens — projection mapping citywide<span class="tag k">KSA</span></div></div>
       </div>
-
-      <div class="region-card r-uae">
-        <div class="region-flag">UAE</div>
-        <div class="region-pick">AI Agents → ADNOC × G42 × OpenAI</div>
-        <div class="region-why">First energy major on OpenAI's frontier program, running on G42's UAE sovereign stack (ADIPEC, Nov 2-5). Agent-deployment pilots will cascade through ADNOC's partner network over Q1.</div>
+      <div class="cal-col">
+        <div class="cal-month">December 2026</div>
+        <div class="cal-event"><div class="cal-date">Dec 2</div><div><b>Eid Al Etihad</b> (UAE National Day) — campaign crescendo<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Dubai</b> — booth + installation peak<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec</div><div><b>Riyadh Season</b> continuing — creator + live commerce<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec</div><div><b>Namshi Black November</b> runs through Dec 2 — shoppable live<span class="tag k">KSA</span></div></div>
       </div>
-
-      <div class="region-card r-global">
-        <div class="region-flag">Global</div>
-        <div class="region-pick">AI Creative Content → Open-weight frontier</div>
-        <div class="region-why">96% of UAE+Saudi marketers now use AI daily (Ipsos, Oct 2026). Mistral Large 4 and Jais 3 ship as sovereign deployment packages — brand content pipelines are rebuilding on open-weight models.</div>
+      <div class="cal-col">
+        <div class="cal-month">January 2027</div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>AI governance briefs</b> become board-level buys across GCC<span class="tag">UAE</span><span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>New-year brand refreshes</b> — concepting + branding window<span class="tag">UAE</span><span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Riyadh Season</b> peak through to March<span class="tag k">KSA</span></div></div>
       </div>
-
     </div>
   </div>
 
   <div class="market-section">
-    <div class="market-section-title">Emerging Patterns (23-week compile)</div>
-    <div class="pattern-list">
-
-      <div class="pattern-row">
-        <div class="pattern-count">21<small>weeks</small></div>
-        <div class="pattern-body"><b>Sovereign AI is now vendor-pipeline, not research.</b> HUMAIN ($2.6B PIF+Aramco), G42, and MBZUAI appeared in 21 of 23 newsletter weeks. Every GCC AI brief now routes through one of these three.</div>
-        <div class="pattern-tag">GCC</div>
-      </div>
-
-      <div class="pattern-row">
-        <div class="pattern-count">19<small>weeks</small></div>
-        <div class="pattern-body"><b>Agents moved from demo to production.</b> Gemini Computer Use GA, GPT-6.1 Terra priced per action, Mistral Large 4 "Le Chonk" open weights — the "are agents real" debate ended. Pricing per action is the new argument.</div>
-        <div class="pattern-tag">Global</div>
-      </div>
-
-      <div class="pattern-row">
-        <div class="pattern-count">18<small>weeks</small></div>
-        <div class="pattern-body"><b>KSA is winning the sovereign-build playbook.</b> Riyadh Season, PIF, Aramco, HUMAIN, SDAIA — Saudi showed up in 18 of 23 weeks as the proactive buyer. UAE appeared in 11, more often as an integrator-partner.</div>
-        <div class="pattern-tag">KSA · UAE</div>
-      </div>
-
-      <div class="pattern-row">
-        <div class="pattern-count">8<small>weeks</small></div>
-        <div class="pattern-body"><b>AI creative is now default, not experiment.</b> 96% marketer adoption (Ipsos) + open-weight image/video models shipping weekly — hero CGI margins compress as AI denoising cuts render costs 70-80%.</div>
-        <div class="pattern-tag">Global</div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="market-section">
-    <div class="market-section-title">4-8 Week Forecast</div>
-    <div class="forecast-list">
-
-      <div class="forecast-card">
-        <div class="forecast-window">Nov 2 → Dec 2</div>
-        <div class="forecast-headline">UAE National Month drives brand-identity + microsite surge.</div>
-        <div class="forecast-detail">Dubai government, semi-gov and private sector all mobilising for Eid Al Etihad Dec 2 — Branding, Web Development, and Concepting pitches peak now.</div>
-      </div>
-
-      <div class="forecast-card">
-        <div class="forecast-window">Nov → mid-Dec</div>
-        <div class="forecast-headline">Immersive + installation lane peaks across GCC events.</div>
-        <div class="forecast-detail">Noor Riyadh 6 (Nov), WWE Crown Jewel (Nov 7), GITEX Dubai (Dec 7-11), Riyadh Season running — Digital Installations, Projection Mapping and Live Analytics stack demand through Q4.</div>
-      </div>
-
-      <div class="forecast-card">
-        <div class="forecast-window">Q1 2027</div>
-        <div class="forecast-headline">AI governance briefs become board-level buys.</div>
-        <div class="forecast-detail">After this week's ADNOC-OpenAI and HUMAIN closes, every GCC enterprise will need a written AI policy, tool-selection framework, and in-house pilot plan — biggest consulting window of the year opens.</div>
-      </div>
-
+    <div class="market-section-title">23-Week Compile · Dominant Patterns</div>
+    <div class="chip-row">
+      <div class="chip"><div class="chip-stat">21<small>/23 wks</small></div><div class="chip-label"><b>Sovereign AI</b> consolidates — HUMAIN, G42, MBZUAI now vendor pipeline, not research.</div></div>
+      <div class="chip"><div class="chip-stat">19<small>/23 wks</small></div><div class="chip-label"><b>Agents to production</b> — Gemini Computer Use GA, GPT-6.1 Terra priced per action.</div></div>
+      <div class="chip"><div class="chip-stat">18<small>/23 wks</small></div><div class="chip-label"><b>KSA plays sovereign-build</b> — proactive buyer. UAE plays integrator-partner (11/23).</div></div>
+      <div class="chip"><div class="chip-stat">96<small>%</small></div><div class="chip-label"><b>AI creative is default</b> — share of UAE+Saudi marketers using AI tools daily (Ipsos, Oct 2026).</div></div>
     </div>
   </div>
 
@@ -537,7 +568,54 @@ function switchTab(name,el){
   el.classList.add('active');
 }
 
+// Market tab: Q4 demand forecast per service, UAE + KSA (0-100)
+// Scored by: this-week signal strength + GCC event calendar fit + service's growth/viability + newsletter pattern reinforcement
+var Q4_DEMAND={
+  "Strategy":{uae:65,ksa:60},
+  "Branding":{uae:92,ksa:55},
+  "Concepting & Experience Design":{uae:80,ksa:75},
+  "Social AR Effects":{uae:62,ksa:78},
+  "Social Gamification":{uae:70,ksa:82},
+  "UGC":{uae:58,ksa:72},
+  "AI Creative Content":{uae:72,ksa:70},
+  "CGI":{uae:48,ksa:45},
+  "Platform Ad Solutions":{uae:68,ksa:68},
+  "Social Media Management":{uae:58,ksa:58},
+  "Glasses":{uae:55,ksa:35},
+  "Headsets":{uae:25,ksa:25},
+  "Web Development":{uae:88,ksa:50},
+  "Digital Installations":{uae:86,ksa:80},
+  "Interactive Screens":{uae:72,ksa:58},
+  "Projection Mapping":{uae:55,ksa:90},
+  "OOH Billboards":{uae:75,ksa:86},
+  "Live Audience Analytics":{uae:52,ksa:85},
+  "Creator Marketing":{uae:72,ksa:94},
+  "Live Commerce":{uae:70,ksa:72},
+  "PR Packages":{uae:70,ksa:62},
+  "Custom AI Tools":{uae:70,ksa:85},
+  "AI Agents":{uae:85,ksa:75},
+  "AI Chatbot":{uae:65,ksa:65},
+  "AI Consultative Solutions":{uae:80,ksa:78}
+};
+function renderMarketChart(){
+  var host=document.getElementById('market-chart');if(!host)return;
+  // sort by max(uae,ksa) descending
+  var rows=SERVICES.map(function(s){var d=Q4_DEMAND[s.name]||{uae:0,ksa:0};return{name:s.name,cat:s.cat,uae:d.uae,ksa:d.ksa,peak:Math.max(d.uae,d.ksa)};});
+  rows.sort(function(a,b){return b.peak-a.peak;});
+  host.innerHTML=rows.map(function(r){
+    var cls=CAT_COLORS[r.cat]||'';
+    return '<div class="chart-row">'+
+      '<div class="chart-label '+cls+'"><span class="ldot"></span>'+r.name+'</div>'+
+      '<div class="chart-bars">'+
+        '<div class="chart-bar b-uae"><div class="chart-bar-flag">UAE</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:'+r.uae+'%"></div></div><div class="chart-bar-val">'+r.uae+'</div></div>'+
+        '<div class="chart-bar b-ksa"><div class="chart-bar-flag">KSA</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:'+r.ksa+'%"></div></div><div class="chart-bar-val">'+r.ksa+'</div></div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
 filterCards();
+renderMarketChart();
 </script>
 </body>
 </html>
