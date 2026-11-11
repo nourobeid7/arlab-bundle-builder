@@ -166,10 +166,9 @@ a.sub-pill{text-decoration:none}
 .glass{background:linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025));backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),inset 0 -1px 0 rgba(0,0,0,0.2),0 8px 28px rgba(0,0,0,0.25)}
 
 /* Hero */
-.market-hero{margin-bottom:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.market-hero-left{flex:1;min-width:360px}
-.market-hero-eyebrow{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22);margin-bottom:14px}
-.market-hero-title{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-.9px;color:var(--text);line-height:1.1;max-width:780px}
+.market-hero{margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.market-hero-left{flex:1;min-width:300px}
+.market-hero-eyebrow{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22)}
 .market-hero-meta{font-size:10px;color:var(--text3);line-height:1.7;text-align:right;min-width:200px;font-family:'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase}
 
 /* Section titles */
@@ -177,12 +176,13 @@ a.sub-pill{text-decoration:none}
 .market-section-title{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.09),rgba(255,255,255,0.025));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);margin-bottom:18px}
 
 /* Sell-split — compact glass rows */
-.sell-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.sell-col{padding:0}
-.sell-head{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
-.sell-flag{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-1.1px;line-height:1;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sell-split{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sell-col{padding:0;min-width:0}
+.sell-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.sell-flag{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-1px;line-height:1;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .sell-col.c-uae .sell-flag{background-image:linear-gradient(135deg,#5a90d0,#a8d2ff)}
 .sell-col.c-ksa .sell-flag{background-image:linear-gradient(135deg,#3aa888,#86e5bf)}
+.sell-col.c-ma .sell-flag{background-image:linear-gradient(135deg,#c17846,#f0b878)}
 .sell-sub{font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase}
 .sell-driver{font-size:11px;color:var(--text2);line-height:1.55;margin-bottom:12px;padding:11px 14px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.15)}
 .sell-driver b{color:var(--text);font-weight:600}
@@ -192,12 +192,16 @@ a.sub-pill{text-decoration:none}
 .sell-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
 .sell-rank{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.12em;min-width:20px;opacity:.65}
 .sell-main{flex:1;min-width:0}
-.sell-name{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:600;color:var(--text);letter-spacing:-.2px;display:flex;align-items:center;gap:8px;line-height:1.2}
+.sell-name{font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.2px;display:flex;align-items:center;gap:8px;line-height:1.2}
 .sell-name .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
-.sell-why{font-size:10.5px;color:var(--text3);line-height:1.45;margin-top:3px;max-width:440px}
+.sell-why{font-size:10px;color:var(--text3);line-height:1.5;margin-top:3px}
+.sell-row{padding:9px 12px}
+.sell-score-pill{font-size:12px;padding:5px 10px;min-width:36px}
+.sell-driver{font-size:10.5px;padding:10px 12px}
 .sell-score-pill{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.4px;padding:6px 12px;border-radius:999px;min-width:42px;text-align:center;flex-shrink:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .sell-col.c-uae .sell-score-pill{background:linear-gradient(145deg,rgba(140,192,255,0.28),rgba(90,144,208,0.1));color:#d8ebff;border:1px solid rgba(140,192,255,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
 .sell-col.c-ksa .sell-score-pill{background:linear-gradient(145deg,rgba(90,218,176,0.28),rgba(58,168,136,0.1));color:#c8f1dd;border:1px solid rgba(90,218,176,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
+.sell-col.c-ma .sell-score-pill{background:linear-gradient(145deg,rgba(240,184,120,0.28),rgba(193,120,70,0.1));color:#ffd9b0;border:1px solid rgba(240,184,120,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* Shifts to Watch — strategic windows for Wissam */
 .shifts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -256,6 +260,7 @@ a.sub-pill{text-decoration:none}
 .cal-event b{color:var(--text);font-weight:600;font-size:12px}
 .cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;background:rgba(140,192,255,0.16);color:#a8d2ff;border:1px solid rgba(140,192,255,0.22);text-transform:uppercase}
 .cal-event .tag.k{background:rgba(90,218,176,0.16);color:#86e5bf;border-color:rgba(90,218,176,0.22)}
+.cal-event .tag.m{background:rgba(240,184,120,0.16);color:#ffd09e;border-color:rgba(240,184,120,0.3)}
 
 /* Chip-row — stat glass */
 .chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -266,8 +271,8 @@ a.sub-pill{text-decoration:none}
 .chip-label{font-size:10.5px;color:var(--text3);line-height:1.5;margin-top:10px}
 .chip-label b{color:var(--text);font-weight:600}
 
-@media(max-width:960px){.chart-wrap{grid-template-columns:1fr}.shifts-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:860px){.sell-split,.cal-strip,.chip-row,.forecast-split,.shifts-grid{grid-template-columns:1fr;gap:14px}.market-hero-title{font-size:26px}.chip-stat{font-size:28px}}
+@media(max-width:1100px){.sell-split{grid-template-columns:1fr 1fr}.shifts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.sell-split,.cal-strip,.chip-row,.forecast-split,.shifts-grid{grid-template-columns:1fr;gap:14px}.chip-stat{font-size:28px}}
 
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -377,8 +382,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
   <div class="market-hero">
     <div class="market-hero-left">
-      <div class="market-hero-eyebrow">What do we sell this quarter</div>
-      <div class="market-hero-title">UAE sells identity, agent builds and bridge-LEDs into GITEX and Dubai Future Week. KSA sells creator reach, open-weight AI on HUMAIN and projection stages into Riyadh Season.</div>
+      <div class="market-hero-eyebrow">What we sell this quarter</div>
     </div>
     <div class="market-hero-meta">WEEK OF NOV 9, 2026<br>Compiled from 24 newsletter issues<br>Jun 2 &rarr; Nov 10 · 96 patterns tracked</div>
   </div>
@@ -387,14 +391,14 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
     <div class="sell-col c-uae">
       <div class="sell-head"><span class="sell-flag">UAE</span><span class="sell-sub">Top 5 · this quarter</span></div>
-      <div class="sell-driver"><b>Driver:</b> 55th Eid Al Etihad Dec 2 + ADNOC x OpenAI Frontier Nov 2 + Dubai Future Week Nov 18-21 + GITEX Dec 7-11 + 1BF Summit Jan 8-10 stack the pipeline.</div>
+      <div class="sell-driver"><b>Driver:</b> UAE sells identity, agent builds and bridge-LEDs into GITEX and Dubai Future Week.</div>
       <div class="sell-list">
         <div class="sell-row">
           <div class="sell-left">
             <div class="sell-rank">01</div>
             <div class="sell-main">
               <div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div>
-              <div class="sell-why">A Family of Families identity triggers a 30-day repaint sprint across every UAE brand — logos, socials and OOH all need the new mark by Dec 2.</div>
+              <div class="sell-why">A Family of Families identity forces a full repaint — logos, OOH kits and social lockups ship as one brand world before Dec 2.</div>
             </div>
           </div>
           <div class="sell-score-pill">94</div>
@@ -404,7 +408,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">02</div>
             <div class="sell-main">
               <div class="sell-name cat-addons"><span class="dot"></span>AI Agents</div>
-              <div class="sell-why">ADNOC signed OpenAI Frontier at ADIPEC Nov 2 as the first energy giant on agents — Dubai Future Week Nov 18-21 reframes every GITEX pitch as buyer, not pilot.</div>
+              <div class="sell-why">ADNOC + OpenAI Frontier reframes agents as buyers, not pilots — every GITEX pitch now sells workflow automation priced per action.</div>
             </div>
           </div>
           <div class="sell-score-pill">95</div>
@@ -414,7 +418,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">03</div>
             <div class="sell-main">
               <div class="sell-name cat-on-ground"><span class="dot"></span>OOH Billboards</div>
-              <div class="sell-why">Hills x Daktronics wired 10 Sheikh Zayed Road bridges with LEDs built for 3D anamorphic — Mordor sizes GCC OOH and DOOH at $2.42B in 2026.</div>
+              <div class="sell-why">Ten Sheikh Zayed Road bridges wired for 3D anamorphic — sell OOH as a content canvas brands produce for, not a static buy.</div>
             </div>
           </div>
           <div class="sell-score-pill">88</div>
@@ -424,7 +428,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">04</div>
             <div class="sell-main">
               <div class="sell-name cat-immersive"><span class="dot"></span>Web Development</div>
-              <div class="sell-why">WebGPU hit Baseline in every major browser (web.dev Jan 2026) — National Month and GITEX microsites run full 3D at native speed in Safari 26.</div>
+              <div class="sell-why">WebGPU Baseline unlocks 3D microsites at native speed — sell the whole web stack as one build for National Month and GITEX destinations.</div>
             </div>
           </div>
           <div class="sell-score-pill">86</div>
@@ -434,7 +438,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">05</div>
             <div class="sell-main">
               <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
-              <div class="sell-why">YouTube Shopping x Amazon opened UAE Oct 26 and 86% of GCC viewers trust YouTube creators most for product recos (Kantar) — DSF Dec 4 → Jan 17 is the window.</div>
+              <div class="sell-why">YouTube Shopping x Amazon live in UAE — sell creator as the trust + conversion channel for the DSF Dec 4 → Jan 17 window.</div>
             </div>
           </div>
           <div class="sell-score-pill">82</div>
@@ -444,14 +448,14 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
     <div class="sell-col c-ksa">
       <div class="sell-head"><span class="sell-flag">KSA</span><span class="sell-sub">Top 5 · this quarter</span></div>
-      <div class="sell-driver"><b>Driver:</b> Riyadh Season 7 running Oct 21 → Mar + WWE Crown Jewel ANB Arena Nov 7 + Six Kings Slam Dec 27, 28, 30 + Aramco $2.6B HUMAIN close Nov 1 + NIF $667M AI grid financing.</div>
+      <div class="sell-driver"><b>Driver:</b> KSA sells creator reach, open-weight AI on HUMAIN and projection stages into Riyadh Season.</div>
       <div class="sell-list">
         <div class="sell-row">
           <div class="sell-left">
             <div class="sell-rank">01</div>
             <div class="sell-main">
               <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
-              <div class="sell-why">Saudi takes 40% of GCC creator spend and Six Kings Slam streams on Netflix Dec 27, 28, 30 — the biggest paid creator peak of the 2026 calendar.</div>
+              <div class="sell-why">Six Kings Slam Netflix exclusive — sell creator as the biggest paid talent peak of 2026 across Riyadh Season 7 and WWE Crown Jewel.</div>
             </div>
           </div>
           <div class="sell-score-pill">96</div>
@@ -461,7 +465,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">02</div>
             <div class="sell-main">
               <div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div>
-              <div class="sell-why">Riyadh Season 7 Skyline Theatre runs 360 projection-mapped opera nights through Mar 2027 (GEA) — TBRC values the global market at $5.29B in 2026.</div>
+              <div class="sell-why">Skyline Theatre runs 360 projection-mapped opera through Mar 2027 — sell projection as the signature KSA hero format for stages and facades.</div>
             </div>
           </div>
           <div class="sell-score-pill">93</div>
@@ -471,7 +475,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">03</div>
             <div class="sell-main">
               <div class="sell-name cat-addons"><span class="dot"></span>Custom AI Tools</div>
-              <div class="sell-why">Mistral Large 4 shipped open weights Oct 29 at $0.70/$2.10 per M tokens — the Aramco $2.6B HUMAIN close Nov 1 anchors sovereign hosting for every KSA custom tool.</div>
+              <div class="sell-why">HUMAIN unlocks sovereign hosting — sell custom AI as the first branded tool every KSA client builds once they commit to internal AI.</div>
             </div>
           </div>
           <div class="sell-score-pill">91</div>
@@ -481,7 +485,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">04</div>
             <div class="sell-main">
               <div class="sell-name cat-social-ar"><span class="dot"></span>Social AR Effects</div>
-              <div class="sell-why">Snap Q3 Lens+ revenue jumped 84% YoY (investor letter Nov 4) and Almarai Harat ALYOUM still holds the GCC record at 207.9M impressions on Snap Map.</div>
+              <div class="sell-why">Snap Lens+ revenue +84% YoY — sell Snap/TikTok/YouTube lenses as always-on creative plus a performance channel, not a stunt.</div>
             </div>
           </div>
           <div class="sell-score-pill">88</div>
@@ -491,10 +495,67 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
             <div class="sell-rank">05</div>
             <div class="sell-main">
               <div class="sell-name cat-ai"><span class="dot"></span>UGC</div>
-              <div class="sell-why">WWE Crown Jewel Nov 7 at ANB Arena plus Six Kings Slam Dec 27-30 — HBR Sep 2026 says AI ads score 17% weaker on brand equity than human UGC.</div>
+              <div class="sell-why">HBR Sep 2026: AI ads score 17% weaker on equity — sell human-shot UGC as the brand-safety choice for Six Kings and Crown Jewel.</div>
             </div>
           </div>
           <div class="sell-score-pill">87</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sell-col c-ma">
+      <div class="sell-head"><span class="sell-flag">Morocco</span><span class="sell-sub">Top 5 · this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> Morocco sells bilingual French-Arabic creative and 2030 FIFA World Cup prep.</div>
+      <div class="sell-list">
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">01</div>
+            <div class="sell-main">
+              <div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div>
+              <div class="sell-why">2030 FIFA hosting rolls country, host-city and sponsor identities across Casa, Rabat and Tangier — brands repaint now to anchor into WC trust.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">86</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">02</div>
+            <div class="sell-main">
+              <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
+              <div class="sell-why">Darija + French creators drive FIFM and Visa For Music coverage — sell creator as the North Africa trust channel heading into 2030 WC.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">84</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">03</div>
+            <div class="sell-main">
+              <div class="sell-name cat-ai"><span class="dot"></span>AI Creative Content</div>
+              <div class="sell-why">Bilingual Arabic-French-Darija AI content scales campaign, loop and avatar work across Morocco's biggest ad spend window in a decade.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">80</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">04</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div>
+              <div class="sell-why">FIFM red carpets, Hassan II walls and new WC stadium facades — sell projection as the signature Morocco hero format for brand stages.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">78</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">05</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>OOH Billboards</div>
+              <div class="sell-why">Casa-Rabat-Marrakech corridors prep as 2030 WC fan zones — sell OOH as content-first 3D anamorphic, not a static buy.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">76</div>
         </div>
       </div>
     </div>
@@ -505,37 +566,29 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
     <div class="market-section-title">Shifts to Watch · Windows Opening Now</div>
     <div class="shifts-grid">
       <div class="shift-card">
-        <div class="shift-tag open">Open</div>
-        <div class="shift-cat">Sovereign AI Capital</div>
-        <div class="shift-head"><b>Aramco</b> closed a $2.6B 49% stake in <b>HUMAIN</b> Nov 1 and NIF signed $667M for KSA AI data centres a week later (Arab News).</div>
-        <div class="shift-signal"><b>ARlab window:</b> every KSA custom AI brief now defaults to HUMAIN on-prem. Consultative lane opens for vendor-shape, policy and build-vs-buy.</div>
+        <div class="shift-tag booming">Booming</div>
+        <div class="shift-cat">Social AR earns revenue</div>
+        <div class="shift-head"><b>Snap Lens+</b> revenue +84% YoY (Q3 Nov 4) pays creators a cut, TikTok Super Like adds paid interactive formats and YouTube Effects ships brand-lens tooling.</div>
+        <div class="shift-signal"><b>ARlab window:</b> Social AR, Social Gamification and Platform Ad Solutions each flip from brand stunt to paid, always-on performance — the social stack is now a revenue channel, not a reach channel.</div>
       </div>
       <div class="shift-card">
         <div class="shift-tag shift">Shift</div>
-        <div class="shift-cat">Agent Economics</div>
-        <div class="shift-head"><b>Gemini Computer Use</b> hit GA Oct 30 at $0.75-$3.75 per M tokens — Gartner tags the AI agents market at $29.2B in 2026, up 77% YoY.</div>
-        <div class="shift-signal"><b>ARlab window:</b> agent work finally has a price per action and a market size. Brand workflow automation is commercially priced — AI Agents is the Q4 build lane.</div>
+        <div class="shift-cat">AI Agents Priced per Action</div>
+        <div class="shift-head"><b>Gemini Computer Use</b> GA Oct 30 at $0.75-$3.75 per M tokens + <b>ADNOC x OpenAI Frontier</b> Nov 2 — Gartner tags agents at $29.2B in 2026, up 77% YoY.</div>
+        <div class="shift-signal"><b>ARlab window:</b> AI Agents, Custom AI Tools and AI Consultative all get a price per action and a boardroom use case — Q4 sells agent builds and advisory as paired units.</div>
       </div>
       <div class="shift-card">
         <div class="shift-tag open">Open</div>
-        <div class="shift-cat">Creator Commerce</div>
-        <div class="shift-head"><b>YouTube Shopping x Amazon</b> opened UAE, KSA and Egypt Oct 26 — Kantar finds 86% of GCC viewers trust YouTube creators most for product recos.</div>
-        <div class="shift-signal"><b>ARlab window:</b> Creator Marketing briefs ship with built-in affiliate monetisation. Live Commerce and shoppable streams become the Q4 conversion lane.</div>
+        <div class="shift-cat">AI Content Stack Opens</div>
+        <div class="shift-head"><b>Mistral Large 4</b> (1T, Oct 29), <b>Pika H3 Flex</b> (33B video + audio, Oct 30) and <b>Jais 3</b> (375B Arabic, Oct 16) hit open weights in two weeks.</div>
+        <div class="shift-signal"><b>ARlab window:</b> AI Creative Content ships campaign, film, avatar and loop at CGI quality without CGI timelines — bilingual Arabic/English production is the Q4-Q1 differentiator.</div>
       </div>
       <div class="shift-card">
-        <div class="shift-tag booming">Booming</div>
-        <div class="shift-cat">Wearables Flip</div>
-        <div class="shift-head"><b>AI glasses</b> shipments +263% H1 2026 (Counterpoint) while Meta Reality Labs Q3 showed Quest sales dropped — revenue -6% to $443M.</div>
-        <div class="shift-signal"><b>ARlab window:</b> Oakley Vanguard AED 2,400 joins Ray-Ban Meta Gen 3 AED 1,960 in UAE. Brand wearables briefs move off headsets onto lightweight AI glasses.</div>
+        <div class="shift-tag open">Open</div>
+        <div class="shift-cat">Creator shopping goes live</div>
+        <div class="shift-head"><b>YouTube Shopping x Amazon</b> opened UAE, KSA and Egypt Oct 26 — viewers now check out directly from a creator video; 86% of GCC viewers trust YouTube creators most for product recos (Kantar).</div>
+        <div class="shift-signal"><b>ARlab window:</b> Creator Marketing, Live Commerce, UGC and PR Packages all ship with built-in affiliate checkout — Q4 briefs sell talent + the cart as one unit.</div>
       </div>
-    </div>
-  </div>
-
-  <div class="market-section">
-    <div class="market-section-title">UAE × KSA · Peak Service by Category</div>
-    <div class="chart-wrap">
-      <svg id="market-chart" class="market-scatter" viewBox="0 0 780 560" preserveAspectRatio="xMidYMid meet"></svg>
-      <div id="market-legend" class="chart-legend"></div>
     </div>
   </div>
 
@@ -544,19 +597,19 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
     <div class="forecast-split">
 
       <div class="forecast-col">
-        <div class="forecast-head"><span class="forecast-tag">Global</span></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Inference is the new moat.</b> fal closed a $1.3B Series F at $16B valuation (Nov 10) — model weights commoditise while the serving layer takes the margin.</div></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Agents priced per action.</b> Gemini Computer Use GA Oct 30 at $0.75-$3.75 per M tokens, Gartner tags the AI agents market at $29.2B in 2026 (+77% YoY).</div></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Open-weight race accelerates.</b> Mistral Large 4 (1T params, Oct 29), Pika H3 Flex (33B video + audio, Oct 30), Jais 3 (375B, Oct 16).</div></div>
-        <div class="forecast-item down"><span class="forecast-arrow">&darr;</span><div><b>Headsets slide, glasses eat them.</b> Omdia says standalone XR headsets -15% to 4.7M in 2026 while Counterpoint reads AI glasses +263% H1.</div></div>
+        <div class="forecast-head"><span class="forecast-tag">Global · Creative Tech</span></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Human UGC beats AI ads on brand equity.</b> HBR Sep 2026 — AI-generated ads score 14% weaker on sales, 17% weaker on brand equity, even when viewers can't tell them apart. Creator and UGC lanes protected.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Creator → cart becomes one-click default.</b> YouTube Shopping x Amazon live, Snap and TikTok affiliate rails extending — Live Commerce and Creator Marketing ship with built-in conversion.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>AI film stack goes open.</b> Mistral Large 4 (1T), Pika H3 Flex (33B video + audio), Jais 3 (375B Arabic) all open-weight — AI Creative Content hits CGI quality without CGI timelines.</div></div>
+        <div class="forecast-item down"><span class="forecast-arrow">&darr;</span><div><b>Headsets flip to glasses as the brand canvas.</b> AI glasses +263% H1 while standalone XR headsets -15% (Counterpoint / Omdia) — wearables briefs move to lightweight, always-on content.</div></div>
       </div>
 
       <div class="forecast-col">
-        <div class="forecast-head"><span class="forecast-tag k">GCC</span></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Saudi AI capital goes physical.</b> Aramco closed a $2.6B HUMAIN stake Nov 1 and NIF signed $667M for AI data centres — the sovereign stack is being built before the models arrive.</div></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>UAE National Month peaks into Dubai Future Week.</b> 55th Eid Al Etihad Dec 2, Dubai Future Week Nov 18-21 pulling 10,000 leaders, then GITEX Dec 7-11.</div></div>
-        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Riyadh Season runs to Mar 2027.</b> Six Kings Slam Netflix-exclusive Dec 27, 28, 30 — Saudi takes 40% of GCC creator spend this quarter.</div></div>
-        <div class="forecast-item down"><span class="forecast-arrow">&darr;</span><div><b>Headset category stalled in GCC.</b> Galaxy XR still skips MENA, Vision Pro forecast down to ~220K units in 2026 — buyers are parked.</div></div>
+        <div class="forecast-head"><span class="forecast-tag k">GCC + Morocco · Creative Tech</span></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>UAE identity window compresses into 60 days.</b> National Month → Dubai Future Week → GITEX → DSF → 1BF Summit stack a single branding, OOH, AR and web sprint from Nov 18 to Jan 17.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Saudi creator spend peaks on Netflix.</b> Riyadh Season 7 to Mar 2027, Six Kings Slam Dec 27-30 Netflix-exclusive, WWE Crown Jewel — KSA takes 40% of GCC creator spend this quarter.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Morocco opens as the North Africa creative lane.</b> FIFM Marrakech Nov 27-Dec 5, Visa For Music Rabat, 2030 FIFA WC rebrands across Casa/Rabat/Tangier — bilingual French-Arabic creative is the 2026-27 differentiator.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Sovereign AI opens the custom build lane.</b> Aramco $2.6B HUMAIN close + NIF $667M data centres — every KSA Custom AI Tools and AI Consultative brief defaults to on-prem sovereign hosting.</div></div>
       </div>
 
     </div>
@@ -568,15 +621,17 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       <div class="cal-col">
         <div class="cal-month">Nov 2026</div>
         <div class="cal-event"><div class="cal-date">Nov 7 ✓</div><div><b>WWE Crown Jewel</b> ANB Arena Riyadh<span class="tag k">KSA</span></div></div>
-        <div class="cal-event"><div class="cal-date">Nov 12</div><div><b>Samsung Intelligent Eyewear</b> pre-orders open<span class="tag">Global</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 13-15</div><div><b>Visa For Music</b> Rabat<span class="tag m">MA</span></div></div>
         <div class="cal-event"><div class="cal-date">Nov 18-21</div><div><b>Dubai Future Week</b> Emirates Towers<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Nov 20-30</div><div><b>Noon Yellow Friday</b> (White Friday Nov 27)<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 27 → Dec 5</div><div><b>FIFM 23</b> Marrakech Film Festival<span class="tag m">MA</span></div></div>
       </div>
       <div class="cal-col">
         <div class="cal-month">Dec 2026</div>
         <div class="cal-event"><div class="cal-date">Dec 2-3</div><div><b>55th Eid Al Etihad</b> A Family of Families<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 4 → Jan 17</div><div><b>Dubai Shopping Festival</b> 32nd edition<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Global</b> DWTC + Expo City Dubai<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec</div><div><b>Morocco 2030 WC</b> Casa + Rabat stadium brand reveals<span class="tag m">MA</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 27, 28, 30</div><div><b>Six Kings Slam</b> ANB Arena Riyadh<span class="tag k">KSA</span></div></div>
       </div>
       <div class="cal-col">
@@ -584,6 +639,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="cal-event"><div class="cal-date">Jan 8-10</div><div><b>1 Billion Followers Summit</b> Dubai<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Jan 17</div><div><b>DSF closes</b><span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Jan</div><div><b>Riyadh Season</b> continues to Mar<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Jan</div><div><b>Casa Fashion Week</b> prep + MA brand year<span class="tag m">MA</span></div></div>
         <div class="cal-event"><div class="cal-date">Jan</div><div><b>Vision 2030</b> year-10 marker<span class="tag k">KSA</span></div></div>
       </div>
     </div>
@@ -592,10 +648,10 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
   <div class="market-section">
     <div class="market-section-title">24-Week Compile · Dominant Patterns</div>
     <div class="chip-row">
-      <div class="chip"><div class="chip-stat">24<small>/24 wks</small></div><div class="chip-label"><b>Agents cross into production</b> — Gartner tags the AI agents market at $29.2B in 2026, up 77% YoY, with Gemini Computer Use GA at $0.75-$3.75 per M tokens.</div></div>
-      <div class="chip"><div class="chip-stat">21<small>/24 wks</small></div><div class="chip-label"><b>Sovereign AI is the GCC default</b> — Aramco closed $2.6B HUMAIN stake Nov 1 and NIF signed $667M for KSA AI data centres this week.</div></div>
-      <div class="chip"><div class="chip-stat">21<small>/24 wks</small></div><div class="chip-label"><b>Smart glasses eat the headset lane</b> — Counterpoint: AI glasses +263% H1 2026 while Meta Reality Labs revenue fell 6% YoY in Q3.</div></div>
-      <div class="chip"><div class="chip-stat">17<small>/24 wks</small></div><div class="chip-label"><b>Open-weight race reshapes stack</b> — Mistral Large 4 (1T), Pika H3 Flex (33B) and Jais 3 (375B) all shipped open in October alone.</div></div>
+      <div class="chip"><div class="chip-stat">24<small>/24 wks</small></div><div class="chip-label"><b>Creator stack goes performance</b> — YouTube Shopping x Amazon live in UAE/KSA/Egypt, Snap/TikTok affiliate rails extend — every Creator Marketing brief now ships with a cart.</div></div>
+      <div class="chip"><div class="chip-stat">22<small>/24 wks</small></div><div class="chip-label"><b>Social AR becomes a revenue channel</b> — Snap Lens+ revenue +84% YoY plus TikTok Super Like and YouTube Effects monetisation — Social AR flips from stunt to always-on paid.</div></div>
+      <div class="chip"><div class="chip-stat">21<small>/24 wks</small></div><div class="chip-label"><b>AI film stack goes open</b> — Mistral Large 4 (1T), Pika H3 Flex (33B video + audio) and Jais 3 (375B Arabic) open-weight — AI Creative Content hits CGI quality.</div></div>
+      <div class="chip"><div class="chip-stat">20<small>/24 wks</small></div><div class="chip-label"><b>Agents + sovereign AI pair up</b> — Gartner tags agents at $29.2B in 2026 (+77%), Aramco $2.6B HUMAIN close anchors KSA Custom AI Tools on-prem by default.</div></div>
     </div>
   </div>
 
@@ -606,31 +662,31 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
 
 // tam = GCC service-revenue estimate ($M). growth = 2026 market YoY, sourced per card.
 var SERVICES=[
-  {cat:"Strategy & Creative",name:"Strategy",lab:"CreatorLab|ARLab",ai:"ai-resistant",viability:95,growth:22,tam:290,sub:["Campaign","Communication","Social Media","Brand","Creative"],blurb:"The thinking that sets up every brief.",desc:"Saudi's top 100 brands hit $131.9B, up 13% YoY (Brand Finance) — Aramco leads at $47.3B and the Saudi Energy rebrand jumped 25% in year one."},
-  {cat:"Strategy & Creative",name:"Branding",lab:"CreatorLab",ai:"ai-resistant",viability:88,growth:18,tam:250,blurb:"Brand identity and visual system, built from the ground up.",desc:"UAE's 55th Eid Al Etihad A Family of Families identity counts down to Dec 2 (Khaleej Times) — every UAE brand repaints logos and OOH before National Day."},
-  {cat:"Strategy & Creative",name:"Concepting & Experience Design",lab:"CreatorLab|ARLab",ai:"ai-resistant",viability:93,growth:24,tam:280,sub:["Creative Concept Deck","Storyboard Deck","Mood Board"],blurb:"Concepting across social, CGI, installations and physical spaces.",desc:"Lenskart's Score Your Frame turned Snapscore into eyewear tiers in UAE and KSA — 30,000 plays with half redeemed (Campaign ME Oct 2026 Work picks)."},
-  {cat:"Social Experiences",name:"Social AR Effects",lab:"ARLab",ai:"ai-powered",viability:92,growth:36,tam:420,sub:["Snapchat AR Lens","TikTok AR Effect","YouTube AR Effect"],blurb:"Branded AR lenses and effects users open and interact with, built on face, body or world tracking.",desc:"Snap Q3 2026 Lens+ revenue up 84% YoY (investor letter Nov 4) — Almarai's Harat ALYOUM Snap Map AR still holds GCC record at 207.9M impressions."},
-  {cat:"Social Experiences",name:"Social Gamification",lab:"ARLab",ai:"ai-powered",viability:90,growth:30,tam:320,sub:["Snapchat Filter","Snapchat Gamified Lens","TikTok Gamified Effect","YouTube Gamified Effect"],blurb:"Branded experiences users open as an effect, with no AR or tracking.",desc:"TikTok Super Like fires a branded icon shower plus pop-up card on double-tap (TikTok Ads 2026) — cheapest interactive entry for Riyadh Season 7."},
+  {cat:"Strategy & Creative",name:"Strategy",lab:"CreatorLab|ARLab",ai:"ai-resistant",viability:95,growth:22,tam:290,sub:["Campaign","Communication","Social Media","Brand","Creative"],blurb:"The thinking that sets up every brief.",desc:"WPP Open and Publicis Marcel rolled agentic strategy workflows in Q3 2026 — brand, comms and campaign strategy briefs now bake AI planning in from week one, human strategists leading."},
+  {cat:"Strategy & Creative",name:"Branding",lab:"CreatorLab",ai:"ai-resistant",viability:88,growth:18,tam:250,blurb:"Brand identity and visual system, built from the ground up.",desc:"UAE's 55th Eid Al Etihad A Family of Families identity hits Dec 2 (Khaleej Times) — every UAE brand repaints logos, lockups and OOH kits before National Day."},
+  {cat:"Strategy & Creative",name:"Concepting & Experience Design",lab:"CreatorLab|ARLab",ai:"ai-resistant",viability:93,growth:24,tam:280,sub:["Creative Concept Deck","Storyboard Deck","Mood Board"],blurb:"Concepting across social, CGI, installations and physical spaces.",desc:"Lenskart Score Your Frame turned Snapscore into eyewear tiers in UAE and KSA — 30,000 plays, 50% redemption (Campaign ME, Oct 2026 Work picks)."},
+  {cat:"Social Experiences",name:"Social AR Effects",lab:"ARLab",ai:"ai-powered",viability:92,growth:36,tam:420,sub:["Snapchat AR Lens","TikTok AR Effect","YouTube AR Effect"],blurb:"Branded AR lenses and effects users open and interact with, built on face, body or world tracking.",desc:"Snap Q3 2026 Lens+ revenue +84% YoY (investor letter Nov 4); Almarai Harat ALYOUM still holds the GCC record at 207.9M impressions on Snap Map AR."},
+  {cat:"Social Experiences",name:"Social Gamification",lab:"ARLab",ai:"ai-powered",viability:90,growth:30,tam:320,sub:["Snapchat Filter","Snapchat Gamified Lens","TikTok Gamified Effect","YouTube Gamified Effect"],blurb:"Branded experiences users open as an effect, with no AR or tracking.",desc:"TikTok Super Like fires a branded icon shower + pop-up card on double-tap (TikTok Ads 2026) — cheapest paid interactive format for Riyadh Season 7 Oct 21 → Mar."},
   {cat:"Content Production",name:"UGC",lab:"CreatorLab",ai:"ai-resistant",viability:94,growth:32,tam:360,sub:["Organic","Produced"],blurb:"User generated content shot with talents — either produced or fully organic.",desc:"HBR Sep 2026 — AI-generated ads score 14% weaker on sales and 17% weaker on brand equity vs human UGC, even when viewers can't tell them apart."},
-  {cat:"Content Production",name:"AI Creative Content",lab:"AILab",ai:"ai-powered",viability:96,growth:40,tam:500,sub:["Campaign","Film","TVC","Reel","Carousel","Loop","Still","UGC","Avatar","Series","At Scale","Postproduction"],deck:"https://docs.google.com/presentation/d/1BVuvVo45sPthke3v07P81LZP4exira8NYPOrh_hZRmU/edit?usp=sharing",blurb:"The full AI content stack — campaign, film, UGC, avatar, series, postproduction.",desc:"Mistral Large 4 (1T params, Oct 29) and Pika H3 Flex (33B video + audio, Oct 30) hit Hugging Face in 48 hours — open stack now matches closed for AI film."},
-  {cat:"Content Production",name:"CGI",lab:"ARLab",ai:"ai-threatened",viability:75,growth:8,tam:380,sub:["Mixed Reality","Full 3D"],blurb:"High-end CGI films — mixed reality, 3D worlds, hero products, faux-OOH.",desc:"Toyota x ALJ Saudi National Day film mixed real shoot with AI worlds (iklipse) — Grand View values immersive marketing at $10.5B in 2026."},
-  {cat:"Content Production",name:"Platform Ad Solutions",lab:"CreatorLab",ai:"ai-powered",viability:94,growth:32,tam:620,sub:["TikTok TopView","TikTok Interactive Ads","Reddit Playable Ads","Snapchat Promoted Places","TikTok Logo Takeover","TikTok 3D Immersive"],blurb:"Paid ad units bought from the platform, including interactive and playable formats, built to each platform's ad spec.",desc:"ByteDance Seedream 5.5 ships 100-round single-reference image edit Nov 10 — Starbucks KSA still runs Snap Promoted Places in 350 Alshaya stores."},
-  {cat:"Content Production",name:"Social Media Management",lab:"CreatorLab",ai:"ai-powered",viability:80,growth:28,tam:200,blurb:"AI-powered content planning, publishing and community management.",desc:"Meta's Advantage+ hit $75B annualised at $4.52 ROAS (Q3 Oct 29) while TikTok Symphony Agent scripts and shortlists creators from one brief."},
-  {cat:"Wearables",name:"Glasses",lab:"ARLab",ai:"ai-powered",viability:95,growth:75,tam:680,sub:["AI Glasses","Display Glasses","Specs"],blurb:"AI glasses, display glasses and Specs — the fastest-growing wearables lane.",desc:"AI glasses shipments up 263% in H1 2026 (Counterpoint) — UAE now stocks Ray-Ban Meta Gen 3 at AED 1,960 and Oakley Meta Vanguard at AED 2,400."},
-  {cat:"Wearables",name:"Headsets",lab:"ARLab",ai:"ai-powered",viability:68,growth:-18,tam:210,sub:["MR Headsets","VR Headsets","Location-Based VR"],blurb:"Mixed reality and VR headsets — Vision Pro, Galaxy XR, Quest, LBE.",desc:"Standalone XR headsets forecast -15% to 4.7M units in 2026 (Omdia) and Meta Q3 confirmed Quest sales fell — Reality Labs revenue -6% to $443M (Oct 21)."},
-  {cat:"Web & Interactive",name:"Web Development",lab:"ARLab|AILab",ai:"ai-powered",viability:92,growth:28,tam:1550,sub:["Websites & Web Apps","3D Web","Web Games","Rich Media & Playable Ads","Campaign Microsites","WebAR","WebVR"],blurb:"Web stack end to end — sites, apps, 3D, games, playables, microsites and WebXR.",desc:"WebGPU hit Baseline Jan 2026 across Chrome, Safari 26, Firefox and Edge (web.dev) — 3D microsites finally run at native speed on every GCC device."},
-  {cat:"Experiential & OOH",name:"Digital Installations",lab:"ARLab",ai:"ai-powered",viability:94,growth:40,tam:320,sub:["LED Walls","Immersive Booths","Holograms"],blurb:"Branded booths, responsive rooms, kinetic objects and sensor-driven environments.",desc:"GITEX Global splits DWTC (Dec 7) and Expo City Dubai (Dec 8-11) with 6,800+ exhibitors and 200K attendees (KAOUN) — LED walls and booth builds peak now."},
+  {cat:"Content Production",name:"AI Creative Content",lab:"AILab",ai:"ai-powered",viability:96,growth:40,tam:500,sub:["Campaign","Film","TVC","Reel","Carousel","Loop","Still","UGC","Avatar","Series","At Scale","Postproduction"],deck:"https://docs.google.com/presentation/d/1BVuvVo45sPthke3v07P81LZP4exira8NYPOrh_hZRmU/edit?usp=sharing",blurb:"The full AI content stack — campaign, film, UGC, avatar, series, postproduction.",desc:"Mistral Large 4 (1T, Oct 29), Pika H3 Flex (33B video + audio, Oct 30) and Jais 3 (375B Arabic, Oct 16) all shipped open weights in two weeks on Hugging Face."},
+  {cat:"Content Production",name:"CGI",lab:"ARLab",ai:"ai-threatened",viability:75,growth:8,tam:380,sub:["Mixed Reality","Full 3D"],blurb:"High-end CGI films — mixed reality, 3D worlds, hero products, faux-OOH.",desc:"Toyota x ALJ Saudi National Day film mixed real shoot with AI worlds via iklipse (Sep 2026) — Grand View sizes immersive marketing at $10.5B in 2026."},
+  {cat:"Content Production",name:"Platform Ad Solutions",lab:"CreatorLab",ai:"ai-powered",viability:94,growth:32,tam:620,sub:["TikTok TopView","TikTok Interactive Ads","Reddit Playable Ads","Snapchat Promoted Places","TikTok Logo Takeover","TikTok 3D Immersive"],blurb:"Paid ad units bought from the platform, including interactive and playable formats, built to each platform's ad spec.",desc:"ByteDance Seedream 5.5 ships 100-round single-reference image edit Nov 10; Starbucks KSA runs Snap Promoted Places across 350 Alshaya stores (Snap Oct 2026)."},
+  {cat:"Content Production",name:"Social Media Management",lab:"CreatorLab",ai:"ai-powered",viability:80,growth:28,tam:200,blurb:"AI-powered content planning, publishing and community management.",desc:"Meta Advantage+ hit $75B annualised at $4.52 ROAS (Q3 Oct 29); TikTok Symphony Agent scripts posts and shortlists creators from a single brief."},
+  {cat:"Wearables",name:"Glasses",lab:"ARLab",ai:"ai-powered",viability:95,growth:75,tam:680,sub:["AI Glasses","Display Glasses","Specs"],blurb:"AI glasses, display glasses and Specs — the fastest-growing wearables lane.",desc:"AI glasses shipments +263% H1 2026 (Counterpoint); UAE now stocks Ray-Ban Meta Gen 3 at AED 1,960 and Oakley Meta Vanguard at AED 2,400."},
+  {cat:"Wearables",name:"Headsets",lab:"ARLab",ai:"ai-powered",viability:68,growth:-18,tam:210,sub:["MR Headsets","VR Headsets","Location-Based VR"],blurb:"Mixed reality and VR headsets — Vision Pro, Galaxy XR, Quest, LBE.",desc:"Omdia: standalone XR headsets forecast -15% to 4.7M units in 2026; Meta Q3 Reality Labs revenue -6% to $443M as Quest sales slid (Oct 21)."},
+  {cat:"Web & Interactive",name:"Web Development",lab:"ARLab|AILab",ai:"ai-powered",viability:92,growth:28,tam:1550,sub:["Websites & Web Apps","3D Web","Web Games","Rich Media & Playable Ads","Campaign Microsites","WebAR","WebVR"],blurb:"Web stack end to end — sites, apps, 3D, games, playables, microsites and WebXR.",desc:"WebGPU hit Baseline Jan 2026 across Chrome, Safari 26, Firefox and Edge (web.dev) — 3D microsites now run at native speed on every GCC device."},
+  {cat:"Experiential & OOH",name:"Digital Installations",lab:"ARLab",ai:"ai-powered",viability:94,growth:40,tam:320,sub:["LED Walls","Immersive Booths","Holograms"],blurb:"Branded booths, responsive rooms, kinetic objects and sensor-driven environments.",desc:"GITEX Global Dec 7-11 splits DWTC + Expo City Dubai with 6,800+ exhibitors and 200K attendees (KAOUN) — LED walls, booths and installation builds peak now."},
   {cat:"Experiential & OOH",name:"Interactive Screens",lab:"ARLab",ai:"ai-powered",viability:92,growth:20,tam:280,sub:["AR Screen","AI Screen","Touch Screen","SYNC"],product:["SYNC"],decks:{"AI Screen":"https://docs.google.com/presentation/d/18DfJWoKzPkalsW3LF_uXIlVGDyrNQDP28-1Wx5GhhbU/edit?usp=sharing"},formats:["Vanity Mirror","Full-Length Mirror","Tablet","TV Landscape","TV Portrait","Multiscreen"],accessories:["Printer","Camera","Payment Terminal","Scanner"],blurb:"Touch, gesture and camera-driven screens — AR, AI and interactive, across mirrors, tablets, TVs and multiscreen walls.",desc:"Kiehl's x LOOOK.AI lit a permanent AI skin-analysis mirror at Dubai Festival City (FashionNetwork, Jul 2026) — UAE flagship of its global retail rollout."},
-  {cat:"Experiential & OOH",name:"Projection Mapping",lab:"ARLab",ai:"ai-powered",viability:90,growth:25,tam:210,blurb:"Large-scale light shows and brand moments — building projections, stages and event-scale canvases.",desc:"Riyadh Season 7 Skyline Theatre runs 360 projection-mapped opera through Mar 2027 (GEA) — TBRC sizes the projection-mapping market at $5.29B in 2026."},
-  {cat:"Experiential & OOH",name:"OOH Billboards",lab:"ARLab",ai:"ai-powered",viability:92,growth:18,tam:620,sub:["3D Anamorphic","Live Billboards"],blurb:"Next-gen out-of-home for city screens, malls and arenas.",desc:"Hills x Daktronics wired 10 Sheikh Zayed Road bridges with LEDs built for 3D anamorphic (Daktronics) — Mordor sizes GCC OOH and DOOH at $2.42B in 2026."},
-  {cat:"Add-ons",name:"Live Audience Analytics",lab:"ARLab|AILab",ai:"ai-powered",viability:90,growth:20,tam:105,addon:true,blurb:"Live crowd analytics — dwell, scans, computer-vision demographics on screens.",desc:"Six Kings Slam Dec 27, 28 and 30 Riyadh (GEA) and GITEX Dec 7-11 Dubai open Q4 — TBRC sizes AI audience-heatmap analytics at $4.88B in 2026."},
-  {cat:"Creators & Live",name:"Creator Marketing",lab:"CreatorLab",ai:"ai-resistant",viability:96,growth:44,tam:820,deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Handpicked creator partnerships — talent sourcing, briefs, usage rights and campaign management.",desc:"YouTube Shopping x Amazon opened UAE, KSA and Egypt Oct 26 (Google blog) — 86% of GCC viewers trust YouTube creators most for product recos (Kantar)."},
-  {cat:"Creators & Live",name:"Live Commerce",lab:"CreatorLab",ai:"ai-powered",viability:93,growth:38,tam:380,sub:["Live Shopping","Live Activation"],deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Shoppable live streams — overlays, production, hosting, conversion.",desc:"Grand View sizes Saudi live commerce at $3.5B in 2026 (+30% YoY) — Noon Yellow Friday Nov 20-30 is the UAE test window for creator-led cart tests."},
-  {cat:"Creators & Live",name:"PR Packages",lab:"CreatorLab",ai:"ai-resistant",viability:78,growth:18,tam:95,deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Sendable branded kits designed to generate content, coverage and unboxings.",desc:"Noon Yellow Friday Nov 20-30, 55th Eid Al Etihad Dec 2 and the longest-ever DSF Dec 4 → Jan 17 stack a 60-day UAE creator seeding window (VisitDubai)."},
-  {cat:"AI Systems",name:"Custom AI Tools",lab:"AILab",ai:"ai-powered",viability:96,growth:38,tam:640,sub:["AutoLens"],product:["AutoLens"],blurb:"An AI tool built around one job your team or your customers do often.",desc:"Mistral Large 4 open weights Oct 29 at $0.70/$2.10 per M tokens (Hugging Face) — the HUMAIN pact lets KSA custom tools self-host and skip the vendor API tax."},
-  {cat:"AI Systems",name:"AI Agents",lab:"AILab",ai:"ai-powered",viability:98,growth:72,tam:760,blurb:"Your workflows, run by AI — agents that finish the job, not just suggest it.",desc:"ADNOC deployed OpenAI Frontier at ADIPEC Nov 2 as first energy giant (ADNOC) — Gartner tags AI agents at $29.2B in 2026, up 77% YoY."},
-  {cat:"AI Systems",name:"AI Chatbot",lab:"AILab",ai:"ai-powered",viability:96,growth:36,tam:410,deck:"https://docs.google.com/presentation/d/1FRgwg29WtywrZMj7URtQR0cfNTzEZigeldCLhz-0itY/edit?usp=sharing",blurb:"AI that answers customers everywhere they write — from info you approved.",desc:"MBZUAI shipped Jais 3 Oct 16 — six Apache 2.0 Arabic models to 375B with 512K context — and WhatsApp bot replies turned billable after 1,000/mo (Meta Oct 1)."},
-  {cat:"AI Systems",name:"AI Consultative Solutions",lab:"AILab",ai:"ai-resistant",viability:92,growth:34,tam:690,blurb:"AI advisory on tooling, workflows and governance for any company.",desc:"Aramco closed its $2.6B HUMAIN stake Nov 1 and NIF signed $667M for AI data centres (Arab News) — boards need urgent AI policy and vendor shape."},
+  {cat:"Experiential & OOH",name:"Projection Mapping",lab:"ARLab",ai:"ai-powered",viability:90,growth:25,tam:210,blurb:"Large-scale light shows and brand moments — building projections, stages and event-scale canvases.",desc:"Riyadh Season 7 Skyline Theatre runs 360 projection-mapped opera through Mar 2027 (GEA); TBRC sizes the projection-mapping market at $5.29B in 2026."},
+  {cat:"Experiential & OOH",name:"OOH Billboards",lab:"ARLab",ai:"ai-powered",viability:92,growth:18,tam:620,sub:["3D Anamorphic","Live Billboards"],blurb:"Next-gen out-of-home for city screens, malls and arenas.",desc:"Hills x Daktronics wired 10 Sheikh Zayed Road bridges with LEDs built for 3D anamorphic (Daktronics Oct 2026); Mordor sizes GCC OOH/DOOH at $2.42B in 2026."},
+  {cat:"Add-ons",name:"Live Audience Analytics",lab:"ARLab|AILab",ai:"ai-powered",viability:90,growth:20,tam:105,addon:true,blurb:"Live crowd analytics — dwell, scans, computer-vision demographics on screens.",desc:"TBRC sizes AI audience-heatmap analytics at $4.88B in 2026; Six Kings Slam Dec 27-30 Riyadh and GITEX Dec 7-11 open two live measurement windows."},
+  {cat:"Creators & Live",name:"Creator Marketing",lab:"CreatorLab",ai:"ai-resistant",viability:96,growth:44,tam:820,deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Handpicked creator partnerships — talent sourcing, briefs, usage rights and campaign management.",desc:"YouTube Shopping x Amazon opened UAE, KSA and Egypt Oct 26 (Google blog); 86% of GCC viewers trust YouTube creators most for product recos (Kantar)."},
+  {cat:"Creators & Live",name:"Live Commerce",lab:"CreatorLab",ai:"ai-powered",viability:93,growth:38,tam:380,sub:["Live Shopping","Live Activation"],deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Shoppable live streams — overlays, production, hosting, conversion.",desc:"Grand View sizes Saudi live commerce at $3.5B in 2026 (+30% YoY); Noon Yellow Friday Nov 20-30 opens the UAE test window for creator-led live-cart runs."},
+  {cat:"Creators & Live",name:"PR Packages",lab:"CreatorLab",ai:"ai-resistant",viability:78,growth:18,tam:95,deck:"https://docs.google.com/presentation/d/1zjbMaZP-SetSvlO54IkYi_EuJlsITFJ1jWglPUneFfA/edit?usp=sharing",blurb:"Sendable branded kits designed to generate content, coverage and unboxings.",desc:"Noon Yellow Friday Nov 20-30, 55th Eid Al Etihad Dec 2 and DSF Dec 4 → Jan 17 stack a 60-day UAE creator-PR seeding window for unboxings and coverage."},
+  {cat:"AI Systems",name:"Custom AI Tools",lab:"AILab",ai:"ai-powered",viability:96,growth:38,tam:640,sub:["AutoLens"],product:["AutoLens"],blurb:"An AI tool built around one job your team or your customers do often.",desc:"Mistral Large 4 open weights Oct 29 at $0.70/$2.10 per M tokens (Hugging Face); HUMAIN sovereign hosting lets KSA custom tools self-host and skip the vendor API tax."},
+  {cat:"AI Systems",name:"AI Agents",lab:"AILab",ai:"ai-powered",viability:98,growth:72,tam:760,blurb:"Your workflows, run by AI — agents that finish the job, not just suggest it.",desc:"ADNOC deployed OpenAI Frontier at ADIPEC Nov 2 as the first energy giant on agents; Gartner tags the AI agents market at $29.2B in 2026 (+77% YoY)."},
+  {cat:"AI Systems",name:"AI Chatbot",lab:"AILab",ai:"ai-powered",viability:96,growth:36,tam:410,deck:"https://docs.google.com/presentation/d/1FRgwg29WtywrZMj7URtQR0cfNTzEZigeldCLhz-0itY/edit?usp=sharing",blurb:"AI that answers customers everywhere they write — from info you approved.",desc:"MBZUAI shipped Jais 3 Oct 16 — Apache 2.0 Arabic models to 375B with 512K context; WhatsApp bot replies turned billable after 1,000/mo (Meta Oct 1)."},
+  {cat:"AI Systems",name:"AI Consultative Solutions",lab:"AILab",ai:"ai-resistant",viability:92,growth:34,tam:690,blurb:"AI advisory on tooling, workflows and governance for any company.",desc:"Aramco closed its $2.6B HUMAIN stake Nov 1 and NIF signed $667M for KSA AI data centres (Arab News) — boards need urgent AI policy, vendor shape and build-vs-buy advisory."},
 ];
 var CAT_COLORS={"Strategy & Creative":"cat-creative-strategy","Content Production":"cat-ai","Social Experiences":"cat-social-ar","Web & Interactive":"cat-immersive","Wearables":"cat-mr-vr","Experiential & OOH":"cat-on-ground","Creators & Live":"cat-social","AI Systems":"cat-addons","Add-ons":"cat-cgi"};
 var CAT_ORDER=["Strategy & Creative","Social Experiences","Content Production","Web & Interactive","Wearables","Experiential & OOH","Creators & Live","AI Systems","Add-ons"];
@@ -717,77 +773,7 @@ function switchTab(name,el){
   el.classList.add('active');
 }
 
-// Market tab: Q4 demand by category — peak service per market (0-100 score).
-// Score logic: calendar fit + this-week signals + 23-week newsletter pattern reinforcement.
-var CATEGORY_FORECAST=[
-  {cat:"Creators & Live",       uae:{pick:"Creator Marketing",      score:82}, ksa:{pick:"Creator Marketing",      score:96}},
-  {cat:"Strategy & Creative",   uae:{pick:"Branding",               score:94}, ksa:{pick:"Concepting & Experience Design", score:78}},
-  {cat:"Experiential & OOH",    uae:{pick:"OOH Billboards",         score:88}, ksa:{pick:"Projection Mapping",     score:93}},
-  {cat:"Web & Interactive",     uae:{pick:"Web Development",        score:86}, ksa:{pick:"Web Development",        score:70}},
-  {cat:"AI Systems",            uae:{pick:"AI Agents",              score:95}, ksa:{pick:"Custom AI Tools",        score:91}},
-  {cat:"Add-ons",               uae:{pick:"Live Audience Analytics",score:62}, ksa:{pick:"Live Audience Analytics",score:84}},
-  {cat:"Social Experiences",    uae:{pick:"Social Gamification",    score:72}, ksa:{pick:"Social AR Effects",      score:88}},
-  {cat:"Content Production",    uae:{pick:"AI Creative Content",    score:76}, ksa:{pick:"UGC",                    score:87}},
-  {cat:"Wearables",             uae:{pick:"Glasses",                score:72}, ksa:{pick:"Glasses",                score:34}}
-];
-function renderCategoryChart(){
-  var host=document.getElementById('market-chart');if(!host)return;
-  var W=780,H=560,padL=80,padR=70,padT=40,padB=70;
-  var px=W-padL-padR,py=H-padT-padB;
-  var sx=function(v){return padL+(v/100)*px;};
-  var sy=function(v){return padT+py-(v/100)*py;};
-  var COLOR={
-    "Strategy & Creative":"#d4a574","Content Production":"#97C459","Social Experiences":"#b8aef5",
-    "Web & Interactive":"#60aaee","Wearables":"#ed93b1","Experiential & OOH":"#aaa",
-    "Creators & Live":"#f0805a","AI Systems":"#f0c050","Add-ons":"#5adab0"
-  };
-  var svg='';
-  // gridlines
-  [25,50,75].forEach(function(t){
-    svg+='<line class="scatter-grid" x1="'+sx(t)+'" y1="'+padT+'" x2="'+sx(t)+'" y2="'+(padT+py)+'"/>';
-    svg+='<line class="scatter-grid" x1="'+padL+'" y1="'+sy(t)+'" x2="'+(padL+px)+'" y2="'+sy(t)+'"/>';
-  });
-  // border
-  svg+='<rect x="'+padL+'" y="'+padT+'" width="'+px+'" height="'+py+'" fill="none" stroke="rgba(255,255,255,0.1)" rx="12"/>';
-  // diagonal
-  svg+='<line class="scatter-diag" x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(100)+'" y2="'+sy(100)+'"/>';
-  // ticks
-  [0,25,50,75,100].forEach(function(t){
-    svg+='<text class="scatter-tick" x="'+sx(t)+'" y="'+(padT+py+18)+'" text-anchor="middle">'+t+'</text>';
-    svg+='<text class="scatter-tick" x="'+(padL-12)+'" y="'+(sy(t)+3)+'" text-anchor="end">'+t+'</text>';
-  });
-  // axis labels
-  svg+='<text class="scatter-axis-label" x="'+(padL+px/2)+'" y="'+(H-20)+'" text-anchor="middle">UAE score →</text>';
-  svg+='<text class="scatter-axis-label" x="28" y="'+(padT+py/2)+'" text-anchor="middle" transform="rotate(-90 28 '+(padT+py/2)+')">KSA score →</text>';
-  // zone hints
-  svg+='<text class="scatter-zone-label ksa" x="'+sx(12)+'" y="'+sy(93)+'">KSA LEAN</text>';
-  svg+='<text class="scatter-zone-label uae" x="'+sx(78)+'" y="'+sy(14)+'">UAE LEAN</text>';
-  // bubbles — no in-plot labels, legend sidebar handles naming
-  CATEGORY_FORECAST.forEach(function(r){
-    var c=COLOR[r.cat]||'#fff';
-    var x=sx(r.uae.score),y=sy(r.ksa.score);
-    var maxS=Math.max(r.uae.score,r.ksa.score);
-    var rad=8+(maxS/100)*6;
-    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+(rad+6)+'" fill="'+c+'" opacity="0.14"/>';
-    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+rad+'" fill="'+c+'" opacity="0.4"/>';
-    svg+='<circle class="scatter-dot" cx="'+x+'" cy="'+y+'" r="'+(rad*0.5)+'" fill="'+c+'" opacity="1"/>';
-  });
-  host.innerHTML=svg;
-  // legend
-  var leg=document.getElementById('market-legend');if(!leg)return;
-  var sorted=CATEGORY_FORECAST.slice().sort(function(a,b){return Math.max(b.uae.score,b.ksa.score)-Math.max(a.uae.score,a.ksa.score);});
-  leg.innerHTML=sorted.map(function(r){
-    var c=COLOR[r.cat]||'#fff';
-    return '<div class="chart-legend-item">'+
-      '<span class="chart-legend-dot" style="background:'+c+'"></span>'+
-      '<span class="chart-legend-name">'+r.cat+'</span>'+
-      '<span class="chart-legend-score">'+r.uae.score+'<span class="sep">·</span>'+r.ksa.score+'</span>'+
-    '</div>';
-  }).join('');
-}
-
 filterCards();
-renderCategoryChart();
 </script>
 </body>
 </html>

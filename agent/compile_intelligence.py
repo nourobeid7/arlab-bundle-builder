@@ -207,10 +207,15 @@ def build_tool_schema(service_names: list[str]) -> dict:
                             },
                             "desc": {
                                 "type": "string",
+                                "maxLength": 170,
                                 "description": (
-                                    "~300–400 character refreshed description. Plain text, "
-                                    "no markdown, no newlines. Dense with current proof points "
-                                    "(brands, products, prices, dates, metrics)."
+                                    "≤150 character signal (hard cap 170). Plain text, no "
+                                    "markdown, no newlines. Must be a named, dated, numbered "
+                                    "signal directly about this service's own platform, format "
+                                    "or domain — not a generic macro headline. If the signal "
+                                    "could be swapped between two different services without "
+                                    "changing meaning, it is wrong. Advertising/creative-tech "
+                                    "framing only (no climate, ESG, policy)."
                                 ),
                             },
                         },
@@ -240,9 +245,12 @@ def call_agent(system_prompt: str, newsletters: list[dict], services: list[dict]
                     "existing desc you are refreshing.\n\n"
                     "```json\n" + json.dumps(services, ensure_ascii=False) + "\n```\n\n"
                     "## Your task\n\n"
-                    "Rewrite the `desc` of every service to reflect the freshest newsletter "
-                    "signals. Match the existing voice and length. Call the "
-                    "`submit_service_updates` tool once with one entry per service — nothing else."
+                    "Rewrite the `desc` of every service as a dense ≤150-char signal — the "
+                    "freshest named, dated, numbered fact from the archive that is specifically "
+                    "about THIS service's own platform/format/domain. Swap-test: if the signal "
+                    "could sit under a different service without change, pick a different one. "
+                    "Call the `submit_service_updates` tool once with one entry per service — "
+                    "nothing else."
                 ),
                 "cache_control": {"type": "ephemeral"},
             }
