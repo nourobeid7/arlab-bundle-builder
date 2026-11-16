@@ -176,13 +176,14 @@ a.sub-pill{text-decoration:none}
 .market-section-title{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.09),rgba(255,255,255,0.025));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);margin-bottom:18px}
 
 /* Sell-split — compact glass rows */
-.sell-split{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sell-split{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .sell-col{padding:0;min-width:0}
 .sell-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
 .sell-flag{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;letter-spacing:-1px;line-height:1;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .sell-col.c-uae .sell-flag{background-image:linear-gradient(135deg,#5a90d0,#a8d2ff)}
 .sell-col.c-ksa .sell-flag{background-image:linear-gradient(135deg,#3aa888,#86e5bf)}
 .sell-col.c-ma .sell-flag{background-image:linear-gradient(135deg,#c17846,#f0b878)}
+.sell-col.c-qa .sell-flag{background-image:linear-gradient(135deg,#9e2440,#e8a0b5)}
 .sell-sub{font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase}
 .sell-driver{font-size:11px;color:var(--text2);line-height:1.55;margin-bottom:12px;padding:11px 14px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.15)}
 .sell-driver b{color:var(--text);font-weight:600}
@@ -202,6 +203,7 @@ a.sub-pill{text-decoration:none}
 .sell-col.c-uae .sell-score-pill{background:linear-gradient(145deg,rgba(140,192,255,0.28),rgba(90,144,208,0.1));color:#d8ebff;border:1px solid rgba(140,192,255,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
 .sell-col.c-ksa .sell-score-pill{background:linear-gradient(145deg,rgba(90,218,176,0.28),rgba(58,168,136,0.1));color:#c8f1dd;border:1px solid rgba(90,218,176,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
 .sell-col.c-ma .sell-score-pill{background:linear-gradient(145deg,rgba(240,184,120,0.28),rgba(193,120,70,0.1));color:#ffd9b0;border:1px solid rgba(240,184,120,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
+.sell-col.c-qa .sell-score-pill{background:linear-gradient(145deg,rgba(232,160,181,0.28),rgba(158,36,64,0.1));color:#f4c7d4;border:1px solid rgba(232,160,181,0.35);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* Shifts to Watch — strategic windows for Wissam */
 .shifts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -261,6 +263,7 @@ a.sub-pill{text-decoration:none}
 .cal-event .tag{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;background:rgba(140,192,255,0.16);color:#a8d2ff;border:1px solid rgba(140,192,255,0.22);text-transform:uppercase}
 .cal-event .tag.k{background:rgba(90,218,176,0.16);color:#86e5bf;border-color:rgba(90,218,176,0.22)}
 .cal-event .tag.m{background:rgba(240,184,120,0.16);color:#ffd09e;border-color:rgba(240,184,120,0.3)}
+.cal-event .tag.q{background:rgba(232,160,181,0.16);color:#f4c7d4;border-color:rgba(232,160,181,0.3)}
 
 /* Chip-row — stat glass */
 .chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -271,7 +274,8 @@ a.sub-pill{text-decoration:none}
 .chip-label{font-size:10.5px;color:var(--text3);line-height:1.5;margin-top:10px}
 .chip-label b{color:var(--text);font-weight:600}
 
-@media(max-width:1100px){.sell-split{grid-template-columns:1fr 1fr}.shifts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1280px){.sell-split{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.shifts-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:860px){.sell-split,.cal-strip,.chip-row,.forecast-split,.shifts-grid{grid-template-columns:1fr;gap:14px}.chip-stat{font-size:28px}}
 
 
@@ -560,6 +564,63 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
       </div>
     </div>
 
+    <div class="sell-col c-qa">
+      <div class="sell-head"><span class="sell-flag">Qatar</span><span class="sell-sub">Top 5 · this quarter</span></div>
+      <div class="sell-driver"><b>Driver:</b> Qatar sells sport sponsorship canvases and media-hub ambitions into FIFA Intercontinental Cup and National Day.</div>
+      <div class="sell-list">
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">01</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>OOH Billboards</div>
+              <div class="sell-why">Doha Corniche + Lusail skyline into FIFA Intercontinental Cup Dec 9/12/16 (PSG final) and National Day Dec 18 — sell OOH as 3D anamorphic hero, not a static buy.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">84</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">02</div>
+            <div class="sell-main">
+              <div class="sell-name cat-social"><span class="dot"></span>Creator Marketing</div>
+              <div class="sell-why">Khaleeji-Arabic + English creators own PSG, Intercontinental Cup and National Day coverage — sell creator as Qatar's December sports + culture trust channel.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">82</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">03</div>
+            <div class="sell-main">
+              <div class="sell-name cat-on-ground"><span class="dot"></span>Projection Mapping</div>
+              <div class="sell-why">Lusail and Ahmad bin Ali stadium facades + Katara and Msheireb walls — sell projection as the signature Qatar brand-stage hero for the December sport window.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">80</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">04</div>
+            <div class="sell-main">
+              <div class="sell-name cat-creative-strategy"><span class="dot"></span>Branding</div>
+              <div class="sell-why">National Day Dec 18 + Media City Qatar's 550+ licensed firms reset sponsor, host-city and creator-studio identities for the 2027 pipeline.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">78</div>
+        </div>
+        <div class="sell-row">
+          <div class="sell-left">
+            <div class="sell-rank">05</div>
+            <div class="sell-main">
+              <div class="sell-name cat-addons"><span class="dot"></span>AI Agents</div>
+              <div class="sell-why">MWC Doha Nov 8-10 + Media City Qatar's gaming/content push open the sovereign AI + agent-infra lane heading into Web Summit Qatar 2027.</div>
+            </div>
+          </div>
+          <div class="sell-score-pill">75</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="market-section">
@@ -589,6 +650,12 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="shift-head"><b>YouTube Shopping x Amazon</b> opened UAE, KSA and Egypt Oct 26 — viewers now check out directly from a creator video; 86% of GCC viewers trust YouTube creators most for product recos (Kantar).</div>
         <div class="shift-signal"><b>ARlab window:</b> Creator Marketing, Live Commerce, UGC and PR Packages all ship with built-in affiliate checkout — Q4 briefs sell talent + the cart as one unit.</div>
       </div>
+      <div class="shift-card">
+        <div class="shift-tag open">Next</div>
+        <div class="shift-cat">Instagram Reels affiliate opens</div>
+        <div class="shift-head"><b>Meta ShopTalk 2026</b> rolled native affiliate tagging across Instagram and Facebook Reels — Amazon, eBay, Temu, Shopee catalogs; Meta takes zero commission, full cut flows brand → creator. Rolled into 22 countries.</div>
+        <div class="shift-signal"><b>ARlab window:</b> every Reel becomes a trackable storefront — Creator Marketing, UGC and PR Packages flip to a Reels-first affiliate motion that out-economics TikTok Shop and complements the YouTube Shopping lane.</div>
+      </div>
     </div>
   </div>
 
@@ -608,6 +675,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="forecast-head"><span class="forecast-tag k">GCC + Morocco · Creative Tech</span></div>
         <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>UAE identity window compresses into 60 days.</b> National Month → Dubai Future Week → GITEX → DSF → 1BF Summit stack a single branding, OOH, AR and web sprint from Nov 18 to Jan 17.</div></div>
         <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Saudi creator spend peaks on Netflix.</b> Riyadh Season 7 to Mar 2027, Six Kings Slam Dec 27-30 Netflix-exclusive, WWE Crown Jewel — KSA takes 40% of GCC creator spend this quarter.</div></div>
+        <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Qatar peaks on sport and media hub.</b> FIFA Intercontinental Cup Dec 9/12/16 (PSG final) + National Day Dec 18 + Media City Qatar's 550+ licensed firms set up Web Summit Qatar 2027 as the next GCC creative pipeline.</div></div>
         <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Morocco opens as the North Africa creative lane.</b> FIFM Marrakech Nov 20-28, Visa For Music Rabat Nov 18-21, 2030 FIFA WC rebrands across Casa/Rabat/Tangier — bilingual French-Arabic creative is the 2026-27 differentiator.</div></div>
         <div class="forecast-item up"><span class="forecast-arrow">&uarr;</span><div><b>Sovereign AI opens the custom build lane.</b> Aramco $2.6B HUMAIN close + NIF $667M data centres — every KSA Custom AI Tools and AI Consultative brief defaults to on-prem sovereign hosting.</div></div>
       </div>
@@ -625,12 +693,15 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="cal-event"><div class="cal-date">Nov 18-21</div><div><b>Dubai Future Week</b> Emirates Towers<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Nov 20-30</div><div><b>Noon Yellow Friday</b> (White Friday Nov 27)<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Nov 20-28</div><div><b>FIFM 23</b> Marrakech Film Festival<span class="tag m">MA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Nov 8-10 ✓</div><div><b>MWC Doha</b> Doha Exhibition &amp; Convention Centre<span class="tag q">QA</span></div></div>
       </div>
       <div class="cal-col">
         <div class="cal-month">Dec 2026</div>
         <div class="cal-event"><div class="cal-date">Dec 2-3</div><div><b>55th Eid Al Etihad</b> A Family of Families<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 4 → Jan 17</div><div><b>Dubai Shopping Festival</b> 32nd edition<span class="tag">UAE</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 7-11</div><div><b>GITEX Global</b> DWTC + Expo City Dubai<span class="tag">UAE</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 9/12/16</div><div><b>FIFA Intercontinental Cup</b> Jassim bin Hamad + Ahmad bin Ali · PSG final Dec 16<span class="tag q">QA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Dec 18</div><div><b>Qatar National Day</b> Doha Corniche parade + brand window<span class="tag q">QA</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec</div><div><b>Morocco 2030 WC</b> Casa + Rabat stadium brand reveals<span class="tag m">MA</span></div></div>
         <div class="cal-event"><div class="cal-date">Dec 27, 28, 30</div><div><b>Six Kings Slam</b> ANB Arena Riyadh<span class="tag k">KSA</span></div></div>
       </div>
@@ -641,6 +712,7 @@ body{color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
         <div class="cal-event"><div class="cal-date">Jan</div><div><b>Riyadh Season</b> continues to Mar<span class="tag k">KSA</span></div></div>
         <div class="cal-event"><div class="cal-date">Jan</div><div><b>Casa Fashion Week</b> prep + MA brand year<span class="tag m">MA</span></div></div>
         <div class="cal-event"><div class="cal-date">Jan</div><div><b>Vision 2030</b> year-10 marker<span class="tag k">KSA</span></div></div>
+        <div class="cal-event"><div class="cal-date">Feb</div><div><b>Web Summit Qatar 2027</b> Media City Qatar pipeline opens<span class="tag q">QA</span></div></div>
       </div>
     </div>
   </div>
