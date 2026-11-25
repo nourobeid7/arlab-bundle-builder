@@ -132,6 +132,30 @@ body{
 .gen-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,#b8aef5,#5adab0);color:#0a0a0a;border:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:12px;transition:transform .15s,box-shadow .15s}
 .gen-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(184,174,245,0.3)}
 .gen-btn:active{transform:translateY(0)}
+
+/* Feedback bar — teaches the generator */
+.fb-bar{padding:14px 16px;border-radius:14px;background:linear-gradient(145deg,rgba(240,128,90,0.08),rgba(184,174,245,0.06));border:1px solid rgba(240,128,90,0.22);display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.fb-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.fb-head-lbl{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ffb094}
+.fb-head-note{font-size:11px;color:var(--text3);line-height:1.5}
+.fb-input-row{display:flex;gap:8px;align-items:stretch}
+.fb-input{flex:1;padding:10px 13px;border-radius:9px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.1);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12.5px;outline:none;transition:border-color .15s}
+.fb-input:focus{border-color:rgba(240,128,90,0.4)}
+.fb-input::placeholder{color:var(--text3)}
+.fb-apply{padding:10px 16px;border-radius:9px;background:linear-gradient(135deg,#ffb094,#b8aef5);color:#0a0a0a;border:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:transform .15s}
+.fb-apply:hover{transform:translateY(-1px)}
+.fb-quick{display:flex;flex-wrap:wrap;gap:6px}
+.fb-quick-chip{padding:5px 11px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text2);cursor:pointer;transition:all .15s}
+.fb-quick-chip:hover{background:rgba(255,255,255,0.1);color:var(--text);border-color:rgba(255,255,255,0.22)}
+.fb-applied{display:flex;flex-wrap:wrap;gap:6px;padding-top:4px;border-top:1px dashed rgba(255,255,255,0.08);margin-top:4px}
+.fb-applied-lbl{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);align-self:center;margin-right:4px}
+.fb-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 6px 4px 11px;border-radius:999px;background:rgba(151,196,89,0.14);border:1px solid rgba(151,196,89,0.3);color:#bfe07a;font-family:'DM Sans',sans-serif;font-size:11px}
+.fb-pill.tone{background:rgba(184,174,245,0.14);border-color:rgba(184,174,245,0.3);color:#d4ccff}
+.fb-pill-x{width:16px;height:16px;border-radius:999px;background:rgba(0,0,0,0.3);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.fb-pill-x:hover{background:rgba(240,96,96,0.5)}
+.fb-clear{padding:3px 10px;border-radius:999px;background:transparent;border:1px solid var(--border);color:var(--text3);font-family:'DM Sans',sans-serif;font-size:10.5px;cursor:pointer;transition:all .15s;align-self:center;margin-left:auto}
+.fb-clear:hover{color:#ff9d9d;border-color:rgba(240,96,96,0.35)}
+.script-card.no-ar .beat-ar{display:none}
 .gen-main{display:flex;flex-direction:column;gap:14px}
 .script-card{padding:18px 20px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 6px 20px rgba(0,0,0,0.15)}
 .script-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
@@ -1119,10 +1143,82 @@ function serviceAr(s){
   return map[s]||s;
 }
 
+// ---------- Feedback engine ----------
+function fbKey(svc){return 'arlab-script-fb-'+svc;}
+function fbLoad(svc){try{var s=localStorage.getItem(fbKey(svc));return s?JSON.parse(s):[];}catch(e){return [];}}
+function fbSave(svc,arr){localStorage.setItem(fbKey(svc),JSON.stringify(arr));}
+function fbAdd(svc,text){var a=fbLoad(svc);a.push({text:text,at:Date.now()});fbSave(svc,a);}
+function fbRemove(svc,idx){var a=fbLoad(svc);a.splice(idx,1);fbSave(svc,a);generateScript();}
+function fbClear(svc){if(!confirm('Clear all feedback for '+svc+'?'))return;fbSave(svc,[]);generateScript();}
+function fbApplyInput(){
+  var svc=document.getElementById('gen-service').value;
+  var el=document.getElementById('fb-input');
+  var text=(el.value||'').trim();
+  if(!text)return;
+  fbAdd(svc,text);
+  el.value='';
+  generateScript();
+}
+function fbQuick(text){
+  var svc=document.getElementById('gen-service').value;
+  fbAdd(svc,text);
+  generateScript();
+}
+
+// Parse one feedback string into deterministic transforms (patch into state).
+// Unmatched → kept as a "tone note" pill (reader-visible reminder).
+function fbParse(text){
+  var t=(text||'').toLowerCase();
+  var out={toneNote:null};
+  // length
+  if(/\b(shorter|cut it|tight|under 10|10s|snappier)\b/.test(t))out.length=10;
+  else if(/\b(longer|extend|more time|22s|22 ?sec)\b/.test(t))out.length=22;
+  else if(/\b(20s|20 ?sec|medium)\b/.test(t))out.length=20;
+  // pattern
+  if(/\b(proof|stat|number|data|40 ?m|million)\b/.test(t))out.pattern='proof';
+  else if(/\b(punchy|aggressive|harder|provocation|provoke|cocky|attack)\b/.test(t))out.pattern='provocation';
+  else if(/\b(reframe|educat|teach|calm|softer|gentle|explain)\b/.test(t))out.pattern='reframe';
+  else if(/\b(trio|three pains|rapid[- ]?fire|pain.*reveal|questions)\b/.test(t))out.pattern='trio';
+  // market
+  if(/\b(uae|dubai|emirates|eid al etihad|gitex|dsf)\b/.test(t))out.market='uae';
+  else if(/\b(ksa|saudi|riyadh|humain|vision 2030)\b/.test(t))out.market='ksa';
+  else if(/\b(morocco|casa|fifm|rabat|tangier|marrakech)\b/.test(t))out.market='ma';
+  else if(/\b(qatar|doha|media city|intercontinental cup)\b/.test(t))out.market='qa';
+  else if(/\b(generic|global|no market|remove market)\b/.test(t))out.market='generic';
+  // Arabic
+  if(/\b(no arabic|english only|drop arabic|remove arabic|cut arabic)\b/.test(t))out.hideArabic=true;
+  else if(/\b(add arabic|arabic only|more arabic|keep arabic)\b/.test(t))out.hideArabic=false;
+  // tone note — if nothing deterministic matched, keep as a visible instruction
+  var matched=['length','pattern','market','hideArabic'].some(function(k){return out[k]!==undefined;});
+  if(!matched)out.toneNote=text;
+  return out;
+}
+
 function generateScript(){
   var svc=document.getElementById('gen-service').value;
   var pat=currentPattern;
   var market=document.getElementById('gen-market').value;
+  var hideArabic=false;
+  var toneNotes=[];
+
+  // Apply stored feedback for this service, in order — later overrides earlier.
+  var fbList=fbLoad(svc);
+  fbList.forEach(function(fb){
+    var p=fbParse(fb.text);
+    if(p.length!==undefined){
+      // pick the pattern whose default length matches, else keep pattern but mark length override
+      var byLen={10:'provocation',16:'proof',20:'trio',22:'reframe'}[p.length];
+      if(byLen && !fbList.some(function(f,i){return f!==fb && /\b(proof|provocation|reframe|trio|punchy|aggressive|softer|reframe)\b/.test((f.text||'').toLowerCase());})) pat=byLen;
+      document.getElementById('gen-length').value=p.length;
+    }
+    if(p.pattern)pat=p.pattern;
+    if(p.market){market=p.market;document.getElementById('gen-market').value=p.market;}
+    if(p.hideArabic!==undefined)hideArabic=p.hideArabic;
+    if(p.toneNote)toneNotes.push(p.toneNote);
+  });
+  currentPattern=pat;
+  renderPatternList();
+
   var copy=SERVICE_COPY[svc]||defaultCopy(svc);
   copy.service=svc; copy.serviceAr=serviceAr(svc); copy.sinceWhen="a year";
   var p=PATTERNS[pat];
@@ -1132,24 +1228,58 @@ function generateScript(){
     return {time:b.time,role:b.role,en:b.fn(copy),ar:b.ar(copy)};
   });
 
-  // Variant B: cycle to the "next" pattern so you get two different angles
   var nextPat=({proof:"provocation",provocation:"reframe",reframe:"trio",trio:"proof"})[pat];
   var pB=PATTERNS[nextPat];
   var variantB=pB.structure.map(function(b){
     return {time:b.time,role:b.role,en:b.fn(copy),ar:b.ar(copy)};
   });
 
-  var html="";
+  // Build feedback bar
+  var fbBar='<div class="fb-bar">'
+    +'<div class="fb-head">'
+      +'<span class="fb-head-lbl">Feedback for '+svc+'</span>'
+      +'<span class="fb-head-note">Type a change — "shorter", "swap to proof", "add UAE angle", "no Arabic", "more cocky" — and we re-generate. Feedback persists per service.</span>'
+    +'</div>'
+    +'<div class="fb-input-row">'
+      +'<input id="fb-input" class="fb-input" placeholder="e.g. shorter · add KSA stinger · drop Arabic · punchier hook" onkeydown="if(event.key===\'Enter\')fbApplyInput();" />'
+      +'<button class="fb-apply" onclick="fbApplyInput()">Apply</button>'
+    +'</div>'
+    +'<div class="fb-quick">'
+      +['Shorter','Punchier','Softer / educate','Add proof stat','UAE angle','KSA angle','No Arabic','Generic / global']
+        .map(function(q){return '<div class="fb-quick-chip" onclick="fbQuick(\''+q.replace(/'/g,"\\'")+'\')">+ '+q+'</div>';}).join('')
+    +'</div>';
+  if(fbList.length){
+    fbBar+='<div class="fb-applied">'
+      +'<span class="fb-applied-lbl">Applied</span>'
+      +fbList.map(function(fb,i){
+        var isTone=fbParse(fb.text).toneNote;
+        return '<span class="fb-pill'+(isTone?' tone':'')+'">'+esc(fb.text)+'<button class="fb-pill-x" onclick="fbRemove(\''+svc.replace(/'/g,"\\'")+'\','+i+')" title="Remove">✕</button></span>';
+      }).join('')
+      +'<button class="fb-clear" onclick="fbClear(\''+svc.replace(/'/g,"\\'")+'\')">Clear all</button>'
+    +'</div>';
+  }
+  fbBar+='</div>';
+
+  var toneBlock='';
+  if(toneNotes.length){
+    toneBlock='<div class="visual-block" style="background:linear-gradient(135deg,rgba(184,174,245,0.1),rgba(240,128,90,0.06));border-color:rgba(184,174,245,0.3);margin-bottom:10px">'
+      +'<b>Tone notes · respected during delivery</b>'
+      +toneNotes.map(function(n){return '• '+esc(n);}).join('<br>')
+    +'</div>';
+  }
+
+  var html=fbBar;
   [{v:variantA,p:p,label:"A · "+p.name},{v:variantB,p:pB,label:"B · "+pB.name}].forEach(function(vv){
-    html+='<div class="script-card">'
+    html+='<div class="script-card'+(hideArabic?' no-ar':'')+'">'
       +'<div class="script-head">'
         +'<div class="script-title">'+svc+' — Variant '+vv.label+'</div>'
         +'<div class="script-meta">'
           +'<span class="meta-pill pat">'+vv.p.name+'</span>'
           +'<span class="meta-pill len">~'+vv.p.len+'s</span>'
-          +'<span class="meta-pill lang">EN + Levantine AR</span>'
+          +'<span class="meta-pill lang">'+(hideArabic?'EN only':'EN + Levantine AR')+'</span>'
         +'</div>'
       +'</div>'
+      +toneBlock
       +'<div class="beats">'
         +vv.v.map(function(b){
           return '<div class="beat-time">'+b.time+'</div>'
@@ -1165,13 +1295,13 @@ function generateScript(){
         +'<b>Direction</b>'
         +'Format 1080×1920 vertical (TikTok · Reels · Shorts). Face-to-camera or AI-generated character in cartoon style. '
         +'Hook delivered in the first 1.3 seconds. Cut every 1.5s minimum. '
-        +'Lebanese / GCC-neutral Arabic delivery (confident, slightly cocky). '
-        +'Captions burned-in, Arabic right-aligned at 42pt, English top-left at 36pt. '
-        +'End card: ARlab lockup + "تواصلوا معنا" / "Contact us at ARlab" + wordmark hold 1s.'
+        +(hideArabic?'English delivery only (per feedback). ':'Lebanese / GCC-neutral Arabic delivery (confident, slightly cocky). ')
+        +'Captions burned-in'+(hideArabic?' (English top-left at 36pt). ':', Arabic right-aligned at 42pt, English top-left at 36pt. ')
+        +'End card: ARlab lockup + '+(hideArabic?'"Contact us at ARlab"':'"تواصلوا معنا" / "Contact us at ARlab"')+' + wordmark hold 1s.'
       +'</div>'
       +'<div class="script-foot">'
         +'<button class="copy-btn" onclick="copyScript(this)">Copy script</button>'
-        +'<button class="copy-btn" onclick="copyAR(this)">Copy Arabic only</button>'
+        +(hideArabic?'':'<button class="copy-btn" onclick="copyAR(this)">Copy Arabic only</button>')
         +'<button class="copy-btn" onclick="copyEN(this)">Copy English only</button>'
       +'</div>'
       +'</div>';
