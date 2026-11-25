@@ -180,6 +180,51 @@ body{
 .ev-deadline{font-size:10.5px;color:var(--stable);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;margin-top:2px}
 .ev-deadline b{color:#ffd87a}
 
+/* Ad Priority — "what to advertise first" from Intelligence signals */
+.prio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:1200px){.prio-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.prio-grid{grid-template-columns:1fr}}
+.prio-card{position:relative;padding:16px 16px 14px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.065),rgba(255,255,255,0.015));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),0 6px 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;gap:9px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.prio-card:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.24),0 10px 28px rgba(0,0,0,0.26)}
+.prio-card.r1{border-color:rgba(151,196,89,0.4);background:linear-gradient(145deg,rgba(151,196,89,0.14),rgba(255,255,255,0.015))}
+.prio-card.r2{border-color:rgba(90,218,176,0.35)}
+.prio-card.r3{border-color:rgba(184,174,245,0.3)}
+.prio-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);opacity:.6}
+.prio-rank{position:absolute;top:12px;right:14px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--text3);opacity:.6}
+.prio-head{display:flex;align-items:baseline;gap:10px;padding-right:32px}
+.prio-name{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:700;letter-spacing:-.3px;line-height:1.2;flex:1}
+.prio-score{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.8px;line-height:1;color:#97C459}
+.prio-score.s-b{color:#5adab0}
+.prio-score.s-c{color:#b8aef5}
+.prio-score small{font-size:10px;color:var(--text3);font-weight:600;margin-left:1px;letter-spacing:0}
+.prio-metrics{display:flex;flex-wrap:wrap;gap:4px}
+.prio-pill{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:5px;background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid var(--border)}
+.prio-pill.gr{background:rgba(151,196,89,0.14);color:#bfe07a;border-color:rgba(151,196,89,0.3)}
+.prio-pill.tam{background:rgba(184,174,245,0.14);color:#d4ccff;border-color:rgba(184,174,245,0.28)}
+.prio-pill.ai{background:rgba(90,218,176,0.14);color:#86e5bf;border-color:rgba(90,218,176,0.28)}
+.prio-why{font-size:11px;color:var(--text2);line-height:1.5;padding:9px 11px;border-radius:9px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06)}
+.prio-why b{color:var(--text);font-weight:600}
+.prio-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.prio-platforms{display:flex;gap:4px;flex-wrap:wrap}
+.pf-chip{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:4px;color:#fff}
+.pf-chip.meta{background:linear-gradient(135deg,#0866ff,#8b5cf6)}
+.pf-chip.google{background:#fff;color:#4285f4}
+.pf-chip.tiktok{background:linear-gradient(135deg,#25f4ee,#fe2c55);color:#000}
+.pf-chip.linkedin{background:#0a66c2}
+.pf-chip.snap{background:#fffc00;color:#000}
+.pf-chip.youtube{background:#ff0000}
+.pf-chip.x{background:#000;border:1px solid rgba(255,255,255,0.3)}
+.prio-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:9px;background:linear-gradient(135deg,rgba(184,174,245,0.16),rgba(90,218,176,0.1));border:1px solid rgba(184,174,245,0.28);font-size:10.5px;color:var(--text);font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .18s}
+.prio-cta:hover{border-color:rgba(184,174,245,0.6);transform:translateY(-1px)}
+.prio-cta b{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.1px}
+.prio-cta span{font-size:14px;color:#b8aef5}
+.prio-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)}
+.prio-foot b{display:block;color:var(--text);font-size:11.5px;font-weight:700;margin-top:2px;letter-spacing:.02em;text-transform:none}
+
+.prio-explain{font-size:10.5px;color:var(--text3);line-height:1.55;margin-top:-8px;margin-bottom:14px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)}
+.prio-explain b{color:var(--text2);font-weight:600}
+.prio-explain code{background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b8aef5}
+
 /* Awards */
 .award-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
 .award-card{padding:16px 18px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 6px 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
@@ -268,6 +313,13 @@ body{
 <!-- ====================== ADS HEALTH ====================== -->
 <div id="tab-ads" class="tab-panel">
 <div class="wrap">
+
+  <div class="section-group" style="margin-top:0">
+    <div class="section-title">Advertise These First · Q4 2026 → Q1 2027</div>
+    <div class="prio-explain"><b>Score formula:</b> <code>0.45·growth + 0.25·viability + 0.15·AI-tailwind + 0.15·timing-window</code> — pulled live from Intelligence Dashboard's SERVICES data. Top 8 shown. Click <b>Open Script Generator</b> to jump straight to the matched ad pattern for that service.</div>
+    <div class="prio-grid" id="prio-grid"></div>
+  </div>
+
   <div class="mcp-banner">
     <div class="mcp-banner-left">
       <h3>Connect Ads Manager via MCP</h3>
@@ -1027,6 +1079,74 @@ document.getElementById('aw-filters').addEventListener('click',function(e){
 });
 
 // ============================================================
+// AD PRIORITY — "what to advertise first" from Intelligence signals
+// Pulled from the SERVICES array that drives index.html
+// ============================================================
+var PRIO_SERVICES=[
+  {name:"AI Agents",growth:72,viability:98,ai:"ai-powered",tam:760,windowBeat:"ChatGPT Wallet shipped Nov 13 — agents swipe the card. Enterprise boards need the call this quarter.",platforms:["linkedin","google","x"],pattern:"trio",tier:"B2B SaaS · $12-25K/mo",cadence:"Daily · always-on"},
+  {name:"Glasses",growth:75,viability:95,ai:"ai-powered",tam:680,windowBeat:"AI glasses +263% H1 2026. etisalat stocking Ray-Ban Meta AED 1,160. Consumer-tech lane wide open.",platforms:["meta","tiktok","youtube"],pattern:"proof",tier:"Consumer · $8-20K/mo",cadence:"3-5x/week · ZOT content"},
+  {name:"Creator Marketing",growth:44,viability:96,ai:"ai-resistant",tam:820,windowBeat:"$820M GCC TAM — biggest service we own. YouTube Shopping x Amazon live UAE+KSA Oct 26. 86% GCC trust creators.",platforms:["meta","linkedin","tiktok"],pattern:"reframe",tier:"Agency retainer · $15-40K/mo",cadence:"Daily · creator-cart funnel"},
+  {name:"AI Creative Content",growth:40,viability:96,ai:"ai-powered",tam:500,windowBeat:"40M-view Khaleeji case study is your single sharpest proof. Qwen4-Max GA Nov 16 at $1.50/M — cheap AI films scale.",platforms:["meta","linkedin","youtube","tiktok"],pattern:"proof",tier:"Brand · $10-30K/mo",cadence:"Case-study-led · 4-6x/week"},
+  {name:"Live Commerce",growth:38,viability:93,ai:"ai-powered",tam:380,windowBeat:"Noon Yellow Friday + DSF Dec 4 → Jan 17. $3.5B KSA live market +30% YoY. 60-day retail window live.",platforms:["meta","tiktok","snap"],pattern:"reframe",tier:"Retail · $20-50K/mo",cadence:"Burst — Dec 4 to Jan 17"},
+  {name:"Custom AI Tools",growth:38,viability:96,ai:"ai-powered",tam:640,windowBeat:"Aramco $2.6B HUMAIN close + NIF $667M data centres. Every KSA brief now defaults to sovereign on-prem.",platforms:["linkedin","google","x"],pattern:"provocation",tier:"Enterprise · $25-80K/mo",cadence:"Low-vol · high-intent search"},
+  {name:"Social AR Effects",growth:36,viability:92,ai:"ai-powered",tam:420,windowBeat:"Snap Lens+ paid $1M+ to 1,000 creators. YouTube Effect Maker globally live. Paid AR canvas unlocked.",platforms:["snap","tiktok","meta"],pattern:"proof",tier:"Brand launch · $8-18K/mo",cadence:"Per-launch sprints"},
+  {name:"Digital Installations",growth:40,viability:94,ai:"ai-powered",tam:320,windowBeat:"GITEX Dec 7-11 at Expo City Dubai (6,000 exhibitors) + Dubai Future Week Nov 18-21. Two live booth-build windows.",platforms:["linkedin","meta"],pattern:"proof",tier:"Event-based · $30-150K/project",cadence:"Event-triggered bursts"}
+];
+function aiBoost(a){return a==="ai-powered"?1.0:a==="ai-resistant"?0.9:0.5;}
+function timingBoost(s){
+  // Services with live catalysts in Dec/Jan get a boost
+  var hot=["Live Commerce","Digital Installations","Creator Marketing","AI Creative Content","Social AR Effects"];
+  return hot.indexOf(s.name)>-1?1.0:0.7;
+}
+function prioScore(s){
+  var growthPt=Math.max(0,Math.min(100,s.growth+20));
+  var score=0.45*growthPt+0.25*s.viability+0.15*(aiBoost(s.ai)*100)+0.15*(timingBoost(s)*100);
+  return Math.round(score);
+}
+function platformNice(p){return {meta:"Meta",google:"Google",tiktok:"TikTok",linkedin:"LinkedIn",snap:"Snap",youtube:"YouTube",x:"X"}[p];}
+function patternLabel(p){return {proof:"Proof-Stat",provocation:"Provocation",reframe:"Pain-Reframe",trio:"Pain-Trio"}[p];}
+function jumpToScript(service,pattern){
+  // Switch to scripts tab + pre-select
+  document.querySelector('.tab[onclick*="scripts"]').click();
+  var sel=document.getElementById('gen-service');
+  // If service exists in dropdown, select it; otherwise leave current
+  for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===service){sel.selectedIndex=i;break;}}
+  currentPattern=pattern;
+  document.getElementById('gen-length').value=PATTERNS[pattern].len;
+  renderPatternList();
+  generateScript();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderPrio(){
+  var ranked=PRIO_SERVICES.map(function(s){return Object.assign({},s,{score:prioScore(s)});});
+  ranked.sort(function(a,b){return b.score-a.score;});
+  var grid=document.getElementById('prio-grid');
+  grid.innerHTML=ranked.map(function(s,i){
+    var rankCls=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    var scoreCls=i<2?'':i<5?'s-b':'s-c';
+    return '<div class="prio-card '+rankCls+'">'
+      +'<div class="prio-rank">#'+String(i+1).padStart(2,'0')+'</div>'
+      +'<div class="prio-head">'
+        +'<div class="prio-name">'+s.name+'</div>'
+        +'<div class="prio-score '+scoreCls+'">'+s.score+'<small>/100</small></div>'
+      +'</div>'
+      +'<div class="prio-metrics">'
+        +'<span class="prio-pill gr">+'+s.growth+'% YoY</span>'
+        +'<span class="prio-pill tam">$'+(s.tam>=1000?(s.tam/1000).toFixed(1)+'B':s.tam+'M')+' TAM</span>'
+        +'<span class="prio-pill ai">'+(s.ai==='ai-powered'?'✦ AI-Powered':s.ai==='ai-resistant'?'◎ AI-Resistant':'△ AI-Risk')+'</span>'
+      +'</div>'
+      +'<div class="prio-why"><b>Why now:</b> '+s.windowBeat+'</div>'
+      +'<div class="prio-row"><span>Best channels</span><div class="prio-platforms">'+s.platforms.map(function(p){return '<span class="pf-chip '+p+'">'+platformNice(p)+'</span>';}).join('')+'</div></div>'
+      +'<div class="prio-cta" onclick="jumpToScript(\''+s.name+'\',\''+s.pattern+'\')"><div><b>'+patternLabel(s.pattern)+'</b> pattern · tap to generate script</div><span>→</span></div>'
+      +'<div class="prio-foot">'
+        +'<div>Budget tier<b>'+s.tier+'</b></div>'
+        +'<div>Cadence<b>'+s.cadence+'</b></div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+// ============================================================
 // Tabs
 // ============================================================
 function switchTab(name,el){
@@ -1039,6 +1159,7 @@ function switchTab(name,el){
 // Init
 renderSocial();
 renderAds();
+renderPrio();
 renderServiceSelect();
 renderPatternList();
 renderEvents();
