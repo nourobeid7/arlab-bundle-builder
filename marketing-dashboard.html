@@ -340,14 +340,11 @@ body{
 
 /* Action Plan — narrow deliverable checklist */
 .action-stack{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.action-progress{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(184,174,245,0.12),rgba(90,218,176,0.08));border:1px solid rgba(184,174,245,0.28);margin-bottom:6px;max-width:720px;margin-left:auto;margin-right:auto}
-.action-progress-text{flex:1}
-.action-progress-count{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1;color:var(--text)}
-.action-progress-count small{font-size:12px;color:var(--text3);font-weight:600;margin-left:3px;letter-spacing:0}
-.action-progress-lbl{font-size:10.5px;color:var(--text2);margin-top:4px;font-family:'Space Grotesk',sans-serif;letter-spacing:.06em}
-.action-reset{padding:8px 14px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2);font-size:10.5px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
-.action-reset:hover{color:var(--text);border-color:var(--border2);background:rgba(255,255,255,0.08)}
-.bar-track{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden;min-width:120px}
+.action-progress{display:flex;align-items:center;gap:10px;max-width:720px;margin:0 auto 14px}
+.action-progress-count{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:600;color:var(--text3);letter-spacing:.04em;white-space:nowrap}
+.action-reset{padding:4px 10px;border-radius:999px;background:transparent;border:1px solid var(--border);color:var(--text3);font-size:10px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.action-reset:hover{color:var(--text2);border-color:var(--border2)}
+.bar-track{flex:1;height:3px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden}
 .bar-fill{height:100%;background:linear-gradient(90deg,#97C459,#5adab0);transition:width .3s}
 
 .deliverable{padding:18px 20px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 4px 14px rgba(0,0,0,0.12)}
@@ -546,11 +543,8 @@ body{
 <div id="tab-actions" class="tab-panel">
 <div class="wrap">
   <div class="action-progress">
-    <div class="action-progress-text">
-      <div class="action-progress-count"><span id="act-done">0</span><small>/ <span id="act-total">0</span> complete</small></div>
-      <div class="action-progress-lbl">Editable · click any text to edit · hover to delete · persists in this browser</div>
-    </div>
     <div class="bar-track"><div class="bar-fill" id="act-bar" style="width:0%"></div></div>
+    <div class="action-progress-count"><span id="act-done">0</span> / <span id="act-total">0</span></div>
     <button class="action-reset" onclick="resetActions()">Reset</button>
   </div>
   <div id="actions-root"></div>
