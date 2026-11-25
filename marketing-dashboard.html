@@ -437,7 +437,7 @@ body{
   <div class="kpi-row">
     <div class="kpi"><div class="kpi-label">Followers · Audited</div><div class="kpi-val">26K</div><div class="kpi-sub">LI 20K · IG 4.5K · TT 1.5K · Snap gated</div></div>
     <div class="kpi"><div class="kpi-label">Verified Handles</div><div class="kpi-val">1 / 4</div><div class="kpi-sub"><span class="up">IG ✓</span> · LI/TT/Snap unverified</div></div>
-    <div class="kpi"><div class="kpi-label">AI Visibility</div><div class="kpi-val" style="color:#ff9d9d">32 blocked</div><div class="kpi-sub"><span class="down">GPTBot, Claude, Google-Ext, CCBot… · Perplexity only one allowed</span></div></div>
+    <div class="kpi"><div class="kpi-label">AI Visibility</div><div class="kpi-val" style="color:#8fe3a2">Open to all</div><div class="kpi-sub"><span class="up">robots.txt now Allow: / — GPTBot, ClaudeBot, Google-Ext, Perplexity, CCBot all unblocked</span></div></div>
     <div class="kpi"><div class="kpi-label">Avg Cadence</div><div class="kpi-val">~2 / wk</div><div class="kpi-sub"><span class="down">below 4 / wk benchmark</span></div></div>
   </div>
 
@@ -452,12 +452,12 @@ body{
   </div>
 
   <div class="section-group">
-    <div class="section-title">GEO Audit · AI Search Visibility <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0;margin-left:8px">verified via curl · Nov 25, 2026</span></div>
-    <div class="alert-row">
-      <div class="alert-mark">⚠</div>
+    <div class="section-title">GEO Audit · AI Search Visibility <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0;margin-left:8px">re-verified via curl · Nov 25, 2026</span></div>
+    <div class="alert-row" style="border-color:rgba(143,227,162,0.4);background:linear-gradient(180deg,rgba(143,227,162,0.08),rgba(143,227,162,0.02))">
+      <div class="alert-mark" style="color:#8fe3a2">✓</div>
       <div class="alert-body">
-        <h3>Your robots.txt is blocking every AI crawler.</h3>
-        <p>Your <code>robots.txt</code> (Cloudflare-managed) explicitly <b>disallows 32 AI crawlers</b> — including GPTBot, ClaudeBot, anthropic-ai, Claude-Web, Google-Extended, Google-CloudVertexBot, CCBot, Bytespider and Amazonbot. Your <code>Content-Signal</code> header reads <code>search=yes, ai-train=no, use=reference</code> — Google can index for search, but every major LLM is barred from reading the site. One exception: <b>PerplexityBot is NOT in the blocklist</b> — Perplexity can crawl. It's the only live route to AI citation today.</p>
+        <h3>robots.txt rewritten — every AI crawler is now allowed.</h3>
+        <p>The live <code>robots.txt</code> is now a clean <code>User-agent: *</code> / <code>Allow: /</code> / <code>Disallow: /api/</code>, with the sitemap declared. The 32-bot blocklist is gone. The <code>Content-Signal</code> header has been removed. Direct crawler probes confirm <b>GPTBot, ClaudeBot, PerplexityBot and CCBot all return 200</b> on the homepage. GPT, Claude, Gemini (via Google-Extended), Perplexity and CC-scale models can now read thearlab.com. Two things still missing before we're fully citable: <b>server-rendered H1</b> (Next.js SPA hides it) and <code>/llms.txt</code> + <code>/llms-full.txt</code> (both still 404). Ship those + run LLM citation probes.</p>
         <div class="bot-grid" id="bot-grid"></div>
       </div>
     </div>
@@ -676,56 +676,45 @@ var SEO_ITEMS=[
   {lbl:"Homepage H1",val:"Not in server HTML",cls:"warn",note:"Next.js SPA — H1 likely rendered client-side. LLMs and some crawlers won't see it. Server-render the H1."},
   {lbl:"Sitemap size",val:"356 URLs",cls:"good",note:"Declared at <code>www.thearlab.com/sitemap.xml</code>. Last-mod Nov 25, 2026. Clean."},
   {lbl:"JSON-LD / schema.org",val:"Partial (1 block)",cls:"warn",note:"Organization + hasOfferCatalog present at root ✓. Missing BreadcrumbList + per-page Service + CreativeWork on project pages."},
-  {lbl:"robots.txt",val:"Live",cls:"good",note:"Present + Cloudflare-managed. Blocks 32 AI bots at root (see GEO tab for why that's the problem)."},
+  {lbl:"robots.txt",val:"Live · open",cls:"good",note:"Rewritten Nov 25. Now <code>User-agent: *</code> / <code>Allow: /</code> / <code>Disallow: /api/</code>. 32-bot AI blocklist removed. Sitemap declared."},
   {lbl:"llms.txt / llms-full.txt",val:"404 / 404",cls:"bad",note:"AI-crawler guidance file is missing. Add <code>/llms.txt</code> + <code>/llms-full.txt</code> pointing at the 356 URLs."},
   {lbl:"Core Web Vitals",val:"Not scanned",cls:"warn",note:"Run PageSpeed on /, /services, /projects — baseline for Q1 2027 opt push."}
 ];
 
 var GEO_ITEMS=[
-  {lbl:"Content-Signal header",val:"search=yes, ai-train=no, use=reference",cls:"warn",note:"Declared in robots.txt under <code>User-agent: *</code>. Google can index. AI training explicitly denied. Flip to <code>ai-train=yes, use=reference-permitted</code> to appear in LLM answers."},
-  {lbl:"AI bots explicitly blocked",val:"32 bots",cls:"bad",note:"GPTBot, ClaudeBot, anthropic-ai, Claude-Web, Google-Extended, Google-CloudVertexBot, CCBot, Bytespider, Applebot-Extended, cohere-ai, MistralAI-Training, meta-externalagent, Amazonbot, PetalBot, KimiBot, Diffbot + 16 others. No LLM crawler can read the site."},
-  {lbl:"PerplexityBot",val:"NOT blocked",cls:"good",note:"Not in robots.txt — Perplexity's crawler is allowed. The only major LLM engine that <i>can</i> read ARlab today. Test whether we show up in Perplexity answers before assuming we don't."},
-  {lbl:"JSON-LD for AI parsing",val:"Organization only",cls:"warn",note:"LLMs that do read us (Perplexity, Google AIO via Gemini models) get Organization + 1 OfferCatalog. Missing Service / CreativeWork / Person on project pages blocks structured citation."},
-  {lbl:"LLM citation probes",val:"Not run",cls:"off",note:"Audit did not query ChatGPT / Claude / Gemini / Perplexity for \"best AR AI agency MENA\" etc. Needs a real probe before claiming \"not cited\" — pending."},
-  {lbl:"Recommended fix",val:"Unblock 4 bots",cls:"good",note:"Allow GPTBot, ClaudeBot, Google-Extended, CCBot. Keep Bytespider, meta-externalagent, MistralAI-Training blocked (training-only, no citation benefit). Ship <code>/llms.txt</code>. Then probe."}
+  {lbl:"robots.txt policy",val:"Allow: / (open)",cls:"good",note:"Rewritten Nov 25. Single <code>User-agent: *</code> block, <code>Allow: /</code>, <code>Disallow: /api/</code>, sitemap declared. No per-bot blocks remain."},
+  {lbl:"Content-Signal header",val:"Removed",cls:"good",note:"The <code>ai-train=no, use=reference</code> signal that previously told LLMs \"don't train, only reference\" is gone. No AI-use restriction is declared anymore."},
+  {lbl:"AI bots explicitly blocked",val:"0 bots",cls:"good",note:"The 32-bot blocklist (GPTBot, ClaudeBot, anthropic-ai, Claude-Web, Google-Extended, Google-CloudVertexBot, CCBot, Bytespider, Applebot-Extended, cohere-ai, MistralAI-Training, meta-externalagent, Amazonbot, PetalBot, KimiBot, Diffbot + 16 others) is fully removed."},
+  {lbl:"Live crawler probes",val:"4 / 4 return 200",cls:"good",note:"Direct curl with GPTBot, ClaudeBot, PerplexityBot and CCBot user-agents all returned HTTP 200 on homepage (Nov 25). No WAF or bot-fight-mode blocks observed."},
+  {lbl:"JSON-LD for AI parsing",val:"Organization only",cls:"warn",note:"LLMs now reading us get Organization + 1 OfferCatalog. Still missing Service / CreativeWork / Person on project pages — structured citation remains thin."},
+  {lbl:"llms.txt / llms-full.txt",val:"404 / 404",cls:"bad",note:"AI-crawler guidance files still missing. Ship <code>/llms.txt</code> (site map + service summary) and <code>/llms-full.txt</code> (full-content digest of the 356 URLs) to control what LLMs quote."},
+  {lbl:"Server-rendered H1",val:"Still missing",cls:"warn",note:"Next.js SPA — homepage H1 is not in server HTML. Crawlers now have access, but the main heading is client-rendered, so first-pass LLM parsing may miss it. Server-render the H1."},
+  {lbl:"LLM citation probes",val:"Pending — run now",cls:"off",note:"Crawlers are unblocked as of Nov 25. Allow 2-4 weeks for re-crawl, then probe ChatGPT / Claude / Gemini / Perplexity for \"best AR AI agency MENA / UAE / KSA\", \"CGI billboard agency Dubai\", \"Snap AR partner MENA\" and log citations."},
+  {lbl:"Next action",val:"Ship llms.txt + SSR H1",cls:"good",note:"Doors are open. Finish the on-page work: (1) publish <code>/llms.txt</code> + <code>/llms-full.txt</code>, (2) server-render the homepage + service-page H1s, (3) add Service + CreativeWork JSON-LD to project pages, (4) re-probe in 2 weeks."}
 ];
 
-// 32 bots explicitly Disallow: / on thearlab.com (Nov 25, 2026).
-// PerplexityBot is NOT in this list — Perplexity can crawl.
+// Nov 25, 2026: robots.txt rewritten to User-agent: * / Allow: / / Disallow: /api/.
+// Every bot below is now allowed. Direct curl probes confirm 200 for GPTBot, ClaudeBot, PerplexityBot, CCBot.
 var BOTS=[
-  {name:"GPTBot",state:"blocked"},
-  {name:"ClaudeBot",state:"blocked"},
-  {name:"anthropic-ai",state:"blocked"},
-  {name:"Claude-Web",state:"blocked"},
-  {name:"Google-Extended",state:"blocked"},
-  {name:"Google-CloudVertexBot",state:"blocked"},
-  {name:"GoogleOther",state:"blocked"},
-  {name:"CCBot",state:"blocked"},
-  {name:"Bytespider",state:"blocked"},
-  {name:"Applebot-Extended",state:"blocked"},
-  {name:"cohere-ai",state:"blocked"},
-  {name:"MistralAI-Training",state:"blocked"},
-  {name:"meta-externalagent",state:"blocked"},
-  {name:"Amazonbot",state:"blocked"},
-  {name:"PetalBot",state:"blocked"},
-  {name:"KimiBot",state:"blocked"},
-  {name:"Diffbot",state:"blocked"},
-  {name:"omgili",state:"blocked"},
-  {name:"Baiduspider",state:"blocked"},
-  {name:"AwarioSmartBot",state:"blocked"},
-  {name:"AwarioRssBot",state:"blocked"},
-  {name:"QualifiedBot",state:"blocked"},
-  {name:"Cotoyogi",state:"blocked"},
-  {name:"ICC-Crawler",state:"blocked"},
-  {name:"atlassian-bot",state:"blocked"},
-  {name:"FishBot",state:"blocked"},
-  {name:"BorderxBot",state:"blocked"},
-  {name:"NavuBot",state:"blocked"},
-  {name:"SemrushBot-SWA",state:"blocked"},
-  {name:"WARDBot",state:"blocked"},
-  {name:"magpie-crawler",state:"blocked"},
-  {name:"CitibotSiteCrawler",state:"blocked"},
-  {name:"PerplexityBot",state:"allowed"}
+  {name:"GPTBot",state:"allowed"},
+  {name:"ClaudeBot",state:"allowed"},
+  {name:"anthropic-ai",state:"allowed"},
+  {name:"Claude-Web",state:"allowed"},
+  {name:"Google-Extended",state:"allowed"},
+  {name:"Google-CloudVertexBot",state:"allowed"},
+  {name:"GoogleOther",state:"allowed"},
+  {name:"CCBot",state:"allowed"},
+  {name:"PerplexityBot",state:"allowed"},
+  {name:"Applebot-Extended",state:"allowed"},
+  {name:"cohere-ai",state:"allowed"},
+  {name:"meta-externalagent",state:"allowed"},
+  {name:"Amazonbot",state:"allowed"},
+  {name:"KimiBot",state:"allowed"},
+  {name:"Diffbot",state:"allowed"},
+  {name:"Bytespider",state:"allowed"},
+  {name:"MistralAI-Training",state:"allowed"},
+  {name:"Baiduspider",state:"allowed"},
+  {name:"PetalBot",state:"allowed"}
 ];
 
 function renderAudit(){
