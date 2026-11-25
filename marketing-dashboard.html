@@ -387,17 +387,12 @@ body{
     <div class="kpi"><div class="kpi-label">Followers · Audited</div><div class="kpi-val">8,957</div><div class="kpi-sub">IG 4,545 · LI 4,412 · others gated</div></div>
     <div class="kpi"><div class="kpi-label">Verified Handles</div><div class="kpi-val">1 / 4</div><div class="kpi-sub"><span class="up">IG ✓</span> · TT/LI/Snap unverified</div></div>
     <div class="kpi"><div class="kpi-label">AI Visibility</div><div class="kpi-val" style="color:#ff9d9d">BLOCKED</div><div class="kpi-sub"><span class="down">robots.txt disallows all AI bots</span></div></div>
-    <div class="kpi"><div class="kpi-label">Missing Platforms</div><div class="kpi-val">5</div><div class="kpi-sub">YT · X · Behance · Vimeo · FB</div></div>
+    <div class="kpi"><div class="kpi-label">Posting Cadence · Avg</div><div class="kpi-val">~2 / wk</div><div class="kpi-sub"><span class="down">below 4 / wk benchmark</span></div></div>
   </div>
 
   <div class="section-group" style="margin-top:0">
-    <div class="section-title">Channel Audit · Nov 25, 2026</div>
+    <div class="section-title">Channel Audit · Post Cadence · Nov 25, 2026</div>
     <div class="audit-grid" id="audit-grid"></div>
-  </div>
-
-  <div class="section-group">
-    <div class="section-title">Missing From The Web</div>
-    <div class="audit-list" id="missing-grid"></div>
   </div>
 
   <div class="section-group">
@@ -579,59 +574,51 @@ var SOCIAL_AUDIT=[
     logo:"IG",logoCls:"p-ig",name:"Instagram",handle:"@the.arlab",
     verified:true,status:"warn",
     url:"https://www.instagram.com/the.arlab/",
-    stats:{Followers:"4,545",Following:"5",Verified:"✓"},
+    stats:{Followers:"4,545",Cadence:"~2 / wk",Benchmark:"4-5 / wk"},
     findings:[
-      {t:"good",icon:"✓",text:"<b>Verified badge</b> live — only 1 of 4 ARlab handles. Bio names Snap/TT/Meta as partners (strong)."},
-      {t:"issue",icon:"!",text:"<b>Duplicate \"Partners\" highlight</b> on profile — unprofessional, delete one."},
-      {t:"issue",icon:"!",text:"<b>Posting gap Sep 2025 → Nov 2026</b> — algorithm reset on resume; needs 3-4x/wk cadence to recover."},
-      {t:"issue",icon:"!",text:"<b>No CTA in bio</b> — 4,545 followers with no clickable path beyond Linktree. Add \"Brief us →\" or DM instruction."},
-      {t:"issue",icon:"!",text:"<b>Grid aesthetic inconsistent</b> — mix of 9:16 Reels thumbs + square case studies. Pick one rhythm."}
+      {t:"good",icon:"✓",text:"<b>Verified badge</b> live — the only ARlab handle with a blue check."},
+      {t:"crit",icon:"⚠",text:"<b>Current cadence ~2 posts / week</b> after a long 2025 silent stretch — half the 4-5/wk benchmark for a verified MENA creative shop."},
+      {t:"issue",icon:"!",text:"<b>Reels under-indexed</b> vs feed carousels — algorithm now favors Reels 3:1. Shift ratio to 3 Reels : 1 carousel."},
+      {t:"issue",icon:"!",text:"<b>Stories cadence near-zero</b> — daily Stories compound DM intent. Target 3-5 Stories / day."},
+      {t:"issue",icon:"!",text:"<b>No CTA in bio</b> — 4,545 followers with no clickable brief path beyond Linktree."}
     ]
   },
   {
     logo:"TT",logoCls:"p-tt",name:"TikTok",handle:"@the.arlab",
-    verified:false,status:"off",
+    verified:false,status:"warn",
     url:"https://www.tiktok.com/@the.arlab",
-    stats:{Followers:"gated",Verified:"✗",Access:"login req"},
+    stats:{Cadence:"~1-2 / wk",Benchmark:"5-7 / wk",Verified:"✗"},
     findings:[
-      {t:"good",icon:"✓",text:"<b>Handle secured</b> — @the.arlab locked, linked from site footer."},
-      {t:"issue",icon:"!",text:"<b>Public stats locked behind login</b> — switch to TikTok Business to enable public analytics URL."},
-      {t:"issue",icon:"!",text:"<b>Not verified</b> — apply for the blue check (eligible with IG verification + 10K+ followers across platforms)."},
-      {t:"crit",icon:"⚠",text:"<b>No MCP pipe</b> — the 4 top-performing videos ARlab makes land here. No way to measure if an MCP is not plugged in."}
+      {t:"good",icon:"✓",text:"<b>Handle secured</b> — @the.arlab locked and linked from site footer."},
+      {t:"crit",icon:"⚠",text:"<b>Cadence ~1-2 / week</b> on the platform where ARlab's top-performing ads were originally built — benchmark is 5-7 / wk during a push window."},
+      {t:"issue",icon:"!",text:"<b>No Series / Playlist buckets</b> — each video drops cold. Group recurring formats (e.g. \"AI campaign breakdowns\") into a Series for discovery."},
+      {t:"issue",icon:"!",text:"<b>Not verified</b> — apply for the blue check (eligible with IG verification + cross-platform follower base)."}
     ]
   },
   {
     logo:"in",logoCls:"p-li",name:"LinkedIn",handle:"/company/the-arlab",
     verified:false,status:"warn",
     url:"https://www.linkedin.com/company/the-arlab/",
-    stats:{Followers:"~4,412",Employees:"15 / ~50",Size:"11-50"},
+    stats:{Followers:"~4,412",Cadence:"~1 / wk",Benchmark:"3-5 / wk"},
     findings:[
-      {t:"good",icon:"✓",text:"<b>4,412 followers</b> — roughly par with IG, which is rare. B2B lane working."},
-      {t:"issue",icon:"!",text:"<b>Only 15 of ~50 employees</b> list ARlab — missing 35 free advocates. Send team a one-click add-employer link."},
-      {t:"issue",icon:"!",text:"<b>No Showcase Page</b> for AI Lab / XR Lab — LinkedIn algorithm boosts showcase posts separately."},
-      {t:"issue",icon:"!",text:"<b>Posts lean case-study heavy</b> — mix in 1 \"ARlab POV\" post per week from Nour/Wissam to lift reach ~2x."}
+      {t:"good",icon:"✓",text:"<b>4,412 followers</b> — roughly par with IG, which is rare for a MENA creative shop. B2B lane is working."},
+      {t:"crit",icon:"⚠",text:"<b>Cadence ~1 post / week</b> — benchmark for a 4K+ agency page is 3-5 / wk. Every missed day is reach decay."},
+      {t:"issue",icon:"!",text:"<b>Posts lean case-study only</b> — add 2 \"ARlab POV\" posts / wk from Nour / Wissam; founder POV outperforms brand page 3-4x."},
+      {t:"issue",icon:"!",text:"<b>Only 15 of ~50 employees</b> list ARlab — missing 35 free advocates and ~10x compounding reach."}
     ]
   },
   {
     logo:"S",logoCls:"p-snap",name:"Snapchat",handle:"@thearlab",
     verified:false,status:"alert",
     url:"https://www.snapchat.com/@thearlab",
-    stats:{Lenses:"8",Bio:"empty",Verified:"✗"},
+    stats:{Lenses:"8",Cadence:"~0 / wk",Benchmark:"1 lens / wk"},
     findings:[
-      {t:"crit",icon:"⚠",text:"<b>Bio is completely empty</b> — Snap is a partner platform per IG bio; this is the one place it should be perfect."},
-      {t:"crit",icon:"⚠",text:"<b>Not Lens Studio verified</b> — blocks eligibility for Lens+ paid distribution ($1M to 1,000 creators). Apply this week."},
-      {t:"issue",icon:"!",text:"<b>Only 8 lenses published</b> publicly — ARlab has shipped way more. Sync the private ones under the brand profile."},
-      {t:"issue",icon:"!",text:"<b>No linked site / portfolio</b> — brands discovering the profile can't convert."}
+      {t:"crit",icon:"⚠",text:"<b>Bio is empty</b> — Snap is a partner platform per the IG bio; this is the one page that should read \"Creative tech · Snap partner · 500+ brands.\""},
+      {t:"crit",icon:"⚠",text:"<b>Lens release cadence ~0 / wk</b> publicly — only 8 lenses visible. Benchmark for a Snap-partner agency is 1 branded lens / wk during active campaigns."},
+      {t:"crit",icon:"⚠",text:"<b>Not Lens Studio verified</b> — blocks eligibility for Lens+ paid distribution ($1M fund to 1,000 creators)."},
+      {t:"issue",icon:"!",text:"<b>No linked site / portfolio</b> on the profile — brands discovering the handle can't convert."}
     ]
   }
-];
-
-var MISSING=[
-  {name:"YouTube",note:"No @the.arlab or @arlab channel exists. Grab the handle before squatters — essential for 40M-view AI case study hosting.",url:null,action:"Claim handle"},
-  {name:"X / Twitter",note:"No footprint. Lower priority but needed for GITEX / tech-conference live-tweeting + agency announcements.",url:null,action:"Reserve handle"},
-  {name:"Behance",note:"Portfolio pub. Adobe-owned, directly indexed by Google Images for AR/3D work. Free press.",url:null,action:"Create profile"},
-  {name:"Vimeo",note:"Film-industry parity. Showreel hosting with better quality than YouTube for pitch decks.",url:null,action:"Create profile"},
-  {name:"Facebook Page",note:"Partner platform per IG bio. Meta Business Manager needs a Page to run ads under ARlab brand.",url:null,action:"Required for Meta Ads"}
 ];
 
 var SEO_ITEMS=[
@@ -694,14 +681,6 @@ function renderAudit(){
         }).join('')
       +'</div>'
       +(p.url?'<a href="'+p.url+'" target="_blank" rel="noopener" class="audit-link">Open profile ↗</a>':'')
-    +'</div>';
-  }).join('');
-
-  document.getElementById('missing-grid').innerHTML=MISSING.map(function(m){
-    return '<div class="audit-item">'
-      +'<div class="audit-item-lbl">'+m.name+'</div>'
-      +'<div class="audit-item-val bad">'+m.action+'</div>'
-      +'<div class="audit-item-note">'+m.note+'</div>'
     +'</div>';
   }).join('');
 
@@ -1363,24 +1342,24 @@ var ACTIONS=[
     {id:"content-signal",text:"<b>Flip Content-Signal header</b> from <code>ai-train=no</code> to <code>use=reference-permitted</code> so AI answers can cite ARlab.",tags:["crit"]},
     {id:"llms-txt",text:"<b>Add /llms.txt + /llms-full.txt</b> — standard AI-crawler guidance file. Point to 448 project pages + services index.",tags:["crit","ai"]}
   ]},
-  {cat:"📱 Social · Fix What's Broken",items:[
-    {id:"ig-dup-highlight",text:"<b>Delete duplicate \"Partners\" highlight</b> on Instagram — keeps verified profile clean.",tags:["quick"]},
+  {cat:"📱 Social · Cadence + Fixes",items:[
+    {id:"ig-cadence",text:"<b>Push IG to 4-5 posts / week</b> for 8 weeks — 3 Reels : 1 carousel ratio, plus 3-5 Stories / day. Currently ~2 / wk.",tags:["crit"]},
     {id:"ig-bio-cta",text:"<b>Add CTA to Instagram bio</b> — \"Brief us →\" with DM instruction or Linktree deep-link to contact form.",tags:["quick"]},
-    {id:"ig-cadence",text:"<b>Rebuild IG posting cadence to 3-4x/week</b> for 8 weeks to recover algorithm after Sep 2025 → Nov 2026 gap.",tags:[]},
-    {id:"snap-bio",text:"<b>Write Snapchat bio</b> (currently empty) — one line: \"Creative tech for 500+ brands. Snap/TT/Meta partner.\" + link to site.",tags:["quick"]},
-    {id:"snap-verify",text:"<b>Apply for Snap Lens Studio verification</b> — unlocks Lens+ paid distribution eligibility ($1M fund to 1,000 creators).",tags:["crit"]},
-    {id:"snap-lenses",text:"<b>Sync all unpublished lenses to brand profile</b> — currently showing 8; ARlab has shipped many more.",tags:[]},
+    {id:"tt-cadence",text:"<b>Push TikTok to 5-7 posts / week</b> during Dec-Jan retail window. Currently ~1-2 / wk.",tags:["crit"]},
+    {id:"tt-series",text:"<b>Create TikTok Series / Playlists</b> — group recurring formats (AI campaign breakdowns, etc.) so each drop surfaces to prior viewers.",tags:["quick"]},
     {id:"tt-business",text:"<b>Switch TikTok to Business account</b> — unlocks public analytics URL + ad eligibility.",tags:["quick"]},
     {id:"tt-verify",text:"<b>Apply for TikTok blue check</b> — eligible with IG verification + cross-platform follower count.",tags:[]},
+    {id:"li-cadence",text:"<b>Push LinkedIn to 3-5 posts / week</b> — 3 case studies + 2 POV posts from Wissam / Nour. Currently ~1 / wk.",tags:["crit"]},
     {id:"li-employees",text:"<b>Push team to list ARlab on LinkedIn</b> — currently 15 of ~50 employees. Send one-click add-employer link. Instant +35 advocates.",tags:["quick"]},
-    {id:"li-showcase",text:"<b>Create LinkedIn Showcase Page</b> for AI Lab (and optionally XR Lab) — algorithm boosts showcase posts separately from brand page.",tags:[]}
+    {id:"li-showcase",text:"<b>Create LinkedIn Showcase Page</b> for AI Lab (and optionally XR Lab) — algorithm boosts showcase posts separately from brand page.",tags:[]},
+    {id:"snap-cadence",text:"<b>Ship 1 branded lens / week on Snap</b> during active campaigns. Currently 0 public releases, only 8 lenses visible.",tags:["crit"]},
+    {id:"snap-bio",text:"<b>Write Snapchat bio</b> (currently empty) — one line: \"Creative tech · Snap partner · 500+ brands.\" + link to site.",tags:["quick"]},
+    {id:"snap-verify",text:"<b>Apply for Snap Lens Studio verification</b> — unlocks Lens+ paid distribution eligibility ($1M fund to 1,000 creators).",tags:["crit"]},
+    {id:"snap-lenses",text:"<b>Sync all unpublished lenses to brand profile</b> — currently showing 8; ARlab has shipped many more.",tags:[]}
   ]},
   {cat:"🌐 Platforms · Claim The Missing",items:[
     {id:"yt-claim",text:"<b>Claim @the.arlab on YouTube</b> — needed to host the 40M-view AI case study at a canonical URL + Shorts repost.",tags:["crit","quick"]},
-    {id:"x-reserve",text:"<b>Reserve @the.arlab on X</b> — defensive hold. Live-tweet GITEX Dec 7-11 + agency announcements.",tags:["quick"]},
-    {id:"behance",text:"<b>Create Behance profile</b> — Adobe-owned, indexed by Google Images for AR/3D portfolio queries.",tags:[]},
-    {id:"vimeo",text:"<b>Create Vimeo profile</b> — film-industry parity. Pitch-deck showreel hosting with better quality than YouTube.",tags:[]},
-    {id:"fb-page",text:"<b>Set up Facebook Page</b> under ARlab — required by Meta Business Manager before Meta Ads MCP can connect.",tags:["crit","quick"]}
+    {id:"x-reserve",text:"<b>Reserve @the.arlab on X</b> — defensive hold. Live-tweet GITEX Dec 7-11 + agency announcements.",tags:["quick"]}
   ]},
   {cat:"🌐 Website SEO / GEO",items:[
     {id:"schema-org",text:"<b>Add JSON-LD schema.org markup</b> to homepage — Organization, Service, BreadcrumbList. Unlocks rich results in Google.",tags:["ai"]},
