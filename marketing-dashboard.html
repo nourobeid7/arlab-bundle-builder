@@ -335,18 +335,8 @@ body{
 
 /* Prio pills (Advertise First — pills only) */
 .prio-pills{display:flex;flex-wrap:wrap;gap:8px}
-.prio-pill-card{padding:9px 13px 9px 11px;border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;gap:9px;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
-.prio-pill-card:hover{transform:translateY(-1px);background:linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));border-color:rgba(255,255,255,0.22);box-shadow:0 6px 18px rgba(0,0,0,0.18)}
-.prio-pill-card.r1{border-color:rgba(151,196,89,0.4);background:linear-gradient(135deg,rgba(151,196,89,0.18),rgba(255,255,255,0.03))}
-.prio-pill-card.r2{border-color:rgba(90,218,176,0.35)}
-.prio-pill-card.r3{border-color:rgba(184,174,245,0.3)}
-.prio-pill-rank{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.08em;min-width:18px}
-.prio-pill-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.1px}
-.prio-pill-score{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#97C459;letter-spacing:-.1px;padding:2px 7px;border-radius:999px;background:rgba(151,196,89,0.1);border:1px solid rgba(151,196,89,0.25)}
-.prio-pill-card.r2 .prio-pill-score{color:#86e5bf;background:rgba(90,218,176,0.1);border-color:rgba(90,218,176,0.25)}
-.prio-pill-card:not(.r1):not(.r2):not(.r3) .prio-pill-score{color:#d4ccff;background:rgba(184,174,245,0.1);border-color:rgba(184,174,245,0.25)}
-.prio-pill-arrow{color:var(--text3);font-family:'Space Grotesk',sans-serif;font-size:13px;margin-left:1px}
-.prio-pill-card:hover .prio-pill-arrow{color:#b8aef5}
+.prio-pill-card{padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text2);font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.prio-pill-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.22);color:var(--text)}
 
 /* Action Plan — narrow deliverable checklist */
 .action-stack{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
@@ -466,7 +456,6 @@ body{
 <div id="tab-scripts" class="tab-panel">
 <div class="wrap">
   <div class="section-group" style="margin-top:0">
-    <div class="section-title">Advertise These First · tap a service to generate</div>
     <div class="prio-pills" id="prio-pills"></div>
   </div>
 
@@ -1496,14 +1485,8 @@ function renderPrioPills(){
   var ranked=PRIO_SERVICES.map(function(s){return Object.assign({},s,{score:prioScore(s)});});
   ranked.sort(function(a,b){return b.score-a.score;});
   var grid=document.getElementById('prio-pills');
-  grid.innerHTML=ranked.map(function(s,i){
-    var rankCls=i===0?'r1':i===1?'r2':i===2?'r3':'';
-    return '<div class="prio-pill-card '+rankCls+'" onclick="jumpToScript(\''+s.name+'\',\''+s.pattern+'\')" title="'+s.windowBeat.replace(/"/g,'&quot;')+'">'
-      +'<div class="prio-pill-rank">#'+(i+1)+'</div>'
-      +'<div class="prio-pill-name">'+s.name+'</div>'
-      +'<div class="prio-pill-score">'+s.score+'</div>'
-      +'<div class="prio-pill-arrow">→</div>'
-    +'</div>';
+  grid.innerHTML=ranked.map(function(s){
+    return '<div class="prio-pill-card" onclick="jumpToScript(\''+s.name+'\',\''+s.pattern+'\')" title="'+s.windowBeat.replace(/"/g,'&quot;')+'">'+s.name+'</div>';
   }).join('');
 }
 
