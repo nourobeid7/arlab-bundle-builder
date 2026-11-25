@@ -324,29 +324,9 @@ body{
 .prio-pill-arrow{color:var(--text3);font-family:'Space Grotesk',sans-serif;font-size:13px;margin-left:1px}
 .prio-pill-card:hover .prio-pill-arrow{color:#b8aef5}
 
-/* Action Plan tab */
-.action-cat{margin-bottom:20px}
-.action-cat-title{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:10px}
-.action-cat-title .count{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.08em}
-.action-list{display:flex;flex-direction:column;gap:7px}
-.action-row{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border-radius:12px;background:linear-gradient(145deg,rgba(255,255,255,0.045),rgba(255,255,255,0.01));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);cursor:pointer;transition:all .18s}
-.action-row:hover{border-color:rgba(255,255,255,0.2);background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))}
-.action-row.done{opacity:.55}
-.action-row.done .action-text{text-decoration:line-through;color:var(--text3)}
-.action-check{flex-shrink:0;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border2);background:transparent;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s}
-.action-row:hover .action-check{border-color:#b8aef5}
-.action-row.done .action-check{background:linear-gradient(135deg,#97C459,#5adab0);border-color:transparent}
-.action-row.done .action-check::after{content:"✓";font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0a0a0a;font-size:13px;line-height:1}
-.action-body{flex:1;display:flex;flex-direction:column;gap:4px}
-.action-text{font-size:12.5px;line-height:1.5;color:var(--text);font-family:'DM Sans',sans-serif}
-.action-text b{font-weight:600}
-.action-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.action-tag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:5px;background:rgba(255,255,255,0.04);color:var(--text3);border:1px solid var(--border)}
-.action-tag.crit{background:rgba(240,96,96,0.12);color:#ff9d9d;border-color:rgba(240,96,96,0.3)}
-.action-tag.quick{background:rgba(151,196,89,0.12);color:#bfe07a;border-color:rgba(151,196,89,0.3)}
-.action-tag.due{background:rgba(240,192,80,0.12);color:#f5d87e;border-color:rgba(240,192,80,0.3)}
-.action-tag.ai{background:rgba(184,174,245,0.12);color:#d4ccff;border-color:rgba(184,174,245,0.3)}
-.action-progress{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(184,174,245,0.12),rgba(90,218,176,0.08));border:1px solid rgba(184,174,245,0.28);margin-bottom:18px}
+/* Action Plan — narrow deliverable checklist */
+.action-stack{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.action-progress{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(184,174,245,0.12),rgba(90,218,176,0.08));border:1px solid rgba(184,174,245,0.28);margin-bottom:6px;max-width:720px;margin-left:auto;margin-right:auto}
 .action-progress-text{flex:1}
 .action-progress-count{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1;color:var(--text)}
 .action-progress-count small{font-size:12px;color:var(--text3);font-weight:600;margin-left:3px;letter-spacing:0}
@@ -355,6 +335,49 @@ body{
 .action-reset:hover{color:var(--text);border-color:var(--border2);background:rgba(255,255,255,0.08)}
 .bar-track{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden;min-width:120px}
 .bar-fill{height:100%;background:linear-gradient(90deg,#97C459,#5adab0);transition:width .3s}
+
+.deliverable{padding:18px 20px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 4px 14px rgba(0,0,0,0.12)}
+.deliv-head-row{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
+.deliv-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--text3)}
+.deliv-count{margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.04em;color:var(--text3)}
+.deliv-count b{color:#bfe07a;font-weight:700}
+.deliv-title{font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700;letter-spacing:-.3px;color:var(--text)}
+.deliv-tag{font-size:11.5px;color:var(--text3);margin-bottom:11px;line-height:1.5;font-family:'DM Sans',sans-serif}
+.deliv-list{display:flex;flex-direction:column;gap:1px}
+.deliv-row{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:9px;cursor:pointer;transition:background .15s}
+.deliv-row:hover{background:rgba(255,255,255,0.04)}
+.deliv-row.done{opacity:.55}
+.deliv-row.done .deliv-task{text-decoration:line-through;color:var(--text3)}
+.deliv-check{flex-shrink:0;width:16px;height:16px;border-radius:5px;border:1.5px solid var(--border2);background:transparent;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.deliv-row:hover .deliv-check{border-color:#b8aef5}
+.deliv-row.done .deliv-check{background:linear-gradient(135deg,#97C459,#5adab0);border-color:transparent}
+.deliv-row.done .deliv-check::after{content:"✓";font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0a0a0a;font-size:11px;line-height:1}
+.deliv-task{flex:1;font-size:12.5px;color:var(--text);line-height:1.45;font-family:'DM Sans',sans-serif}
+.deliv-meta{display:flex;gap:5px;align-items:center;flex-shrink:0}
+.deliv-meta span{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.02em;padding:2px 7px;border-radius:5px;background:rgba(255,255,255,0.05);color:var(--text3);border:1px solid var(--border);white-space:nowrap}
+.deliv-meta span.owner{color:var(--text2)}
+.deliv-meta span.when-done{background:rgba(151,196,89,0.14);color:#bfe07a;border-color:rgba(151,196,89,0.3)}
+.deliv-meta span.when-now{background:rgba(240,128,90,0.14);color:#ffb094;border-color:rgba(240,128,90,0.3)}
+.deliv-meta span.when-soon{background:rgba(240,192,80,0.12);color:#f5d87e;border-color:rgba(240,192,80,0.3)}
+.deliv-meta span.when-ongoing{background:rgba(184,174,245,0.12);color:#d4ccff;border-color:rgba(184,174,245,0.3)}
+.deliv-meta span.when-tbd{background:rgba(255,255,255,0.05);color:var(--text3);border-color:var(--border);font-style:italic}
+.deliv-meta span[contenteditable="true"]{cursor:text;outline:none}
+.deliv-meta span[contenteditable="true"]:focus{background:rgba(184,174,245,0.18);border-color:rgba(184,174,245,0.5);color:var(--text)}
+.deliv-task[contenteditable="true"]{cursor:text;outline:none;border-radius:4px;padding:1px 3px;margin:-1px -3px}
+.deliv-task[contenteditable="true"]:focus{background:rgba(184,174,245,0.12);box-shadow:inset 0 0 0 1px rgba(184,174,245,0.4)}
+.deliv-title[contenteditable="true"],.deliv-tag[contenteditable="true"]{cursor:text;outline:none;border-radius:4px;padding:0 3px;margin:0 -3px}
+.deliv-title[contenteditable="true"]:focus,.deliv-tag[contenteditable="true"]:focus{background:rgba(184,174,245,0.12);box-shadow:inset 0 0 0 1px rgba(184,174,245,0.4)}
+.deliv-del{opacity:0;flex-shrink:0;width:18px;height:18px;border-radius:5px;background:rgba(255,100,100,0.1);border:1px solid rgba(255,100,100,0.25);color:#ff9d9d;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;padding:0}
+.deliv-row:hover .deliv-del{opacity:1}
+.deliv-del:hover{background:rgba(255,100,100,0.22);color:#fff;border-color:rgba(255,100,100,0.5)}
+.deliv-head-del{opacity:.55;background:transparent;border:1px solid var(--border);color:var(--text3);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:6px;cursor:pointer;margin-left:8px;transition:all .15s}
+.deliv-head-del:hover{opacity:1;border-color:rgba(255,100,100,0.4);color:#ff9d9d;background:rgba(255,100,100,0.08)}
+.deliv-add-row{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:9px;cursor:pointer;color:var(--text3);font-family:'DM Sans',sans-serif;font-size:12px;transition:all .15s;margin-top:3px;border:1px dashed var(--border)}
+.deliv-add-row:hover{color:#b8aef5;border-color:rgba(184,174,245,0.4);background:rgba(184,174,245,0.05)}
+.deliv-add-plus{width:16px;height:16px;border-radius:5px;background:rgba(184,174,245,0.1);border:1px dashed rgba(184,174,245,0.3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#b8aef5;line-height:1}
+.deliv-add-new{max-width:720px;margin:4px auto 0;padding:14px 18px;border-radius:14px;background:linear-gradient(145deg,rgba(184,174,245,0.08),rgba(90,218,176,0.04));border:1px dashed rgba(184,174,245,0.35);color:#b8aef5;font-family:'DM Sans',sans-serif;font-size:12.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:all .15s}
+.deliv-add-new:hover{background:linear-gradient(145deg,rgba(184,174,245,0.14),rgba(90,218,176,0.08));border-color:rgba(184,174,245,0.6);color:var(--text)}
+@media(max-width:720px){.deliv-row{flex-wrap:wrap}.deliv-meta{margin-left:27px}}
 
 @media(max-width:860px){.kpi-row{grid-template-columns:repeat(2,1fr)}.audit-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
@@ -384,14 +407,14 @@ body{
 <div id="tab-social" class="tab-panel active">
 <div class="wrap">
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-label">Followers · Audited</div><div class="kpi-val">8,957</div><div class="kpi-sub">IG 4,545 · LI 4,412 · others gated</div></div>
-    <div class="kpi"><div class="kpi-label">Verified Handles</div><div class="kpi-val">1 / 4</div><div class="kpi-sub"><span class="up">IG ✓</span> · TT/LI/Snap unverified</div></div>
-    <div class="kpi"><div class="kpi-label">AI Visibility</div><div class="kpi-val" style="color:#ff9d9d">BLOCKED</div><div class="kpi-sub"><span class="down">robots.txt disallows all AI bots</span></div></div>
-    <div class="kpi"><div class="kpi-label">Posting Cadence · Avg</div><div class="kpi-val">~2 / wk</div><div class="kpi-sub"><span class="down">below 4 / wk benchmark</span></div></div>
+    <div class="kpi"><div class="kpi-label">Followers · Audited</div><div class="kpi-val">26K</div><div class="kpi-sub">LI 20K · IG 4.5K · TT 1.5K · Snap gated</div></div>
+    <div class="kpi"><div class="kpi-label">Verified Handles</div><div class="kpi-val">1 / 4</div><div class="kpi-sub"><span class="up">IG ✓</span> · LI/TT/Snap unverified</div></div>
+    <div class="kpi"><div class="kpi-label">AI Visibility</div><div class="kpi-val" style="color:#ff9d9d">32 blocked</div><div class="kpi-sub"><span class="down">GPTBot, Claude, Google-Ext, CCBot… · Perplexity only one allowed</span></div></div>
+    <div class="kpi"><div class="kpi-label">Avg Cadence</div><div class="kpi-val">~2 / wk</div><div class="kpi-sub"><span class="down">below 4 / wk benchmark</span></div></div>
   </div>
 
   <div class="section-group" style="margin-top:0">
-    <div class="section-title">Channel Audit · Post Cadence · Nov 25, 2026</div>
+    <div class="section-title">Channel-by-channel audit · Posting cadence + fixes</div>
     <div class="audit-grid" id="audit-grid"></div>
   </div>
 
@@ -401,12 +424,12 @@ body{
   </div>
 
   <div class="section-group">
-    <div class="section-title">GEO Audit · AI Search Visibility</div>
+    <div class="section-title">GEO Audit · AI Search Visibility <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0;margin-left:8px">verified via curl · Nov 25, 2026</span></div>
     <div class="alert-row">
       <div class="alert-mark">⚠</div>
       <div class="alert-body">
         <h3>Your robots.txt is blocking every AI crawler.</h3>
-        <p>GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot — all 16 of the AI bots that answer "which agency should I use" queries — are <b>disallowed</b> at the root. Your <code>Content-Signal</code> header says <code>search=yes, ai-train=no, use=reference</code> — Google can crawl, but no LLM can cite you. You are invisible in ChatGPT, Claude, Gemini and Perplexity answers.</p>
+        <p>Your <code>robots.txt</code> (Cloudflare-managed) explicitly <b>disallows 32 AI crawlers</b> — including GPTBot, ClaudeBot, anthropic-ai, Claude-Web, Google-Extended, Google-CloudVertexBot, CCBot, Bytespider and Amazonbot. Your <code>Content-Signal</code> header reads <code>search=yes, ai-train=no, use=reference</code> — Google can index for search, but every major LLM is barred from reading the site. One exception: <b>PerplexityBot is NOT in the blocklist</b> — Perplexity can crawl. It's the only live route to AI citation today.</p>
         <div class="bot-grid" id="bot-grid"></div>
       </div>
     </div>
@@ -512,7 +535,7 @@ body{
   <div class="action-progress">
     <div class="action-progress-text">
       <div class="action-progress-count"><span id="act-done">0</span><small>/ <span id="act-total">0</span> complete</small></div>
-      <div class="action-progress-lbl">Marketing action plan · persists in this browser</div>
+      <div class="action-progress-lbl">Editable · click any text to edit · hover to delete · persists in this browser</div>
     </div>
     <div class="bar-track"><div class="bar-fill" id="act-bar" style="width:0%"></div></div>
     <button class="action-reset" onclick="resetActions()">Reset</button>
@@ -621,26 +644,30 @@ var SOCIAL_AUDIT=[
   }
 ];
 
+// All values below verified by live curl against thearlab.com on Nov 25, 2026.
 var SEO_ITEMS=[
-  {lbl:"Homepage H1",val:'"Big campaigns, built differently."',cls:"good",note:"Strong, differentiated. Keeps."},
-  {lbl:"Meta tagline",val:'"Advertising that captures attention"',cls:"good",note:"Site tagline present but missing from <code>&lt;title&gt;</code> and OG meta — audit each template."},
-  {lbl:"Sitemap size",val:"486 URLs",cls:"warn",note:"11 core + 27 services + 448 project pages (Pepsi, Fendi, Carrefour, Qatar Foundation…). Last mod Nov 25."},
-  {lbl:"JSON-LD / schema.org",val:"NOT FOUND",cls:"bad",note:"No Organization, Product or BreadcrumbList markup detected. Blocks rich-result eligibility."},
-  {lbl:"robots.txt",val:"Live",cls:"good",note:"Present. But content-signal blocks AI (see GEO)."},
-  {lbl:"llms.txt",val:"404",cls:"bad",note:"Standard for AI-crawler guidance is missing. Add <code>/llms.txt</code> + <code>/llms-full.txt</code>."},
-  {lbl:"Project page depth",val:"448 pages",cls:"warn",note:"Massive case-study library — but no internal linking map. Add a \"related work\" footer to each."},
-  {lbl:"Core Web Vitals",val:"needs scan",cls:"warn",note:"Run PageSpeed on /, /services, /projects — baseline for Q1 2027 opt."}
+  {lbl:"<title> tag",val:'"AI, AR & CGI Advertising Agency | theARLab"',cls:"good",note:"Keyword-forward, 48 chars. Loads on server HTML. Good."},
+  {lbl:"Meta description",val:'161 chars · present',cls:"good",note:'"theARLab builds AI campaigns, AR experiences and CGI billboards for brands across the UAE, KSA and Qatar. Partner of Snapchat, Meta, Amazon Ads, &amp; TikTok."'},
+  {lbl:"Open Graph tags",val:"Complete",cls:"good",note:"og:title, og:description, og:url, og:site_name, og:image (1200×630), og:type all present."},
+  {lbl:"Homepage H1",val:"Not in server HTML",cls:"warn",note:"Next.js SPA — H1 likely rendered client-side. LLMs and some crawlers won't see it. Server-render the H1."},
+  {lbl:"Sitemap size",val:"356 URLs",cls:"good",note:"Declared at <code>www.thearlab.com/sitemap.xml</code>. Last-mod Nov 25, 2026. Clean."},
+  {lbl:"JSON-LD / schema.org",val:"Partial (1 block)",cls:"warn",note:"Organization + hasOfferCatalog present at root ✓. Missing BreadcrumbList + per-page Service + CreativeWork on project pages."},
+  {lbl:"robots.txt",val:"Live",cls:"good",note:"Present + Cloudflare-managed. Blocks 32 AI bots at root (see GEO tab for why that's the problem)."},
+  {lbl:"llms.txt / llms-full.txt",val:"404 / 404",cls:"bad",note:"AI-crawler guidance file is missing. Add <code>/llms.txt</code> + <code>/llms-full.txt</code> pointing at the 356 URLs."},
+  {lbl:"Core Web Vitals",val:"Not scanned",cls:"warn",note:"Run PageSpeed on /, /services, /projects — baseline for Q1 2027 opt push."}
 ];
 
 var GEO_ITEMS=[
-  {lbl:"ChatGPT result for \"AR AI agency Beirut\"",val:"Not cited",cls:"bad",note:"Hovi Digital Lab + Octopus dominate. ARlab absent."},
-  {lbl:"Claude result for \"Snap Lens agency Dubai\"",val:"Not cited",cls:"bad",note:"TheBuzihub + regional shops cited. ARlab absent despite 500+ brand track record."},
-  {lbl:"Perplexity result for \"AI creative tech MENA\"",val:"Not cited",cls:"bad",note:"Content-Signal <code>ai-train=no</code> + PerplexityBot blocked = zero attribution."},
-  {lbl:"Gemini AI Overviews",val:"Not cited",cls:"bad",note:"Google-Extended blocked in robots.txt. Overviews skip ARlab entirely."},
-  {lbl:"Content-Signal header",val:"search=yes, ai-train=no, use=reference",cls:"warn",note:"Explicit opt-out of training. Flip to <code>ai-train=yes</code> or <code>use=reference-permitted</code> to appear in answers."},
-  {lbl:"Recommended fix",val:"Unblock 5 bots",cls:"good",note:"Allow GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot. Keep Bytespider + training-only bots blocked."}
+  {lbl:"Content-Signal header",val:"search=yes, ai-train=no, use=reference",cls:"warn",note:"Declared in robots.txt under <code>User-agent: *</code>. Google can index. AI training explicitly denied. Flip to <code>ai-train=yes, use=reference-permitted</code> to appear in LLM answers."},
+  {lbl:"AI bots explicitly blocked",val:"32 bots",cls:"bad",note:"GPTBot, ClaudeBot, anthropic-ai, Claude-Web, Google-Extended, Google-CloudVertexBot, CCBot, Bytespider, Applebot-Extended, cohere-ai, MistralAI-Training, meta-externalagent, Amazonbot, PetalBot, KimiBot, Diffbot + 16 others. No LLM crawler can read the site."},
+  {lbl:"PerplexityBot",val:"NOT blocked",cls:"good",note:"Not in robots.txt — Perplexity's crawler is allowed. The only major LLM engine that <i>can</i> read ARlab today. Test whether we show up in Perplexity answers before assuming we don't."},
+  {lbl:"JSON-LD for AI parsing",val:"Organization only",cls:"warn",note:"LLMs that do read us (Perplexity, Google AIO via Gemini models) get Organization + 1 OfferCatalog. Missing Service / CreativeWork / Person on project pages blocks structured citation."},
+  {lbl:"LLM citation probes",val:"Not run",cls:"off",note:"Audit did not query ChatGPT / Claude / Gemini / Perplexity for \"best AR AI agency MENA\" etc. Needs a real probe before claiming \"not cited\" — pending."},
+  {lbl:"Recommended fix",val:"Unblock 4 bots",cls:"good",note:"Allow GPTBot, ClaudeBot, Google-Extended, CCBot. Keep Bytespider, meta-externalagent, MistralAI-Training blocked (training-only, no citation benefit). Ship <code>/llms.txt</code>. Then probe."}
 ];
 
+// 32 bots explicitly Disallow: / on thearlab.com (Nov 25, 2026).
+// PerplexityBot is NOT in this list — Perplexity can crawl.
 var BOTS=[
   {name:"GPTBot",state:"blocked"},
   {name:"ClaudeBot",state:"blocked"},
@@ -648,16 +675,33 @@ var BOTS=[
   {name:"Claude-Web",state:"blocked"},
   {name:"Google-Extended",state:"blocked"},
   {name:"Google-CloudVertexBot",state:"blocked"},
+  {name:"GoogleOther",state:"blocked"},
   {name:"CCBot",state:"blocked"},
-  {name:"PerplexityBot",state:"blocked"},
-  {name:"Applebot-Extended",state:"blocked"},
   {name:"Bytespider",state:"blocked"},
+  {name:"Applebot-Extended",state:"blocked"},
   {name:"cohere-ai",state:"blocked"},
   {name:"MistralAI-Training",state:"blocked"},
   {name:"meta-externalagent",state:"blocked"},
+  {name:"Amazonbot",state:"blocked"},
   {name:"PetalBot",state:"blocked"},
   {name:"KimiBot",state:"blocked"},
-  {name:"Amazonbot",state:"blocked"}
+  {name:"Diffbot",state:"blocked"},
+  {name:"omgili",state:"blocked"},
+  {name:"Baiduspider",state:"blocked"},
+  {name:"AwarioSmartBot",state:"blocked"},
+  {name:"AwarioRssBot",state:"blocked"},
+  {name:"QualifiedBot",state:"blocked"},
+  {name:"Cotoyogi",state:"blocked"},
+  {name:"ICC-Crawler",state:"blocked"},
+  {name:"atlassian-bot",state:"blocked"},
+  {name:"FishBot",state:"blocked"},
+  {name:"BorderxBot",state:"blocked"},
+  {name:"NavuBot",state:"blocked"},
+  {name:"SemrushBot-SWA",state:"blocked"},
+  {name:"WARDBot",state:"blocked"},
+  {name:"magpie-crawler",state:"blocked"},
+  {name:"CitibotSiteCrawler",state:"blocked"},
+  {name:"PerplexityBot",state:"allowed"}
 ];
 
 function renderAudit(){
@@ -1334,101 +1378,174 @@ function renderPrioPills(){
 }
 
 // ============================================================
-// ACTION PLAN — persisted in localStorage
+// ACTION PLAN — verbatim from ARLAB Takeover.pdf (p12-23)
+// Fully editable: add / delete / edit per row. Persisted in localStorage.
 // ============================================================
-var ACTIONS=[
-  {cat:"🚨 Critical · AI Discoverability",items:[
-    {id:"robots-unblock",text:"<b>Unblock AI crawlers in robots.txt</b> — allow GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot. Keep Bytespider + training-only bots blocked.",tags:["crit","quick"]},
-    {id:"content-signal",text:"<b>Flip Content-Signal header</b> from <code>ai-train=no</code> to <code>use=reference-permitted</code> so AI answers can cite ARlab.",tags:["crit"]},
-    {id:"llms-txt",text:"<b>Add /llms.txt + /llms-full.txt</b> — standard AI-crawler guidance file. Point to 448 project pages + services index.",tags:["crit","ai"]}
+var SEED_ACTIONS=[
+  {key:"website",num:"01",title:"Website revamp",tag:"Make it clear. Make it convert.",items:[
+    {id:"w1",task:"All website content: copy + positioning",owner:"Nour",when:"Tue 1 Dec"},
+    {id:"w2",task:"Gather and centralize case studies",owner:"Nour",when:"Tue 1 Dec"},
+    {id:"w3",task:"Sitemap + wireframes",owner:"Habib",when:"Timeline needed"},
+    {id:"w4",task:"Build, content, SEO for every market",owner:"Tech team",when:"After design"},
+    {id:"w5",task:"Monthly updates: new work, new case studies",owner:"Owner TBD",when:"Ongoing"}
   ]},
-  {cat:"📱 Social · Cadence + Fixes",items:[
-    {id:"ig-cadence",text:"<b>Push IG to 4-5 posts / week</b> for 8 weeks — 3 Reels : 1 carousel ratio, plus 3-5 Stories / day. Currently ~2 / wk.",tags:["crit"]},
-    {id:"ig-bio-cta",text:"<b>Add CTA to Instagram bio</b> — \"Brief us →\" with DM instruction or Linktree deep-link to contact form.",tags:["quick"]},
-    {id:"tt-cadence",text:"<b>Push TikTok to 5-7 posts / week</b> during Dec-Jan retail window. Currently ~1-2 / wk.",tags:["crit"]},
-    {id:"tt-series",text:"<b>Create TikTok Series / Playlists</b> — group recurring formats (AI campaign breakdowns, etc.) so each drop surfaces to prior viewers.",tags:["quick"]},
-    {id:"tt-business",text:"<b>Switch TikTok to Business account</b> — unlocks public analytics URL + ad eligibility.",tags:["quick"]},
-    {id:"tt-verify",text:"<b>Apply for TikTok blue check</b> — eligible with IG verification + cross-platform follower count.",tags:[]},
-    {id:"li-cadence",text:"<b>Push LinkedIn to 3-5 posts / week</b> — 3 case studies + 2 POV posts from Wissam / Nour. Currently ~1 / wk.",tags:["crit"]},
-    {id:"li-employees",text:"<b>Push team to list ARlab on LinkedIn</b> — currently 15 of ~50 employees. Send one-click add-employer link. Instant +35 advocates.",tags:["quick"]},
-    {id:"li-showcase",text:"<b>Create LinkedIn Showcase Page</b> for AI Lab (and optionally XR Lab) — algorithm boosts showcase posts separately from brand page.",tags:[]},
-    {id:"snap-cadence",text:"<b>Ship 1 branded lens / week on Snap</b> during active campaigns. Currently 0 public releases, only 8 lenses visible.",tags:["crit"]},
-    {id:"snap-bio",text:"<b>Write Snapchat bio</b> (currently empty) — one line: \"Creative tech · Snap partner · 500+ brands.\" + link to site.",tags:["quick"]},
-    {id:"snap-verify",text:"<b>Apply for Snap Lens Studio verification</b> — unlocks Lens+ paid distribution eligibility ($1M fund to 1,000 creators).",tags:["crit"]},
-    {id:"snap-lenses",text:"<b>Sync all unpublished lenses to brand profile</b> — currently showing 8; ARlab has shipped many more.",tags:[]}
+  {key:"social",num:"02",title:"Social revamp",tag:"One ARLAB on every channel. Nour as the face.",items:[
+    {id:"s1",task:"Schedule bi-weekly calls with the team",owner:"Nour",when:"DONE",done:true},
+    {id:"s2",task:"Update the bio on every channel",owner:"Rita",when:"Today"},
+    {id:"s3",task:"Update the profile on every channel",owner:"Rita",when:"Today"},
+    {id:"s4",task:"Social plan",owner:"Dalia",when:"Timeline needed"},
+    {id:"s5",task:"Social calendar for this month",owner:"Dalia",when:"Timeline needed"},
+    {id:"s6",task:"Start posting on Snapchat",owner:"Rita & Mirna",when:"Now"}
   ]},
-  {cat:"🌐 Platforms · Claim The Missing",items:[
-    {id:"yt-claim",text:"<b>Claim @the.arlab on YouTube</b> — needed to host the 40M-view AI case study at a canonical URL + Shorts repost.",tags:["crit","quick"]},
-    {id:"x-reserve",text:"<b>Reserve @the.arlab on X</b> — defensive hold. Live-tweet GITEX Dec 7-11 + agency announcements.",tags:["quick"]}
+  {key:"ads",num:"03",title:"Paid ads",tag:"Scale Dubai + KSA. Open Morocco + Beirut.",items:[
+    {id:"a1",task:"Pick the services to advertise first",owner:"Nour",when:"DONE",done:true},
+    {id:"a2",task:"Create the script generator",owner:"Nour",when:"DONE",done:true},
+    {id:"a3",task:"Scripts + ad variants",owner:"Nour",when:"Every day"},
+    {id:"a4",task:"Launch Morocco + Beirut",owner:"Wissam",when:"TBD"},
+    {id:"a5",task:"Track leads and cost per lead",owner:"Wissam",when:"Weekly"}
   ]},
-  {cat:"🌐 Website SEO / GEO",items:[
-    {id:"schema-org",text:"<b>Add JSON-LD schema.org markup</b> to homepage — Organization, Service, BreadcrumbList. Unlocks rich results in Google.",tags:["ai"]},
-    {id:"internal-linking",text:"<b>Add \"related work\" footer to all 448 project pages</b> — massive case-study library has no internal link graph.",tags:[]},
-    {id:"og-meta",text:"<b>Audit <code>&lt;title&gt;</code> + OG meta per template</b> — tagline exists but doesn't propagate to every page.",tags:["quick"]},
-    {id:"pagespeed",text:"<b>Run PageSpeed on /, /services, /projects</b> — baseline Core Web Vitals before Q1 2027 opt push.",tags:[]}
+  {key:"outreach",num:"04",title:"Outreach email",tag:"One line. Every inbox.",items:[
+    {id:"o1",task:"Positioning statement",owner:"Nour",when:"Tue 1 Dec"},
+    {id:"o2",task:"Email: content version",owner:"Nour",when:"Fri 11 Dec"},
+    {id:"o3",task:"Email: experiential version",owner:"Nour",when:"Fri 11 Dec"}
   ]},
-  {cat:"🎯 Ads · Launch Priority Services",items:[
-    {id:"ad-ai-agents",text:"<b>Launch AI Agents LinkedIn + Google campaign</b> — #1 priority service. B2B lane, $12-25K/mo tier, enterprise targeting.",tags:["ai","due"]},
-    {id:"ad-glasses",text:"<b>Launch Glasses Meta + TikTok consumer campaign</b> — +263% H1 growth, etisalat stocking Ray-Ban Meta.",tags:["ai"]},
-    {id:"ad-creator",text:"<b>Launch Creator Marketing retainer campaign</b> on Meta + LinkedIn — $820M TAM, YouTube Shopping x Amazon live in UAE+KSA.",tags:["due"]},
-    {id:"ad-live-commerce",text:"<b>Burst Live Commerce ads Dec 4 → Jan 17</b> — Noon Yellow Friday + DSF window. 60-day KSA $3.5B market.",tags:["due"]},
-    {id:"ad-record-reels",text:"<b>Record 1 proof-stat Reel per priority service</b> — 8 videos, 16s each, Lebanese voice, before Dec 1.",tags:["due"]}
+  {key:"cards",num:"05",title:"Business cards",tag:"Everyone carries ARLAB.",items:[
+    {id:"b1",task:"Design the cards: physical + digital",owner:"Design team",when:"Fri 11 Dec"},
+    {id:"b2",task:"Confirm names + titles",owner:"HR",when:"Fri 11 Dec"},
+    {id:"b3",task:"Print",owner:"Supplier",when:"Fri 18 Dec"},
+    {id:"b4",task:"A card for every new hire",owner:"HR",when:"Ongoing"}
   ]},
-  {cat:"🏆 Awards · Submit Before Deadline",items:[
-    {id:"aw-sxsw",text:"<b>Submit SXSW Innovation Awards</b> — deadline <b>Dec 12, 2026</b>. Category: AI + Experiential Storytelling. $120/entry.",tags:["due","crit"]},
-    {id:"aw-webby",text:"<b>Submit The Webby Awards</b> — deadline <b>Dec 19, 2026</b>. Categories: Websites 3D/WebGL + AI Chatbots & Agents. $395-695/entry.",tags:["due","crit"]},
-    {id:"aw-dubai-lynx",text:"<b>Prep Dubai Lynx submission</b> — deadline <b>Jan 23, 2027</b>. Target Social & Influencer + Digital Craft.",tags:["due"]},
-    {id:"aw-dnad",text:"<b>Prep D&AD submission</b> — deadline <b>Feb 6, 2027</b>. Target AI + Digital Design + Spatial Design.",tags:["ai"]},
-    {id:"aw-cannes",text:"<b>Prep Cannes Lions submission</b> — deadline <b>Mar 20, 2027</b>. Target Digital Craft · AI + Social & Influencer.",tags:["ai"]}
+  {key:"events",num:"06",title:"Events + awards",tag:"Be in the room. Win in the room.",items:[
+    {id:"e1",task:"Create the event target list",owner:"Nour",when:"Fri 11 Dec"},
+    {id:"e2",task:"Decide per event: attend, booth or speak",owner:"Owner TBD",when:"Per event"},
+    {id:"e3",task:"Cards + case-study one-pager",owner:"Owner TBD",when:"Before each event"},
+    {id:"e4",task:"Post-event follow-up email",owner:"Nour",when:"After each event"},
+    {id:"e5",task:"Create the award list",owner:"Nour",when:"Fri 11 Dec"},
+    {id:"e6",task:"Apply for the awards",owner:"Owner TBD",when:"Per deadline"}
   ]},
-  {cat:"🔌 Tooling · Light Up The Dashboard",items:[
-    {id:"mcp-metricool",text:"<b>Install Metricool MCP</b> — <code>claude mcp add metricool</code>. One call pulls all platforms' live follower + reach data.",tags:["quick"]},
-    {id:"mcp-meta-ads",text:"<b>Install Meta Ads MCP</b> — <code>claude mcp add meta-ads</code>. Lights up Ads Health tab with live spend/ROAS/CTR.",tags:["quick"]},
-    {id:"mcp-google-ads",text:"<b>Install Google Ads MCP</b> — <code>claude mcp add google-ads</code>. Search + YouTube + Display in one pipe.",tags:["quick"]},
-    {id:"mcp-tiktok-ads",text:"<b>Install TikTok Ads MCP</b> — <code>claude mcp add tiktok-ads</code>. Business Center integration.",tags:["quick"]}
+  {key:"cases",num:"07",title:"Case studies",tag:"Every project ends as proof.",items:[
+    {id:"c1",task:"Case study per project: challenge, solution, result",owner:"PMs",when:"At handover"},
+    {id:"c2",task:"Collect the metrics per project",owner:"PMs",when:"At handover"},
+    {id:"c3",task:"One central place to store them",owner:"Backend team",when:"Fri 11 Dec"},
+    {id:"c4",task:"Backfill recent projects",owner:"PMs",when:"Fri 18 Dec"},
+    {id:"c5",task:"Monthly roll-up: website, LinkedIn, outreach",owner:"Backend + PMs",when:"Monthly"}
   ]},
-  {cat:"🗓 Events · Brief Before The Window Closes",items:[
-    {id:"ev-eid-etihad",text:"<b>Ship Eid Al Etihad brief by Dec 1</b> — UAE National Day Dec 2. Branding + OOH + AI Creative + Social AR.",tags:["due","crit"]},
-    {id:"ev-gitex",text:"<b>Build GITEX booth-ready demo by Nov 30</b> — Dec 7-11, Expo City Dubai, 6,000+ exhibitors.",tags:["due"]},
-    {id:"ev-dsf",text:"<b>Lock DSF live-commerce slots by Dec 4</b> — Dubai Shopping Festival Dec 4 → Jan 17. 45-day retail window.",tags:["due"]},
-    {id:"ev-qatar-nd",text:"<b>Lock Qatar National Day sponsor pitch by Dec 1</b> — Doha Dec 18. Branding + OOH + projection.",tags:[]}
+  {key:"metrics",num:"08",title:"Service metrics",tag:"Numbers on everything we sell.",items:[
+    {id:"m1",task:"Define the metrics per service",owner:"Patil",when:"Fri 18 Dec"},
+    {id:"m2",task:"PMs close metrics at project end",owner:"Owner TBD",when:"Every project"},
+    {id:"m3",task:"One central place to store them",owner:"Owner TBD",when:"To set"},
+    {id:"m4",task:"Explore an agent to collect them",owner:"Owner TBD",when:"To set"},
+    {id:"m5",task:"Backfill recent projects",owner:"Owner TBD",when:"To set"}
+  ]},
+  {key:"landing",num:"09",title:"Landing pages",tag:"One page per service. Every ad lands there.",items:[
+    {id:"l1",task:"Content for each service page",owner:"Nour",when:"With website content"},
+    {id:"l2",task:"One landing page per ad",owner:"Wissam",when:"At launch"}
   ]}
 ];
 
+var ACTIONS_KEY='arlab-actions-tree-v2';
+function loadActions(){
+  try{var s=localStorage.getItem(ACTIONS_KEY);if(s){var p=JSON.parse(s);if(Array.isArray(p)&&p.length)return p;}}catch(e){}
+  return JSON.parse(JSON.stringify(SEED_ACTIONS));
+}
+function saveActions(){localStorage.setItem(ACTIONS_KEY,JSON.stringify(ACTIONS));}
+var ACTIONS=loadActions();
+
+function newId(){return 'x'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 function totalActions(){return ACTIONS.reduce(function(n,c){return n+c.items.length;},0);}
-function getDone(){try{return JSON.parse(localStorage.getItem('arlab-actions-done')||'{}');}catch(e){return {};}}
-function setDone(d){localStorage.setItem('arlab-actions-done',JSON.stringify(d));}
-function toggleAction(id){var d=getDone();d[id]=!d[id];setDone(d);renderActions();}
-function resetActions(){if(confirm('Reset all checkboxes?')){setDone({});renderActions();}}
+function doneCount(){return ACTIONS.reduce(function(n,c){return n+c.items.filter(function(it){return it.done;}).length;},0);}
+
+function whenClass(w){
+  var s=(w||'').toLowerCase().trim();
+  if(s==='done')return 'when-done';
+  if(s==='now'||s==='today'||/\bevery (day|project|week)\b/.test(s)||/\bweekly\b/.test(s))return 'when-now';
+  if(/\b(dec|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov)\b/.test(s)||/\bfri |mon |tue |wed |thu /.test(s)||/\d+\s*(dec|jan|feb)/.test(s))return 'when-soon';
+  if(s==='ongoing'||s==='monthly'||/per (event|deadline)/.test(s)||/each (event|project)/.test(s)||/at handover/.test(s)||/at launch/.test(s)||/after design/.test(s)||/with website/.test(s)||/before each/.test(s)||/after each/.test(s))return 'when-ongoing';
+  return 'when-tbd';
+}
+
+function toggleItem(di,ii){ACTIONS[di].items[ii].done=!ACTIONS[di].items[ii].done;saveActions();updateProgress();}
+function deleteItem(di,ii,ev){ev.stopPropagation();ACTIONS[di].items.splice(ii,1);saveActions();renderActions();}
+function addItem(di){ACTIONS[di].items.push({id:newId(),task:"New task",owner:"Owner TBD",when:"TBD"});saveActions();renderActions();
+  setTimeout(function(){var el=document.querySelector('[data-edit="task"][data-di="'+di+'"][data-ii="'+(ACTIONS[di].items.length-1)+'"]');if(el){el.focus();document.execCommand('selectAll',false,null);}},30);
+}
+function deleteDeliverable(di){if(!confirm('Delete "'+ACTIONS[di].title+'" and all its tasks?'))return;ACTIONS.splice(di,1);saveActions();renderActions();}
+function addDeliverable(){
+  var n=ACTIONS.length+1;
+  ACTIONS.push({key:newId(),num:n<10?('0'+n):(''+n),title:"New deliverable",tag:"Describe it.",items:[]});
+  saveActions();renderActions();
+  setTimeout(function(){var el=document.querySelector('[data-edit="title"][data-di="'+(ACTIONS.length-1)+'"]');if(el){el.focus();document.execCommand('selectAll',false,null);}},30);
+}
+function resetActions(){if(!confirm('Reset to the original ARLAB Takeover plan? All your edits will be lost.'))return;localStorage.removeItem(ACTIONS_KEY);ACTIONS=loadActions();renderActions();}
+
+function onEdit(ev){
+  var el=ev.target,field=el.dataset.edit,di=+el.dataset.di,ii=el.dataset.ii!==undefined?+el.dataset.ii:-1;
+  var val=(el.textContent||'').trim();
+  if(ii>=0){
+    if(field==='task'&&!val)val='(untitled)';
+    ACTIONS[di].items[ii][field]=val;
+  }else{
+    ACTIONS[di][field]=val;
+  }
+  saveActions();
+  if(field==='when')renderActions();
+}
+function onEditKey(ev){if(ev.key==='Enter'){ev.preventDefault();ev.target.blur();}}
+
+function updateProgress(){
+  var d=doneCount(),t=totalActions();
+  document.getElementById('act-done').textContent=d;
+  document.getElementById('act-total').textContent=t;
+  document.getElementById('act-bar').style.width=(t?Math.round(100*d/t):0)+'%';
+  document.querySelectorAll('.deliv-count').forEach(function(el){
+    var di=+el.dataset.di,c=ACTIONS[di];
+    var cd=c.items.filter(function(it){return it.done;}).length;
+    el.innerHTML='<b>'+cd+'</b> / '+c.items.length;
+  });
+  document.querySelectorAll('.deliv-row').forEach(function(row){
+    var di=+row.dataset.di,ii=+row.dataset.ii;
+    var isDone=!!(ACTIONS[di]&&ACTIONS[di].items[ii]&&ACTIONS[di].items[ii].done);
+    row.classList.toggle('done',isDone);
+  });
+}
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 function renderActions(){
-  var done=getDone();
   var root=document.getElementById('actions-root');
-  root.innerHTML=ACTIONS.map(function(c){
-    var catDone=c.items.filter(function(it){return done[it.id];}).length;
-    return '<div class="action-cat">'
-      +'<div class="action-cat-title">'+c.cat+' <span class="count">'+catDone+' / '+c.items.length+'</span></div>'
-      +'<div class="action-list">'
-        +c.items.map(function(it){
-          var isDone=!!done[it.id];
-          return '<div class="action-row'+(isDone?' done':'')+'" onclick="toggleAction(\''+it.id+'\')">'
-            +'<div class="action-check"></div>'
-            +'<div class="action-body">'
-              +'<div class="action-text">'+it.text+'</div>'
-              +(it.tags.length?'<div class="action-meta">'+it.tags.map(function(t){
-                var lbl={crit:"Critical",quick:"Quick win",due:"Time-sensitive",ai:"AI / GEO"}[t]||t;
-                return '<span class="action-tag '+t+'">'+lbl+'</span>';
-              }).join('')+'</div>':'')
+  root.innerHTML=ACTIONS.map(function(c,di){
+    var catDone=c.items.filter(function(it){return it.done;}).length;
+    return '<div class="deliverable" data-di="'+di+'">'
+      +'<div class="deliv-head-row">'
+        +'<span class="deliv-num">ACTION '+esc(c.num)+'</span>'
+        +'<span class="deliv-count" data-di="'+di+'"><b>'+catDone+'</b> / '+c.items.length+'</span>'
+        +'<button class="deliv-head-del" onclick="deleteDeliverable('+di+')" title="Delete this deliverable">✕ delete</button>'
+      +'</div>'
+      +'<div class="deliv-title" contenteditable="true" data-edit="title" data-di="'+di+'" onblur="onEdit(event)" onkeydown="onEditKey(event)">'+esc(c.title)+'</div>'
+      +'<div class="deliv-tag" contenteditable="true" data-edit="tag" data-di="'+di+'" onblur="onEdit(event)" onkeydown="onEditKey(event)">'+esc(c.tag)+'</div>'
+      +'<div class="deliv-list">'
+        +c.items.map(function(it,ii){
+          return '<div class="deliv-row'+(it.done?' done':'')+'" data-di="'+di+'" data-ii="'+ii+'" onclick="if(event.target.closest(\'[contenteditable],.deliv-del\'))return;toggleItem('+di+','+ii+');updateProgress();">'
+            +'<div class="deliv-check"></div>'
+            +'<div class="deliv-task" contenteditable="true" data-edit="task" data-di="'+di+'" data-ii="'+ii+'" onblur="onEdit(event)" onkeydown="onEditKey(event)">'+esc(it.task)+'</div>'
+            +'<div class="deliv-meta">'
+              +'<span class="owner" contenteditable="true" data-edit="owner" data-di="'+di+'" data-ii="'+ii+'" onblur="onEdit(event)" onkeydown="onEditKey(event)">'+esc(it.owner||'')+'</span>'
+              +'<span class="'+whenClass(it.when)+'" contenteditable="true" data-edit="when" data-di="'+di+'" data-ii="'+ii+'" onblur="onEdit(event)" onkeydown="onEditKey(event)">'+esc(it.when||'')+'</span>'
             +'</div>'
+            +'<button class="deliv-del" onclick="deleteItem('+di+','+ii+',event)" title="Delete this task">✕</button>'
           +'</div>';
         }).join('')
       +'</div>'
+      +'<div class="deliv-add-row" onclick="addItem('+di+')">'
+        +'<div class="deliv-add-plus">+</div>'
+        +'<div>Add task</div>'
+      +'</div>'
     +'</div>';
-  }).join('');
-  var totalDone=Object.keys(done).filter(function(k){return done[k];}).length;
-  var tot=totalActions();
-  document.getElementById('act-done').textContent=totalDone;
-  document.getElementById('act-total').textContent=tot;
-  document.getElementById('act-bar').style.width=(tot?Math.round(100*totalDone/tot):0)+'%';
+  }).join('')
+  +'<div class="deliv-add-new" onclick="addDeliverable()">'
+    +'<span style="font-size:14px">+</span> Add a new deliverable'
+  +'</div>';
+  updateProgress();
 }
 
 // ============================================================
