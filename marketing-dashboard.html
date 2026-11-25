@@ -419,13 +419,6 @@ body{
 <!-- ====================== AWARDS ====================== -->
 <div id="tab-awards" class="tab-panel">
 <div class="wrap">
-  <div class="kpi-row">
-    <div class="kpi"><div class="kpi-label">Open Now</div><div class="kpi-val" id="aw-open">—</div><div class="kpi-sub">deadlines in next 90 days</div></div>
-    <div class="kpi"><div class="kpi-label">Tier-A Fits</div><div class="kpi-val" id="aw-tiera">—</div><div class="kpi-sub">industry-defining</div></div>
-    <div class="kpi"><div class="kpi-label">Regional Fits</div><div class="kpi-val" id="aw-regional">—</div><div class="kpi-sub">MENA + GCC</div></div>
-    <div class="kpi"><div class="kpi-label">AI / Immersive</div><div class="kpi-val" id="aw-ai">—</div><div class="kpi-sub">native categories for ARlab</div></div>
-  </div>
-
   <div class="filter-row" id="aw-filters">
     <div class="filter-chip on" data-f="all">All</div>
     <div class="filter-chip" data-f="open">Open now</div>
@@ -1054,11 +1047,6 @@ function renderAwards(){
     +'</div>';
   }).join('');
 
-  // Award KPIs
-  document.getElementById('aw-open').textContent=AWARDS.filter(function(a){return a.window==="open";}).length;
-  document.getElementById('aw-tiera').textContent=AWARDS.filter(function(a){return a.tier==="a";}).length;
-  document.getElementById('aw-regional').textContent=AWARDS.filter(function(a){return a.tags.indexOf("mena")>-1;}).length;
-  document.getElementById('aw-ai').textContent=AWARDS.filter(function(a){return a.tags.indexOf("ai")>-1;}).length;
 }
 document.getElementById('aw-filters').addEventListener('click',function(e){
   if(!e.target.classList.contains('filter-chip'))return;
