@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>ARlab Marketing Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--bg2:rgba(255,255,255,0.06);--bg3:rgba(255,255,255,0.08);
+  --glass-blur:saturate(210%) blur(40px);
+  --border:rgba(255,255,255,0.14);--border2:rgba(255,255,255,0.22);
+  --text:#f0f0f0;--text2:#999;--text3:#666;
+  --surging:#97C459;--surging-bg:rgba(151,196,89,0.12);
+  --growing:#5adab0;--growing-bg:rgba(90,218,176,0.12);
+  --stable:#f0c050;--stable-bg:rgba(240,192,80,0.12);
+  --declining:#f06060;--declining-bg:rgba(240,96,96,0.12);
+  --ai-powered:#b8aef5;--ai-powered-bg:rgba(184,174,245,0.12);
+  --accent-creator:#f0805a;--accent-ar:#b8aef5;--accent-ai:#5adab0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;
+  background:
+    radial-gradient(900px 600px at 12% -10%, rgba(184,174,245,0.18), transparent 60%),
+    radial-gradient(800px 600px at 95% 10%, rgba(240,128,90,0.18), transparent 55%),
+    radial-gradient(900px 700px at 60% 110%, rgba(90,218,176,0.10), transparent 60%),
+    #070709;
+  background-attachment:fixed;
+}
+.header{padding:22px 40px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(10,10,10,0.4);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);position:sticky;top:0;z-index:100}
+.header h1{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.5px}
+.header-right{display:flex;align-items:center;gap:12px}
+.date-label{font-size:11px;color:var(--text3);font-family:'Space Grotesk',sans-serif}
+.arlab-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border);padding:5px 11px;border-radius:20px}
+.ops-pill{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:20px;background:linear-gradient(135deg,rgba(240,128,90,0.22) 0%,rgba(184,174,245,0.16) 55%,rgba(90,218,176,0.16) 100%);color:#f0f0f0;border:1px solid rgba(255,255,255,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
+
+.tabs{display:flex;gap:0;padding:0 40px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.3);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);position:sticky;top:62px;z-index:99;overflow-x:auto}
+.tab{padding:12px 20px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.tab.active{color:var(--text);border-bottom-color:var(--text)}
+.tab:hover:not(.active){color:var(--text2)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+.wrap{padding:28px 40px 80px;max-width:1400px;margin:0 auto}
+.section-title{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text);padding:6px 13px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.09),rgba(255,255,255,0.025));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);margin-bottom:18px}
+.section-group{margin-top:36px}
+.section-group:first-of-type{margin-top:8px}
+
+.glass{background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(26px) saturate(140%);-webkit-backdrop-filter:blur(26px) saturate(140%);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.18),0 6px 22px rgba(0,0,0,0.18);border-radius:18px}
+
+/* KPI row shared across tabs */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.kpi{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.02) 100%);border:1px solid rgba(255,255,255,0.14);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.2),0 8px 22px rgba(0,0,0,0.22);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
+.kpi-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);font-family:'Space Grotesk',sans-serif}
+.kpi-val{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text);margin-top:4px;letter-spacing:-.4px;line-height:1}
+.kpi-sub{font-size:10px;color:var(--text3);margin-top:7px;padding-top:7px;border-top:1px solid rgba(255,255,255,0.08);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
+.kpi-sub .up{color:var(--growing)}.kpi-sub .down{color:var(--declining)}
+
+/* Platform cards (Social + Ads) */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.platform{padding:16px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.012));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 4px 14px rgba(0,0,0,0.14);display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.platform:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 10px 28px rgba(0,0,0,0.26)}
+.p-head{display:flex;align-items:center;gap:10px}
+.p-logo{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;flex-shrink:0}
+.p-ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);color:#fff}
+.p-tt{background:#000;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.p-li{background:#0a66c2;color:#fff}
+.p-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.p-yt{background:#ff0000;color:#fff}
+.p-meta{background:linear-gradient(135deg,#0866ff,#8b5cf6);color:#fff}
+.p-google{background:#fff;color:#4285f4}
+.p-tiktok-ads{background:linear-gradient(135deg,#25f4ee,#fe2c55);color:#000}
+.p-linkedin-ads{background:#0a66c2;color:#fff}
+.p-snap{background:#fffc00;color:#000}
+.p-name{flex:1;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:-.1px}
+.p-handle{font-size:10px;color:var(--text3);margin-top:1px;font-family:'IBM Plex Mono',monospace}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--text3)}
+.status-dot.live{background:var(--growing);box-shadow:0 0 10px rgba(90,218,176,0.5)}
+.status-dot.warn{background:var(--stable);box-shadow:0 0 10px rgba(240,192,80,0.5)}
+.status-dot.alert{background:var(--declining);box-shadow:0 0 10px rgba(240,96,96,0.5)}
+.status-dot.off{background:rgba(255,255,255,0.1);border:1px solid var(--border)}
+.p-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.p-stat-lbl{font-size:8.5px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.p-stat-val{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-top:2px;letter-spacing:-.3px;line-height:1}
+.p-stat-delta{font-size:9.5px;font-family:'Space Grotesk',sans-serif;margin-top:3px}
+.p-stat-delta.up{color:var(--growing)}.p-stat-delta.down{color:var(--declining)}
+.p-connect{padding:10px 12px;border-radius:10px;background:linear-gradient(135deg,rgba(184,174,245,0.14),rgba(90,218,176,0.1));border:1px solid rgba(184,174,245,0.28);font-size:11px;line-height:1.5;color:var(--text2);text-align:center;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s}
+.p-connect:hover{border-color:rgba(184,174,245,0.6);transform:translateY(-1px);background:linear-gradient(135deg,rgba(184,174,245,0.22),rgba(90,218,176,0.16))}
+.p-connect b{color:var(--text);font-weight:600}
+.p-foot{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.05em}
+.p-top{font-size:10.5px;color:var(--text2);line-height:1.45;padding:9px 10px;border-radius:9px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.p-top b{color:var(--text);font-weight:600;font-size:10.5px}
+
+/* Ads health specific */
+.health-bar{display:flex;gap:4px;margin-top:8px}
+.health-bar span{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.08)}
+.health-bar span.ok{background:var(--growing)}
+.health-bar span.warn{background:var(--stable)}
+.health-bar span.bad{background:var(--declining)}
+.creative-row{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,0.025);margin-top:6px;font-size:10.5px;color:var(--text2)}
+.creative-row .cr-name{flex:1;font-weight:500;color:var(--text)}
+.creative-row .cr-roas{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.2px}
+.cr-roas.ok{color:var(--growing)}.cr-roas.warn{color:var(--stable)}.cr-roas.bad{color:var(--declining)}
+
+/* MCP connect banner */
+.mcp-banner{padding:20px 22px;border-radius:16px;background:linear-gradient(135deg,rgba(184,174,245,0.12),rgba(90,218,176,0.1) 55%,rgba(240,128,90,0.12));border:1px solid rgba(184,174,245,0.28);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.mcp-banner-left{flex:1;min-width:280px}
+.mcp-banner h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px}
+.mcp-banner p{font-size:11.5px;color:var(--text2);line-height:1.55}
+.mcp-banner p code{background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#b8aef5}
+.mcp-steps{display:flex;gap:10px;flex-wrap:wrap}
+.mcp-step{padding:8px 12px;border-radius:9px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.1);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5adab0}
+
+/* Script generator */
+.gen-shell{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start}
+@media(max-width:1100px){.gen-shell{grid-template-columns:1fr}}
+.gen-side{padding:18px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.012));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14);position:sticky;top:112px}
+.gen-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin:12px 0 6px}
+.gen-label:first-child{margin-top:0}
+.gen-select{width:100%;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer}
+.gen-select:focus{border-color:var(--border2)}
+.gen-pattern-list{display:flex;flex-direction:column;gap:6px}
+.gen-pattern{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:all .15s;font-size:11px;color:var(--text2);line-height:1.4}
+.gen-pattern:hover{border-color:var(--border2);background:rgba(255,255,255,0.05)}
+.gen-pattern.on{border-color:rgba(184,174,245,0.55);background:linear-gradient(135deg,rgba(184,174,245,0.14),rgba(255,255,255,0.03));color:var(--text)}
+.gen-pattern b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;display:block;margin-bottom:2px}
+.gen-pattern .ref{font-size:9.5px;color:var(--text3);margin-top:3px;font-family:'IBM Plex Mono',monospace;letter-spacing:.02em}
+.gen-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,#b8aef5,#5adab0);color:#0a0a0a;border:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:12px;transition:transform .15s,box-shadow .15s}
+.gen-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(184,174,245,0.3)}
+.gen-btn:active{transform:translateY(0)}
+.gen-main{display:flex;flex-direction:column;gap:14px}
+.script-card{padding:18px 20px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 6px 20px rgba(0,0,0,0.15)}
+.script-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.script-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.2px}
+.script-meta{display:flex;gap:6px;flex-wrap:wrap}
+.meta-pill{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid var(--border)}
+.meta-pill.len{color:#5adab0;border-color:rgba(90,218,176,0.3);background:rgba(90,218,176,0.12)}
+.meta-pill.pat{color:#b8aef5;border-color:rgba(184,174,245,0.3);background:rgba(184,174,245,0.12)}
+.meta-pill.lang{color:#f0805a;border-color:rgba(240,128,90,0.3);background:rgba(240,128,90,0.12)}
+.beats{display:grid;grid-template-columns:70px 1fr;gap:10px 14px;margin-bottom:14px}
+.beat-time{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text3);padding-top:4px;letter-spacing:.04em}
+.beat{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);font-size:12.5px;color:var(--text);line-height:1.55;position:relative}
+.beat .beat-role{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.beat-ar{font-family:'DM Sans',sans-serif;direction:rtl;text-align:right;font-size:13px;line-height:1.7;color:#f0f0f0;margin-top:6px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.08)}
+.visual-block{padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(240,128,90,0.1),rgba(184,174,245,0.08));border:1px solid rgba(240,128,90,0.2);font-size:11.5px;color:var(--text2);line-height:1.6}
+.visual-block b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px;color:#ffb094}
+.script-foot{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copy-btn{padding:7px 12px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2);font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.copy-btn:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,0.08)}
+
+.refs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+@media(max-width:900px){.refs-row{grid-template-columns:repeat(2,1fr)}}
+.ref-card{padding:12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:10.5px;line-height:1.5;color:var(--text2)}
+.ref-card b{color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;display:block;margin-bottom:3px;letter-spacing:-.1px}
+.ref-card .ref-stat{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#5adab0;line-height:1;margin:6px 0 4px;letter-spacing:-.5px}
+.ref-card .ref-duration{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text3);letter-spacing:.04em}
+
+/* Events */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.ev-card{padding:16px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.055),rgba(255,255,255,0.012));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14);display:flex;flex-direction:column;gap:9px;transition:transform .2s,box-shadow .2s}
+.ev-card:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 8px 22px rgba(0,0,0,0.2)}
+.ev-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ev-date{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.025));border:1px solid rgba(255,255,255,0.1);text-transform:uppercase;color:var(--text)}
+.ev-tag{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:999px;text-transform:uppercase}
+.ev-tag.uae{background:rgba(140,192,255,0.16);color:#a8d2ff;border:1px solid rgba(140,192,255,0.3)}
+.ev-tag.ksa{background:rgba(90,218,176,0.16);color:#86e5bf;border:1px solid rgba(90,218,176,0.3)}
+.ev-tag.ma{background:rgba(240,184,120,0.16);color:#ffd09e;border:1px solid rgba(240,184,120,0.3)}
+.ev-tag.qa{background:rgba(232,160,181,0.16);color:#f4c7d4;border:1px solid rgba(232,160,181,0.3)}
+.ev-tag.global{background:rgba(255,255,255,0.08);color:var(--text2);border:1px solid var(--border)}
+.ev-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;line-height:1.3}
+.ev-venue{font-size:11px;color:var(--text3);line-height:1.5}
+.ev-why{font-size:11px;color:var(--text2);line-height:1.55;padding:9px 11px;border-radius:9px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06)}
+.ev-why b{color:var(--text);font-weight:600}
+.ev-services{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.ev-svc{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:rgba(184,174,245,0.12);color:#d4ccff;border:1px solid rgba(184,174,245,0.25)}
+.ev-deadline{font-size:10.5px;color:var(--stable);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;margin-top:2px}
+.ev-deadline b{color:#ffd87a}
+
+/* Awards */
+.award-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.award-card{padding:16px 18px;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,0.11);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),0 6px 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.award-card:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.24),0 10px 28px rgba(0,0,0,0.26)}
+.award-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);opacity:.5}
+.award-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.award-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;line-height:1.2}
+.award-tier{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:999px;flex-shrink:0;align-self:flex-start}
+.award-tier.tier-a{background:rgba(151,196,89,0.2);color:#bfe07a;border:1px solid rgba(151,196,89,0.35)}
+.award-tier.tier-b{background:rgba(90,218,176,0.18);color:#86e5bf;border:1px solid rgba(90,218,176,0.3)}
+.award-tier.tier-c{background:rgba(240,192,80,0.18);color:#f5d87e;border:1px solid rgba(240,192,80,0.3)}
+.award-focus{font-size:11.5px;color:var(--text2);line-height:1.55}
+.award-focus b{color:var(--text);font-weight:600}
+.award-cats{display:flex;flex-wrap:wrap;gap:5px}
+.award-cat{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:5px;background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid var(--border)}
+.award-cat.hot{background:rgba(240,128,90,0.14);color:#ffb094;border-color:rgba(240,128,90,0.3)}
+.award-foot{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:10px;margin-top:4px;border-top:1px solid rgba(255,255,255,0.06)}
+.award-foot-cell{font-size:10px;color:var(--text3);font-family:'Space Grotesk',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.award-foot-cell b{display:block;font-size:12.5px;color:var(--text);font-weight:700;letter-spacing:-.2px;margin-top:3px;text-transform:none;letter-spacing:.02em}
+.award-foot-cell.soon b{color:#ffb094}
+.award-foot-cell.locked b{color:#86e5bf}
+.award-link{font-size:11px;color:#b8aef5;text-decoration:none;font-family:'DM Sans',sans-serif;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;margin-top:2px}
+.award-link:hover{color:#d4ccff;text-decoration:underline}
+
+.filter-row{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.filter-chip{padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text2);font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.filter-chip:hover{color:var(--text);border-color:var(--border2)}
+.filter-chip.on{background:rgba(255,255,255,0.1);color:var(--text);border-color:var(--border2)}
+
+.empty{padding:40px;text-align:center;color:var(--text3);font-size:12px;border:1px dashed var(--border);border-radius:12px}
+
+@media(max-width:860px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Marketing Dashboard</h1></div>
+  <div class="header-right">
+    <div class="ops-pill">Marketing Ops · Live</div>
+    <span class="date-label" id="today-label">Week of November 23, 2026</span>
+    <div class="arlab-badge">ARlab</div>
+    <a href="./index.html" class="arlab-badge" style="color:#b8aef5;text-decoration:none;border-color:rgba(184,174,245,0.3)">↩ Intelligence Dashboard</a>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('social',this)">Social Pulse</div>
+  <div class="tab" onclick="switchTab('ads',this)">Ads Health</div>
+  <div class="tab" onclick="switchTab('scripts',this)">Script Generator</div>
+  <div class="tab" onclick="switchTab('events',this)">Target Events</div>
+  <div class="tab" onclick="switchTab('awards',this)">Awards</div>
+</div>
+
+<!-- ====================== SOCIAL PULSE ====================== -->
+<div id="tab-social" class="tab-panel active">
+<div class="wrap">
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">Reach · Last 7 Days</div><div class="kpi-val" id="k-reach">—</div><div class="kpi-sub"><span class="up" id="k-reach-delta">connect source</span></div></div>
+    <div class="kpi"><div class="kpi-label">Followers · Total</div><div class="kpi-val" id="k-followers">—</div><div class="kpi-sub"><span class="up" id="k-followers-delta">connect source</span></div></div>
+    <div class="kpi"><div class="kpi-label">Engagement Rate</div><div class="kpi-val" id="k-engagement">—</div><div class="kpi-sub" id="k-engagement-sub">industry avg 1.9%</div></div>
+    <div class="kpi"><div class="kpi-label">Top Post · Views</div><div class="kpi-val" id="k-toppost">—</div><div class="kpi-sub" id="k-toppost-sub">—</div></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">Accounts</div>
+    <div class="platform-grid" id="social-grid"></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">How to wire live data</div>
+    <div class="mcp-banner">
+      <div class="mcp-banner-left">
+        <h3>Three ways to plug in live numbers</h3>
+        <p><b>1.</b> Add a Meta / TikTok / YouTube API token to the platform card — followers + reach refresh every hour.<br><b>2.</b> Drop a CSV into <code>/marketing-data/social-latest.csv</code> — cards read from it on load.<br><b>3.</b> Use <code>metricool-mcp</code> / <code>buffer-mcp</code> (one call pulls all platforms) — fastest path.</p>
+      </div>
+      <div class="mcp-steps">
+        <div class="mcp-step">claude mcp add metricool</div>
+        <div class="mcp-step">→ cards auto-fill</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ====================== ADS HEALTH ====================== -->
+<div id="tab-ads" class="tab-panel">
+<div class="wrap">
+  <div class="mcp-banner">
+    <div class="mcp-banner-left">
+      <h3>Connect Ads Manager via MCP</h3>
+      <p>Wire Meta, Google and TikTok Ads to pull <b>live spend, CTR, CPA, ROAS and creative-level health</b> into these cards. One-line claude-code install each.</p>
+    </div>
+    <div class="mcp-steps">
+      <div class="mcp-step">claude mcp add meta-ads</div>
+      <div class="mcp-step">claude mcp add google-ads</div>
+      <div class="mcp-step">claude mcp add tiktok-ads</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">Spend · WTD</div><div class="kpi-val" id="ad-spend">—</div><div class="kpi-sub" id="ad-spend-sub">awaiting live feed</div></div>
+    <div class="kpi"><div class="kpi-label">Blended ROAS</div><div class="kpi-val" id="ad-roas">—</div><div class="kpi-sub" id="ad-roas-sub">target ≥ 2.5x</div></div>
+    <div class="kpi"><div class="kpi-label">Blended CTR</div><div class="kpi-val" id="ad-ctr">—</div><div class="kpi-sub" id="ad-ctr-sub">benchmark 1.2%</div></div>
+    <div class="kpi"><div class="kpi-label">Active Campaigns</div><div class="kpi-val" id="ad-active">—</div><div class="kpi-sub" id="ad-active-sub">—</div></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">Ad Accounts</div>
+    <div class="platform-grid" id="ads-grid"></div>
+  </div>
+</div>
+</div>
+
+<!-- ====================== SCRIPT GENERATOR ====================== -->
+<div id="tab-scripts" class="tab-panel">
+<div class="wrap">
+  <div class="section-group" style="margin-top:0">
+    <div class="section-title">Reverse-engineered from top performers</div>
+    <div class="refs-row">
+      <div class="ref-card"><b>ARLab_AI campaign</b><div class="ref-stat">40M</div><div class="ref-duration">16.4s · proof-stat hook</div>Opens with the result ("40 million views"), reveals the AI method, closes with brand.</div>
+      <div class="ref-card"><b>ARLab_AI ads</b><div class="ref-stat">∞</div><div class="ref-duration">10.7s · provocation hook</div>Challenges agencies, sarcastic congrats, differentiation CTA. Shortest and sharpest.</div>
+      <div class="ref-card"><b>AD3 · Creators</b><div class="ref-stat">∞</div><div class="ref-duration">22.1s · pain-reframe</div>Frustration hook → broken promise → educate on the real selection criteria → CTA.</div>
+      <div class="ref-card"><b>AD4 · Agentic</b><div class="ref-stat">∞</div><div class="ref-duration">20.2s · pain-trio + reveal</div>Triple rapid-fire pains → "the news" → agentic platform reveal → budget/time promise.</div>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">Generate Ad Script</div>
+    <div class="gen-shell">
+      <div class="gen-side">
+        <div class="gen-label">Service</div>
+        <select id="gen-service" class="gen-select"></select>
+
+        <div class="gen-label">Pattern</div>
+        <div class="gen-pattern-list" id="gen-pattern-list"></div>
+
+        <div class="gen-label">Length</div>
+        <select id="gen-length" class="gen-select">
+          <option value="10">~10s — provocation (TikTok cold)</option>
+          <option value="16" selected>~16s — proof-stat (balanced)</option>
+          <option value="20">~20s — pain + reveal (Reels, LinkedIn)</option>
+          <option value="22">~22s — reframe (educate)</option>
+        </select>
+
+        <div class="gen-label">Market Angle</div>
+        <select id="gen-market" class="gen-select">
+          <option value="generic">Generic / global</option>
+          <option value="uae">UAE · Eid Al Etihad + GITEX + DSF</option>
+          <option value="ksa">KSA · Riyadh Season + HUMAIN</option>
+          <option value="ma">Morocco · 2030 WC + FIFM</option>
+          <option value="qa">Qatar · National Day + Media City</option>
+        </select>
+
+        <button class="gen-btn" onclick="generateScript()">Generate 2 variants</button>
+      </div>
+
+      <div class="gen-main" id="gen-main">
+        <div class="empty">Pick a service and pattern, then hit <b>Generate</b>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ====================== TARGET EVENTS ====================== -->
+<div id="tab-events" class="tab-panel">
+<div class="wrap">
+  <div class="filter-row" id="ev-filters">
+    <div class="filter-chip on" data-m="all">All markets</div>
+    <div class="filter-chip" data-m="uae">UAE</div>
+    <div class="filter-chip" data-m="ksa">KSA</div>
+    <div class="filter-chip" data-m="ma">Morocco</div>
+    <div class="filter-chip" data-m="qa">Qatar</div>
+    <div class="filter-chip" data-m="global">Global</div>
+  </div>
+
+  <div class="section-group" style="margin-top:0">
+    <div class="section-title">Dec 2026</div>
+    <div class="ev-grid" id="ev-grid-dec"></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">Jan 2027</div>
+    <div class="ev-grid" id="ev-grid-jan"></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-title">Feb → Q2 2027</div>
+    <div class="ev-grid" id="ev-grid-later"></div>
+  </div>
+</div>
+</div>
+
+<!-- ====================== AWARDS ====================== -->
+<div id="tab-awards" class="tab-panel">
+<div class="wrap">
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">Open Now</div><div class="kpi-val" id="aw-open">—</div><div class="kpi-sub">deadlines in next 90 days</div></div>
+    <div class="kpi"><div class="kpi-label">Tier-A Fits</div><div class="kpi-val" id="aw-tiera">—</div><div class="kpi-sub">industry-defining</div></div>
+    <div class="kpi"><div class="kpi-label">Regional Fits</div><div class="kpi-val" id="aw-regional">—</div><div class="kpi-sub">MENA + GCC</div></div>
+    <div class="kpi"><div class="kpi-label">AI / Immersive</div><div class="kpi-val" id="aw-ai">—</div><div class="kpi-sub">native categories for ARlab</div></div>
+  </div>
+
+  <div class="filter-row" id="aw-filters">
+    <div class="filter-chip on" data-f="all">All</div>
+    <div class="filter-chip" data-f="open">Open now</div>
+    <div class="filter-chip" data-f="tier-a">Tier A</div>
+    <div class="filter-chip" data-f="mena">MENA</div>
+    <div class="filter-chip" data-f="ai">AI / Immersive</div>
+    <div class="filter-chip" data-f="creator">Creator / Social</div>
+  </div>
+
+  <div class="award-grid" id="award-grid"></div>
+</div>
+</div>
+
+<script>
+// ============================================================
+// SERVICES — pulled from Intelligence Dashboard
+// ============================================================
+var SERVICES=[
+  "Strategy","Branding","Concepting & Experience Design",
+  "Social AR Effects","Social Gamification",
+  "UGC","AI Creative Content","CGI","Platform Ad Solutions","Social Media Management",
+  "Glasses","Headsets",
+  "Web Development",
+  "Digital Installations","Interactive Screens","Projection Mapping","OOH Billboards",
+  "Creator Marketing","Live Commerce","PR Packages",
+  "Custom AI Tools","AI Agents","AI Chatbot","AI Consultative Solutions"
+];
+
+// ============================================================
+// SOCIAL PLATFORMS
+// ============================================================
+var SOCIAL=[
+  {logo:"IG",logoCls:"p-ig",name:"Instagram",handle:"@arlab.studio",status:"off",followers:null,reach:null,er:null,top:null},
+  {logo:"TT",logoCls:"p-tt",name:"TikTok",handle:"@arlab.studio",status:"off",followers:null,reach:null,er:null,top:null},
+  {logo:"in",logoCls:"p-li",name:"LinkedIn",handle:"/company/arlab",status:"off",followers:null,reach:null,er:null,top:null},
+  {logo:"X",logoCls:"p-x",name:"X / Twitter",handle:"@arlabstudio",status:"off",followers:null,reach:null,er:null,top:null},
+  {logo:"YT",logoCls:"p-yt",name:"YouTube",handle:"@arlab",status:"off",followers:null,reach:null,er:null,top:null},
+  {logo:"S",logoCls:"p-snap",name:"Snapchat",handle:"@arlab",status:"off",followers:null,reach:null,er:null,top:null}
+];
+function renderSocial(){
+  var g=document.getElementById('social-grid');
+  g.innerHTML=SOCIAL.map(function(p){
+    var live=p.followers!=null;
+    return '<div class="platform">'
+      +'<div class="p-head">'
+      +'<div class="p-logo '+p.logoCls+'">'+p.logo+'</div>'
+      +'<div style="flex:1"><div class="p-name">'+p.name+'</div><div class="p-handle">'+p.handle+'</div></div>'
+      +'<div class="status-dot '+(live?'live':'off')+'" title="'+(live?'Live':'Not connected')+'"></div>'
+      +'</div>'
+      +(live
+        ? '<div class="p-stats">'
+          +'<div><div class="p-stat-lbl">Followers</div><div class="p-stat-val">'+p.followers+'</div><div class="p-stat-delta up">'+p.followersDelta+'</div></div>'
+          +'<div><div class="p-stat-lbl">7d reach</div><div class="p-stat-val">'+p.reach+'</div><div class="p-stat-delta up">'+p.reachDelta+'</div></div>'
+          +'<div><div class="p-stat-lbl">Eng. rate</div><div class="p-stat-val">'+p.er+'%</div></div>'
+          +'<div><div class="p-stat-lbl">Top post</div><div class="p-stat-val">'+p.top+'</div></div>'
+          +'</div>'
+        : '<div class="p-connect"><b>Not connected.</b> Add API token / CSV / MCP to light up live numbers.</div>'
+      )
+      +'<div class="p-foot"><span>Updated —</span><span>Auto refresh: off</span></div>'
+      +'</div>';
+  }).join('');
+}
+
+// ============================================================
+// ADS PLATFORMS
+// ============================================================
+var ADS=[
+  {logo:"Meta",logoCls:"p-meta",name:"Meta Ads",handle:"Facebook + Instagram",status:"off",health:null,mcp:"meta-ads"},
+  {logo:"G",logoCls:"p-google",name:"Google Ads",handle:"Search + YouTube + Display",status:"off",health:null,mcp:"google-ads"},
+  {logo:"TT",logoCls:"p-tiktok-ads",name:"TikTok Ads",handle:"Business Center",status:"off",health:null,mcp:"tiktok-ads"},
+  {logo:"in",logoCls:"p-linkedin-ads",name:"LinkedIn Ads",handle:"Campaign Manager",status:"off",health:null,mcp:"linkedin-ads"},
+  {logo:"S",logoCls:"p-snap",name:"Snap Ads Manager",handle:"AR Lenses + Promoted Places",status:"off",health:null,mcp:"snap-ads"},
+  {logo:"X",logoCls:"p-x",name:"X Ads",handle:"Promote",status:"off",health:null,mcp:"x-ads"}
+];
+function renderAds(){
+  var g=document.getElementById('ads-grid');
+  g.innerHTML=ADS.map(function(p){
+    var live=p.health!=null;
+    return '<div class="platform">'
+      +'<div class="p-head">'
+      +'<div class="p-logo '+p.logoCls+'">'+p.logo+'</div>'
+      +'<div style="flex:1"><div class="p-name">'+p.name+'</div><div class="p-handle">'+p.handle+'</div></div>'
+      +'<div class="status-dot '+(live?'live':'off')+'"></div>'
+      +'</div>'
+      +(live
+        ? '<div class="p-stats">'
+          +'<div><div class="p-stat-lbl">Spend</div><div class="p-stat-val">'+p.spend+'</div><div class="p-stat-delta up">'+p.spendDelta+'</div></div>'
+          +'<div><div class="p-stat-lbl">ROAS</div><div class="p-stat-val">'+p.roas+'x</div></div>'
+          +'<div><div class="p-stat-lbl">CTR</div><div class="p-stat-val">'+p.ctr+'%</div></div>'
+          +'<div><div class="p-stat-lbl">Active</div><div class="p-stat-val">'+p.active+'</div></div>'
+          +'</div>'
+          +'<div class="health-bar"><span class="ok"></span><span class="ok"></span><span class="warn"></span><span class="ok"></span><span class="bad"></span></div>'
+          +'<div class="creative-row"><div class="cr-name">Top creative: '+p.topCreative+'</div><div class="cr-roas ok">'+p.topRoas+'x</div></div>'
+        : '<div class="p-connect"><b>Not connected.</b> Run <code style="background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;font-family:IBM Plex Mono,monospace;font-size:10px;color:#5adab0">claude mcp add '+p.mcp+'</code> → auto-fills spend, ROAS, CTR, top creatives.</div>'
+      )
+      +'<div class="p-foot"><span>'+(live?'Updated — just now':'No MCP configured')+'</span><span>Auto refresh: '+(live?'5m':'off')+'</span></div>'
+      +'</div>';
+  }).join('');
+}
+
+// ============================================================
+// SCRIPT GENERATOR — reverse-engineered from the 4 top performers
+// ============================================================
+var PATTERNS={
+  proof:{
+    name:"Proof-Stat",
+    tag:"ARLab_AI campaign · 40M views",
+    len:16,
+    structure:[
+      {time:"0-2s",role:"Hook · Big Number",fn:function(c){return c.hookEn;},ar:function(c){return c.hookAr;}},
+      {time:"2-5s",role:"Attribute",fn:function(c){return "This is the final result of the "+c.service+" campaign built by ARlab.";},ar:function(c){return "هيدا اخر رزلت لل"+c.serviceAr+" كامبين يلي صاروا بخليه.";}},
+      {time:"5-8s",role:"Tease",fn:function(){return "Want to know how? Let me tell you.";},ar:function(){return "بدكن تعرفوا كيف؟ رح خبركن.";}},
+      {time:"8-14s",role:"Reveal method",fn:function(c){return c.methodEn;},ar:function(c){return c.methodAr;}},
+      {time:"14-16s",role:"CTA",fn:function(){return "Follow us at ARlab.";},ar:function(){return "تابعونا على ARlab.";}}
+    ]
+  },
+  provocation:{
+    name:"Provocation",
+    tag:"ARLab_AI ads · 10s",
+    len:10,
+    structure:[
+      {time:"0-2s",role:"Hook · Question",fn:function(c){return c.provocEn;},ar:function(c){return c.provocAr;}},
+      {time:"2-5s",role:"Sarcastic Agree",fn:function(c){return "If that's how you think — congrats.";},ar:function(){return "اذا هيك تفكيرك — مبروك.";}},
+      {time:"5-8s",role:"Call out AI slop",fn:function(c){return "Your "+c.service+" will look like every other AI ad out there.";},ar:function(c){return "ال"+c.serviceAr+" تبعك رح يطلع متل كل الـ AI ادز.";}},
+      {time:"8-10s",role:"CTA",fn:function(){return "Want real AI? Contact ARlab.";},ar:function(){return "بدك AI حقيقي؟ تواصلوا مع ARlab.";}}
+    ]
+  },
+  reframe:{
+    name:"Pain-Reframe",
+    tag:"AD3 · creator pricing · 22s",
+    len:22,
+    structure:[
+      {time:"0-2s",role:"Hook · Relatable Pain",fn:function(c){return c.painEn;},ar:function(c){return c.painAr;}},
+      {time:"2-5s",role:"Broken Promise",fn:function(c){return c.brokenEn;},ar:function(c){return c.brokenAr;}},
+      {time:"5-7s",role:"Tease Reveal",fn:function(){return "How? Let me tell you why.";},ar:function(){return "كيف؟ رح خبرك ليش.";}},
+      {time:"7-15s",role:"Educate · Reframe",fn:function(c){return c.reframeEn;},ar:function(c){return c.reframeAr;}},
+      {time:"15-20s",role:"Right Way",fn:function(c){return c.rightEn;},ar:function(c){return c.rightAr;}},
+      {time:"20-22s",role:"CTA",fn:function(){return "Contact ARlab.";},ar:function(){return "تواصلوا معنا.";}}
+    ]
+  },
+  trio:{
+    name:"Pain-Trio + Reveal",
+    tag:"AD4 · agentic platform · 20s",
+    len:20,
+    structure:[
+      {time:"0-2s",role:"Pain 1",fn:function(c){return c.painOne;},ar:function(c){return c.painOneAr;}},
+      {time:"2-4s",role:"Pain 2 (same pain, harder)",fn:function(c){return c.painTwo;},ar:function(c){return c.painTwoAr;}},
+      {time:"4-6s",role:"Pain 3 (unreasonable)",fn:function(c){return c.painThree;},ar:function(c){return c.painThreeAr;}},
+      {time:"6-10s",role:"Bridge",fn:function(){return "There needs to be something between you and that. To make it faster. Here's the news.";},ar:function(){return "لازم يكون في شي بيناتكن. يسرّع الموضوع. وهاي الخبر.";}},
+      {time:"10-15s",role:"Reveal Platform / Method",fn:function(c){return "For "+c.sinceWhen+" we've been building "+c.platformEn+" — fully agentic. To end your worries.";},ar:function(c){return "صرلنا "+c.sinceWhen+" عم نشتغل على "+c.platformAr+" — فولي اجنتك. تيخلص همّك.";}},
+      {time:"15-18s",role:"Benefit Promise",fn:function(c){return "We make sure your "+c.outcome+" ship on time. Within budget.";},ar:function(c){return "منأكد ال"+c.outcomeAr+" تبعك بيطلعوا بالوقت. ضمن البدجت.";}},
+      {time:"18-20s",role:"CTA",fn:function(){return "Contact us at ARlab.";},ar:function(){return "تواصلوا معنا على ARlab.";}}
+    ]
+  }
+};
+
+// Per-service copy — this is the reverse-engineering: same beats, different fill.
+// English is the primary, Arabic (Lebanese colloquial) is the dub-ready version.
+var SERVICE_COPY={
+  "Social AR Effects":{
+    stat:"3.2M swipe-ups",
+    hookEn:"3.2 million swipe-ups.",
+    hookAr:"٣٫٢ مليون سوايپ-اپ.",
+    methodEn:"Snap Lens, face-tracked, built in 4 days — launched during Riyadh Season.",
+    methodAr:"سناپ لنس، فيس-تراكد، صار بـ٤ ايام — ونزّلناه بريادة سيزون.",
+    provocEn:"Still running a static ad on TikTok?",
+    provocAr:"لسا عم تحط ادز ستاتيك عـ تيكتوك؟",
+    painEn:"Your AR lens launched. Nobody opened it.",
+    painAr:"نزّلت الـAR لنس تبعك. ما حدا فتحها.",
+    brokenEn:"They said \"viral AR\" — you got 4K opens.",
+    brokenAr:"قالوا \"فايرال AR\" — طلعلك ٤ الاف اوپن.",
+    reframeEn:"Snapchat's paid Lens+ opened — if the lens isn't in a creator brief with usage rights, nobody will discover it.",
+    reframeAr:"سناپ لنس+ المدفوع فتح — اذا الـلنس مش بـبريف كريتر مع يوزج رايتس، ما حدا رح يكتشفها.",
+    rightEn:"Pair the lens with 3 creators on day-one. Lock usage. Watch opens 10x.",
+    rightAr:"خلّي الـلنس مع ٣ كريترز باليوم الاول. اقفل الحقوق. اوپنز بيصيروا ١٠ اضعاف.",
+    painOne:"Want an AR effect?",
+    painOneAr:"بدك ايفكت AR؟",
+    painTwo:"Want creators to open it?",
+    painTwoAr:"بدك الكريترز يفتحوها؟",
+    painThree:"Want it live before your event?",
+    painThreeAr:"بدك ينزل قبل الايفنت تبعك؟",
+    platformEn:"an AR production stack",
+    platformAr:"ستاك انتاج AR",
+    outcome:"Lenses",outcomeAr:"لنسز"
+  },
+  "AI Creative Content":{
+    stat:"40M views",
+    hookEn:"40 million views.",
+    hookAr:"٤٠ مليون پيو.",
+    methodEn:"Full AI campaign — poly-generated cartoon style — one of the biggest brands in Saudi.",
+    methodAr:"كامبين AI كاملة — پولي-جنريتد كارتون ستايل — لواحدة من اكبر البراندات بالسعودية.",
+    provocEn:"Still using agencies for AI ads?",
+    provocAr:"لسا عم تشتغل مع ايجنسيز لل AI ادز؟",
+    painEn:"Your AI film looks like everyone else's.",
+    painAr:"الـ AI فيلم تبعك عم يطلع متل الكل.",
+    brokenEn:"They promised cinematic — you got slop.",
+    brokenAr:"وعدوك سينمائي — طلعلك سلوپ.",
+    reframeEn:"Qwen4-Max GA'd at $1.50 per M tokens — the model isn't the moat anymore. Direction is.",
+    reframeAr:"Qwen4-Max نزل بـ١٫٥٠ دولار للـM توكن — المودل ما عاد الفارق. الدايركشن هو.",
+    rightEn:"Hand it to an AI Lab that treats it like a film shoot — not like a prompt bank.",
+    rightAr:"سلّمها لـAI لاب بيعاملها متل تصوير فيلم — مش متل پرومپت بانك.",
+    painOne:"Want a 40M-view AI film?",
+    painOneAr:"بدك AI فيلم بـ٤٠ مليون پيو؟",
+    painTwo:"Want it cartoon-style, cinematic, on-brand?",
+    painTwoAr:"بدك كارتون ستايل، سينمائي، اون-براند؟",
+    painThree:"Want it in 2 weeks?",
+    painThreeAr:"بدك ياه بـاسبوعين؟",
+    platformEn:"an AI Lab",
+    platformAr:"AI لاب",
+    outcome:"AI films",outcomeAr:"الـAI فيلمز"
+  },
+  "Creator Marketing":{
+    stat:"86% trust",
+    hookEn:"86% of GCC viewers trust creators most.",
+    hookAr:"٨٦٪ من الـGCC عم يعتمدوا عالكريترز.",
+    methodEn:"YouTube Shopping x Amazon opened UAE + KSA Oct 26 — we ship briefs with affiliate checkout baked in.",
+    methodAr:"يوتيوپ شوپينغ مع امازون فتح UAE + KSA بـاكتوبر ٢٦ — عم نطلع بريفز مع افيليت تشيك-اوت.",
+    provocEn:"Still picking creators by follower count?",
+    provocAr:"لسا عم تختار كريترز بعدد الفولوورز؟",
+    painEn:"$10K to the creator. Not even 10K views.",
+    painAr:"١٠ الاف دولار للكريتر. ولا ١٠ الاف پيو.",
+    brokenEn:"They said \"reach\" — you got a ghost town.",
+    brokenAr:"قالوا \"ريتش\" — طلعلك پلدة فاضية.",
+    reframeEn:"You picked the wrong one. Having followers doesn't mean they're known where your brand lives.",
+    reframeAr:"غلط الاختيار. يلي عندو فولوورز مش معناتها معروف وين براندك.",
+    rightEn:"Pick the creator whose audience your brand audience trusts — not the biggest, the most relevant.",
+    rightAr:"اختار الكريتر يلي جمهورو جمهور براندك عم يثق فيه — مش الأكبر، الأقرب.",
+    painOne:"Want to run a creator campaign?",
+    painOneAr:"بدك تطلع كامپين مع كريتر؟",
+    painTwo:"Want to brief one?",
+    painTwoAr:"بدك تعمل بريف لكريتر؟",
+    painThree:"Want them to actually reply?",
+    painThreeAr:"بدك يرد عليك بوقتو؟",
+    platformEn:"a creator operating system",
+    platformAr:"نظام تشغيل كريترز",
+    outcome:"creator campaigns",outcomeAr:"كامپينز الكريترز"
+  },
+  "AI Agents":{
+    stat:"72% market growth",
+    hookEn:"AI agents are growing 72% a year.",
+    hookAr:"الـAI ايجنتس عم تكبر ٧٢٪ بالسنة.",
+    methodEn:"ChatGPT Wallet shipped Nov 13 — agents now swipe the card. We build the ones that close deals.",
+    methodAr:"ChatGPT Wallet نزل بـنوفمبر ١٣ — الايجنتس صارت تمرّق الكارد. منبني يلي بيسكّر الدِيلز.",
+    provocEn:"Still running your ops in a group chat?",
+    provocAr:"لسا عم تدير شغلك على جروپ شات؟",
+    painEn:"Your team is answering the same 50 questions. Again.",
+    painAr:"تيمك عم يجاوب عالـ٥٠ سؤال نفسهم. من جديد.",
+    brokenEn:"They promised \"AI automation\" — you got a chatbot that doesn't finish the job.",
+    brokenAr:"وعدوك \"AI اتمتة\" — طلعلك تشات پوت مش عم يخلّص الشغلة.",
+    reframeEn:"A chatbot talks. An agent completes. The difference is whether it can push to your CRM, book a call, send a quote.",
+    reframeAr:"الـتشات پوت بيحكي. الـايجنت بيخلّص. الفرق هو اذا كان بيدخل عالـCRM، بيحجز كول، بيبعت كوت.",
+    rightEn:"Build one agent around one job your team does 20 times a week. Watch it eat.",
+    rightAr:"ابني ايجنت واحد حوالين شغلة واحدة تيمك عم يعملها ٢٠ مرة بالاسبوع. شوفو عم ياكل.",
+    painOne:"Want an AI agent?",
+    painOneAr:"بدك AI ايجنت؟",
+    painTwo:"Want it on your actual workflow?",
+    painTwoAr:"بدو يشتغل على الـووركفلو تبعك؟",
+    painThree:"Want it live in a week?",
+    painThreeAr:"بدو ينزل بـجمعة؟",
+    platformEn:"an agent studio",
+    platformAr:"ايجنت ستوديو",
+    outcome:"agents",outcomeAr:"الايجنتس"
+  },
+  "Custom AI Tools":{
+    stat:"$2.6B HUMAIN",
+    hookEn:"$2.6 billion. That's what Aramco just closed on HUMAIN.",
+    hookAr:"٢٫٦ مليار. هيدا يلي ارامكو سكّر على HUMAIN.",
+    methodEn:"KSA's sovereign AI lane is open. Every brief now defaults to on-prem — we build the custom tools that sit on top.",
+    methodAr:"الـ AI السيادية بالسعودية فتحت. كل بريف صار اون-پريم — نحنا منبني الادوات يلي بتقعد فوقن.",
+    provocEn:"Still using ChatGPT for your actual workflow?",
+    provocAr:"لسا عم تستخدم ChatGPT للشغل الحقيقي؟",
+    painEn:"Your team opens 7 tabs to finish one task.",
+    painAr:"تيمك عم يفتح ٧ تابس تيخلّص شغلة وحدة.",
+    brokenEn:"You bought \"AI\" — got 12 logins and no result.",
+    brokenAr:"اشتريت \"AI\" — طلعلك ١٢ لوگن وما في نتيجة.",
+    reframeEn:"Off-the-shelf AI is a swiss army knife. Your workflow needs a scalpel.",
+    reframeAr:"الـAI الجاهز متل سكين سويسري. ووركفلوك بدو مِشرَط.",
+    rightEn:"Build one tool around one repeatable job. Host it on your own infra. Keep the data.",
+    rightAr:"ابني اداة حوالين شغلة بتتكرر. حطّها على اينفرا تبعك. خلّي الـداتا معك.",
+    painOne:"Want your own AI tool?",
+    painOneAr:"بدك اداة AI خاصة فيك؟",
+    painTwo:"On your own data?",
+    painTwoAr:"عـ داتا تبعك؟",
+    painThree:"Hosted on your infra?",
+    painThreeAr:"محوّلة عـ اينفرا تبعك؟",
+    platformEn:"a custom AI lab",
+    platformAr:"AI لاب مخصّص",
+    outcome:"AI tools",outcomeAr:"ادوات الـAI"
+  },
+  "Web Development":{
+    stat:"$1.55B market",
+    hookEn:"Web is still a $1.55 billion GCC market.",
+    hookAr:"الويپ لسا سوق بـ١٫٥٥ مليار بالـGCC.",
+    methodEn:"World Labs opened Atlas splats2Mesh Nov 12 — 3D Web is native. We build sites that move, not sites that sit.",
+    methodAr:"وورلد لابز فتحوا Atlas بـنوفمبر ١٢ — ثري-دي ويپ صار نيتف. منعمل مواقع عم تتحرك، مش مواقع قاعدة.",
+    provocEn:"Still shipping flat Webflow sites in 2026?",
+    provocAr:"لسا عم تنزّل مواقع فلات Webflow بـ٢٠٢٦؟",
+    painEn:"Your site ships in 3 months. Nobody remembers it.",
+    painAr:"موقعك بيطلع بـ٣ شهور. ما حدا بيتذكرو.",
+    brokenEn:"They sold you a \"3D website\" — it lags on mobile.",
+    brokenAr:"باعوك \"موقع ثري-دي\" — عم يتعلّق عالموبايل.",
+    reframeEn:"3D Web isn't a feature. It's a medium. Build for the browser like you'd build for a stage.",
+    reframeAr:"ثري-دي ويپ مش فيتشر. هي ميديوم. ابني للـپراوزر متل ما بتبني لـستيج.",
+    rightEn:"Pair a 3D hero moment with a flat conversion funnel. Keep both honest.",
+    rightAr:"خلّي عندك موقع ثري-دي بالـهيرو وفانيل فلات للكونڤرجن. خلّي الاتنين صادقين.",
+    painOne:"Want a 3D website?",
+    painOneAr:"بدك موقع ثري-دي؟",
+    painTwo:"That loads in 2 seconds?",
+    painTwoAr:"بيلودش بـثانيتين؟",
+    painThree:"That converts?",
+    painThreeAr:"عم يپيع؟",
+    platformEn:"a 3D web studio",
+    platformAr:"ستوديو ويپ ثري-دي",
+    outcome:"websites",outcomeAr:"المواقع"
+  },
+  "Live Commerce":{
+    stat:"$3.5B KSA live",
+    hookEn:"$3.5 billion. Saudi's live commerce market. Growing 30% a year.",
+    hookAr:"٣٫٥ مليار. سوق الـلايف كومرس بالسعودية. عم يكبر ٣٠٪ بالسنة.",
+    methodEn:"Noon Yellow Friday + DSF open a 60-day creator-cart window. We run the stream, the overlay, the checkout.",
+    methodAr:"نون يلو فرايداي + DSF عم يفتحوا ٦٠ يوم للكريتر-كارت. منشغّل الـستريم، الاوڤرلاي، والتشيك-اوت.",
+    provocEn:"Still running a static product page?",
+    provocAr:"لسا عم تحط صفحة منتج ساكنة؟",
+    painEn:"You ran a live stream. You sold 4 units.",
+    painAr:"طلعت لايف ستريم. پعت ٤ قطع.",
+    brokenEn:"They sold you \"live shopping\" — you got a Zoom call.",
+    brokenAr:"پاعوك \"لايف شوپينغ\" — طلعلك كول زوم.",
+    reframeEn:"Live isn't a stream. It's a conversion funnel disguised as content. Overlays, pinning, one-tap checkout.",
+    reframeAr:"الـلايف مش ستريم. هي كونڤرجن فانيل متخفية بمحتوى. اوڤرلايز، پينينغ، تشيك-اوت بكبسة.",
+    rightEn:"Build the stream around 3 hero SKUs. Run 2 creators in rotation. Pin the cart.",
+    rightAr:"ابني الـستريم حوالين ٣ هيرو SKUs. شغّل ٢ كريترز بروتيشن. پِن الكارت.",
+    painOne:"Want a live shopping event?",
+    painOneAr:"بدك لايف شوپينغ ايڤنت؟",
+    painTwo:"With real conversion?",
+    painTwoAr:"مع كونڤرجن حقيقي؟",
+    painThree:"During DSF?",
+    painThreeAr:"خلال DSF؟",
+    platformEn:"a live commerce operation",
+    platformAr:"عملية لايف كومرس",
+    outcome:"live streams",outcomeAr:"الـلايف ستريمز"
+  },
+  "OOH Billboards":{
+    stat:"60 days",
+    hookEn:"60 days. That's the UAE identity window.",
+    hookAr:"٦٠ يوم. هيدا الوندو تبع هوية UAE.",
+    methodEn:"Eid Al Etihad Dec 2, GITEX Dec 7-11, DSF Dec 4 → Jan 17. We ship 3D anamorphic and live billboards into all three.",
+    methodAr:"عيد الاتحاد ديسمبر ٢، GITEX ٧-١١، DSF ديسمبر ٤ → يناير ١٧. منطلع ٣D اناموڤيك ولايف پيلپورد بالتلاتة.",
+    provocEn:"Still buying flat OOH in 2026?",
+    provocAr:"لسا عم تشتري OOH فلات بـ٢٠٢٦؟",
+    painEn:"Your billboard went up. Nobody filmed it.",
+    painAr:"الـپيلپورد طلع. ما حدا صوّرو.",
+    brokenEn:"They promised \"3D anamorphic\" — it's just a cube.",
+    brokenAr:"وعدوك \"٣D اناموڤيك\" — طلع كيوپ بسيط.",
+    reframeEn:"3D OOH only works if the content pretends to escape the screen. Direction matters more than the screen.",
+    reframeAr:"ال٣D OOH بيزپط بس اذا المحتوى عم يطلع من الشاشة. الدايركشن بيفرق اكتر من الشاشة.",
+    rightEn:"Direct it like a VFX shot. Film it with a plate for social. Ship both.",
+    rightAr:"وجّهو متل VFX شوت. صوّرو مع پليت للـسوشل. طلّع الاتنين.",
+    painOne:"Want a 3D billboard?",
+    painOneAr:"بدك ٣D پيلپورد؟",
+    painTwo:"That people actually film?",
+    painTwoAr:"يلي الناس عم تصوّرو؟",
+    painThree:"On the right screen?",
+    painThreeAr:"عالشاشة الصح؟",
+    platformEn:"an OOH production unit",
+    platformAr:"يونيت انتاج OOH",
+    outcome:"billboards",outcomeAr:"الـپيلپوردز"
+  }
+};
+
+// Default fallback for services without bespoke copy — pattern still works
+function defaultCopy(svc){
+  return {
+    stat:"The brief that performed.",
+    hookEn:"Your "+svc+" brief just landed.",
+    hookAr:"الـ"+svc+" پريف وصل.",
+    methodEn:svc+" shipped by ARlab in days, not months — built to perform on the paid rails that matter this quarter.",
+    methodAr:"الـ"+svc+" بيطلع مع ARlab بـ ايام، مش شهور — مبني ليزپط عالـقنوات المدفوعة يلي مهمة هالكوارتر.",
+    provocEn:"Still outsourcing "+svc+" to an agency?",
+    provocAr:"لسا عم توتسورس الـ"+svc+" عـايجنسي؟",
+    painEn:"Your "+svc+" launched. Nobody noticed.",
+    painAr:"الـ"+svc+" طلع. ما حدا نتبه.",
+    brokenEn:"They sold you \"end-to-end\" — you got slow and generic.",
+    brokenAr:"پاعوك \"اند-تو-اند\" — طلعلك پطيء وجنريك.",
+    reframeEn:"The real differentiator isn't the deck — it's the team that briefs, builds, ships and measures as one.",
+    reframeAr:"الفارق الحقيقي مش الديك — هو التيم يلي بيعمل الپريف ويپني وينزّل ويقيس كلهن سوا.",
+    rightEn:"Pick one lab that owns strategy, production and distribution. Not three vendors.",
+    rightAr:"اختار لاب واحدة بتملك الاستراتيجية والانتاج والتوزيع. مش ٣ شركات.",
+    painOne:"Want "+svc+"?",
+    painOneAr:"بدك "+svc+"؟",
+    painTwo:"That actually ships?",
+    painTwoAr:"يلي عم ينزل فعلاً؟",
+    painThree:"And actually works?",
+    painThreeAr:"وعم يزپط؟",
+    platformEn:"a specialized lab",
+    platformAr:"لاب متخصّصة",
+    outcome:svc+" projects",outcomeAr:"مشاريع الـ"+svc
+  };
+}
+
+var MARKET_LINES={
+  uae:{beat:"Eid Al Etihad Dec 2 → GITEX Dec 7-11 → DSF Dec 4 → Jan 17.",ar:"عيد الاتحاد ديسمبر ٢ → GITEX ٧-١١ → DSF ديسمبر ٤ → يناير ١٧."},
+  ksa:{beat:"Riyadh Season 7 running to March. HUMAIN sovereign AI live.",ar:"ريادة سيزون ٧ لعند مارس. HUMAIN AI السيادية شغّالة."},
+  ma:{beat:"FIFM Nov 20-28. 2030 FIFA WC rebrands across Casa, Rabat, Tangier.",ar:"FIFM نوڤمبر ٢٠-٢٨. ٢٠٣٠ FIFA كأس العالم ريپراند بالكازا والرباط وطنجة."},
+  qa:{beat:"FIFA Intercontinental Cup Dec 9-16. Qatar National Day Dec 18. Media City Qatar open.",ar:"كأس القارات الفيفا ديسمبر ٩-١٦. عيد قطر الوطني ديسمبر ١٨. ميديا سيتي قطر فتحت."},
+  generic:null
+};
+
+var currentPattern="proof";
+function renderPatternList(){
+  var list=document.getElementById('gen-pattern-list');
+  list.innerHTML=Object.keys(PATTERNS).map(function(k){
+    var p=PATTERNS[k];
+    return '<div class="gen-pattern '+(k===currentPattern?'on':'')+'" data-k="'+k+'"><b>'+p.name+' · ~'+p.len+'s</b>Hook + reveal that proved itself in the wild.<div class="ref">'+p.tag+'</div></div>';
+  }).join('');
+  list.querySelectorAll('.gen-pattern').forEach(function(el){
+    el.addEventListener('click',function(){
+      currentPattern=el.dataset.k;
+      document.getElementById('gen-length').value=PATTERNS[currentPattern].len;
+      renderPatternList();
+    });
+  });
+}
+function renderServiceSelect(){
+  var sel=document.getElementById('gen-service');
+  sel.innerHTML=SERVICES.map(function(s){return '<option value="'+s+'">'+s+'</option>';}).join('');
+  sel.value="Creator Marketing";
+}
+
+function serviceAr(s){
+  var map={"Social AR Effects":"سوشال AR","AI Creative Content":"الـAI كونتنت","Creator Marketing":"كريتر ماركتنج","AI Agents":"AI ايجنتس","Custom AI Tools":"ادوات AI مخصصة","Web Development":"ويپ","Live Commerce":"لايف كومرس","OOH Billboards":"OOH پيلپوردز","Strategy":"ستراتيجي","Branding":"پراندنغ","Concepting & Experience Design":"كونسپتنغ","Social Gamification":"غيميفيكيشن","UGC":"UGC","CGI":"CGI","Platform Ad Solutions":"پلتفورم ادز","Social Media Management":"SMM","Glasses":"نظارات AI","Headsets":"هيدست","Digital Installations":"انستوليشن","Interactive Screens":"سكرينز","Projection Mapping":"پروجيكشن","PR Packages":"PR پاكج","AI Chatbot":"تشات پوت","AI Consultative Solutions":"AI كنسلتينغ"};
+  return map[s]||s;
+}
+
+function generateScript(){
+  var svc=document.getElementById('gen-service').value;
+  var pat=currentPattern;
+  var market=document.getElementById('gen-market').value;
+  var copy=SERVICE_COPY[svc]||defaultCopy(svc);
+  copy.service=svc; copy.serviceAr=serviceAr(svc); copy.sinceWhen="a year";
+  var p=PATTERNS[pat];
+  var marketLine=MARKET_LINES[market];
+
+  var variantA=p.structure.map(function(b){
+    return {time:b.time,role:b.role,en:b.fn(copy),ar:b.ar(copy)};
+  });
+
+  // Variant B: cycle to the "next" pattern so you get two different angles
+  var nextPat=({proof:"provocation",provocation:"reframe",reframe:"trio",trio:"proof"})[pat];
+  var pB=PATTERNS[nextPat];
+  var variantB=pB.structure.map(function(b){
+    return {time:b.time,role:b.role,en:b.fn(copy),ar:b.ar(copy)};
+  });
+
+  var html="";
+  [{v:variantA,p:p,label:"A · "+p.name},{v:variantB,p:pB,label:"B · "+pB.name}].forEach(function(vv){
+    html+='<div class="script-card">'
+      +'<div class="script-head">'
+        +'<div class="script-title">'+svc+' — Variant '+vv.label+'</div>'
+        +'<div class="script-meta">'
+          +'<span class="meta-pill pat">'+vv.p.name+'</span>'
+          +'<span class="meta-pill len">~'+vv.p.len+'s</span>'
+          +'<span class="meta-pill lang">EN + Levantine AR</span>'
+        +'</div>'
+      +'</div>'
+      +'<div class="beats">'
+        +vv.v.map(function(b){
+          return '<div class="beat-time">'+b.time+'</div>'
+            +'<div class="beat">'
+              +'<div class="beat-role">'+b.role+'</div>'
+              +b.en
+              +'<div class="beat-ar">'+b.ar+'</div>'
+            +'</div>';
+        }).join('')
+      +'</div>'
+      +(marketLine?'<div class="visual-block" style="background:linear-gradient(135deg,rgba(90,218,176,0.1),rgba(140,192,255,0.08));border-color:rgba(90,218,176,0.25);margin-bottom:10px"><b>Market overlay · '+market.toUpperCase()+'</b>Add an on-screen title or VO stinger: <i>"'+marketLine.beat+'"</i></div>':'')
+      +'<div class="visual-block">'
+        +'<b>Direction</b>'
+        +'Format 1080×1920 vertical (TikTok · Reels · Shorts). Face-to-camera or AI-generated character in cartoon style. '
+        +'Hook delivered in the first 1.3 seconds. Cut every 1.5s minimum. '
+        +'Lebanese / GCC-neutral Arabic delivery (confident, slightly cocky). '
+        +'Captions burned-in, Arabic right-aligned at 42pt, English top-left at 36pt. '
+        +'End card: ARlab lockup + "تواصلوا معنا" / "Contact us at ARlab" + wordmark hold 1s.'
+      +'</div>'
+      +'<div class="script-foot">'
+        +'<button class="copy-btn" onclick="copyScript(this)">Copy script</button>'
+        +'<button class="copy-btn" onclick="copyAR(this)">Copy Arabic only</button>'
+        +'<button class="copy-btn" onclick="copyEN(this)">Copy English only</button>'
+      +'</div>'
+      +'</div>';
+  });
+  document.getElementById('gen-main').innerHTML=html;
+}
+function copyScript(btn){
+  var card=btn.closest('.script-card');
+  var lines=[];
+  card.querySelectorAll('.beats > .beat').forEach(function(b){
+    var t=b.previousElementSibling.textContent;
+    var role=b.querySelector('.beat-role').textContent;
+    var en=b.childNodes[2]?b.childNodes[2].textContent.trim():"";
+    var ar=b.querySelector('.beat-ar').textContent;
+    lines.push("["+t+" · "+role+"]\nEN: "+en+"\nAR: "+ar);
+  });
+  navigator.clipboard.writeText(lines.join("\n\n"));
+  btn.textContent="Copied ✓"; setTimeout(function(){btn.textContent="Copy script";},1800);
+}
+function copyAR(btn){
+  var card=btn.closest('.script-card');
+  var lines=[];
+  card.querySelectorAll('.beat-ar').forEach(function(a){lines.push(a.textContent);});
+  navigator.clipboard.writeText(lines.join("\n"));
+  btn.textContent="Copied ✓"; setTimeout(function(){btn.textContent="Copy Arabic only";},1800);
+}
+function copyEN(btn){
+  var card=btn.closest('.script-card');
+  var lines=[];
+  card.querySelectorAll('.beats > .beat').forEach(function(b){
+    var en=b.childNodes[2]?b.childNodes[2].textContent.trim():"";
+    if(en) lines.push(en);
+  });
+  navigator.clipboard.writeText(lines.join("\n"));
+  btn.textContent="Copied ✓"; setTimeout(function(){btn.textContent="Copy English only";},1800);
+}
+
+// ============================================================
+// EVENTS — pulled from Market tab + enriched with ARlab services to pitch
+// ============================================================
+var EVENTS=[
+  // DECEMBER
+  {date:"Dec 2",name:"55th Eid Al Etihad",venue:"A Family of Families · UAE National Day",market:"uae",month:"dec",why:"UAE identity window opens. Brand rebrand + patriotic content peaks.",services:["Branding","OOH Billboards","AI Creative Content","Social AR Effects"],deadline:"Brief now — ships Dec 2"},
+  {date:"Dec 4 → Jan 17",name:"Dubai Shopping Festival · 32nd ed",venue:"City-wide · Expo City + malls",market:"uae",month:"dec",why:"45-day retail window. Live commerce + creator-cart integrations convert hardest.",services:["Live Commerce","Creator Marketing","Platform Ad Solutions","PR Packages"],deadline:"Launch between Dec 4 - Dec 20"},
+  {date:"Dec 7-11",name:"GITEX Global 2026",venue:"DWTC + Expo City Dubai · 6,000+ exhibitors",market:"uae",month:"dec",why:"Booth, AI demo and interactive-screen window. GCC's largest tech stage.",services:["Digital Installations","Interactive Screens","Custom AI Tools","AI Agents","Projection Mapping"],deadline:"Build Nov 15 → ship Dec 7"},
+  {date:"Dec 9/12/16",name:"FIFA Intercontinental Cup",venue:"Jassim bin Hamad + Ahmad bin Ali · PSG final Dec 16",market:"qa",month:"dec",why:"Qatar sports-sponsor window. Live billboards, creator stack, PR seeding.",services:["OOH Billboards","Creator Marketing","AI Creative Content","PR Packages"],deadline:"Brief by Dec 1"},
+  {date:"Dec 18",name:"Qatar National Day",venue:"Doha Corniche parade + brand window",market:"qa",month:"dec",why:"National identity rebrand window. Sponsor activations peak.",services:["Branding","OOH Billboards","Digital Installations","Projection Mapping"],deadline:"Lock Dec 1 for delivery"},
+  {date:"Dec 20-30",name:"Noon Yellow Friday + White Friday",venue:"UAE + KSA retail",market:"uae",month:"dec",why:"GCC's biggest e-com week. Playable ads + live commerce peak conversion.",services:["Platform Ad Solutions","Live Commerce","Creator Marketing","UGC"],deadline:"Creatives Nov 25 → launch Dec 15"},
+  {date:"Dec 27, 28, 30",name:"Six Kings Slam",venue:"ANB Arena · Riyadh Season 7",market:"ksa",month:"dec",why:"Netflix-exclusive premium content. KSA creator spend at peak.",services:["Creator Marketing","AI Creative Content","Social AR Effects","Live Commerce"],deadline:"Brief by Dec 5"},
+  // JANUARY
+  {date:"Jan 8-10",name:"1 Billion Followers Summit",venue:"Dubai",market:"uae",month:"jan",why:"Regional creator summit — PR packages + creator marketing booth.",services:["Creator Marketing","PR Packages","Social Media Management","Branding"],deadline:"Package Dec 15 for seeding"},
+  {date:"Jan",name:"Riyadh Season 7 continues",venue:"Riyadh · Mar 2027 close",market:"ksa",month:"jan",why:"Projection mapping stages, AI content, creator continuity. 40% of GCC creator spend.",services:["Projection Mapping","Creator Marketing","AI Creative Content","Digital Installations"],deadline:"Rolling — book Dec/Jan slots"},
+  {date:"Jan",name:"Casa Fashion Week + MA brand year",venue:"Casablanca",market:"ma",month:"jan",why:"Morocco 2030 WC rebrand kicks into gear. Bilingual AR + creator stack.",services:["Social AR Effects","Creator Marketing","AI Creative Content","Branding"],deadline:"Brief Dec 15"},
+  {date:"Jan",name:"Vision 2030 · Year-10 marker",venue:"KSA national campaign",market:"ksa",month:"jan",why:"Government + enterprise brand reveal window. Sovereign AI narrative.",services:["Branding","Custom AI Tools","AI Consultative Solutions","OOH Billboards"],deadline:"Lead with Nov 25 outreach"},
+  {date:"Jan 17",name:"DSF closes",venue:"Dubai",market:"uae",month:"jan",why:"Final retail push. Last call for 45-day DSF playbook.",services:["Live Commerce","Platform Ad Solutions","Creator Marketing"],deadline:"Already running"},
+  // FEB+
+  {date:"Feb",name:"Web Summit Qatar 2027",venue:"Media City Qatar",market:"qa",month:"later",why:"Qatar enters GCC creative pipeline — AI + agent + sovereign infra stories open.",services:["Custom AI Tools","AI Agents","Digital Installations","Web Development"],deadline:"Brief Jan 1"},
+  {date:"Feb-Mar",name:"Dubai Lynx Awards",venue:"Dubai",market:"uae",month:"later",why:"MENA's premier ad festival. Submit work from Nov-Jan campaigns.",services:["Creator Marketing","AI Creative Content","Social AR Effects","OOH Billboards"],deadline:"Submissions Jan 2027 — track Awards tab"},
+  {date:"Mar 2027",name:"Riyadh Season closes",venue:"Riyadh",market:"ksa",month:"later",why:"Case-study harvest window. Compile Riyadh Season wins for awards.",services:["Creator Marketing","AI Creative Content","Projection Mapping"],deadline:"Campaigns need to be in-market by Dec/Jan"},
+  {date:"Mar 20-22",name:"Marrakech Biennale",venue:"Marrakech",market:"ma",month:"later",why:"Art + culture crossover. Projection + installation briefs.",services:["Projection Mapping","Digital Installations","AI Creative Content"],deadline:"Brief Dec"}
+];
+function renderEvents(){
+  var cur=document.querySelector('#ev-filters .filter-chip.on').dataset.m;
+  ["dec","jan","later"].forEach(function(m){
+    var grid=document.getElementById('ev-grid-'+m);
+    var items=EVENTS.filter(function(e){return e.month===m && (cur==="all"||e.market===cur);});
+    if(items.length===0){grid.innerHTML='<div class="empty">No events in this filter.</div>';return;}
+    grid.innerHTML=items.map(function(e){
+      return '<div class="ev-card">'
+        +'<div class="ev-head"><div class="ev-date">'+e.date+'</div><div class="ev-tag '+e.market+'">'+({uae:"UAE",ksa:"KSA",ma:"Morocco",qa:"Qatar",global:"Global"})[e.market]+'</div></div>'
+        +'<div class="ev-name">'+e.name+'</div>'
+        +'<div class="ev-venue">'+e.venue+'</div>'
+        +'<div class="ev-why"><b>Why pitch:</b> '+e.why+'</div>'
+        +'<div><div style="font-size:9px;color:var(--text3);font-family:\'Space Grotesk\',sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px">Services to lead with</div>'
+        +'<div class="ev-services">'+e.services.map(function(s){return '<span class="ev-svc">'+s+'</span>';}).join('')+'</div></div>'
+        +'<div class="ev-deadline"><b>⏱ '+e.deadline+'</b></div>'
+      +'</div>';
+    }).join('');
+  });
+}
+document.getElementById('ev-filters').addEventListener('click',function(e){
+  if(!e.target.classList.contains('filter-chip'))return;
+  e.currentTarget.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('on');});
+  e.target.classList.add('on');
+  renderEvents();
+});
+
+// ============================================================
+// AWARDS — curated for creative tech / AI / immersive / MENA
+// ============================================================
+var AWARDS=[
+  {name:"Cannes Lions",tier:"a",focus:"The world's most prestigious creative advertising festival. The one award that moves ARlab from \"regional studio\" to \"global creative tech player.\"",cats:[{name:"Social & Influencer",hot:true},{name:"Film Craft",hot:false},{name:"Digital Craft · AI",hot:true},{name:"Entertainment Lions for Gaming",hot:true},{name:"Brand Experience & Activation",hot:false}],deadline:"Mar 20, 2027",fee:"$900 - $4,500 per entry",window:"open",tags:["global","tier-a","ai","creator"],url:"https://www.canneslions.com"},
+  {name:"D&AD Awards",tier:"a",focus:"The yellow pencil. Craft-first. Where \"AI Creative Content\" and \"Digital Design\" work gets judged by the people who defined the discipline.",cats:[{name:"AI",hot:true},{name:"Digital Design",hot:true},{name:"Spatial Design",hot:true},{name:"Craft for Film",hot:false},{name:"Entertainment",hot:false}],deadline:"Feb 6, 2027",fee:"£300 - £600 per entry",window:"open",tags:["global","tier-a","ai"],url:"https://www.dandad.org"},
+  {name:"Dubai Lynx",tier:"a",focus:"MENA's Cannes Lions affiliate — the win that opens local client doors and gets picked up by Campaign ME.",cats:[{name:"Social & Influencer",hot:true},{name:"Digital Craft",hot:true},{name:"Brand Experience",hot:false},{name:"Film",hot:false},{name:"Creative Effectiveness",hot:true}],deadline:"Jan 23, 2027",fee:"$440 - $1,100 per entry",window:"open",tags:["mena","tier-a","ai","creator"],url:"https://www.dubailynx.com"},
+  {name:"The One Show",tier:"a",focus:"Craft and ideas over execution. Strong for Branding, Strategy and AI-native work.",cats:[{name:"Branded Entertainment",hot:false},{name:"Design",hot:false},{name:"Interactive & Mobile",hot:true},{name:"UX & Innovation (AI)",hot:true}],deadline:"Feb 12, 2027",fee:"$450 - $750 per entry",window:"open",tags:["global","tier-a","ai"],url:"https://www.oneshow.org"},
+  {name:"Clio Awards",tier:"a",focus:"US-headquartered but global. Strong recognition for AI advertising + creator work.",cats:[{name:"Creator (TikTok / Reels / Shorts)",hot:true},{name:"Innovation",hot:true},{name:"Film",hot:false},{name:"Partnership & Collaboration",hot:false}],deadline:"Feb 27, 2027",fee:"$395 - $995 per entry",window:"open",tags:["global","tier-a","creator","ai"],url:"https://clios.com"},
+  {name:"The Webby Awards",tier:"a",focus:"The internet's own award. The native win for Web Development, AI Websites, 3D microsites, chatbots.",cats:[{name:"Websites · 3D / WebGL",hot:true},{name:"AI Chatbots & Agents",hot:true},{name:"Social (Video of the Year)",hot:true},{name:"Apps & Software",hot:false}],deadline:"Dec 19, 2026 ⚠",fee:"$395 - $695 per entry",window:"open",tags:["global","tier-a","ai","creator"],url:"https://www.webbyawards.com"},
+  {name:"FWA (Favourite Website Awards)",tier:"b",focus:"Daily web + 3D showcase. Fastest-moving badge for Web Dev / 3D / WebAR work.",cats:[{name:"FWA of the Day",hot:true},{name:"3D of the Month",hot:true},{name:"FWA of the Year",hot:false}],deadline:"Rolling",fee:"$80 submission",window:"open",tags:["global","ai"],url:"https://thefwa.com"},
+  {name:"Awwwards",tier:"b",focus:"The web craft honour-roll. Weekly jury. Site of the Day is a standing pitch asset.",cats:[{name:"Site of the Day",hot:true},{name:"AI / Agentic Site",hot:true},{name:"Best Innovation",hot:false}],deadline:"Rolling",fee:"€55 per submission",window:"open",tags:["global"],url:"https://www.awwwards.com"},
+  {name:"Shorty Awards",tier:"b",focus:"The social-first award. Direct fit for Creator Marketing + Short-form video + TikTok campaigns.",cats:[{name:"TikTok Campaign",hot:true},{name:"Influencer & Creator",hot:true},{name:"Short-Form Video",hot:true},{name:"AI (new 2026)",hot:true}],deadline:"Feb 15, 2027",fee:"$345 - $695 per entry",window:"open",tags:["global","creator","ai"],url:"https://shortyawards.com"},
+  {name:"Loeries Awards",tier:"a",focus:"Africa + Middle East creative excellence. Johannesburg-based, growing GCC footprint.",cats:[{name:"Digital & Interactive",hot:true},{name:"Social Media",hot:true},{name:"Craft · Film",hot:false},{name:"Creative Effectiveness",hot:false}],deadline:"May 2027",fee:"$180 - $540 per entry",window:"later",tags:["mena","tier-a"],url:"https://loeries.com"},
+  {name:"MENA Effies",tier:"a",focus:"Effectiveness-first — the one trophy CMOs trust because it measures business impact, not craft.",cats:[{name:"Brand Experience",hot:false},{name:"Creator-Led",hot:true},{name:"Small Budget",hot:false},{name:"Influencer",hot:true}],deadline:"Apr 2027",fee:"$650 per entry",window:"later",tags:["mena","tier-a","creator"],url:"https://www.menaeffies.com"},
+  {name:"Transform Awards MENA",tier:"b",focus:"Brand strategy + rebrand specialist awards. Right lane for Branding + Strategy work.",cats:[{name:"Best Brand Evolution",hot:false},{name:"Best Strategic Repositioning",hot:true},{name:"Best Visual Identity",hot:false}],deadline:"Apr 2027",fee:"£495 per entry",window:"later",tags:["mena"],url:"https://www.transformmagazine.net/awards/mena"},
+  {name:"Digital Media Awards MENA",tier:"b",focus:"Regional digital-first awards. Good proof point for Platform Ads + Social work.",cats:[{name:"Best Social Campaign",hot:true},{name:"Best AI-Powered Campaign",hot:true},{name:"Best Influencer Campaign",hot:true}],deadline:"Mar 2027",fee:"$400 per entry",window:"open",tags:["mena","ai","creator"],url:"https://www.digitalmediaawards.com"},
+  {name:"Immersion Festival (Immerse UK / global tracks)",tier:"b",focus:"XR + immersive native. Submit Social AR + Installations + Glasses work.",cats:[{name:"Best Social AR",hot:true},{name:"Best Immersive Installation",hot:true},{name:"Best Mixed Reality",hot:false}],deadline:"Apr 2027",fee:"Free - £150",window:"later",tags:["global","ai"],url:"https://www.immersionfest.co"},
+  {name:"AR / VR Innovation Awards (AWE)",tier:"b",focus:"The Augmented World Expo award. The trophy XR hardware brands watch.",cats:[{name:"Best AR Experience",hot:true},{name:"Best WebAR Experience",hot:true},{name:"Best AI + XR",hot:true}],deadline:"Mar 2027",fee:"$295 per entry",window:"open",tags:["global","ai"],url:"https://www.awexr.com/awards"},
+  {name:"SXSW Innovation Awards",tier:"a",focus:"Tech + culture crossover award. Perfect for AI Agents + Custom AI Tools work.",cats:[{name:"AI",hot:true},{name:"Design",hot:false},{name:"Student Innovation",hot:false},{name:"Experiential Storytelling",hot:true}],deadline:"Dec 12, 2026 ⚠",fee:"$120 per entry",window:"open",tags:["global","tier-a","ai"],url:"https://www.sxsw.com/awards/innovation-awards"},
+  {name:"Fast Company Innovation by Design",tier:"a",focus:"Business + design crossover. Reads as PR fuel — gets republished by every design pub.",cats:[{name:"AI",hot:true},{name:"Spatial / Immersive",hot:true},{name:"Branding",hot:false},{name:"Apps & Interactive",hot:false}],deadline:"Mar 2027",fee:"$395 - $495 per entry",window:"later",tags:["global","tier-a","ai"],url:"https://www.fastcompany.com/innovation-by-design"},
+  {name:"The Drum Awards for Content",tier:"b",focus:"UK-based but global reach. Directly rewards branded content + creator work.",cats:[{name:"Best Use of AI in Content",hot:true},{name:"Best Short-Form Series",hot:true},{name:"Best Influencer Content",hot:true}],deadline:"Feb 2027",fee:"£295 - £495 per entry",window:"open",tags:["global","ai","creator"],url:"https://www.thedrumawards.com/content"},
+  {name:"MEA Business Awards (Brand & Marketing)",tier:"c",focus:"Regional business award. Good for ARlab the business — not individual campaigns.",cats:[{name:"Best Creative Agency MENA",hot:false},{name:"Most Innovative AI Marketing Firm",hot:true}],deadline:"May 2027",fee:"Free nomination",window:"later",tags:["mena"],url:"https://www.mea-finance.com/mea-business-awards"},
+  {name:"Anthem Awards",tier:"c",focus:"Purpose-driven work. Only submit if the brief has a social / sustainability angle.",cats:[{name:"Diversity · Film",hot:false},{name:"Sustainability · Digital",hot:false}],deadline:"Feb 2027",fee:"$345 - $545 per entry",window:"open",tags:["global"],url:"https://www.anthemawards.com"}
+];
+var currentAwardFilter="all";
+function renderAwards(){
+  var grid=document.getElementById('award-grid');
+  var items=AWARDS.filter(function(a){
+    if(currentAwardFilter==="all")return true;
+    if(currentAwardFilter==="open")return a.window==="open";
+    if(currentAwardFilter==="tier-a")return a.tier==="a";
+    if(currentAwardFilter==="mena")return a.tags.indexOf("mena")>-1;
+    if(currentAwardFilter==="ai")return a.tags.indexOf("ai")>-1;
+    if(currentAwardFilter==="creator")return a.tags.indexOf("creator")>-1;
+    return true;
+  });
+  if(items.length===0){grid.innerHTML='<div class="empty">No awards match this filter.</div>';return;}
+  grid.innerHTML=items.map(function(a){
+    var soonCls=a.window==="open"?(a.deadline.indexOf("⚠")>-1?"soon":""):"locked";
+    return '<div class="award-card">'
+      +'<div class="award-head">'
+        +'<div><div class="award-name">'+a.name+'</div></div>'
+        +'<div class="award-tier tier-'+a.tier+'">Tier '+a.tier.toUpperCase()+'</div>'
+      +'</div>'
+      +'<div class="award-focus">'+a.focus+'</div>'
+      +'<div class="award-cats">'+a.cats.map(function(c){return '<span class="award-cat '+(c.hot?"hot":"")+'">'+c.name+'</span>';}).join('')+'</div>'
+      +'<div class="award-foot">'
+        +'<div class="award-foot-cell '+soonCls+'">Deadline<b>'+a.deadline+'</b></div>'
+        +'<div class="award-foot-cell">Entry Fee<b>'+a.fee+'</b></div>'
+      +'</div>'
+      +'<a href="'+a.url+'" target="_blank" rel="noopener" class="award-link">Open submission portal ↗</a>'
+    +'</div>';
+  }).join('');
+
+  // Award KPIs
+  document.getElementById('aw-open').textContent=AWARDS.filter(function(a){return a.window==="open";}).length;
+  document.getElementById('aw-tiera').textContent=AWARDS.filter(function(a){return a.tier==="a";}).length;
+  document.getElementById('aw-regional').textContent=AWARDS.filter(function(a){return a.tags.indexOf("mena")>-1;}).length;
+  document.getElementById('aw-ai').textContent=AWARDS.filter(function(a){return a.tags.indexOf("ai")>-1;}).length;
+}
+document.getElementById('aw-filters').addEventListener('click',function(e){
+  if(!e.target.classList.contains('filter-chip'))return;
+  e.currentTarget.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('on');});
+  e.target.classList.add('on');
+  currentAwardFilter=e.target.dataset.f;
+  renderAwards();
+});
+
+// ============================================================
+// Tabs
+// ============================================================
+function switchTab(name,el){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+}
+
+// Init
+renderSocial();
+renderAds();
+renderServiceSelect();
+renderPatternList();
+renderEvents();
+renderAwards();
+generateScript();
+
+// Date label
+(function(){
+  var d=new Date();
+  var opts={year:'numeric',month:'long',day:'numeric'};
+  document.getElementById('today-label').textContent='Week of '+d.toLocaleDateString('en-US',opts);
+})();
+</script>
+</body>
+</html>
