@@ -346,6 +346,8 @@ body{
 .action-reset:hover{color:var(--text2);border-color:var(--border2)}
 .bar-track{flex:1;height:3px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden}
 .bar-fill{height:100%;background:linear-gradient(90deg,#97C459,#5adab0);transition:width .3s}
+.action-local-note{max-width:720px;margin:-6px auto 14px;font-family:'DM Sans',sans-serif;font-size:10.5px;color:var(--text3);text-align:center;letter-spacing:.02em}
+.action-local-note span{color:var(--text2)}
 
 .deliverable{padding:18px 20px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 4px 14px rgba(0,0,0,0.12)}
 .deliv-head-row{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
@@ -562,8 +564,12 @@ body{
   <div class="action-progress">
     <div class="bar-track"><div class="bar-fill" id="act-bar" style="width:0%"></div></div>
     <div class="action-progress-count"><span id="act-done">0</span> / <span id="act-total">0</span></div>
+    <button class="action-reset" onclick="exportActions()" title="Download your plan as JSON">Export</button>
+    <button class="action-reset" onclick="document.getElementById('act-import').click()" title="Load a plan from JSON">Import</button>
+    <input type="file" id="act-import" accept="application/json,.json" style="display:none" onchange="importActions(event)">
     <button class="action-reset" onclick="resetActions()">Reset</button>
   </div>
+  <div class="action-local-note">Saved in this browser only · Export to move between devices · <span id="act-saved-at"></span></div>
   <div id="actions-root"></div>
 </div>
 </div>
@@ -1558,7 +1564,8 @@ function loadActions(){
   try{var s=localStorage.getItem(ACTIONS_KEY);if(s){var p=JSON.parse(s);if(Array.isArray(p)&&p.length)return p;}}catch(e){}
   return JSON.parse(JSON.stringify(SEED_ACTIONS));
 }
-function saveActions(){localStorage.setItem(ACTIONS_KEY,JSON.stringify(ACTIONS));}
+function saveActions(){localStorage.setItem(ACTIONS_KEY,JSON.stringify(ACTIONS));localStorage.setItem(ACTIONS_KEY+'-saved-at',String(Date.now()));renderSavedAt();}
+function renderSavedAt(){var el=document.getElementById('act-saved-at');if(!el)return;var t=+localStorage.getItem(ACTIONS_KEY+'-saved-at')||0;if(!t){el.textContent='';return;}var d=new Date(t);var pad=function(n){return n<10?'0'+n:''+n;};el.textContent='saved '+pad(d.getHours())+':'+pad(d.getMinutes())+' · '+d.toLocaleDateString(undefined,{month:'short',day:'numeric'});}
 var ACTIONS=loadActions();
 
 function newId(){return 'x'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
@@ -1586,7 +1593,31 @@ function addDeliverable(){
   saveActions();renderActions();
   setTimeout(function(){var el=document.querySelector('[data-edit="title"][data-di="'+(ACTIONS.length-1)+'"]');if(el){el.focus();document.execCommand('selectAll',false,null);}},30);
 }
-function resetActions(){if(!confirm('Reset to the original ARLAB Takeover plan? All your edits will be lost.'))return;localStorage.removeItem(ACTIONS_KEY);ACTIONS=loadActions();renderActions();}
+function resetActions(){if(!confirm('Reset to the original ARLAB Takeover plan? All your edits will be lost.'))return;localStorage.removeItem(ACTIONS_KEY);localStorage.removeItem(ACTIONS_KEY+'-saved-at');ACTIONS=loadActions();renderActions();}
+function exportActions(){
+  var blob=new Blob([JSON.stringify(ACTIONS,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  var d=new Date();var pad=function(n){return n<10?'0'+n:''+n;};
+  a.href=url;
+  a.download='arlab-action-plan-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},100);
+}
+function importActions(ev){
+  var f=ev.target.files&&ev.target.files[0];if(!f){return;}
+  var r=new FileReader();
+  r.onload=function(e){
+    try{
+      var p=JSON.parse(e.target.result);
+      if(!Array.isArray(p)||!p.length)throw new Error('empty');
+      if(!confirm('Replace your current plan with the imported one? ('+p.length+' deliverables)'))return;
+      ACTIONS=p;saveActions();renderActions();
+    }catch(err){alert('Could not read that file. Expected a plan JSON exported from this dashboard.');}
+    ev.target.value='';
+  };
+  r.readAsText(f);
+}
 
 function onEdit(ev){
   var el=ev.target,field=el.dataset.edit,di=+el.dataset.di,ii=el.dataset.ii!==undefined?+el.dataset.ii:-1;
@@ -1607,6 +1638,7 @@ function updateProgress(){
   document.getElementById('act-done').textContent=d;
   document.getElementById('act-total').textContent=t;
   document.getElementById('act-bar').style.width=(t?Math.round(100*d/t):0)+'%';
+  renderSavedAt();
   document.querySelectorAll('.deliv-count').forEach(function(el){
     var di=+el.dataset.di,c=ACTIONS[di];
     var cd=c.items.filter(function(it){return it.done;}).length;
